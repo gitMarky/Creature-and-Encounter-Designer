@@ -3,13 +3,13 @@
 	<size></size>
 	<level></level>
 	<labels></labels>
-	<stats>
+	<modifiers>
 		<ini></ini>
 		<ac></ac>
 		<pd></pd>
 		<md></md>
 		<hp></hp>
-	</stats>
+	</modifiers>
 	<attacks>
 		<attack id="" />
 	</attacks>

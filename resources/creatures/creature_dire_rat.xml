@@ -6,13 +6,13 @@
 		<label>Mook</label>
 		<label>Beast</label>
 	</labels>
-	<stats>
-		<ini>2</ini>
-		<ac>15</ac>
-		<pd>15</pd>
-		<md>10</md>
-		<hp>6</hp>
-	</stats>
+	<modifiers>
+		<ini>1</ini>
+		<ac>-2</ac>
+		<pd>0</pd>
+		<md>-1</md>
+		<hp>0.857</hp>
+	</modifiers>
 	<attacks>
 		<attack id="attack_infected_bite" />
 	</attacks>
