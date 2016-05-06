@@ -1,0 +1,9 @@
+<attack>
+	<name></name>
+	<bonus></bonus>
+	<defense></defense>
+	<damage description=""></damage>
+	<triggers>
+		<trigger description=""/>
+	</triggers>
+</attack>

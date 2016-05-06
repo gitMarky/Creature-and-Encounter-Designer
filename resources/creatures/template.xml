@@ -1,0 +1,22 @@
+<creature>
+	<name></name>
+	<size></size>
+	<level></level>
+	<labels></labels>
+	<stats>
+		<ini></ini>
+		<ac></ac>
+		<pd></pd>
+		<md></md>
+		<hp></hp>
+	</stats>
+	<attacks>
+		<attack id="" />
+	</attacks>
+	<specials>
+		<special id="" />
+	</specials>
+	<nastier>
+		<special id="" />
+	</nastier>
+</creature>

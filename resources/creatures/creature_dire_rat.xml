@@ -1,0 +1,25 @@
+<creature>
+	<name>Dire Rat</name>
+	<size>Normal</size>
+	<level>1</level>
+	<labels>
+		<label>Mook</label>
+		<label>Beast</label>
+	</labels>
+	<stats>
+		<ini>2</ini>
+		<ac>15</ac>
+		<pd>15</pd>
+		<md>10</md>
+		<hp>6</hp>
+	</stats>
+	<attacks>
+		<attack id="attack_infected_bite" />
+	</attacks>
+	<specials>
+		<special id="" />
+	</specials>
+	<nastier>
+		<special id="special_squealing_pack_attack" />
+	</nastier>
+</creature>
