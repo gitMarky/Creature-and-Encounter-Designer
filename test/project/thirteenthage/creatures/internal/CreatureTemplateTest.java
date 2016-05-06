@@ -6,11 +6,15 @@ import java.io.File;
 
 import org.junit.Test;
 
+import project.thirteenthage.creatures.internal.creature.CreatureSize;
+import project.thirteenthage.creatures.internal.creature.CreatureTemplate;
+import project.thirteenthage.creatures.internal.interfaces.ICreature;
+
 public class CreatureTemplateTest
 {
 
 	@Test
-	public void testDireRat()
+	public void testDireRatTemplate()
 	{
 		final double delta = 1e-8;
 		final File xml = new File("resources/creatures/creature_dire_rat.xml");
@@ -20,7 +24,7 @@ public class CreatureTemplateTest
 		
 		
 		assertEquals("Dire Rat", rat.getName());
-		//assertEquals("Normal", rat.getSize());
+		assertEquals(CreatureSize.NORMAL, rat.getSize());
 		assertEquals(1, rat.getLevel());
 		
 		assertEquals(2, rat.getLabels().size());
@@ -28,10 +32,10 @@ public class CreatureTemplateTest
 		assertEquals("Beast", rat.getLabels().get(1));
 		
 		assertEquals(1, rat.getInitiative());
-		assertEquals(-2.0, rat.getAC(), delta);
-		assertEquals(0, rat.getPD(), delta);
-		assertEquals(-1, rat.getMD(), delta);
-		assertEquals(0.857, rat.getHP(), delta);
+		assertEquals(-2, rat.getAC());
+		assertEquals(0, rat.getPD());
+		assertEquals(-1, rat.getMD());
+		assertEquals(0.889, rat.getHP(), delta);
 		//assertEquals();
 		/*
 	<name>Dire Rat</name>
@@ -60,4 +64,25 @@ public class CreatureTemplateTest
 		 */
 	}
 
+	@Test
+	public void testDireRatCreature()
+	{
+		final double exact = 1e-8;
+		final double delta = 1e-3;
+		final File xml = new File("resources/creatures/creature_dire_rat.xml");
+		System.out.println(xml.getAbsolutePath());
+		
+		final CreatureTemplate template = new CreatureTemplate(xml);
+		ICreature rat = template.toCreature();
+		
+		assertEquals("Dire Rat", rat.getName());
+		//assertEquals("Normal", rat.getSize());
+		assertEquals(1, rat.getLevel());
+				
+		assertEquals(2, rat.getInitiative());
+		assertEquals(15, rat.getAC());
+		assertEquals(15, rat.getPD());
+		assertEquals(10, rat.getMD());
+		assertEquals(6.0, rat.getHP(), delta);
+	}
 }

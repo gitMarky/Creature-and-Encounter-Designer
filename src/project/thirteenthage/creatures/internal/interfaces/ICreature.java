@@ -2,6 +2,8 @@ package project.thirteenthage.creatures.internal.interfaces;
 
 import java.util.List;
 
+import project.thirteenthage.creatures.internal.creature.CreatureSize;
+
 /**
  * Interface for a creature.
  */
@@ -13,6 +15,14 @@ public interface ICreature extends INamedItem, ILeveledItem
 	 */
 	List<String> getLabels();
 	
+
+	/**
+	 * Gets the size of the creature.
+	 * @return the size.
+	 */
+	CreatureSize getSize();
+
+	
 	/**
 	 * <p>
 	 * Gets the AC modifier of this creature.
@@ -21,7 +31,7 @@ public interface ICreature extends INamedItem, ILeveledItem
 	 * </p>
 	 * @return the modifier.
 	 */
-	double getAC();
+	int getAC();
 
 	
 	/**
@@ -32,7 +42,7 @@ public interface ICreature extends INamedItem, ILeveledItem
 	 * </p>
 	 * @return the modifier.
 	 */
-	double getPD();
+	int getPD();
 
 	
 	/**
@@ -43,7 +53,7 @@ public interface ICreature extends INamedItem, ILeveledItem
 	 * </p>
 	 * @return the modifier.
 	 */
-	double getMD();
+	int getMD();
 	
 	
 	/**
@@ -55,6 +65,24 @@ public interface ICreature extends INamedItem, ILeveledItem
 	 * @return the modifier.
 	 */
 	double getHP();
+	
+	
+	/**
+	 * <p>
+	 * Gets the strike damage of this creature.
+	 * </p>
+	 * @return the damage.
+	 */
+	double getStrikeDamage();
+	
+	
+	/**
+	 * <p>
+	 * Gets the fear threshold for this creature.
+	 * </p>
+	 * @return the threshold.
+	 */
+	double getFearThreshold();
 	
 	
 	/**

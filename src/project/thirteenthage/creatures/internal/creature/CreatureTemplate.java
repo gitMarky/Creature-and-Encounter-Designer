@@ -1,4 +1,4 @@
-package project.thirteenthage.creatures.internal;
+package project.thirteenthage.creatures.internal.creature;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.jdom2.Element;
 
+import project.thirteenthage.creatures.internal.BasicXmlFile;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
@@ -35,6 +36,12 @@ public class CreatureTemplate extends BasicXmlFile implements ICreatureTemplate
 	}
 
 	@Override
+	public CreatureSize getSize()
+	{
+		return CreatureSize.fromString(getRoot().getChildText("size"));
+	}
+
+	@Override
 	public List<String> getLabels()
 	{
 		List<String> labels = new ArrayList<String>();
@@ -46,21 +53,21 @@ public class CreatureTemplate extends BasicXmlFile implements ICreatureTemplate
 	}
 
 	@Override
-	public double getAC()
+	public int getAC()
 	{
-		return Double.parseDouble(getRoot().getChild("modifiers").getChildText("ac"));
+		return Integer.parseInt(getRoot().getChild("modifiers").getChildText("ac"));
 	}
 
 	@Override
-	public double getPD()
+	public int getPD()
 	{
-		return Double.parseDouble(getRoot().getChild("modifiers").getChildText("pd"));
+		return Integer.parseInt(getRoot().getChild("modifiers").getChildText("pd"));
 	}
 
 	@Override
-	public double getMD()
+	public int getMD()
 	{
-		return Double.parseDouble(getRoot().getChild("modifiers").getChildText("md"));
+		return Integer.parseInt(getRoot().getChild("modifiers").getChildText("md"));
 	}
 
 	@Override
@@ -99,9 +106,23 @@ public class CreatureTemplate extends BasicXmlFile implements ICreatureTemplate
 	@Override
 	public ICreature toCreature()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		CreatureBuilder builder = new CreatureBuilder();
+		builder.name(getName())
+		       .size(getSize())
+		       .level(getLevel())
+		       .addInitiative(getInitiative())
+		       .addAC(getAC())
+		       .addPD(getPD())
+		       .addMD(getMD())
+		       .scaleHP(getHP());
+		
+		if (getLabels().contains("Mook"))
+		{
+			return builder.buildMook();
+		}
+		else
+		{
+			return builder.buildCreature();
+		}
 	}
-	
-	
 }

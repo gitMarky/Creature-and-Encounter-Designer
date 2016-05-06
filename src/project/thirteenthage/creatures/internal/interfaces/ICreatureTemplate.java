@@ -2,7 +2,7 @@ package project.thirteenthage.creatures.internal.interfaces;
 
 import java.util.List;
 
-import project.thirteenthage.creatures.internal.CreatureSize;
+import project.thirteenthage.creatures.internal.creature.CreatureSize;
 
 /**
  * Interface for a creature.
@@ -31,7 +31,7 @@ public interface ICreatureTemplate extends INamedItem, ILeveledItem
 	 * </p>
 	 * @return the modifier.
 	 */
-	double getAC();
+	int getAC();
 
 	
 	/**
@@ -42,7 +42,7 @@ public interface ICreatureTemplate extends INamedItem, ILeveledItem
 	 * </p>
 	 * @return the modifier.
 	 */
-	double getPD();
+	int getPD();
 
 	
 	/**
@@ -53,7 +53,7 @@ public interface ICreatureTemplate extends INamedItem, ILeveledItem
 	 * </p>
 	 * @return the modifier.
 	 */
-	double getMD();
+	int getMD();
 	
 	
 	/**
