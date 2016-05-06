@@ -9,7 +9,7 @@
 	<modifiers>
 		<ini>1</ini>
 		<ac>-2</ac>
-		<pd>0</pd>
+		<pd better="true">0</pd>
 		<md>-1</md>
 		<hp>0.857</hp>
 	</modifiers>

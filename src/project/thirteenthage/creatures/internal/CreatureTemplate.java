@@ -95,6 +95,13 @@ public class CreatureTemplate extends BasicXmlFile implements ICreatureTemplate
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ICreature toCreature()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }

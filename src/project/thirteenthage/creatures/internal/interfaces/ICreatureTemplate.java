@@ -2,6 +2,8 @@ package project.thirteenthage.creatures.internal.interfaces;
 
 import java.util.List;
 
+import project.thirteenthage.creatures.internal.CreatureSize;
+
 /**
  * Interface for a creature.
  */
@@ -12,6 +14,14 @@ public interface ICreatureTemplate extends INamedItem, ILeveledItem
 	 * @return a (possibly empty) list, but never {@code null}.
 	 */
 	List<String> getLabels();
+	
+
+	/**
+	 * Gets the size of the creature.
+	 * @return the size.
+	 */
+	CreatureSize getSize();
+	
 	
 	/**
 	 * <p>
@@ -85,4 +95,11 @@ public interface ICreatureTemplate extends INamedItem, ILeveledItem
 	 * @return a (possibly empty) list, but never {@code null}.
 	 */
 	List<ISpecial> getNastierSpecials();
+	
+	
+	/**
+	 * Converts this template to a creature.
+	 * @return the creature.
+	 */
+	ICreature toCreature();
 }
