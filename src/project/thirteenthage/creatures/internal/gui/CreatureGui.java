@@ -1,5 +1,6 @@
 package project.thirteenthage.creatures.internal.gui;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -37,6 +38,8 @@ public class CreatureGui implements IView
 		final JFrame frame = new JFrame();
 		final JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setBorder(StyleConstants.DEFAULT_EMPTY_BORDER);
+
 
 		_menuSelectionPanel = new MenuSelectionPanel();
 		_creaturePanel = new CreaturePanel();

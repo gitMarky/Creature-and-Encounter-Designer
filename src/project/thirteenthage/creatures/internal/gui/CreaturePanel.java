@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 
 import project.thirteenthage.creatures.internal.gui.views.CreatureViewPanel;
 import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
+//property change stuff
 
 
 /**
@@ -20,7 +21,6 @@ class CreaturePanel extends JPanel
 	{
 		super();
 	}
-
 
 	/**
 	 * Displays a creature in this panel.

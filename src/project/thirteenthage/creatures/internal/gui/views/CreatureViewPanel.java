@@ -1,14 +1,18 @@
 package project.thirteenthage.creatures.internal.gui.views;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 import project.thirteenthage.creatures.interfaces.IView;
+import project.thirteenthage.creatures.internal.gui.StyleConstants;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 
@@ -50,6 +54,10 @@ public class CreatureViewPanel extends JPanel implements IView
 		add(namePanel);
 		add(blockPanel);
 
+		this.setBorder(StyleConstants.DEFAULT_EMPTY_BORDER);
+		
+//        setBackground(new Color(0, 255, 255));
+        
 		updateView();
 	}
 
@@ -81,6 +89,10 @@ public class CreatureViewPanel extends JPanel implements IView
 			this.add(_size);
 			this.add(_level);
 
+//	        this.setBackground(new Color(216, 168, 133));
+	        this.setBackground(new Color(216, 191, 172));
+			this.setBorder(StyleConstants.DEFAULT_EMPTY_BORDER);
+			
 			updateView();
 		}
 
@@ -155,9 +167,10 @@ public class CreatureViewPanel extends JPanel implements IView
 		private CreatureAttackPanel()
 		{
 			super();
-			setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+			this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
 			this.add(_initiative);
+			this.setBorder(StyleConstants.DEFAULT_EMPTY_BORDER);
 		}
 
 
@@ -207,11 +220,12 @@ public class CreatureViewPanel extends JPanel implements IView
 			_labelMD = new JLabel();
 			_labelHP = new JLabel();
 
-			setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+			this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 			this.add(_labelAC);
 			this.add(_labelPD);
 			this.add(_labelMD);
 			this.add(_labelHP);
+			this.setBorder(StyleConstants.DEFAULT_EMPTY_BORDER);
 			updateView();
 		}
 
