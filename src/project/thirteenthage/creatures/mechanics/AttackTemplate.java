@@ -8,7 +8,7 @@ import project.thirteenthage.creatures.interfaces.ITrigger;
 import project.thirteenthage.creatures.internal.BasicXmlFile;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 
-public class Attack implements IAttack
+public class AttackTemplate implements IAttack
 {
 	private String _name = "Melee attack";
 	private final int _attack;
@@ -17,7 +17,7 @@ public class Attack implements IAttack
 	private String _damageDesc = "damage";
 	private final List<ITrigger> _triggers = new ArrayList<ITrigger>();
 	
-	public Attack(final File file)
+	public AttackTemplate(final File file)
 	{
 		BasicXmlFile template = new BasicXmlFile(file);
 		_name = template.getRoot().getChildText("name");
