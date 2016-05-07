@@ -5,6 +5,11 @@ import javax.swing.JPanel;
 import project.thirteenthage.creatures.internal.gui.views.CreatureViewPanel;
 import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
 
+
+/**
+ * The creature panel should display the currently selected creature.
+ * For this purpose it hosts a {@link CreatureViewPanel}.
+ */
 @SuppressWarnings("serial")
 class CreaturePanel extends JPanel
 {
@@ -17,6 +22,10 @@ class CreaturePanel extends JPanel
 	}
 
 
+	/**
+	 * Displays a creature in this panel.
+	 * @param creature the creature.
+	 */
 	public void displayCreature(ICreatureTemplate creature)
 	{
 		if (_panel != null)

@@ -9,6 +9,10 @@ import project.thirteenthage.creatures.interfaces.IView;
 import project.thirteenthage.creatures.loaders.AttackTemplateLoader;
 import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
 
+
+/**
+ * This is the main application.
+ */
 public class CreatureGui implements IView
 {
 	static CreatureGui GUI;
@@ -54,12 +58,20 @@ public class CreatureGui implements IView
 	}
 
 
+	/**
+	 * The selection panel. Allows selecting a creature.
+	 * @return the panel.
+	 */
 	public MenuSelectionPanel getMenuSelectionPanel()
 	{
 		return _menuSelectionPanel;
 	}
 
-
+	
+	/**
+	 * Getter for the panel that displays the currently selected creature.
+	 * @return
+	 */
 	public CreaturePanel getCreaturePanel()
 	{
 		return _creaturePanel;

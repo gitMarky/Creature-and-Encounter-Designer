@@ -23,7 +23,10 @@ public class CreatureViewPanel extends JPanel implements IView
 	private final CreatureAttackPanel _attackPanel;
 	private final CreatureStatsPanel _statsPanel;
 
-
+	/**
+	 * Constructor.
+	 * @param creature this creature will be displayed.
+	 */
 	public CreatureViewPanel(final ICreature creature)
 	{
 		super();
@@ -59,6 +62,10 @@ public class CreatureViewPanel extends JPanel implements IView
 		_statsPanel.updateView();
 	}
 
+	
+	/**
+	 * The info panel contains the level, size and labels of the creature.
+	 */
 	private class CreatureInfoPanel extends JPanel implements IView
 	{
 		private JLabel _size;
@@ -130,6 +137,12 @@ public class CreatureViewPanel extends JPanel implements IView
 		}
 	}
 
+	
+	/**
+	 * The attack panel contains the initiative,
+	 * the individual attacks with special triggers,
+	 * special abilities, and the 'nastier specials'.
+	 */
 	private class CreatureAttackPanel extends JPanel implements IView
 	{
 		private final JLabel _initiative = new JLabel();
@@ -173,6 +186,10 @@ public class CreatureViewPanel extends JPanel implements IView
 		}
 	}
 
+	
+	/**
+	 * The stats panel contains the defenses and hit points.
+	 */
 	private class CreatureStatsPanel extends JPanel implements IView
 	{
 		private final JLabel _labelAC;

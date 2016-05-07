@@ -8,6 +8,10 @@ import javax.swing.JPanel;
 
 import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
 
+
+/**
+ * This panel contains a combo box that lets you select the loaded creatures.
+ */
 @SuppressWarnings("serial")
 class MenuSelectionPanel extends JPanel
 {
@@ -28,6 +32,23 @@ class MenuSelectionPanel extends JPanel
 		this.add(_creatureList);
 	}
 
+	
+	void onCreatureSelected()
+	{
+		MenuSelectionItem selectedItem = (MenuSelectionItem) _creatureList.getSelectedItem();
+	
+		if (CreatureGui.GUI != null && selectedItem != null)
+		{
+			CreatureGui.GUI.getCreaturePanel().displayCreature(CreatureTemplateLoader.getInstance().get(selectedItem._id));
+			CreatureGui.GUI.updateView();
+		}
+	}
+
+
+	/**
+	 * Maps the creature template to the creature id, so that the selection list can
+	 * display the creature name (which may not be unique).
+	 */
 	private class MenuSelectionItem
 	{
 		private final String _id;
@@ -46,9 +67,11 @@ class MenuSelectionPanel extends JPanel
 		}
 	}
 
+	/**
+	 * Listener so that detects when a new item is selected.
+	 */
 	private class MenuSelectionListener implements ItemListener
 	{
-
 		@Override
 		public void itemStateChanged(ItemEvent e)
 		{
@@ -56,18 +79,6 @@ class MenuSelectionPanel extends JPanel
 			{
 				onCreatureSelected();
 			}
-		}
-	}
-
-
-	void onCreatureSelected()
-	{
-		MenuSelectionItem selectedItem = (MenuSelectionItem) _creatureList.getSelectedItem();
-
-		if (CreatureGui.GUI != null && selectedItem != null)
-		{
-			CreatureGui.GUI.getCreaturePanel().displayCreature(CreatureTemplateLoader.getInstance().get(selectedItem._id));
-			CreatureGui.GUI.updateView();
 		}
 	}
 }
