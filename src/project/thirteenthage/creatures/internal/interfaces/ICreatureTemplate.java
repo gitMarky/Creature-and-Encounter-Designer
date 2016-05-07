@@ -2,7 +2,7 @@ package project.thirteenthage.creatures.internal.interfaces;
 
 import java.util.List;
 
-import project.thirteenthage.creatures.internal.creature.CreatureSize;
+import project.thirteenthage.creatures.creature.CreatureSize;
 
 /**
  * Interface for a creature.

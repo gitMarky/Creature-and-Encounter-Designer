@@ -1,4 +1,4 @@
-package project.thirteenthage.creatures.internal.creature;
+package project.thirteenthage.creatures.creature;
 
 import project.thirteenthage.creatures.tables.CreatureTableRow;
 import project.thirteenthage.creatures.tables.CreatureTables;

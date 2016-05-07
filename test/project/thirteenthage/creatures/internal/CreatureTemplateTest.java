@@ -6,8 +6,8 @@ import java.io.File;
 
 import org.junit.Test;
 
-import project.thirteenthage.creatures.internal.creature.CreatureSize;
-import project.thirteenthage.creatures.internal.creature.CreatureTemplate;
+import project.thirteenthage.creatures.creature.CreatureSize;
+import project.thirteenthage.creatures.creature.CreatureTemplate;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 

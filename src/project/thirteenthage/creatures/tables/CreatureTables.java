@@ -3,7 +3,7 @@ package project.thirteenthage.creatures.tables;
 import java.util.ArrayList;
 import java.util.List;
 
-import project.thirteenthage.creatures.internal.creature.CreatureSize;
+import project.thirteenthage.creatures.creature.CreatureSize;
 
 public class CreatureTables
 {
