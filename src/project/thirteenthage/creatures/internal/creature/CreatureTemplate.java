@@ -11,6 +11,7 @@ import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
 import project.thirteenthage.creatures.internal.interfaces.ISpecial;
+import project.thirteenthage.creatures.mechanics.AttackTemplate;
 
 
 /**
@@ -85,8 +86,17 @@ public class CreatureTemplate extends BasicXmlFile implements ICreatureTemplate
 	@Override
 	public List<IAttack> getAttacks()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		List<IAttack> attacks = new ArrayList<IAttack>();
+		
+		for (final Element attack : getRoot().getChild("attacks").getChildren())
+		{
+			String id = attack.getAttributeValue("id");
+			
+			AttackTemplate template = new AttackTemplate(new File("resources/attacks/" + id + ".xml"));
+			attacks.add(template);
+		}
+		
+		return attacks;
 	}
 
 	@Override

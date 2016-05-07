@@ -36,6 +36,10 @@ public class CreatureTemplateTest
 		assertEquals(0, rat.getPD());
 		assertEquals(-1, rat.getMD());
 		assertEquals(0.889, rat.getHP(), delta);
+		
+		assertEquals(1, rat.getAttacks().size());
+		assertEquals("Infected bite", rat.getAttacks().get(0).getName());
+ 
 		//assertEquals();
 		/*
 	<name>Dire Rat</name>
