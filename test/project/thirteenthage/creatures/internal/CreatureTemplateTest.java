@@ -72,7 +72,6 @@ public class CreatureTemplateTest
 	@Test
 	public void testDireRatCreature()
 	{
-		final double exact = 1e-8;
 		final double delta = 1e-3;
 		final File xml = new File("resources/creatures/creature_dire_rat.xml");
 		System.out.println(xml.getAbsolutePath());
