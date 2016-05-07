@@ -44,4 +44,10 @@ public class Attack implements IAttack
 	{
 		return _template.getDescription();
 	}
+
+	@Override
+	public String toGuiText()
+	{
+		return getName() + " +" + getAttackBonus() + " vs. " + getDefense() + " - " + (int) getDamageFactor() + " " + getDescription();
+	}
 }

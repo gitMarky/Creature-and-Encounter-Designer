@@ -1,20 +1,15 @@
 package project.thirteenthage.creatures.internal.gui.views;
 
-import java.awt.Component;
-import java.awt.Graphics;
 import java.awt.GridLayout;
-import java.awt.Insets;
 import java.util.ArrayList;
 import java.util.List;
-
-import javafx.scene.layout.BorderPane;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 
 import project.thirteenthage.creatures.interfaces.IView;
+import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 
 /**
@@ -25,7 +20,7 @@ public class CreatureViewPanel extends JPanel implements IView
 {
 	private final ICreature _creature;
 	private final CreatureInfoPanel _infoPanel;
-	private final JPanel _attackPanel;
+	private final CreatureAttackPanel _attackPanel;
 	private final JPanel _statsPanel;
 	
 	
@@ -36,14 +31,13 @@ public class CreatureViewPanel extends JPanel implements IView
 		_creature = creature;
 		
 		JPanel namePanel = new JPanel();
-		JPanel blockPanel = new JPanel(); //new GridLayout(1, 3));
+		JPanel blockPanel = new JPanel();
 		blockPanel.setLayout(new BoxLayout(blockPanel, BoxLayout.X_AXIS));
 		
 		_infoPanel = new CreatureInfoPanel();
-		_attackPanel = new JPanel();
+		_attackPanel = new CreatureAttackPanel();
 		_statsPanel = new JPanel();
 		
-		_attackPanel.add(new JLabel("Attacks"));
 		_statsPanel.add(new JLabel("Stats"));
 		
 		blockPanel.add(_infoPanel);
@@ -54,13 +48,15 @@ public class CreatureViewPanel extends JPanel implements IView
 		
 		add(namePanel);
 		add(blockPanel);
+		
+		updateView();
 	}
 
 	@Override
 	public void updateView()
 	{
 		_infoPanel.updateView();
-		_infoPanel.setVisible(true);
+		_attackPanel.updateView();
 	}
 	
 	private class CreatureInfoPanel extends JPanel implements IView
@@ -122,6 +118,44 @@ public class CreatureViewPanel extends JPanel implements IView
 				case 2: return level + "nd";
 				case 3: return level + "rd";
 				default: return level + "th";
+			}
+		}
+	}
+	
+	private class CreatureAttackPanel extends JPanel implements IView
+	{
+		private final JLabel _initiative = new JLabel();
+		
+		private final List<JLabel> _attacks = new ArrayList<JLabel>();		
+		private final List<JLabel> _specials = new ArrayList<JLabel>();
+		private final List<JLabel> _nastier = new ArrayList<JLabel>();
+		
+		private CreatureAttackPanel()
+		{
+			super();
+			setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+			
+			this.add(_initiative);
+		}
+		
+		@Override
+		public void updateView()
+		{
+			_initiative.setText("Initiative +" + _creature.getInitiative());
+			
+			for (final JLabel label : _attacks) remove(label);
+			for (final JLabel label : _specials) remove(label);
+			for (final JLabel label : _nastier) remove(label);
+			
+			_attacks.clear();
+			_specials.clear();
+			_nastier.clear();
+			
+			for (final IAttack attack : _creature.getAttacks())
+			{
+				JLabel label = new JLabel(attack.toGuiText());
+				_attacks.add(label);
+				this.add(label);
 			}
 		}
 	}

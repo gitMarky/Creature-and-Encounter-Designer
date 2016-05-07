@@ -60,4 +60,10 @@ public class AttackTemplate implements IAttack
 	{
 		return _damageDesc;
 	}
+
+	@Override
+	public String toGuiText()
+	{
+		throw new IllegalStateException("Not implemented");
+	}
 }
