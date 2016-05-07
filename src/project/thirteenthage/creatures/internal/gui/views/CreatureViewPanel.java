@@ -13,8 +13,8 @@ import javax.swing.border.Border;
 
 import project.thirteenthage.creatures.interfaces.IView;
 import project.thirteenthage.creatures.internal.gui.StyleConstants;
-import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
+import project.thirteenthage.creatures.internal.interfaces.IDisplayableInGui;
 
 /**
  * A {@link JPanel} that displays a creature.
@@ -103,7 +103,7 @@ public class CreatureViewPanel extends JPanel implements IView
 		public void updateView()
 		{
 			// update the components
-			_size.setText(_creature.getSize().name());
+			_size.setText(_creature.getSize().toGuiText());
 			_level.setText(getLevelText(_creature.getLevel()));
 
 			for (final JLabel label : _labels)
@@ -192,7 +192,7 @@ public class CreatureViewPanel extends JPanel implements IView
 			_specials.clear();
 			_nastier.clear();
 
-			for (final IAttack attack : _creature.getAttacks())
+			for (final IDisplayableInGui attack : _creature.getAttacks())
 			{
 				JLabel label = new JLabel(attack.toGuiText());
 				_attacks.add(label);
