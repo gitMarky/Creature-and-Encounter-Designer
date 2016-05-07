@@ -49,15 +49,18 @@ public class CreatureViewPanel extends JPanel implements IView
 		blockPanel.add(_attackPanel);
 		blockPanel.add(_statsPanel);
 
-		namePanel.add(new JLabel(_creature.getName()));
+		JLabel nameLabel = new JLabel(_creature.getName());
+		namePanel.add(nameLabel);
+        namePanel.setBackground(StyleConstants.BACKGROUND_DARK);
+        nameLabel.setForeground(Color.WHITE);
+
 
 		add(namePanel);
 		add(blockPanel);
 
 		this.setBorder(StyleConstants.DEFAULT_EMPTY_BORDER);
+        this.setBackground(StyleConstants.BACKGROUND_DARK);
 		
-//        setBackground(new Color(0, 255, 255));
-        
 		updateView();
 	}
 
@@ -89,8 +92,7 @@ public class CreatureViewPanel extends JPanel implements IView
 			this.add(_size);
 			this.add(_level);
 
-//	        this.setBackground(new Color(216, 168, 133));
-	        this.setBackground(new Color(216, 191, 172));
+	        this.setBackground(StyleConstants.BACKGROUND_LIGHT);
 			this.setBorder(StyleConstants.DEFAULT_EMPTY_BORDER);
 			
 			updateView();
@@ -226,6 +228,8 @@ public class CreatureViewPanel extends JPanel implements IView
 			this.add(_labelMD);
 			this.add(_labelHP);
 			this.setBorder(StyleConstants.DEFAULT_EMPTY_BORDER);
+	        this.setBackground(StyleConstants.BACKGROUND_LIGHT);
+
 			updateView();
 		}
 
