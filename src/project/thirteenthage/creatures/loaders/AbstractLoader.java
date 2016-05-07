@@ -47,7 +47,7 @@ public abstract class AbstractLoader<T extends Object>
 		}
 	}
 	
-	protected Map<String, T> getTemplates()
+	public Map<String, T> getTemplates()
 	{
 		return _templates;
 	}
