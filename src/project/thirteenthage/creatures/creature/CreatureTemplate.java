@@ -11,7 +11,7 @@ import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
 import project.thirteenthage.creatures.internal.interfaces.ISpecial;
-import project.thirteenthage.creatures.mechanics.AttackTemplate;
+import project.thirteenthage.creatures.loaders.AttackTemplateLoader;
 
 
 /**
@@ -92,7 +92,7 @@ public class CreatureTemplate extends BasicXmlFile implements ICreatureTemplate
 		{
 			String id = attack.getAttributeValue("id");
 			
-			AttackTemplate template = new AttackTemplate(new File("resources/attacks/" + id + ".xml"));
+			IAttack template = AttackTemplateLoader.getInstance().get(id);
 			attacks.add(template);
 		}
 		

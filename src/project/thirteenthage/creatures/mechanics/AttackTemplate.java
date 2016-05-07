@@ -16,10 +16,14 @@ public class AttackTemplate implements IAttack
 	private final double _damage;
 	private String _damageDesc = "damage";
 	private final List<ITrigger> _triggers = new ArrayList<ITrigger>();
-	
+
 	public AttackTemplate(final File file)
 	{
-		BasicXmlFile template = new BasicXmlFile(file);
+		this(new BasicXmlFile(file));
+	}
+
+	public AttackTemplate(final BasicXmlFile template)
+	{
 		_name = template.getRoot().getChildText("name");
 		_attack = Integer.parseInt(template.getRoot().getChildText("bonus"));
 		_defense = template.getRoot().getChildText("defense");
