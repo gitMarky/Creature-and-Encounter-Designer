@@ -4,6 +4,6 @@
 	<defense>AC</defense>
 	<damage factor="0.8" description="ongoing damage" />
 	<triggers>
-		<trigger description=""/>
+		<trigger name="" description=""/>
 	</triggers>
 </attack>
