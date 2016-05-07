@@ -15,7 +15,7 @@ public class Creature implements ICreature
 {
 	private String _name = "New creature";
 	private int _level;
-	private List<String> _labels;
+	private List<String> _labels = new ArrayList<String>();
 	private int _ac;
 	private int _pd;
 	private int _md;
