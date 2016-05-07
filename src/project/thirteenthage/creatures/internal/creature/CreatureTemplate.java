@@ -126,13 +126,18 @@ public class CreatureTemplate extends BasicXmlFile implements ICreatureTemplate
 		       .addMD(getMD())
 		       .scaleHP(getHP());
 		
+		final Creature creature;
 		if (getLabels().contains("Mook"))
 		{
-			return builder.buildMook();
+			creature = builder.buildMook();
 		}
 		else
 		{
-			return builder.buildCreature();
+			creature = builder.buildCreature();
 		}
+		
+		creature.setAttacks(getAttacks());
+		
+		return creature;
 	}
 }

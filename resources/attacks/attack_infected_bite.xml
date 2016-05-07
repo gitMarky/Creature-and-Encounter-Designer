@@ -2,7 +2,7 @@
 	<name>Infected bite</name>
 	<bonus>-1</bonus>
 	<defense>AC</defense>
-	<damage factor="0.8" description="ongoing damage" />
+	<damage factor="1.0" description="ongoing damage" />
 	<triggers>
 		<trigger name="" description=""/>
 	</triggers>

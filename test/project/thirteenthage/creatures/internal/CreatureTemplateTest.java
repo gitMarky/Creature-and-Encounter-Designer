@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import project.thirteenthage.creatures.internal.creature.CreatureSize;
 import project.thirteenthage.creatures.internal.creature.CreatureTemplate;
+import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 
 public class CreatureTemplateTest
@@ -88,5 +89,17 @@ public class CreatureTemplateTest
 		assertEquals(15, rat.getPD());
 		assertEquals(10, rat.getMD());
 		assertEquals(6.0, rat.getHP(), delta);
+
+		assertEquals(1, rat.getAttacks().size());
+		testAttack(rat.getAttacks().get(0), "Infected bite", 5, "AC", 4.0, "ongoing damage");
+	}
+
+	private void testAttack(IAttack attack, String name, int bonus, String defense, double damage, String description)
+	{
+		assertEquals(name, attack.getName());
+		assertEquals(bonus, attack.getAttackBonus());
+		assertEquals(damage, attack.getDamageFactor(), 1e-3);
+		assertEquals(defense, attack.getDefense());
+		assertEquals(description, attack.getDescription());
 	}
 }

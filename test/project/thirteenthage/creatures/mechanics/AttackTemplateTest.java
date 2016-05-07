@@ -18,7 +18,7 @@ public class AttackTemplateTest
 		final AttackTemplate attack = new AttackTemplate(xml);
 		assertEquals("Infected bite", attack.getName());
 		assertEquals(-1, attack.getAttackBonus());
-		assertEquals(0.8, attack.getDamageFactor(), exact);
+		assertEquals(1.0, attack.getDamageFactor(), exact);
 		assertEquals("AC", attack.getDefense());
 		assertEquals("ongoing damage", attack.getDescription());
 	}

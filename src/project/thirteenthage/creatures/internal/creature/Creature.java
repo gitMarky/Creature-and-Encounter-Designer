@@ -1,10 +1,12 @@
 package project.thirteenthage.creatures.internal.creature;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.internal.interfaces.ISpecial;
+import project.thirteenthage.creatures.mechanics.Attack;
 
 /**
  * Defines a creature, implementation of {@link ICreature}.
@@ -21,9 +23,9 @@ public class Creature implements ICreature
 	private double _damage;
 	private double _fearThreshold;
 	private int _ini;
-	private List<IAttack> _attacks;
-	private List<ISpecial> _specials;
-	private List<ISpecial> _nastierSpecials;
+	private List<IAttack> _attacks = new ArrayList<IAttack>();
+	private List<ISpecial> _specials = new ArrayList<ISpecial>();
+	private List<ISpecial> _nastierSpecials =  new ArrayList<ISpecial>();
 	private CreatureSize _size;
 
 	@Override
@@ -158,5 +160,17 @@ public class Creature implements ICreature
 	void setStrikeDamage(final double damage)
 	{
 		_damage = damage;
+	}
+
+	public void setAttacks(List<IAttack> attacks)
+	{
+		_attacks.clear();
+		// create the actual attacks from templates.
+		final int bonus = getLevel() + 5;
+		for (final IAttack template : attacks)
+		{
+			final Attack attack = new Attack(template, bonus, getStrikeDamage());
+			_attacks.add(attack);
+		}
 	}
 }
