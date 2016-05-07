@@ -1,0 +1,24 @@
+<creature>
+	<name>Human Thug</name>
+	<size>Normal</size>
+	<level>1</level>
+	<labels>
+		<label>Troop</label>
+		<label>Humanoid</label>
+	</labels>
+	<modifiers>
+		<ini>2</ini>
+		<ac>+0</ac>
+		<pd better="true">-1</pd>
+		<md>+1</md>
+		<hp>1.0</hp>
+	</modifiers>
+	<attacks>
+		<attack id="attack_heavy_mace" />
+	</attacks>
+	<specials>
+		<special id="" />
+	</specials>
+	<nastier>
+	</nastier>
+</creature>

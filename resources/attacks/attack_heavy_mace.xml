@@ -1,0 +1,9 @@
+<attack>
+	<name>Heavy mace</name>
+	<bonus>-1</bonus>
+	<defense>AC</defense>
+	<damage factor="0.8" description="damage" />
+	<triggers>
+		<trigger name="Natural even hit or miss" description="The $name deals +6 damage (TODO: factor 1.2) with its next attack this battle."/>
+	</triggers>
+</attack>
