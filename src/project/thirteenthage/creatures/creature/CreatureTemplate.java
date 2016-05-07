@@ -13,7 +13,6 @@ import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
 import project.thirteenthage.creatures.internal.interfaces.ISpecial;
 import project.thirteenthage.creatures.loaders.AttackTemplateLoader;
 
-
 /**
  * Defines a creature, implementation of {@link ICreature}.
  */
@@ -24,10 +23,12 @@ public class CreatureTemplate extends BasicXmlFile implements ICreatureTemplate
 		super(file);
 	}
 
+
 	public CreatureTemplate(BasicXmlFile file)
 	{
 		this(file.getFile());
 	}
+
 
 	@Override
 	public String getName()
@@ -35,17 +36,20 @@ public class CreatureTemplate extends BasicXmlFile implements ICreatureTemplate
 		return getRoot().getChildText("name");
 	}
 
+
 	@Override
 	public int getLevel()
 	{
 		return Integer.parseInt(getRoot().getChildText("level"));
 	}
 
+
 	@Override
 	public CreatureSize getSize()
 	{
 		return CreatureSize.fromString(getRoot().getChildText("size"));
 	}
+
 
 	@Override
 	public List<String> getLabels()
@@ -58,11 +62,13 @@ public class CreatureTemplate extends BasicXmlFile implements ICreatureTemplate
 		return labels;
 	}
 
+
 	@Override
 	public int getAC()
 	{
 		return Integer.parseInt(getRoot().getChild("modifiers").getChildText("ac"));
 	}
+
 
 	@Override
 	public int getPD()
@@ -70,11 +76,13 @@ public class CreatureTemplate extends BasicXmlFile implements ICreatureTemplate
 		return Integer.parseInt(getRoot().getChild("modifiers").getChildText("pd"));
 	}
 
+
 	@Override
 	public int getMD()
 	{
 		return Integer.parseInt(getRoot().getChild("modifiers").getChildText("md"));
 	}
+
 
 	@Override
 	public double getHP()
@@ -82,27 +90,30 @@ public class CreatureTemplate extends BasicXmlFile implements ICreatureTemplate
 		return Double.parseDouble(getRoot().getChild("modifiers").getChildText("hp"));
 	}
 
+
 	@Override
 	public int getInitiative()
 	{
 		return Integer.parseInt(getRoot().getChild("modifiers").getChildText("ini"));
 	}
 
+
 	@Override
 	public List<IAttack> getAttacks()
 	{
 		List<IAttack> attacks = new ArrayList<IAttack>();
-		
+
 		for (final Element attack : getRoot().getChild("attacks").getChildren())
 		{
 			String id = attack.getAttributeValue("id");
-			
+
 			IAttack template = AttackTemplateLoader.getInstance().get(id);
 			attacks.add(template);
 		}
-		
+
 		return attacks;
 	}
+
 
 	@Override
 	public List<ISpecial> getSpecials()
@@ -111,6 +122,7 @@ public class CreatureTemplate extends BasicXmlFile implements ICreatureTemplate
 		return null;
 	}
 
+
 	@Override
 	public List<ISpecial> getNastierSpecials()
 	{
@@ -118,32 +130,25 @@ public class CreatureTemplate extends BasicXmlFile implements ICreatureTemplate
 		return null;
 	}
 
+
 	@Override
 	public ICreature toCreature()
 	{
 		CreatureBuilder builder = new CreatureBuilder();
-		builder.name(getName())
-		       .size(getSize())
-		       .level(getLevel())
-		       .addInitiative(getInitiative())
-		       .addAC(getAC())
-		       .addPD(getPD())
-		       .addMD(getMD())
-		       .scaleHP(getHP());
-		
+		builder.name(getName()).size(getSize()).level(getLevel()).addInitiative(getInitiative()).addAC(getAC()).addPD(getPD()).addMD(getMD()).scaleHP(getHP());
+
 		final Creature creature;
 		if (getLabels().contains("Mook"))
 		{
 			creature = builder.buildMook();
-		}
-		else
+		} else
 		{
 			creature = builder.buildCreature();
 		}
-		
+
 		creature.setAttacks(getAttacks());
 		creature.getLabels().addAll(getLabels());
-		
+
 		return creature;
 	}
 }

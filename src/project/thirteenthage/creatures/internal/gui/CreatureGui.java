@@ -12,28 +12,28 @@ import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
 public class CreatureGui implements IView
 {
 	static CreatureGui GUI;
-	
+
 	private final JFrame _frame;
 	private final MenuSelectionPanel _menuSelectionPanel;
 	private final CreaturePanel _creaturePanel;
-	
+
+
 	public static void main(String[] args)
 	{
 		GUI = new CreatureGui();
 		GUI.getMenuSelectionPanel().onCreatureSelected();
 	}
-	
-	
+
 
 	private CreatureGui()
 	{
 		AttackTemplateLoader.getInstance();
 		CreatureTemplateLoader.getInstance();
-		
+
 		final JFrame frame = new JFrame();
 		final JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-		
+
 		_menuSelectionPanel = new MenuSelectionPanel();
 		_creaturePanel = new CreaturePanel();
 		panel.add(_menuSelectionPanel);
@@ -41,24 +41,27 @@ public class CreatureGui implements IView
 		panel.add(new EncounterPanel());
 
 		frame.add(panel);
-		//frame.pack();
-		//frame.setVisible(true);
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		_frame = frame;
 	}
-	
 
 
 	@Override
 	public void updateView()
 	{
-		//SwingUtilities.updateComponentTreeUI(_frame);
-		//_frame.doLayout();
-		//_frame.revalidate();
 		_frame.pack();
 		_frame.setVisible(true);
 	}
-	
-	public MenuSelectionPanel getMenuSelectionPanel(){ return _menuSelectionPanel;}
-	public CreaturePanel getCreaturePanel(){ return _creaturePanel;}
+
+
+	public MenuSelectionPanel getMenuSelectionPanel()
+	{
+		return _menuSelectionPanel;
+	}
+
+
+	public CreaturePanel getCreaturePanel()
+	{
+		return _creaturePanel;
+	}
 }

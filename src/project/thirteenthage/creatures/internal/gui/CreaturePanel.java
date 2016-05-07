@@ -5,15 +5,17 @@ import javax.swing.JPanel;
 import project.thirteenthage.creatures.internal.gui.views.CreatureViewPanel;
 import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
 
-@SuppressWarnings("serial") class CreaturePanel extends JPanel
+@SuppressWarnings("serial")
+class CreaturePanel extends JPanel
 {
 	private CreatureViewPanel _panel = null;
-	
+
+
 	CreaturePanel()
 	{
 		super();
 	}
-	
+
 
 	public void displayCreature(ICreatureTemplate creature)
 	{
@@ -21,7 +23,7 @@ import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
 		{
 			this.remove(_panel);
 		}
-		
+
 		_panel = new CreatureViewPanel(creature.toCreature());
 		this.add(_panel);
 	}

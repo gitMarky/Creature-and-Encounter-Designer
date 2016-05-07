@@ -17,10 +17,12 @@ public class AttackTemplate implements IAttack
 	private String _damageDesc = "damage";
 	private final List<ITrigger> _triggers = new ArrayList<ITrigger>();
 
+
 	public AttackTemplate(final File file)
 	{
 		this(new BasicXmlFile(file));
 	}
+
 
 	public AttackTemplate(final BasicXmlFile template)
 	{
@@ -31,11 +33,13 @@ public class AttackTemplate implements IAttack
 		_damageDesc = template.getRoot().getChild("damage").getAttributeValue("description");
 	}
 
+
 	@Override
 	public String getName()
 	{
 		return _name;
 	}
+
 
 	@Override
 	public int getAttackBonus()
@@ -43,11 +47,13 @@ public class AttackTemplate implements IAttack
 		return _attack;
 	}
 
+
 	@Override
 	public double getDamageFactor()
 	{
 		return _damage;
 	}
+
 
 	@Override
 	public String getDefense()
@@ -55,11 +61,13 @@ public class AttackTemplate implements IAttack
 		return _defense;
 	}
 
+
 	@Override
 	public String getDescription()
 	{
 		return _damageDesc;
 	}
+
 
 	@Override
 	public String toGuiText()

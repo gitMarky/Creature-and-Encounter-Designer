@@ -12,12 +12,14 @@ import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
 public class CreatureTemplateLoader extends AbstractLoader<ICreatureTemplate>
 {
 	private static CreatureTemplateLoader _instance = null;
-	
+
+
 	@Override
 	protected boolean checkEntry(BasicXmlFile template)
-	{	
+	{
 		return "creature".equals(template.getRoot().getName());
 	}
+
 
 	@Override
 	protected void addEntry(BasicXmlFile file)
@@ -32,7 +34,8 @@ public class CreatureTemplateLoader extends AbstractLoader<ICreatureTemplate>
 
 		getTemplates().put(id, template);
 	}
-	
+
+
 	public static CreatureTemplateLoader getInstance()
 	{
 		if (_instance == null)
@@ -40,7 +43,7 @@ public class CreatureTemplateLoader extends AbstractLoader<ICreatureTemplate>
 			_instance = new CreatureTemplateLoader();
 			_instance.load(Constants.RESOURCES);
 		}
-		
+
 		return _instance;
 	}
 }

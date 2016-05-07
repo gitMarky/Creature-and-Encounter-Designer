@@ -7,6 +7,7 @@ public interface INamedItem
 {
 	/**
 	 * Gets the name of this object.
+	 * 
 	 * @return the name.
 	 */
 	String getName();

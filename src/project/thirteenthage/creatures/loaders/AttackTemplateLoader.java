@@ -12,12 +12,14 @@ import project.thirteenthage.creatures.mechanics.AttackTemplate;
 public class AttackTemplateLoader extends AbstractLoader<IAttack>
 {
 	private static AttackTemplateLoader _instance = null;
-	
+
+
 	@Override
 	protected boolean checkEntry(BasicXmlFile template)
-	{	
+	{
 		return "attack".equals(template.getRoot().getName());
 	}
+
 
 	@Override
 	protected void addEntry(BasicXmlFile file)
@@ -32,7 +34,8 @@ public class AttackTemplateLoader extends AbstractLoader<IAttack>
 
 		getTemplates().put(id, template);
 	}
-	
+
+
 	public static AttackTemplateLoader getInstance()
 	{
 		if (_instance == null)
@@ -40,7 +43,7 @@ public class AttackTemplateLoader extends AbstractLoader<IAttack>
 			_instance = new AttackTemplateLoader();
 			_instance.load(Constants.RESOURCES);
 		}
-		
+
 		return _instance;
 	}
 }

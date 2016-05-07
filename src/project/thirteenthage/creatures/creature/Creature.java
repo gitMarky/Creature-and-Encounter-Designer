@@ -25,20 +25,23 @@ public class Creature implements ICreature
 	private int _ini;
 	private List<IAttack> _attacks = new ArrayList<IAttack>();
 	private List<ISpecial> _specials = new ArrayList<ISpecial>();
-	private List<ISpecial> _nastierSpecials =  new ArrayList<ISpecial>();
+	private List<ISpecial> _nastierSpecials = new ArrayList<ISpecial>();
 	private CreatureSize _size;
+
 
 	@Override
 	public String getName()
 	{
 		return _name;
 	}
-	
+
+
 	@Override
 	public CreatureSize getSize()
 	{
 		return _size;
 	}
+
 
 	@Override
 	public int getLevel()
@@ -46,11 +49,13 @@ public class Creature implements ICreature
 		return _level;
 	}
 
+
 	@Override
 	public List<String> getLabels()
 	{
 		return _labels;
 	}
+
 
 	@Override
 	public int getAC()
@@ -58,11 +63,13 @@ public class Creature implements ICreature
 		return _ac;
 	}
 
+
 	@Override
 	public int getPD()
 	{
 		return _pd;
 	}
+
 
 	@Override
 	public int getMD()
@@ -70,29 +77,34 @@ public class Creature implements ICreature
 		return _md;
 	}
 
+
 	@Override
 	public double getHP()
 	{
 		return _hp;
 	}
 
+
 	@Override
 	public int getInitiative()
 	{
 		return _ini;
 	}
-	
+
+
 	@Override
 	public double getStrikeDamage()
 	{
 		return _damage;
 	}
-	
+
+
 	@Override
 	public double getFearThreshold()
 	{
 		return _fearThreshold;
 	}
+
 
 	@Override
 	public List<IAttack> getAttacks()
@@ -100,11 +112,13 @@ public class Creature implements ICreature
 		return _attacks;
 	}
 
+
 	@Override
 	public List<ISpecial> getSpecials()
 	{
 		return _specials;
 	}
+
 
 	@Override
 	public List<ISpecial> getNastierSpecials()
@@ -112,55 +126,66 @@ public class Creature implements ICreature
 		return _nastierSpecials;
 	}
 
+
 	void setName(final String name)
 	{
 		_name = name;
 	}
+
 
 	void setLevel(final int level)
 	{
 		_level = level;
 	}
 
+
 	void setAC(final int ac)
 	{
 		_ac = ac;
 	}
+
 
 	void setPD(final int pd)
 	{
 		_pd = pd;
 	}
 
+
 	void setMD(final int md)
 	{
 		_md = md;
 	}
+
 
 	void setHP(final double hp)
 	{
 		_hp = hp;
 	}
 
+
 	void setInitiative(final int ini)
 	{
 		_ini = ini;
 	}
+
 
 	void setSize(final CreatureSize size)
 	{
 		_size = size;
 	}
 
+
 	void setFearThreshold(final double threshold)
 	{
 		_fearThreshold = threshold;
 	}
-	
+
+
 	void setStrikeDamage(final double damage)
 	{
 		_damage = damage;
 	}
+
 
 	public void setAttacks(List<IAttack> attacks)
 	{

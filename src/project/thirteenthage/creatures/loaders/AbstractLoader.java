@@ -11,6 +11,7 @@ public abstract class AbstractLoader<T extends Object>
 	private static final String EXTENSION_XML = ".xml";
 	private Map<String, T> _templates = new HashMap<String, T>();
 
+
 	public void load(final File fromDirectory)
 	{
 		if (fromDirectory == null)
@@ -33,11 +34,14 @@ public abstract class AbstractLoader<T extends Object>
 		}
 	}
 
+
 	private void loadFile(File file)
 	{
 		// skip anything that is not an xml file
-		if (!file.getName().endsWith(EXTENSION_XML)) return;
-		if (file.getName().startsWith("template")) return;
+		if (!file.getName().endsWith(EXTENSION_XML))
+			return;
+		if (file.getName().startsWith("template"))
+			return;
 
 		BasicXmlFile template = new BasicXmlFile(file);
 
@@ -46,22 +50,26 @@ public abstract class AbstractLoader<T extends Object>
 			addEntry(template);
 		}
 	}
-	
+
+
 	public Map<String, T> getTemplates()
 	{
 		return _templates;
 	}
-	
+
+
 	public T get(final String id)
 	{
 		return getTemplates().get(id);
 	}
-	
+
+
 	protected String getId(final BasicXmlFile template)
 	{
 		String name = template.getFile().getName();
 		return name.substring(0, name.length() - EXTENSION_XML.length());
 	}
+
 
 	/**
 	 * Checks whether a file should be added to the list.
@@ -71,6 +79,7 @@ public abstract class AbstractLoader<T extends Object>
 	 * @return {@code true} if the file defines the correct type.
 	 */
 	protected abstract boolean checkEntry(BasicXmlFile template);
+
 
 	/**
 	 * Adds a file to the list.

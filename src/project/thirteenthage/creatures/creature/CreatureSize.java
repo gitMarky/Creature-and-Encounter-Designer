@@ -2,10 +2,8 @@ package project.thirteenthage.creatures.creature;
 
 public enum CreatureSize
 {
-	NORMAL,
-	LARGE,
-	HUGE;
-	
+	NORMAL, LARGE, HUGE;
+
 	public static CreatureSize fromString(final String name)
 	{
 		for (final CreatureSize size : CreatureSize.values())
@@ -15,7 +13,7 @@ public enum CreatureSize
 				return size;
 			}
 		}
-		
+
 		throw new IllegalArgumentException("No enum for " + name);
 	}
 }
