@@ -21,7 +21,7 @@ public class CreatureViewPanel extends JPanel implements IView
 	private final ICreature _creature;
 	private final CreatureInfoPanel _infoPanel;
 	private final CreatureAttackPanel _attackPanel;
-	private final JPanel _statsPanel;
+	private final CreatureStatsPanel _statsPanel;
 	
 	
 	public CreatureViewPanel(final ICreature creature)
@@ -36,9 +36,8 @@ public class CreatureViewPanel extends JPanel implements IView
 		
 		_infoPanel = new CreatureInfoPanel();
 		_attackPanel = new CreatureAttackPanel();
-		_statsPanel = new JPanel();
+		_statsPanel = new CreatureStatsPanel();
 		
-		_statsPanel.add(new JLabel("Stats"));
 		
 		blockPanel.add(_infoPanel);
 		blockPanel.add(_attackPanel);
@@ -57,6 +56,7 @@ public class CreatureViewPanel extends JPanel implements IView
 	{
 		_infoPanel.updateView();
 		_attackPanel.updateView();
+		_statsPanel.updateView();
 	}
 	
 	private class CreatureInfoPanel extends JPanel implements IView
@@ -157,6 +157,40 @@ public class CreatureViewPanel extends JPanel implements IView
 				_attacks.add(label);
 				this.add(label);
 			}
+		}
+	}
+	
+	private class CreatureStatsPanel extends JPanel implements IView
+	{
+		private final JLabel _labelAC;
+		private final JLabel _labelPD;
+		private final JLabel _labelMD;
+		private final JLabel _labelHP;
+
+		private CreatureStatsPanel()
+		{
+			super();
+
+			_labelAC = new JLabel();
+			_labelPD = new JLabel();
+			_labelMD = new JLabel();
+			_labelHP = new JLabel();
+			
+			setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+			this.add(_labelAC);
+			this.add(_labelPD);
+			this.add(_labelMD);
+			this.add(_labelHP);
+			updateView();
+		}
+		
+		@Override
+		public void updateView()
+		{
+			_labelAC.setText("AC " + _creature.getAC());
+			_labelPD.setText("PD " + _creature.getPD());
+			_labelMD.setText("MD " + _creature.getMD());
+			_labelHP.setText("HP " + (int) _creature.getHP());
 		}
 	}
 }
