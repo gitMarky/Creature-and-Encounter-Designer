@@ -24,6 +24,11 @@ public class CreatureTemplate extends BasicXmlFile implements ICreatureTemplate
 		super(file);
 	}
 
+	public CreatureTemplate(BasicXmlFile file)
+	{
+		this(file.getFile());
+	}
+
 	@Override
 	public String getName()
 	{
