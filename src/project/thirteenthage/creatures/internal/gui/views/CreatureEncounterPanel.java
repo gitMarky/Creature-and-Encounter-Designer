@@ -1,5 +1,7 @@
 package project.thirteenthage.creatures.internal.gui.views;
 
+import java.awt.Color;
+
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -47,6 +49,11 @@ public class CreatureEncounterPanel extends JPanel implements IView
 	{
 		final JPanel optionsPanel = new JPanel();
 		optionsPanel.setLayout(new BoxLayout(optionsPanel, BoxLayout.Y_AXIS));
+		
+		AmountChoicePanel amountChoicePanel = new AmountChoicePanel();
+		amountChoicePanel.setBackground(StyleConstants.BACKGROUND_DARK);
+		optionsPanel.add(amountChoicePanel);
+		
 		return optionsPanel;
 	}
 }
