@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import project.thirteenthage.creatures.interfaces.IView;
-import project.thirteenthage.creatures.internal.gui.views.CreatureViewPanel;
+import project.thirteenthage.creatures.internal.gui.views.CreatureEncounterPanel;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 
 /**
@@ -28,7 +28,7 @@ class EncounterPanel extends JPanel implements IView, ActionListener
 	
 	private JButton _clearButton = new JButton("Clear");
 
-	private Map<ICreature, CreatureViewPanel> _creatures = new HashMap<ICreature, CreatureViewPanel>();
+	private Map<ICreature, CreatureEncounterPanel> _creatures = new HashMap<ICreature, CreatureEncounterPanel>();
 
 
 	EncounterPanel()
@@ -65,7 +65,7 @@ class EncounterPanel extends JPanel implements IView, ActionListener
 	{
 		if (!_creatures.containsKey(creature))
 		{
-			final CreatureViewPanel panel = new CreatureViewPanel(creature);
+			final CreatureEncounterPanel panel = new CreatureEncounterPanel(creature);
 			_creatures.put(creature, panel);
 			_creatureListPanel.add(panel);
 			_creatureListEmpty.setVisible(false);
