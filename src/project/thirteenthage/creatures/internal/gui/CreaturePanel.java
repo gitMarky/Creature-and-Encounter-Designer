@@ -11,12 +11,12 @@ import javax.swing.JPanel;
 import project.thirteenthage.creatures.internal.gui.views.CreatureViewPanel;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
+
 //property change stuff
 
-
 /**
- * The creature panel should display the currently selected creature.
- * For this purpose it hosts a {@link CreatureViewPanel}.
+ * The creature panel should display the currently selected creature. For this
+ * purpose it hosts a {@link CreatureViewPanel}.
  */
 @SuppressWarnings("serial")
 class CreaturePanel extends JPanel implements ActionListener
@@ -31,9 +31,12 @@ class CreaturePanel extends JPanel implements ActionListener
 		super();
 	}
 
+
 	/**
 	 * Displays a creature in this panel.
-	 * @param creature the creature.
+	 * 
+	 * @param creature
+	 *            the creature.
 	 */
 	public void displayCreature(ICreatureTemplate creature)
 	{
@@ -46,19 +49,19 @@ class CreaturePanel extends JPanel implements ActionListener
 		_panel = new CreatureViewPanel(_selectedCreature);
 		JPanel innerPanel = new JPanel();
 		JPanel buttonPanel = new JPanel();
-		
+
 		innerPanel.setLayout(new BoxLayout(innerPanel, BoxLayout.Y_AXIS));
 		innerPanel.add(_panel);
 		innerPanel.add(buttonPanel);
-		
+
 		buttonPanel.add(_addButton);
 		_addButton.addActionListener(this);
-		
+
 		this.add(innerPanel);
 		this.setBorder(BorderFactory.createTitledBorder("Selected creature"));
 	}
 
-	
+
 	@Override
 	public void actionPerformed(ActionEvent event)
 	{
@@ -67,6 +70,7 @@ class CreaturePanel extends JPanel implements ActionListener
 			transferCreatureToEncounter(_selectedCreature);
 		}
 	}
+
 
 	private void transferCreatureToEncounter(ICreature creature)
 	{
