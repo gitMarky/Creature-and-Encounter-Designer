@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 
 import project.thirteenthage.creatures.internal.gui.views.CreatureViewPanel;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
-import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
 
 //property change stuff
 
@@ -49,14 +48,14 @@ class CreaturePanel extends JPanel implements ActionListener
 	 * @param creature
 	 *            the creature.
 	 */
-	public void displayCreature(ICreatureTemplate creature)
+	public void displayCreature(ICreature creature)
 	{
 		if (_panel != null)
 		{
 			_innerPanel.remove(_panel);
 		}
 
-		_selectedCreature = creature.toCreature();
+		_selectedCreature = creature;
 		_panel = new CreatureViewPanel(_selectedCreature);
 		_innerPanel.add(_panel);
 	}

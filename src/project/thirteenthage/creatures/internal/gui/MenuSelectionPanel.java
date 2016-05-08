@@ -6,6 +6,7 @@ import java.awt.event.ItemListener;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
+import project.thirteenthage.creatures.loaders.CreatureLoader;
 import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
 
 
@@ -39,7 +40,7 @@ class MenuSelectionPanel extends JPanel
 	
 		if (CreatureGui.GUI != null && selectedItem != null)
 		{
-			CreatureGui.GUI.getCreaturePanel().displayCreature(CreatureTemplateLoader.getInstance().get(selectedItem._id));
+			CreatureGui.GUI.getCreaturePanel().displayCreature(CreatureLoader.getInstance().getCreatures().get(selectedItem._id));
 			CreatureGui.GUI.updateView();
 		}
 	}

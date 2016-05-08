@@ -25,7 +25,7 @@ public class CreatureTemplateLoader extends AbstractLoader<ICreatureTemplate>
 	protected void addEntry(BasicXmlFile file)
 	{
 		CreatureTemplate template = new CreatureTemplate(file);
-		final String id = getId(file);
+		final String id = LoaderHelper.getId(file);
 
 		if (getTemplates().containsKey(id))
 		{

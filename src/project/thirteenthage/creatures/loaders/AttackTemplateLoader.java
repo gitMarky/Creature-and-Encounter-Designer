@@ -25,7 +25,7 @@ public class AttackTemplateLoader extends AbstractLoader<IAttack>
 	protected void addEntry(BasicXmlFile file)
 	{
 		AttackTemplate template = new AttackTemplate(file);
-		final String id = getId(file);
+		final String id = LoaderHelper.getId(file);
 
 		if (getTemplates().containsKey(id))
 		{
