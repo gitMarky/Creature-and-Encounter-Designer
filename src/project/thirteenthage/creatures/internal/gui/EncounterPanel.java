@@ -20,7 +20,7 @@ import project.thirteenthage.creatures.internal.interfaces.ICreature;
  * an encounter. It should also contain a encounter difficulty summary.
  */
 @SuppressWarnings("serial")
-class EncounterPanel extends JPanel implements IView, ActionListener
+public class EncounterPanel extends JPanel implements IView, ActionListener
 {
 	private JPanel _buttonPanel = new JPanel();
 	private JPanel _creatureListPanel = new JPanel();
@@ -69,6 +69,19 @@ class EncounterPanel extends JPanel implements IView, ActionListener
 			_creatures.put(creature, panel);
 			_creatureListPanel.add(panel);
 			_creatureListEmpty.setVisible(false);
+			updateView();
+		}
+	}
+
+
+	public void removeCreature(ICreature creature)
+	{
+		if (_creatures.containsKey(creature))
+		{
+			_creatureListPanel.remove(_creatures.get(creature));
+			_creatures.remove(creature);
+			
+			if (_creatures.isEmpty()) _creatureListEmpty.setVisible(true);
 			updateView();
 		}
 	}

@@ -16,7 +16,7 @@ import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
  */
 public class CreatureGui implements IView
 {
-	static CreatureGui GUI;
+	public static CreatureGui GUI;
 
 	private final JFrame _frame;
 	private final MenuSelectionPanel _menuSelectionPanel;
