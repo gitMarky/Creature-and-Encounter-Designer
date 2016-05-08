@@ -20,6 +20,7 @@ public class CreatureGui implements IView
 	private final JFrame _frame;
 	private final MenuSelectionPanel _menuSelectionPanel;
 	private final CreaturePanel _creaturePanel;
+	private final EncounterPanel _encounterPanel;
 
 
 	public static void main(String[] args)
@@ -42,9 +43,10 @@ public class CreatureGui implements IView
 
 		_menuSelectionPanel = new MenuSelectionPanel();
 		_creaturePanel = new CreaturePanel();
+		_encounterPanel = new EncounterPanel();
 		panel.add(_menuSelectionPanel);
 		panel.add(_creaturePanel);
-		panel.add(new EncounterPanel());
+		panel.add(_encounterPanel);
 
 		frame.add(panel);
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -77,5 +79,14 @@ public class CreatureGui implements IView
 	public CreaturePanel getCreaturePanel()
 	{
 		return _creaturePanel;
+	}
+	
+	
+	/**
+	 * Getter for the panels that displays all the creatures.
+	 */
+	public EncounterPanel getEncounterPanel()
+	{
+		return _encounterPanel;
 	}
 }
