@@ -21,6 +21,7 @@ import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
 @SuppressWarnings("serial")
 class CreaturePanel extends JPanel implements ActionListener
 {
+	private JPanel _innerPanel = new JPanel();
 	private CreatureViewPanel _panel = null;
 	private final JButton _addButton = new JButton("Add to encounter");
 	private ICreature _selectedCreature = null;
@@ -29,6 +30,16 @@ class CreaturePanel extends JPanel implements ActionListener
 	CreaturePanel()
 	{
 		super();
+		JPanel buttonPanel = new JPanel();
+
+		_innerPanel.setLayout(new BoxLayout(_innerPanel, BoxLayout.Y_AXIS));
+		_innerPanel.add(buttonPanel);
+
+		buttonPanel.add(_addButton);
+		_addButton.addActionListener(this);
+
+		this.add(_innerPanel);
+		this.setBorder(BorderFactory.createTitledBorder("Selected creature"));
 	}
 
 
@@ -42,23 +53,12 @@ class CreaturePanel extends JPanel implements ActionListener
 	{
 		if (_panel != null)
 		{
-			this.remove(_panel);
+			_innerPanel.remove(_panel);
 		}
 
 		_selectedCreature = creature.toCreature();
 		_panel = new CreatureViewPanel(_selectedCreature);
-		JPanel innerPanel = new JPanel();
-		JPanel buttonPanel = new JPanel();
-
-		innerPanel.setLayout(new BoxLayout(innerPanel, BoxLayout.Y_AXIS));
-		innerPanel.add(_panel);
-		innerPanel.add(buttonPanel);
-
-		buttonPanel.add(_addButton);
-		_addButton.addActionListener(this);
-
-		this.add(innerPanel);
-		this.setBorder(BorderFactory.createTitledBorder("Selected creature"));
+		_innerPanel.add(_panel);
 	}
 
 
