@@ -1,5 +1,8 @@
 package project.thirteenthage.creatures.mechanics;
 
+import java.util.List;
+
+import project.thirteenthage.creatures.interfaces.ITrigger;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 
 public class Attack implements IAttack
@@ -56,5 +59,12 @@ public class Attack implements IAttack
 	public String toGuiText()
 	{
 		return getName() + " +" + getAttackBonus() + " vs. " + getDefense() + " - " + (int) getDamageFactor() + " " + getDescription();
+	}
+
+
+	@Override
+	public List<ITrigger> getTriggers()
+	{
+		return _template.getTriggers();
 	}
 }

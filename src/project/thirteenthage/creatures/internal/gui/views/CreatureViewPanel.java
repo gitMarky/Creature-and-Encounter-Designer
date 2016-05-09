@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import project.thirteenthage.creatures.interfaces.IView;
 import project.thirteenthage.creatures.internal.gui.StyleConstants;
+import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.internal.interfaces.IDisplayableInGui;
 
@@ -159,7 +160,7 @@ public class CreatureViewPanel extends JPanel implements IView
 	{
 		private final JLabel _initiative = new JLabel();
 
-		private final List<JLabel> _attacks = new ArrayList<JLabel>();
+		private final List<AttackViewLabel> _attacks = new ArrayList<AttackViewLabel>();
 		private final List<JLabel> _specials = new ArrayList<JLabel>();
 		private final List<JLabel> _nastier = new ArrayList<JLabel>();
 
@@ -179,7 +180,7 @@ public class CreatureViewPanel extends JPanel implements IView
 		{
 			_initiative.setText("Initiative +" + _creature.getInitiative());
 
-			for (final JLabel label : _attacks)
+			for (final AttackViewLabel label : _attacks)
 				remove(label);
 			for (final JLabel label : _specials)
 				remove(label);
@@ -190,9 +191,9 @@ public class CreatureViewPanel extends JPanel implements IView
 			_specials.clear();
 			_nastier.clear();
 
-			for (final IDisplayableInGui attack : _creature.getAttacks())
+			for (final IAttack attack : _creature.getAttacks())
 			{
-				JLabel label = new JLabel(attack.toGuiText());
+				AttackViewLabel label = new AttackViewLabel(attack);
 				_attacks.add(label);
 				this.add(label);
 			}

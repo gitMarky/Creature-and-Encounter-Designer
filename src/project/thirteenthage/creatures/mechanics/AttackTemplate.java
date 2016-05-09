@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jdom2.Element;
+
 import project.thirteenthage.creatures.interfaces.ITrigger;
 import project.thirteenthage.creatures.internal.BasicXmlFile;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
@@ -31,6 +33,17 @@ public class AttackTemplate implements IAttack
 		_defense = template.getRoot().getChildText("defense");
 		_damage = Double.parseDouble(template.getRoot().getChild("damage").getAttributeValue("factor"));
 		_damageDesc = template.getRoot().getChild("damage").getAttributeValue("description");
+		
+		for (final Element element : template.getRoot().getChild("triggers").getChildren())
+		{
+			String name = element.getAttributeValue("name");
+			String description = element.getAttributeValue("description");
+			
+			if (name.isEmpty() || description.isEmpty()) continue;
+			
+			final Trigger trigger = new Trigger(name, description);
+			_triggers.add(trigger);
+		}
 	}
 
 
@@ -73,5 +86,12 @@ public class AttackTemplate implements IAttack
 	public String toGuiText()
 	{
 		throw new IllegalStateException("Not implemented");
+	}
+
+
+	@Override
+	public List<ITrigger> getTriggers()
+	{
+		return _triggers;
 	}
 }
