@@ -27,6 +27,7 @@ public class Creature implements ICreature
 	private List<ISpecial> _specials = new ArrayList<ISpecial>();
 	private List<ISpecial> _nastierSpecials = new ArrayList<ISpecial>();
 	private CreatureSize _size;
+	private boolean _isMook = false;
 
 
 	@Override
@@ -127,6 +128,13 @@ public class Creature implements ICreature
 	}
 
 
+	@Override
+	public boolean isMook()
+	{
+		return _isMook;
+	}
+
+
 	void setName(final String name)
 	{
 		_name = name;
@@ -184,6 +192,12 @@ public class Creature implements ICreature
 	void setStrikeDamage(final double damage)
 	{
 		_damage = damage;
+	}
+	
+	
+	void setMook(final boolean isMook)
+	{
+		_isMook = isMook;
 	}
 
 

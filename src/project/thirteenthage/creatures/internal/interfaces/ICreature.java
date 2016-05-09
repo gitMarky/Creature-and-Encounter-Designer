@@ -137,4 +137,11 @@ public interface ICreature extends INamedItem, ILeveledItem
 	 * @return a (possibly empty) list, but never {@code null}.
 	 */
 	List<ISpecial> getNastierSpecials();
+	
+	
+	/**
+	 * Tells whether the creature is a mook instead of a normal creature.
+	 * @return {@code true} if the creature is a mook.
+	 */
+	boolean isMook();
 }
