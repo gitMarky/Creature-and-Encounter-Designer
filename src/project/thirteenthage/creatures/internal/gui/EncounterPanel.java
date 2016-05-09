@@ -13,7 +13,9 @@ import javax.swing.JPanel;
 
 import project.thirteenthage.creatures.interfaces.IView;
 import project.thirteenthage.creatures.internal.gui.views.CreatureEncounterPanel;
+import project.thirteenthage.creatures.internal.gui.views.EncounterDifficultyView;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
+import project.thirteenthage.creatures.mechanics.EncounterDifficulty;
 
 /**
  * This panel should be able to contain several creatures that were selected for
@@ -25,10 +27,12 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 	private JPanel _buttonPanel = new JPanel();
 	private JPanel _creatureListPanel = new JPanel();
 	private JLabel _creatureListEmpty = new JLabel("No creatures were added to the encounter yet");
+	private EncounterDifficultyView _difficultyLabel = new EncounterDifficultyView();
 	
 	private JButton _clearButton = new JButton("Clear");
 
 	private Map<ICreature, CreatureEncounterPanel> _creatures = new HashMap<ICreature, CreatureEncounterPanel>();
+	private EncounterDifficulty _difficulty = null;
 
 
 	EncounterPanel()
@@ -43,6 +47,7 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		// set up buttons
 		_clearButton.addActionListener(this);
 		_buttonPanel.add(_clearButton);
+		_buttonPanel.add(_difficultyLabel);
 
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.add(_buttonPanel);
@@ -58,6 +63,7 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		
 		_creatureListEmpty.setVisible(true);
 		_creatureListPanel.add(_creatureListEmpty);
+		updateView();
 	}
 
 
@@ -90,7 +96,17 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 	@Override
 	public void updateView()
 	{
-		CreatureGui.GUI.updateView();
+		if (_creatures.isEmpty())
+		{
+			_difficultyLabel.displayDifficulty(Double.NaN);
+		}
+		else
+		{
+			_difficulty = new EncounterDifficulty(_creatures);
+			_difficultyLabel.displayDifficulty(_difficulty.getEncounterDifficulty());
+		}
+		
+		if (CreatureGui.GUI != null ) CreatureGui.GUI.updateView();
 	}
 
 

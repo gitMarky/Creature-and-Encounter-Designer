@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import project.thirteenthage.creatures.creature.CreatureSize;
+import project.thirteenthage.creatures.internal.gui.views.CreatureEncounterPanel;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 
 /**
@@ -14,6 +15,15 @@ public class EncounterDifficulty
 {
 	private Map<ICreature, Integer> _amount = new HashMap<ICreature, Integer>();
 	private int _level = 1;
+
+
+	public EncounterDifficulty(Map<ICreature, CreatureEncounterPanel> creatures)
+	{
+		for (final Entry<ICreature, CreatureEncounterPanel> entry : creatures.entrySet())
+		{
+			addCreature(entry.getKey(), entry.getValue().getAmount());
+		}
+	}
 
 
 	public void addCreature(final ICreature creature, final int amount)

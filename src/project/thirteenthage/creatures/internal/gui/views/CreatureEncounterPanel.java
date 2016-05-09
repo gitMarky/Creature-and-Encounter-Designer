@@ -22,6 +22,7 @@ public class CreatureEncounterPanel extends JPanel implements IView, ActionListe
 	private final ICreature _creature;
 	private final CreatureViewPanel _viewPanel;
 	private final JButton _removeButton = new JButton("Remove");
+	private final AmountChoicePanel amountChoicePanel = new AmountChoicePanel();
 
 	/**
 	 * Constructor.
@@ -54,7 +55,6 @@ public class CreatureEncounterPanel extends JPanel implements IView, ActionListe
 		optionsPanel.setLayout(new BoxLayout(optionsPanel, BoxLayout.Y_AXIS));
 		optionsPanel.setBackground(StyleConstants.BACKGROUND_DARK);
 		
-		AmountChoicePanel amountChoicePanel = new AmountChoicePanel();
 		amountChoicePanel.setBackground(StyleConstants.BACKGROUND_DARK);
 		optionsPanel.add(amountChoicePanel);
 		
@@ -62,6 +62,11 @@ public class CreatureEncounterPanel extends JPanel implements IView, ActionListe
 		_removeButton.addActionListener(this);
 		
 		return optionsPanel;
+	}
+	
+	public int getAmount()
+	{
+		return amountChoicePanel.getAmount();
 	}
 
 	@Override
