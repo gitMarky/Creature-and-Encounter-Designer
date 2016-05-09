@@ -78,19 +78,19 @@ public class EncounterDifficulty
 
 	private double getDifficultyTable(int levelDifference, CreatureSize size, boolean mook)
 	{
-		int row = Math.max(Math.min(levelDifference + 2, 0), 7);
+		int row = Math.min(Math.max(levelDifference + 2, 0), 7);
 
 		double difficulty = 1.0;
 		switch (row)
 		{
 			case 0: difficulty = 0.5; break;
 			case 1: difficulty = 0.7; break;
-			case 2: difficulty = 1.5; break;
-			case 3: difficulty = 2.0; break;
-			case 4: difficulty = 3.0; break;
-			case 5: difficulty = 4.0; break;
-			case 6: difficulty = 6.0; break;
-			case 7: difficulty = 9.0; break;
+			case 2: difficulty = 1.0; break;
+			case 3: difficulty = 1.5; break;
+			case 4: difficulty = 2.0; break;
+			case 5: difficulty = 3.0; break;
+			case 6: difficulty = 4.0; break;
+			case 7: difficulty = 6.0; break;
 		}
 
 		

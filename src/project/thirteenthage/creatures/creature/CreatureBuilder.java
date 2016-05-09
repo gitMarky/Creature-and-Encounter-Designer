@@ -127,6 +127,7 @@ public class CreatureBuilder
 		mook.setFearThreshold(0); // people are not afraid of mooks
 		mook.setHP(mook.getHP() * 0.25);
 		mook.setStrikeDamage(getMookStrikeDamageFactor(mook.getStrikeDamage()));
+		mook.setMook(true);
 
 		return mook;
 	}
