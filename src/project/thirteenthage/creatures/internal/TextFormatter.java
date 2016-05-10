@@ -34,27 +34,19 @@ public class TextFormatter
 		
 		for (final String match : matches)
 		{
-			System.out.println("Parsing doubles: " + source);
-			System.out.println("- " +  match);
-			
 			double scaledValue = value;
 			
 			List<String> scales = RegexMatcher.getAllMatches(match, PLACEHOLDER_SCALABLE_DOUBLE);
-			//for (String scale : scales)
 			if (scales.size() == 1)
 			{
 				String scale = scales.get(0).replace("[x", "").replace("]", "");
-				System.out.println("- found scale : " + scale);
 				
 				scaledValue *= Double.parseDouble(scale);
 			}
 						
 			text = text.replace(match, Double.toString(scaledValue));
-			
-			System.out.println("- returning: " + text);
 		}
 		
 		return text;
-	}
-	
+	}	
 }
