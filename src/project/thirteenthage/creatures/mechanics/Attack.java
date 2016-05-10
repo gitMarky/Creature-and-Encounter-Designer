@@ -33,7 +33,7 @@ public class Attack implements IAttack
 		
 		for (final ITrigger source : template.getTriggers())
 		{
-			final ITrigger trigger = new Trigger(source, creature, this);
+			final ITrigger trigger = new Trigger(source, creature);
 			_triggers.add(trigger);
 		}
 	}

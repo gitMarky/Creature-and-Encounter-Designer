@@ -3,7 +3,6 @@ package project.thirteenthage.creatures.mechanics;
 import project.thirteenthage.creatures.interfaces.ITrigger;
 import project.thirteenthage.creatures.internal.Html;
 import project.thirteenthage.creatures.internal.TextFormatter;
-import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 
 public class Trigger implements ITrigger
@@ -19,12 +18,12 @@ public class Trigger implements ITrigger
 	}
 	
 	
-	public Trigger(final ITrigger trigger, final ICreature creature, final IAttack attack)
+	public Trigger(final ITrigger trigger, final ICreature creature)
 	{
 		_name = trigger.getName();
 		
 		_description = TextFormatter.parse(trigger.getDescription(), TextFormatter.PLACEHOLDER_NAME, creature.getName().toLowerCase());
-		_description = TextFormatter.parse(_description, TextFormatter.PLACEHOLDER_DAMAGE, attack.getDamageFactor());
+		_description = TextFormatter.parse(_description, TextFormatter.PLACEHOLDER_DAMAGE, creature.getStrikeDamage());
 	}
 
 
