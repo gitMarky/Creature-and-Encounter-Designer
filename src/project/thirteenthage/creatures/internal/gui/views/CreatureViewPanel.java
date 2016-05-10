@@ -13,7 +13,6 @@ import project.thirteenthage.creatures.interfaces.IView;
 import project.thirteenthage.creatures.internal.gui.StyleConstants;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
-import project.thirteenthage.creatures.internal.interfaces.IDisplayableInGui;
 
 /**
  * A {@link JPanel} that displays a creature.

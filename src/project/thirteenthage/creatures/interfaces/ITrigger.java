@@ -6,5 +6,5 @@ import project.thirteenthage.creatures.internal.interfaces.INamedItem;
 
 public interface ITrigger extends INamedItem, IDisplayableInGui, IDisplayableInHtml
 {
-
+	String getDescription();
 }

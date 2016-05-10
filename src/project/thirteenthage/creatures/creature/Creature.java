@@ -208,7 +208,7 @@ public class Creature implements ICreature
 		final int bonus = getLevel() + 5;
 		for (final IAttack template : attacks)
 		{
-			final Attack attack = new Attack(template, bonus, getStrikeDamage());
+			final Attack attack = new Attack(this, template, bonus, getStrikeDamage());
 			_attacks.add(attack);
 		}
 	}

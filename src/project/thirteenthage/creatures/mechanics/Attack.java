@@ -1,15 +1,19 @@
 package project.thirteenthage.creatures.mechanics;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import project.thirteenthage.creatures.interfaces.ITrigger;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
+import project.thirteenthage.creatures.internal.interfaces.ICreature;
 
 public class Attack implements IAttack
 {
 	private IAttack _template;
 	private final int _attackBase;
 	private final double _damageBase;
+	
+	private final List<ITrigger> _triggers = new ArrayList<ITrigger>();
 
 
 	public Attack(final IAttack template, final int attack, final double damage)
@@ -17,8 +21,22 @@ public class Attack implements IAttack
 		_template = template;
 		_attackBase = attack;
 		_damageBase = damage;
-	}
 
+		_triggers.addAll(template.getTriggers());
+	}
+	
+	public Attack(final ICreature creature, final IAttack template, final int attack, final double damage)
+	{
+		_template = template;
+		_attackBase = attack;
+		_damageBase = damage;
+		
+		for (final ITrigger source : template.getTriggers())
+		{
+			final ITrigger trigger = new Trigger(source, creature, this);
+			_triggers.add(trigger);
+		}
+	}
 
 	@Override
 	public String getName()
@@ -65,6 +83,6 @@ public class Attack implements IAttack
 	@Override
 	public List<ITrigger> getTriggers()
 	{
-		return _template.getTriggers();
+		return _triggers;
 	}
 }
