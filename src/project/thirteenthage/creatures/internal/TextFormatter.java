@@ -14,19 +14,27 @@ public class TextFormatter
 	{
 		return source.replaceAll(PLACEHOLDER_START + placeholder, text);
 	}
-	
+
 	public static final String parse(final String source, final String placeholder, final double value)
 	{
 		// replace for example $damage[x1.2] with 1.2*value
 		
-		String expression = PLACEHOLDER_START + placeholder + PLACEHOLDER_SCALABLE_DOUBLE + "*";
+		String expression = PLACEHOLDER_START + placeholder + PLACEHOLDER_SCALABLE_DOUBLE + "+";
 
+		String text = parseDoubleScaled(source, expression, value);
+		text = parseDoubleScaled(text, PLACEHOLDER_START + placeholder, value);
+		
+		return text;
+	}
+
+	private static final String parseDoubleScaled(final String source, final String expression, final double value)
+	{
+		String text = source;
 		List<String> matches = RegexMatcher.getAllMatches(source, expression);
 		
-		String text = source;
 		for (final String match : matches)
 		{
-			System.out.println("Parsing doubles: ");
+			System.out.println("Parsing doubles: " + source);
 			System.out.println("- " +  match);
 			
 			double scaledValue = value;
@@ -40,12 +48,13 @@ public class TextFormatter
 				
 				scaledValue *= Double.parseDouble(scale);
 			}
-			
-			
-			
+						
 			text = text.replace(match, Double.toString(scaledValue));
+			
+			System.out.println("- returning: " + text);
 		}
 		
 		return text;
 	}
+	
 }
