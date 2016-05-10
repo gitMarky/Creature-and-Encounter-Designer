@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import project.thirteenthage.creatures.interfaces.ITrigger;
+import project.thirteenthage.creatures.internal.Html;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 
@@ -79,6 +80,13 @@ public class Attack implements IAttack
 	public String toGuiText()
 	{
 		return getName() + " +" + getAttackBonus() + " vs. " + getDefense() + " - " + (int) getDamageFactor() + " " + getDescription();
+	}
+
+
+	@Override
+	public String toHtmlText()
+	{
+		return Html.BEGIN_BOLD + getName() + Html.END_BOLD + " +" + getAttackBonus() + " vs. " + getDefense() + " - " + (int) getDamageFactor() + " " + getDescription();
 	}
 
 

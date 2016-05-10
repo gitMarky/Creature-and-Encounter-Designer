@@ -168,6 +168,7 @@ public class CreatureViewPanel extends JPanel implements IView
 			super();
 			this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
+			_initiative.setBorder(StyleConstants.DEFAULT_EMPTY_BORDER);
 			this.add(_initiative);
 			this.setBorder(StyleConstants.DEFAULT_EMPTY_BORDER);
 		}

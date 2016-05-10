@@ -4,6 +4,7 @@ import javax.swing.JLabel;
 
 import project.thirteenthage.creatures.interfaces.ITrigger;
 import project.thirteenthage.creatures.internal.Html;
+import project.thirteenthage.creatures.internal.gui.StyleConstants;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 
 @SuppressWarnings("serial")
@@ -13,13 +14,14 @@ public class AttackViewLabel extends JLabel
 	{
 		super();
 		displayAttack(attack);
+		setBorder(StyleConstants.DEFAULT_EMPTY_BORDER);
 	}
 
 
 	private void displayAttack(final IAttack attack)
 	{
 		final StringBuilder guiText = new StringBuilder(Html.BEGIN);
-		guiText.append(attack.toGuiText());
+		guiText.append(attack.toHtmlText());
 
 		for (final ITrigger trigger : attack.getTriggers())
 		{

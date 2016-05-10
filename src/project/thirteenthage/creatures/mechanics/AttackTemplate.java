@@ -91,6 +91,14 @@ public class AttackTemplate implements IAttack
 
 
 	@Override
+	public String toHtmlText()
+	{
+		throw new IllegalStateException("Not implemented");
+	}
+
+
+
+	@Override
 	public List<ITrigger> getTriggers()
 	{
 		return _triggers;
