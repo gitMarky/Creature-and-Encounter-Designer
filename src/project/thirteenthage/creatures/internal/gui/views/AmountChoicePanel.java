@@ -23,7 +23,7 @@ public class AmountChoicePanel extends JPanel implements ActionListener
 	private JLabel _amountLabel = new JLabel(Integer.toString(_amount));
 	private JButton _minusButton = new JButton("-");
 	private JButton _plusButton = new JButton("+");
-	
+
 	private IView _updateOnAmountChanged = null;
 
 
@@ -39,9 +39,8 @@ public class AmountChoicePanel extends JPanel implements ActionListener
 		_minusButton.addActionListener(this);
 		_amountField.addActionListener(this);
 		this.add(_amountField);
-		
 
-//		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+		// this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		this.setLayout(new GridLayout(1, 4));
 		this.setBorder(BorderFactory.createTitledBorder("Amount"));
 	}
@@ -60,8 +59,7 @@ public class AmountChoicePanel extends JPanel implements ActionListener
 			{
 				int amount = Integer.parseInt(_amountField.getText());
 				setAmount(amount);
-			}
-			catch (final NumberFormatException e)
+			} catch (final NumberFormatException e)
 			{
 				// do nothing
 			}
@@ -85,17 +83,18 @@ public class AmountChoicePanel extends JPanel implements ActionListener
 
 	private void updateAmount()
 	{
-		if (_amount < 1) _amount = 1;
-		
+		if (_amount < 1)
+			_amount = 1;
+
 		_amountLabel.setText(Integer.toString(_amount));
-		
+
 		if (_updateOnAmountChanged != null)
 		{
 			_updateOnAmountChanged.updateView();
 		}
 	}
-	
-	
+
+
 	public void setUpdateView(final IView view)
 	{
 		_updateOnAmountChanged = view;

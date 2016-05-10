@@ -33,14 +33,15 @@ public class AttackTemplate implements IAttack
 		_defense = template.getRoot().getChildText("defense");
 		_damage = Double.parseDouble(template.getRoot().getChild("damage").getAttributeValue("factor"));
 		_damageDesc = template.getRoot().getChild("damage").getAttributeValue("description");
-		
+
 		for (final Element element : template.getRoot().getChild("triggers").getChildren())
 		{
 			String name = element.getAttributeValue("name");
 			String description = element.getAttributeValue("description");
-			
-			if (name.isEmpty() || description.isEmpty()) continue;
-			
+
+			if (name.isEmpty() || description.isEmpty())
+				continue;
+
 			final Trigger trigger = new Trigger(name, description);
 			_triggers.add(trigger);
 		}

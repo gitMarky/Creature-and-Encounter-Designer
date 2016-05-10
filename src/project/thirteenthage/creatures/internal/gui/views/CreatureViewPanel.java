@@ -25,9 +25,12 @@ public class CreatureViewPanel extends JPanel implements IView
 	private final CreatureAttackPanel _attackPanel;
 	private final CreatureStatsPanel _statsPanel;
 
+
 	/**
 	 * Constructor.
-	 * @param creature this creature will be displayed.
+	 * 
+	 * @param creature
+	 *            this creature will be displayed.
 	 */
 	public CreatureViewPanel(final ICreature creature)
 	{
@@ -49,16 +52,15 @@ public class CreatureViewPanel extends JPanel implements IView
 
 		JLabel nameLabel = new JLabel(_creature.getName());
 		namePanel.add(nameLabel);
-        namePanel.setBackground(StyleConstants.BACKGROUND_DARK);
-        nameLabel.setForeground(Color.WHITE);
-
+		namePanel.setBackground(StyleConstants.BACKGROUND_DARK);
+		nameLabel.setForeground(Color.WHITE);
 
 		add(namePanel);
 		add(blockPanel);
 
 		this.setBorder(StyleConstants.DEFAULT_EMPTY_BORDER);
-        this.setBackground(StyleConstants.BACKGROUND_DARK);
-		
+		this.setBackground(StyleConstants.BACKGROUND_DARK);
+
 		updateView();
 	}
 
@@ -71,7 +73,6 @@ public class CreatureViewPanel extends JPanel implements IView
 		_statsPanel.updateView();
 	}
 
-	
 	/**
 	 * The info panel contains the level, size and labels of the creature.
 	 */
@@ -90,9 +91,9 @@ public class CreatureViewPanel extends JPanel implements IView
 			this.add(_size);
 			this.add(_level);
 
-	        this.setBackground(StyleConstants.BACKGROUND_LIGHT);
+			this.setBackground(StyleConstants.BACKGROUND_LIGHT);
 			this.setBorder(StyleConstants.DEFAULT_EMPTY_BORDER);
-			
+
 			updateView();
 		}
 
@@ -149,11 +150,9 @@ public class CreatureViewPanel extends JPanel implements IView
 		}
 	}
 
-	
 	/**
-	 * The attack panel contains the initiative,
-	 * the individual attacks with special triggers,
-	 * special abilities, and the 'nastier specials'.
+	 * The attack panel contains the initiative, the individual attacks with
+	 * special triggers, special abilities, and the 'nastier specials'.
 	 */
 	private class CreatureAttackPanel extends JPanel implements IView
 	{
@@ -199,7 +198,6 @@ public class CreatureViewPanel extends JPanel implements IView
 		}
 	}
 
-	
 	/**
 	 * The stats panel contains the defenses and hit points.
 	 */
@@ -226,7 +224,7 @@ public class CreatureViewPanel extends JPanel implements IView
 			this.add(_labelMD);
 			this.add(_labelHP);
 			this.setBorder(StyleConstants.DEFAULT_EMPTY_BORDER);
-	        this.setBackground(StyleConstants.BACKGROUND_LIGHT);
+			this.setBackground(StyleConstants.BACKGROUND_LIGHT);
 
 			updateView();
 		}

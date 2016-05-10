@@ -1,6 +1,5 @@
 package project.thirteenthage.creatures.internal.interfaces;
 
-
 public interface IDisplayableInHtml
 {
 
@@ -11,5 +10,4 @@ public interface IDisplayableInHtml
 	 * @return the string.
 	 */
 	public abstract String toHtmlText();
-
 }

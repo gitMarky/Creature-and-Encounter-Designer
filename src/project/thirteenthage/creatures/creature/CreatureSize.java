@@ -4,16 +4,16 @@ import project.thirteenthage.creatures.internal.interfaces.IDisplayableInGui;
 
 public enum CreatureSize implements IDisplayableInGui
 {
-	NORMAL("Normal"),
-	LARGE("Large"),
-	HUGE("Huge");
-	
+	NORMAL("Normal"), LARGE("Large"), HUGE("Huge");
+
 	private String _guiText;
-	
+
+
 	private CreatureSize(final String guiText)
 	{
 		_guiText = guiText;
 	}
+
 
 	public static CreatureSize fromString(final String name)
 	{
@@ -27,6 +27,7 @@ public enum CreatureSize implements IDisplayableInGui
 
 		throw new IllegalArgumentException("No enum for " + name);
 	}
+
 
 	@Override
 	public String toGuiText()

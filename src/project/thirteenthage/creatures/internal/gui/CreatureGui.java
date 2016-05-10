@@ -10,7 +10,6 @@ import project.thirteenthage.creatures.loaders.AttackTemplateLoader;
 import project.thirteenthage.creatures.loaders.CreatureLoader;
 import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
 
-
 /**
  * This is the main application.
  */
@@ -40,8 +39,7 @@ public class CreatureGui implements IView
 		final JFrame frame = new JFrame();
 		final JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        panel.setBorder(StyleConstants.DEFAULT_EMPTY_BORDER);
-
+		panel.setBorder(StyleConstants.DEFAULT_EMPTY_BORDER);
 
 		_menuSelectionPanel = new MenuSelectionPanel();
 		_creaturePanel = new CreaturePanel();
@@ -66,6 +64,7 @@ public class CreatureGui implements IView
 
 	/**
 	 * The selection panel. Allows selecting a creature.
+	 * 
 	 * @return the panel.
 	 */
 	public MenuSelectionPanel getMenuSelectionPanel()
@@ -73,17 +72,18 @@ public class CreatureGui implements IView
 		return _menuSelectionPanel;
 	}
 
-	
+
 	/**
 	 * Getter for the panel that displays the currently selected creature.
+	 * 
 	 * @return
 	 */
 	public CreaturePanel getCreaturePanel()
 	{
 		return _creaturePanel;
 	}
-	
-	
+
+
 	/**
 	 * Getter for the panels that displays all the creatures.
 	 */

@@ -50,17 +50,17 @@ public class EncounterDifficulty
 
 		_level = level;
 	}
-	
-	
+
+
 	public double getEncounterDifficulty()
 	{
 		double difficulty = 0;
-		
+
 		for (final Entry<ICreature, Integer> entry : _amount.entrySet())
 		{
 			difficulty += entry.getValue() * getCreatureDifficulty(entry.getKey());
 		}
-		
+
 		return difficulty;
 	}
 
@@ -68,9 +68,13 @@ public class EncounterDifficulty
 	private double getCreatureDifficulty(final ICreature creature)
 	{
 		int levelDifference = creature.getLevel() - _level;
-		
-		if (_level >= 5) levelDifference -= 1; // monsters for champion battles are fair if level is one higher
-		if (_level >= 8) levelDifference -= 2; // same goes for epic battles, with 2 levels instead
+
+		if (_level >= 5)
+			levelDifference -= 1; // monsters for champion battles are fair if
+									// level is one higher
+		if (_level >= 8)
+			levelDifference -= 2; // same goes for epic battles, with 2 levels
+									// instead
 
 		return getDifficultyTable(levelDifference, creature.getSize(), creature.isMook());
 	}
@@ -83,31 +87,45 @@ public class EncounterDifficulty
 		double difficulty = 1.0;
 		switch (row)
 		{
-			case 0: difficulty = 0.5; break;
-			case 1: difficulty = 0.7; break;
-			case 2: difficulty = 1.0; break;
-			case 3: difficulty = 1.5; break;
-			case 4: difficulty = 2.0; break;
-			case 5: difficulty = 3.0; break;
-			case 6: difficulty = 4.0; break;
-			case 7: difficulty = 6.0; break;
+			case 0:
+				difficulty = 0.5;
+				break;
+			case 1:
+				difficulty = 0.7;
+				break;
+			case 2:
+				difficulty = 1.0;
+				break;
+			case 3:
+				difficulty = 1.5;
+				break;
+			case 4:
+				difficulty = 2.0;
+				break;
+			case 5:
+				difficulty = 3.0;
+				break;
+			case 6:
+				difficulty = 4.0;
+				break;
+			case 7:
+				difficulty = 6.0;
+				break;
 		}
 
-		
 		if (size == CreatureSize.LARGE)
 		{
 			difficulty *= 2.0;
-		}
-		else if (size == CreatureSize.HUGE)
+		} else if (size == CreatureSize.HUGE)
 		{
 			difficulty *= 3.0;
 		}
-		
+
 		if (mook)
 		{
 			difficulty *= 0.2;
 		}
-		
+
 		return difficulty;
 	}
 }

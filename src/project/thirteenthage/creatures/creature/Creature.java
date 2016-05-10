@@ -193,8 +193,8 @@ public class Creature implements ICreature
 	{
 		_damage = damage;
 	}
-	
-	
+
+
 	void setMook(final boolean isMook)
 	{
 		_isMook = isMook;

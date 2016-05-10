@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class RegexMatcher
 {
-	public static List<String> getAllMatches(final String source,  final String expression)
+	public static List<String> getAllMatches(final String source, final String expression)
 	{
 		List<String> allMatches = new ArrayList<String>();
 		Matcher m = Pattern.compile(expression).matcher(source);
@@ -15,7 +15,7 @@ public class RegexMatcher
 		{
 			allMatches.add(m.group());
 		}
-	 
+
 		return allMatches;
 	}
 }

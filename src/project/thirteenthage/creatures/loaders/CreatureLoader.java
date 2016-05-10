@@ -12,6 +12,7 @@ public class CreatureLoader
 	private static CreatureLoader _instance = null;
 	private Map<String, ICreature> _creatures = new HashMap<String, ICreature>();
 
+
 	public void load(final CreatureTemplateLoader templates)
 	{
 		for (final Entry<String, ICreatureTemplate> template : templates.getTemplates().entrySet())
@@ -20,13 +21,14 @@ public class CreatureLoader
 		}
 	}
 
+
 	protected void addEntry(final String id, final ICreatureTemplate template)
 	{
 		ICreature creature = template.toCreature();
 		getCreatures().put(id, creature);
 	}
-	
-	
+
+
 	public Map<String, ICreature> getCreatures()
 	{
 		return _creatures;

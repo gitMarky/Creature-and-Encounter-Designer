@@ -4,7 +4,6 @@ import java.util.List;
 
 import project.thirteenthage.creatures.interfaces.ITrigger;
 
-
 public interface IAttack extends INamedItem, IDisplayableInGui
 {
 	/**
@@ -37,10 +36,11 @@ public interface IAttack extends INamedItem, IDisplayableInGui
 	 * @return the description.
 	 */
 	String getDescription();
-	
-	
+
+
 	/**
 	 * Gets the triggers for this attack.
+	 * 
 	 * @return the triggers.
 	 */
 	List<ITrigger> getTriggers();

@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 import project.thirteenthage.creatures.loaders.CreatureLoader;
 import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
 
-
 /**
  * This panel contains a combo box that lets you select the loaded creatures.
  */
@@ -33,11 +32,11 @@ class MenuSelectionPanel extends JPanel
 		this.add(_creatureList);
 	}
 
-	
+
 	void onCreatureSelected()
 	{
 		MenuSelectionItem selectedItem = (MenuSelectionItem) _creatureList.getSelectedItem();
-	
+
 		if (CreatureGui.GUI != null && selectedItem != null)
 		{
 			CreatureGui.GUI.getCreaturePanel().displayCreature(CreatureLoader.getInstance().getCreatures().get(selectedItem._id));
@@ -45,10 +44,9 @@ class MenuSelectionPanel extends JPanel
 		}
 	}
 
-
 	/**
-	 * Maps the creature template to the creature id, so that the selection list can
-	 * display the creature name (which may not be unique).
+	 * Maps the creature template to the creature id, so that the selection list
+	 * can display the creature name (which may not be unique).
 	 */
 	private class MenuSelectionItem
 	{

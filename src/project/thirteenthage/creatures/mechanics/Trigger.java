@@ -16,12 +16,12 @@ public class Trigger implements ITrigger
 		_name = name;
 		_description = description;
 	}
-	
-	
+
+
 	public Trigger(final ITrigger trigger, final ICreature creature)
 	{
 		_name = trigger.getName();
-		
+
 		_description = TextFormatter.parse(trigger.getDescription(), TextFormatter.PLACEHOLDER_NAME, creature.getName().toLowerCase());
 		_description = TextFormatter.parse(_description, TextFormatter.PLACEHOLDER_DAMAGE, creature.getStrikeDamage());
 	}
@@ -32,8 +32,8 @@ public class Trigger implements ITrigger
 	{
 		return _name;
 	}
-	
-	
+
+
 	@Override
 	public String getDescription()
 	{

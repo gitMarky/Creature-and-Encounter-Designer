@@ -12,7 +12,7 @@ public class Attack implements IAttack
 	private IAttack _template;
 	private final int _attackBase;
 	private final double _damageBase;
-	
+
 	private final List<ITrigger> _triggers = new ArrayList<ITrigger>();
 
 
@@ -24,19 +24,21 @@ public class Attack implements IAttack
 
 		_triggers.addAll(template.getTriggers());
 	}
-	
+
+
 	public Attack(final ICreature creature, final IAttack template, final int attack, final double damage)
 	{
 		_template = template;
 		_attackBase = attack;
 		_damageBase = damage;
-		
+
 		for (final ITrigger source : template.getTriggers())
 		{
 			final ITrigger trigger = new Trigger(source, creature);
 			_triggers.add(trigger);
 		}
 	}
+
 
 	@Override
 	public String getName()

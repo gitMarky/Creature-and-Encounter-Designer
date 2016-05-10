@@ -28,7 +28,7 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 	private JPanel _creatureListPanel = new JPanel();
 	private JLabel _creatureListEmpty = new JLabel("No creatures were added to the encounter yet");
 	private EncounterDifficultyView _difficultyLabel = new EncounterDifficultyView();
-	
+
 	private JButton _clearButton = new JButton("Clear");
 
 	private Map<ICreature, CreatureEncounterPanel> _creatures = new HashMap<ICreature, CreatureEncounterPanel>();
@@ -43,7 +43,7 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		_creatureListPanel.setAutoscrolls(true);
 
 		clearCreatures();
-		
+
 		// set up buttons
 		_clearButton.addActionListener(this);
 		_buttonPanel.add(_clearButton);
@@ -54,13 +54,13 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		this.add(_creatureListPanel);
 		this.setBorder(BorderFactory.createTitledBorder("Encounter"));
 	}
-	
-	
+
+
 	private void clearCreatures()
 	{
 		_creatureListPanel.removeAll();
 		_creatures.clear();
-		
+
 		_creatureListEmpty.setVisible(true);
 		_creatureListPanel.add(_creatureListEmpty);
 		updateView();
@@ -86,8 +86,9 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		{
 			_creatureListPanel.remove(_creatures.get(creature));
 			_creatures.remove(creature);
-			
-			if (_creatures.isEmpty()) _creatureListEmpty.setVisible(true);
+
+			if (_creatures.isEmpty())
+				_creatureListEmpty.setVisible(true);
 			updateView();
 		}
 	}
@@ -99,14 +100,14 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		if (_creatures.isEmpty())
 		{
 			_difficultyLabel.displayDifficulty(Double.NaN);
-		}
-		else
+		} else
 		{
 			_difficulty = new EncounterDifficulty(_creatures);
 			_difficultyLabel.displayDifficulty(_difficulty.getEncounterDifficulty());
 		}
-		
-		if (CreatureGui.GUI != null ) CreatureGui.GUI.updateView();
+
+		if (CreatureGui.GUI != null)
+			CreatureGui.GUI.updateView();
 	}
 
 

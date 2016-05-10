@@ -12,5 +12,4 @@ public interface IDisplayableInGui
 	 * @return the string.
 	 */
 	public abstract String toGuiText();
-
 }
