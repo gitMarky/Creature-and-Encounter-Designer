@@ -12,6 +12,7 @@ import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
 import project.thirteenthage.creatures.internal.interfaces.ISpecial;
 import project.thirteenthage.creatures.loaders.AttackTemplateLoader;
+import project.thirteenthage.creatures.loaders.SpecialTemplateLoader;
 
 /**
  * Defines a creature, implementation of {@link ICreature}.
@@ -108,7 +109,7 @@ public class CreatureTemplate extends BasicXmlFile implements ICreatureTemplate
 			String id = attack.getAttributeValue("id");
 
 			IAttack template = AttackTemplateLoader.getInstance().get(id);
-			attacks.add(template);
+			if (template != null) attacks.add(template);
 		}
 
 		return attacks;
@@ -118,16 +119,14 @@ public class CreatureTemplate extends BasicXmlFile implements ICreatureTemplate
 	@Override
 	public List<ISpecial> getSpecials()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return readSpecials("specials");
 	}
 
 
 	@Override
 	public List<ISpecial> getNastierSpecials()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return readSpecials("nastier");
 	}
 
 
@@ -148,7 +147,25 @@ public class CreatureTemplate extends BasicXmlFile implements ICreatureTemplate
 
 		creature.setAttacks(getAttacks());
 		creature.getLabels().addAll(getLabels());
+		creature.setSpecials(getSpecials());
+		creature.setNastierSpecials(getNastierSpecials());
 
 		return creature;
+	}
+	
+	
+	private List<ISpecial> readSpecials(final String node)
+	{
+		List<ISpecial> specials = new ArrayList<ISpecial>();
+
+		for (final Element special : getRoot().getChild(node).getChildren())
+		{
+			String id = special.getAttributeValue("id");
+
+			ISpecial template = SpecialTemplateLoader.getInstance().get(id);
+			if (template != null) specials.add(template);
+		}
+		
+		return specials;
 	}
 }

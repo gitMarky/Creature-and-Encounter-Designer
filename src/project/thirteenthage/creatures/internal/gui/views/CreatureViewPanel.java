@@ -10,9 +10,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import project.thirteenthage.creatures.interfaces.IView;
+import project.thirteenthage.creatures.internal.Html;
 import project.thirteenthage.creatures.internal.gui.StyleConstants;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
+import project.thirteenthage.creatures.internal.interfaces.ISpecial;
 
 /**
  * A {@link JPanel} that displays a creature.
@@ -24,6 +26,7 @@ public class CreatureViewPanel extends JPanel implements IView
 	private final CreatureInfoPanel _infoPanel;
 	private final CreatureAttackPanel _attackPanel;
 	private final CreatureStatsPanel _statsPanel;
+	private final JLabel _nastierLabel = new JLabel(Html.BEGIN + Html.BEGIN_UNDERLINE + "Nastier specials" + Html.END_UNDERLINE + Html.END);
 
 
 	/**
@@ -45,6 +48,7 @@ public class CreatureViewPanel extends JPanel implements IView
 		_infoPanel = new CreatureInfoPanel();
 		_attackPanel = new CreatureAttackPanel();
 		_statsPanel = new CreatureStatsPanel();
+		_nastierLabel.setBorder(StyleConstants.DEFAULT_EMPTY_BORDER);
 
 		blockPanel.add(_infoPanel);
 		blockPanel.add(_attackPanel);
@@ -185,6 +189,8 @@ public class CreatureViewPanel extends JPanel implements IView
 				remove(label);
 			for (final JLabel label : _nastier)
 				remove(label);
+			
+			remove(_nastierLabel);
 
 			_attacks.clear();
 			_specials.clear();
@@ -194,6 +200,21 @@ public class CreatureViewPanel extends JPanel implements IView
 			{
 				AttackViewLabel label = new AttackViewLabel(attack);
 				_attacks.add(label);
+				this.add(label);
+			}
+			for (final ISpecial special : _creature.getSpecials())
+			{
+				SpecialViewLabel label = new SpecialViewLabel(special);
+				_specials.add(label);
+				this.add(label);
+			}
+			
+			if (!_creature.getNastierSpecials().isEmpty()) this.add(_nastierLabel);
+			
+			for (final ISpecial special : _creature.getNastierSpecials())
+			{
+				SpecialViewLabel label = new SpecialViewLabel(special);
+				_nastier.add(label);
 				this.add(label);
 			}
 		}

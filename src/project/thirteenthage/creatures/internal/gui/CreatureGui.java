@@ -9,6 +9,7 @@ import project.thirteenthage.creatures.interfaces.IView;
 import project.thirteenthage.creatures.loaders.AttackTemplateLoader;
 import project.thirteenthage.creatures.loaders.CreatureLoader;
 import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
+import project.thirteenthage.creatures.loaders.SpecialTemplateLoader;
 
 /**
  * This is the main application.
@@ -35,7 +36,8 @@ public class CreatureGui implements IView
 		AttackTemplateLoader.getInstance();
 		CreatureTemplateLoader.getInstance();
 		CreatureLoader.getInstance().load(CreatureTemplateLoader.getInstance());
-
+		SpecialTemplateLoader.getInstance();
+		
 		final JFrame frame = new JFrame();
 		final JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));

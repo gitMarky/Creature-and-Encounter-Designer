@@ -7,6 +7,7 @@ import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.internal.interfaces.ISpecial;
 import project.thirteenthage.creatures.mechanics.Attack;
+import project.thirteenthage.creatures.mechanics.Special;
 
 /**
  * Defines a creature, implementation of {@link ICreature}.
@@ -210,6 +211,30 @@ public class Creature implements ICreature
 		{
 			final Attack attack = new Attack(this, template, bonus, getStrikeDamage());
 			_attacks.add(attack);
+		}
+	}
+
+
+	@Override
+	public void setSpecials(List<ISpecial> specials)
+	{
+		_specials.clear();
+		for (final ISpecial template : specials)
+		{
+			final Special special = new Special(this, template);
+			_specials.add(special);
+		}
+	}
+
+
+	@Override
+	public void setNastierSpecials(List<ISpecial> nastierSpecials)
+	{
+		_nastierSpecials.clear();
+		for (final ISpecial template : nastierSpecials)
+		{
+			final Special special = new Special(this, template);
+			_nastierSpecials.add(special);
 		}
 	}
 }

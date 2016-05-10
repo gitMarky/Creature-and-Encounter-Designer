@@ -13,8 +13,8 @@ public class AttackViewLabel extends JLabel
 	AttackViewLabel(final IAttack attack)
 	{
 		super();
-		displayAttack(attack);
 		setBorder(StyleConstants.DEFAULT_EMPTY_BORDER);
+		displayAttack(attack);
 	}
 
 

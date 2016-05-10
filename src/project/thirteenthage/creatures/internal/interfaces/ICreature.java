@@ -145,4 +145,10 @@ public interface ICreature extends INamedItem, ILeveledItem
 	 * @return {@code true} if the creature is a mook.
 	 */
 	boolean isMook();
+
+
+	void setNastierSpecials(List<ISpecial> nastierSpecials);
+
+
+	void setSpecials(List<ISpecial> specials);
 }
