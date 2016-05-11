@@ -23,7 +23,13 @@ class CreaturePanel extends JPanel implements ActionListener
 	private JPanel _innerPanel = new JPanel();
 	private CreatureViewPanel _panel = null;
 	private final JButton _addButton = new JButton("Add to encounter");
+	private final JButton _editButton = new JButton("Edit");
+	private final JButton _cancelButton = new JButton("Cancel");
+	private final JButton _applyButton = new JButton("Apply");
+	private final JButton _saveButton = new JButton("Save as");
 	private ICreature _selectedCreature = null;
+	
+	private boolean _isInEditMode = false;
 
 
 	CreaturePanel()
@@ -37,6 +43,20 @@ class CreaturePanel extends JPanel implements ActionListener
 		buttonPanel.add(_addButton);
 		_addButton.addActionListener(this);
 
+		buttonPanel.add(_editButton);
+		_editButton.addActionListener(this);
+
+		buttonPanel.add(_applyButton);
+		_applyButton.addActionListener(this);
+
+		buttonPanel.add(_cancelButton);
+		_cancelButton.addActionListener(this);
+		
+		buttonPanel.add(_saveButton);
+		_saveButton.addActionListener(this);
+
+		stopEditing();
+		
 		this.add(_innerPanel);
 		this.setBorder(BorderFactory.createTitledBorder("Selected creature"));
 	}
@@ -68,8 +88,59 @@ class CreaturePanel extends JPanel implements ActionListener
 		{
 			transferCreatureToEncounter(_selectedCreature);
 		}
+		if (event.getSource() == _editButton)
+		{
+			startEditing();
+		}
+		if (event.getSource() == _cancelButton)
+		{
+			cancelEditing();
+		}
+		if (event.getSource() == _applyButton)
+		{
+			applyEditing();
+		}
+		if (event.getSource() == _saveButton)
+		{
+			saveCreature();
+		}
 	}
 
+
+	private void startEditing()
+	{
+		_isInEditMode = true;
+		_editButton.setEnabled(false);
+		_cancelButton.setEnabled(true);
+		_applyButton.setEnabled(true);
+		_saveButton.setEnabled(false);
+		_addButton.setEnabled(false);
+	}
+	
+	private void cancelEditing()
+	{
+		stopEditing();
+	}
+	
+	private void applyEditing()
+	{
+		stopEditing();
+	}
+	
+	private void stopEditing()
+	{
+		_isInEditMode = false;
+		_editButton.setEnabled(true);
+		_cancelButton.setEnabled(false);
+		_applyButton.setEnabled(false);
+		_saveButton.setEnabled(true);
+		_addButton.setEnabled(true);
+	}
+	
+	private void saveCreature()
+	{
+		
+	}
 
 	private void transferCreatureToEncounter(ICreature creature)
 	{

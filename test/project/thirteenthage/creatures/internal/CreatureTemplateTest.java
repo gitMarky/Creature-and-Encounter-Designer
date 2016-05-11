@@ -20,7 +20,7 @@ public class CreatureTemplateTest
 		final double delta = 1e-8;
 		final File xml = new File("resources/creatures/creature_dire_rat.xml");
 		System.out.println(xml.getAbsolutePath());
-		
+	
 		final CreatureTemplate rat = new CreatureTemplate(xml);
 		
 		
