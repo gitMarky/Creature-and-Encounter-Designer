@@ -6,5 +6,5 @@ public class Constants
 {
 	public static File RESOURCES = new File("resources");
 
-	public static String NEWLINE_HTML = "<br>";
+	public static String NEWLINE = "\n";
 }
