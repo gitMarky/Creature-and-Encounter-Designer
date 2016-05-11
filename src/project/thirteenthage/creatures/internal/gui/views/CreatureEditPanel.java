@@ -4,6 +4,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import project.thirteenthage.creatures.interfaces.IView;
+import project.thirteenthage.creatures.internal.Constants;
 
 @SuppressWarnings("serial")
 public class CreatureEditPanel extends JPanel implements IView
@@ -16,6 +17,7 @@ public class CreatureEditPanel extends JPanel implements IView
 		this.add(new JLabel("TODO"));
 		this.add(_amountChoicePanel);
 		_amountChoicePanel.setUpdateView(this);
+		_amountChoicePanel.setBounds(Constants.MIN_LEVEL, Constants.MAX_LEVEL);
 	}
 
 	@Override

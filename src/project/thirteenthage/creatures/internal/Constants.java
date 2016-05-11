@@ -7,4 +7,8 @@ public class Constants
 	public static File RESOURCES = new File("resources");
 
 	public static String NEWLINE = "\n";
+	
+	public static final int MIN_LEVEL = 0;
+	
+	public static final int MAX_LEVEL = 20;
 }

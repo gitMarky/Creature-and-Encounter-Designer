@@ -23,6 +23,9 @@ public class AmountChoicePanel extends JPanel implements ActionListener
 	private JLabel _amountLabel = new JLabel(Integer.toString(_amount));
 	private JButton _minusButton = new JButton("-");
 	private JButton _plusButton = new JButton("+");
+	
+	private int _lowerBound = 1;
+	private int _upperBound = Integer.MAX_VALUE;
 
 	private IView _updateOnAmountChanged = null;
 
@@ -83,8 +86,12 @@ public class AmountChoicePanel extends JPanel implements ActionListener
 
 	private void updateAmount()
 	{
-		if (_amount < 1)
-			_amount = 1;
+		if (_amount < _lowerBound)
+			_amount = _lowerBound;
+		
+		// this will probably fail with the max integer...
+		if (_amount > _upperBound)
+			_amount = _upperBound;
 
 		_amountLabel.setText(Integer.toString(_amount));
 
@@ -104,5 +111,24 @@ public class AmountChoicePanel extends JPanel implements ActionListener
 	public int getAmount()
 	{
 		return _amount;
+	}
+	
+	public void setBounds(final int lowerBound, final int upperBound)
+	{
+		if (Integer.MIN_VALUE >= lowerBound)
+		{
+			throw new IllegalArgumentException("Lower bound is too low: " + lowerBound + " <= " + Integer.MIN_VALUE);
+		}
+		if (Integer.MAX_VALUE <= upperBound)
+		{
+			throw new IllegalArgumentException("Upper bound is too high: " + upperBound + " >= " + Integer.MAX_VALUE);
+		}
+		if (lowerBound >= upperBound)
+		{
+			throw new IllegalArgumentException("The lower bound must be less than and not equal to the upper bound: " + lowerBound + " < " + upperBound);
+		}
+		
+		_lowerBound = lowerBound;
+		_upperBound = upperBound;
 	}
 }
