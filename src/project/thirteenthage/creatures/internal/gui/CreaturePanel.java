@@ -8,6 +8,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import project.thirteenthage.creatures.internal.gui.views.CreatureEditPanel;
 import project.thirteenthage.creatures.internal.gui.views.CreatureViewPanel;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 
@@ -21,6 +22,7 @@ import project.thirteenthage.creatures.internal.interfaces.ICreature;
 class CreaturePanel extends JPanel implements ActionListener
 {
 	private JPanel _innerPanel = new JPanel();
+	private CreatureEditPanel _editPanel = new CreatureEditPanel();
 	private CreatureViewPanel _panel = null;
 	private final JButton _addButton = new JButton("Add to encounter");
 	private final JButton _editButton = new JButton("Edit");
@@ -59,6 +61,7 @@ class CreaturePanel extends JPanel implements ActionListener
 		
 		this.add(_innerPanel);
 		this.setBorder(BorderFactory.createTitledBorder("Selected creature"));
+		this.add(_editPanel);
 	}
 
 
@@ -115,6 +118,7 @@ class CreaturePanel extends JPanel implements ActionListener
 		_applyButton.setEnabled(true);
 		_saveButton.setEnabled(false);
 		_addButton.setEnabled(false);
+		_editPanel.setVisible(true);
 	}
 	
 	private void cancelEditing()
@@ -135,6 +139,7 @@ class CreaturePanel extends JPanel implements ActionListener
 		_applyButton.setEnabled(false);
 		_saveButton.setEnabled(true);
 		_addButton.setEnabled(true);
+		_editPanel.setVisible(false);
 	}
 	
 	private void saveCreature()
