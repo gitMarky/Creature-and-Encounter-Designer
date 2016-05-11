@@ -1,0 +1,284 @@
+Giant Scorpion
+Hunting Spider
+Giant Web Spider
+Wolf
+Bear
+Dire Wolf
+Dire Bear
+
+Ankheg
+Bulette
+Chimera
+
+Dretch
+Imp
+Despoiler
+Frenzy Demon
+Vrock
+Glabrezou
+Despoiler Mage
+Giant Vrock
+Nalfeshnee
+Marilith
+Balor
+
+Derro Maniac
+Derro Sage
+
+Medium White Dragon
+Medium Black Dragon
+Large White Dragon
+Medium Green Dragon
+Huge White Dragon
+Medium Blue Dragon
+Large Black Dragon
+Medium Red Dragon
+Large Green Dragon
+Large Blue Dragon
+Huge Black Dragon
+Large Red Dragon
+Huge Green Dragon
+Huge Blue Dragon
+Huge Red Dragon
+
+Drider
+Ettin
+Gargoyle
+
+Newly-Risen Ghoul
+
+Hill Giant
+Frost Giant
+Stone Giant
+Fire Giant
+Fire Giant Warlord
+Storm Giant
+
+Gnoll Ranger
+Gnoll Savage
+Gnoll War Leader
+
+Goblin Grunt
+Goblin Scum
+Goblin Shaman
+Bugbear
+Hobgoblin Warrior
+Hobgoblin Captain
+Hobgoblin Warmage
+
+Flesh Golem
+Clay Golem
+Stone Golem
+Iron Golem
+
+Half-Orc Legionnaire
+Half-Orc Tribal Champion
+Half-Orc Commander
+
+Harpy
+Hellhound
+
+Demon-Touched Human Ranger
+
+Hungry Star
+
+Five-Headed Hydra
+Seven-Headed Hydra
+
+Kobold Archer
+Kobold Warrior
+Kobold Hero
+
+Lizardman Savage
+
+Manticore
+
+Medusa Outlaw
+Medusa Noble
+
+Minotaur
+Ogre
+Ogre Mage
+
+Black Pudding
+Gelationous Cube
+Ochre Jelly
+
+Orc Warrior
+Orc Berserker
+Orc Shaman
+Orc Rager
+Great Fang Cadre
+
+Otyugh
+Owlbear
+Phase Spider
+Rakshasa
+Sahuagin
+
+Decrepit Skeleton
+Skeletal Hound
+Skeleton Archer
+Skeleton Warrior
+Blackamber Skeletal Legionnaire
+
+Troglodyte
+Trog Chanter
+Trog Underling
+
+Troll
+
+Vampire Spawn
+Spawn of the Master
+
+Wight
+Wraith
+Wyvern
+
+Zombie Shuffler
+Human Zombie
+Big Zombie
+Giant Zombie
+
+-------------- 13 True Ways
+
+Dire Boar
+Dire Tiger
+Giant Praying Mantis
+
+Azer Soldier
+Azer Allies
+Fire Bat
+Magma Brute
+
+Bat Demon
+
+Cloud Giant Thane
+Cloud Giant Warrior
+Cloud Giant Magician
+
+SKin Devil
+Lemure
+Hell Imp
+Honey Devil
+Smoke Devil
+Barbazu
+Hooded Devil
+Erinyes
+Osyluth
+Hamatula
+Gelugon
+Cornugon
+Pit Fiend
+
+Devil of the Fangs
+River Devil
+The Final Devil
+River Devil Minion
+
+Medium Brass Dragon
+Medium Copper Dragon
+Medium Silver Dragon
+Medium Gold Dragon
+Large
+Huge
+
+Elementals
+
+Gnoll Shredder
+Gnoll Fiendfletch
+
+Mummy
+Pixie Warrior
+
+Soul Flenser
+The Flensed
+
+Specter
+Dread Specter
+
+Awakened Trees
+Common Treant
+Treant Titan
+
+Wererat
+Wereboar
+Werebear
+Weretiger
+
+Zombie Beast
+Zombie of the Silver Rose
+Headless Zombie
+
+-------------- Bestiary
+
+Basilisk
+
+Swarm of Bats
+Dire Bat
+Bat Cavalry
+Goblin Bat Mage
+Thunder Bat
+Wraith Bat
+
+Black Dragons
+
+Blue Sorcerer
+
+Bugbear Scout
+Bugbear Schemer
+Barbarous Bugbear
+
+Green Bulette
+Lumberland Dirt-Fisher
+Ravenous Bumooram
+Deep Bulette
+
+Cambion Assassin (Yugoloth?)
+Cambion Dirk
+Cambion Sickle
+Cambion Katar
+Cambion Hellblade
+
+Centaur Lancer
+Centaur Raider
+Centaur Ranger
+Centaur Champion
+
+Chaos Glorp
+Chaos Beast
+Chaos Brute
+Chaos Behemoth
+
+Chimera
+
+Chuul
+Chuulish Swarm
+Massive Mutant Chuul
+
+Couatl
+Elder Couatl
+
+Drow Spider-Mage
+Drow Soldier
+Drow Sword Maiden
+Drow Spider-Sorceress
+Drow Darkbolt
+Drow Cavalry
+Spider Mount
+
+Corpse Dybbuk
+Parasitic Dybbuk
+Ethereal Dybbuk
+
+Umluppuk
+Hagunemnon
+Warped Beast
+
+Ettercap Hunter
+Ettercap Acolyte
+Ettercap Supplicant
+Ettercap Warrior
+Ettercap Keeper
+
+many more

@@ -1,0 +1,9 @@
+<attack>
+	<name>Mandibles</name>
+	<bonus>0</bonus>
+	<defense>AC</defense>
+	<damage factor="0.75" description="damage" />
+	<triggers>
+		<trigger name="Natural 16+" description="The target also takes 1d3 (or level x d6) ongoing acid damage."/>
+	</triggers>
+</attack>

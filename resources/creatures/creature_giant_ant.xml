@@ -1,0 +1,25 @@
+<creature>
+	<name>Giant Ant</name>
+	<size>Normal</size>
+	<level>0</level>
+	<labels>
+		<label>Troop</label>
+		<label>Beast</label>
+	</labels>
+	<modifiers>
+		<ini>0</ini>
+		<ac>-2</ac>
+		<pd better="true">-1</pd>
+		<md>-1</md>
+		<hp>1.0</hp>
+	</modifiers>
+	<attacks>
+		<attack id="attack_ant_mandibles" />
+	</attacks>
+	<specials>
+		<special id="special_wall_crawler" />
+	</specials>
+	<nastier>
+		<special id="" />
+	</nastier>
+</creature>
