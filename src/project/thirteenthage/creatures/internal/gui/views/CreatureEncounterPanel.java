@@ -22,7 +22,7 @@ public class CreatureEncounterPanel extends JPanel implements IView, ActionListe
 	private final ICreature _creature;
 	private final CreatureViewPanel _viewPanel;
 	private final JButton _removeButton = new JButton("Remove");
-	private final AmountChoicePanel _amountChoicePanel = new AmountChoicePanel();
+	private final AmountChoicePanel _amountChoicePanel = new AmountChoicePanel("Amount");
 
 
 	/**

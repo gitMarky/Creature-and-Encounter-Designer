@@ -27,7 +27,7 @@ public class AmountChoicePanel extends JPanel implements ActionListener
 	private IView _updateOnAmountChanged = null;
 
 
-	public AmountChoicePanel()
+	public AmountChoicePanel(final String name)
 	{
 		super();
 
@@ -42,7 +42,7 @@ public class AmountChoicePanel extends JPanel implements ActionListener
 
 		// this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		this.setLayout(new GridLayout(1, 4));
-		this.setBorder(BorderFactory.createTitledBorder("Amount"));
+		this.setBorder(BorderFactory.createTitledBorder(name));
 	}
 
 
