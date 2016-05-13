@@ -5,11 +5,16 @@ import javax.swing.JPanel;
 
 import project.thirteenthage.creatures.interfaces.IView;
 import project.thirteenthage.creatures.internal.Constants;
+import project.thirteenthage.creatures.internal.gui.CreaturePanel;
+import project.thirteenthage.creatures.internal.interfaces.ICreature;
 
 @SuppressWarnings("serial")
 public class CreatureEditPanel extends JPanel implements IView
 {
 	private final AmountChoicePanel _amountChoicePanel = new AmountChoicePanel("Level");
+	
+	private ICreature _originalCreature = null;
+	private ICreature _editedCreature = null;
 	
 	public CreatureEditPanel()
 	{
@@ -30,5 +35,26 @@ public class CreatureEditPanel extends JPanel implements IView
 	{
 		// TODO Auto-generated method stub
 		
+	}
+
+	public void applyEditing(CreaturePanel creaturePanel, ICreature originalCreature)
+	{
+		if (_editedCreature == null) return;
+		
+		creaturePanel.displayCreature(_editedCreature);
+	}
+
+	public void cancelEditing(CreaturePanel creaturePanel, ICreature originalCreature)
+	{
+		if (_originalCreature == null) return;
+		
+		creaturePanel.displayCreature(_originalCreature);
+	}
+
+	public void startEditing(CreaturePanel creaturePanel, ICreature originalCreature)
+	{
+		_originalCreature = originalCreature;
+		
+//		_editedCreature = new Creature(originalCreature);
 	}
 }

@@ -20,7 +20,7 @@ import project.thirteenthage.creatures.internal.interfaces.ICreature;
  * purpose it hosts a {@link CreatureViewPanel}.
  */
 @SuppressWarnings("serial")
-class CreaturePanel extends JPanel implements ActionListener, IView
+public class CreaturePanel extends JPanel implements ActionListener, IView
 {
 	private JPanel _innerPanel = new JPanel();
 	private CreatureEditPanel _editPanel = new CreatureEditPanel();
@@ -114,17 +114,19 @@ class CreaturePanel extends JPanel implements ActionListener, IView
 	private void startEditing()
 	{
 		_isInEditMode = true;
-		_editPanel.setLevel(_selectedCreature.getLevel());
+		_editPanel.startEditing(this, _selectedCreature);
 		updateView();
 	}
 	
 	private void cancelEditing()
 	{
+		_editPanel.cancelEditing(this, _selectedCreature);
 		stopEditing();
 	}
 	
 	private void applyEditing()
 	{
+		_editPanel.applyEditing(this, _selectedCreature);
 		stopEditing();
 	}
 	
