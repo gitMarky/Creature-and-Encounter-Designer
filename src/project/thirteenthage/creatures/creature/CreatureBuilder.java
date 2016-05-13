@@ -1,5 +1,6 @@
 package project.thirteenthage.creatures.creature;
 
+import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.tables.CreatureTableRow;
 import project.thirteenthage.creatures.tables.CreatureTables;
 
@@ -16,6 +17,25 @@ public class CreatureBuilder
 	private int _modifierInitiative = 0;
 	private double _factorHP = 1.0;
 	private double _factorDamage = 1.0;
+
+	
+	/**
+	 * Constructor for a new creature, usually from a template.
+	 */
+	public CreatureBuilder()
+	{
+		
+	}
+	
+
+	/**
+	 * Constructor for a new creature, based on a different creature.
+	 * @param originalCreature the original creature.
+	 */
+	public CreatureBuilder(ICreature originalCreature)
+	{
+		// TODO Auto-generated constructor stub
+	}
 
 
 	public CreatureBuilder name(final String name)
@@ -130,6 +150,15 @@ public class CreatureBuilder
 		mook.setMook(true);
 
 		return mook;
+	}
+	
+	
+	public Creature build(boolean isMook)
+	{
+		if (isMook)
+			return buildMook();
+		else
+			return buildCreature();
 	}
 
 
