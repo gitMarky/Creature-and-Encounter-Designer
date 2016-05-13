@@ -77,7 +77,7 @@ public class AmountChoicePanel extends JPanel implements ActionListener
 	}
 
 
-	private void setAmount(int amount)
+	public void setAmount(int amount)
 	{
 		_amount = amount;
 		updateAmount();

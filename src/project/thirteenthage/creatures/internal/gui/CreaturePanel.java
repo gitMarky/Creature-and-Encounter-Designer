@@ -114,6 +114,7 @@ class CreaturePanel extends JPanel implements ActionListener, IView
 	private void startEditing()
 	{
 		_isInEditMode = true;
+		_editPanel.setLevel(_selectedCreature.getLevel());
 		updateView();
 	}
 	

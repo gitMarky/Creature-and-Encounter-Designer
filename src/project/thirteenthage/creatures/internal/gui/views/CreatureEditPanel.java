@@ -19,6 +19,11 @@ public class CreatureEditPanel extends JPanel implements IView
 		_amountChoicePanel.setUpdateView(this);
 		_amountChoicePanel.setBounds(Constants.MIN_LEVEL, Constants.MAX_LEVEL);
 	}
+	
+	public void setLevel(int level)
+	{
+		_amountChoicePanel.setAmount(level);
+	}
 
 	@Override
 	public void updateView()
