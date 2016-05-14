@@ -12,6 +12,7 @@ import project.thirteenthage.creatures.internal.interfaces.ICreature;
 @SuppressWarnings("serial")
 public class CreatureEditPanel extends JPanel implements IView
 {
+	private final LevelAdjustPanel _levelAdjust = new LevelAdjustPanel();
 	private final AmountChoicePanel _levelSetter = new AmountChoicePanel("Level");
 	private final AmountChoicePanel _acSetter = new AmountChoicePanel("AC");
 	private CreaturePanel _creaturePanel;
@@ -25,6 +26,7 @@ public class CreatureEditPanel extends JPanel implements IView
 		super();
 		this.add(new JLabel("TODO"));
 		addSetter(_levelSetter, Constants.MIN_LEVEL, Constants.MAX_LEVEL);
+		this.add(_levelAdjust);
 		addSetter(_acSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
 	}
 
@@ -98,6 +100,7 @@ public class CreatureEditPanel extends JPanel implements IView
 	{
 		_editedCreature.setLevel(_levelSetter.getAmount());
 		_editedCreature.setAC(_acSetter.getAmount());
+		_levelAdjust.display(0, _acSetter.getAmount(), 0, 0, 1.0);
 	}
 
 
@@ -108,5 +111,6 @@ public class CreatureEditPanel extends JPanel implements IView
 	{
 		_levelSetter.setAmount(_editedCreature.getLevel());
 		_acSetter.setAmount(_editedCreature.getAC());
+		_levelAdjust.display(0, 0, 0, 0, 1.0);
 	}
 }
