@@ -15,6 +15,7 @@ import project.thirteenthage.creatures.internal.interfaces.ICreature;
 public class CreatureEditPanel extends JPanel implements IView
 {
 	private final AmountChoicePanel _amountChoicePanel = new AmountChoicePanel("Level");
+	private CreaturePanel _creaturePanel;
 	
 	private ICreature _originalCreature = null;
 	private EditableCreatureTemplate _editedCreature = null;
@@ -36,15 +37,20 @@ public class CreatureEditPanel extends JPanel implements IView
 	@Override
 	public void updateView()
 	{
-		// TODO Auto-generated method stub
-		
+		_editedCreature.setLevel(_amountChoicePanel.getAmount());
+		displayCreature();
 	}
 
 	public void applyEditing(CreaturePanel creaturePanel, ICreature originalCreature)
 	{
 		if (_editedCreature == null) return;
 		
-		creaturePanel.displayCreature(build());
+		displayCreature();
+	}
+
+	private void displayCreature()
+	{
+		_creaturePanel.displayCreature(build());
 	}
 
 	private ICreature build()
@@ -61,6 +67,7 @@ public class CreatureEditPanel extends JPanel implements IView
 
 	public void startEditing(CreaturePanel creaturePanel, ICreature originalCreature)
 	{
+		_creaturePanel = creaturePanel;
 		_originalCreature = originalCreature;
 		
 		_editedCreature = new EditableCreatureTemplate(originalCreature.getTemplate());

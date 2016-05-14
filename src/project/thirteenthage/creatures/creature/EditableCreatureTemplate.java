@@ -25,7 +25,8 @@ public class EditableCreatureTemplate implements ICreatureTemplate
 	private List<IAttack> _attacks = new ArrayList<IAttack>();
 	private List<ISpecial> _specials = new ArrayList<ISpecial>();
 	private List<ISpecial> _nastier = new ArrayList<ISpecial>();
-	
+
+
 	public EditableCreatureTemplate(ICreatureTemplate template)
 	{
 		_name = template.getName();
@@ -150,4 +151,53 @@ public class EditableCreatureTemplate implements ICreatureTemplate
 
 		return creature;
 	}
+
+
+	public void setName(String name)
+	{
+		_name = name;
+	}
+
+
+	public void setLevel(int level)
+	{
+		_level = level;
+	}
+
+
+	public void setSize(CreatureSize size)
+	{
+		_size = size;
+	}
+
+
+	public void setAC(int ac)
+	{
+		_ac = ac;
+	}
+
+
+	public void setPD(int pd)
+	{
+		_pd = pd;
+	}
+
+
+	public void setMD(int md)
+	{
+		_md = md;
+	}
+
+
+	public void setHP(double hp)
+	{
+		_hp = hp;
+	}
+
+
+	public void setInitiative(int ini)
+	{
+		_ini = ini;
+	}
+
 }
