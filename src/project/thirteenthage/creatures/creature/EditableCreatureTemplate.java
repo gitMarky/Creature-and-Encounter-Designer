@@ -11,7 +11,7 @@ import project.thirteenthage.creatures.internal.interfaces.ISpecial;
 /**
  * Defines a creature, implementation of {@link ICreature}.
  */
-public class EditableCreatureTemplate implements ICreatureTemplate
+public class EditableCreatureTemplate extends AbstractCreatureTemplate
 {
 	private String _name = "New creature";
 	private int _level = 1;
@@ -135,32 +135,7 @@ public class EditableCreatureTemplate implements ICreatureTemplate
 	{
 		return _nastier;
 	}
-
-
-	@Override
-	public ICreature toCreature()
-	{
-		CreatureBuilder builder = new CreatureBuilder();
-		builder.name(getName()).size(getSize()).level(getLevel()).addInitiative(getModifierInitiative()).addAC(getModifierAC()).addPD(getModifierPD()).addMD(getModifierMD()).scaleHP(getModifierHP());
-
-		final Creature creature;
-		if (getLabels().contains("Mook"))
-		{
-			creature = builder.buildMook();
-		} else
-		{
-			creature = builder.buildCreature();
-		}
-
-		creature.setAttacks(getAttacks());
-		creature.getLabels().addAll(getLabels());
-		creature.setSpecials(getSpecials());
-		creature.setNastierSpecials(getNastierSpecials());
-		creature.setTemplate(this);
-
-		return creature;
-	}
-
+	
 
 	public void setName(String name)
 	{
