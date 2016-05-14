@@ -14,7 +14,10 @@ public class CreatureEditPanel extends JPanel implements IView
 {
 	private final LevelAdjustPanel _levelAdjust = new LevelAdjustPanel();
 	private final AmountChoicePanel _levelSetter = new AmountChoicePanel("Level");
+	private final AmountChoicePanel _attackSetter = new AmountChoicePanel("Attack");
 	private final AmountChoicePanel _acSetter = new AmountChoicePanel("AC");
+	private final AmountChoicePanel _pdSetter = new AmountChoicePanel("PD");
+	private final AmountChoicePanel _mdSetter = new AmountChoicePanel("MD");
 	private CreaturePanel _creaturePanel;
 
 	private ICreature _originalCreature = null;
@@ -27,7 +30,10 @@ public class CreatureEditPanel extends JPanel implements IView
 		this.add(new JLabel("TODO"));
 		addSetter(_levelSetter, Constants.MIN_LEVEL, Constants.MAX_LEVEL);
 		this.add(_levelAdjust);
+		//TODO addSetter(_attackSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
 		addSetter(_acSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
+		addSetter(_pdSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
+		addSetter(_mdSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
 	}
 
 
@@ -99,8 +105,11 @@ public class CreatureEditPanel extends JPanel implements IView
 	private void updateCreature()
 	{
 		_editedCreature.setLevel(_levelSetter.getAmount());
+		//_editedCreature.setAttack(_acSetter.getAmount()); // TODO
 		_editedCreature.setAC(_acSetter.getAmount());
-		_levelAdjust.display(0, _acSetter.getAmount(), 0, 0, 1.0);
+		_editedCreature.setPD(_pdSetter.getAmount());
+		_editedCreature.setMD(_mdSetter.getAmount());
+		_levelAdjust.display(0, _acSetter.getAmount(), _pdSetter.getAmount(), _mdSetter.getAmount(), 1.0);
 	}
 
 
@@ -110,7 +119,10 @@ public class CreatureEditPanel extends JPanel implements IView
 	private void resetToDefaults()
 	{
 		_levelSetter.setAmount(_editedCreature.getLevel());
+		_attackSetter.setAmount(0); // TODO
 		_acSetter.setAmount(_editedCreature.getAC());
+		_pdSetter.setAmount(_editedCreature.getPD());
+		_mdSetter.setAmount(_editedCreature.getMD());
 		_levelAdjust.display(0, 0, 0, 0, 1.0);
 	}
 }
