@@ -11,6 +11,7 @@ public class CreatureBuilder
 	private CreatureSize _size = CreatureSize.NORMAL;
 	private boolean _betterDefenseIsPD = true;
 
+	private int _modifierAttack = 0;
 	private int _modifierAC = 0;
 	private int _modifierPD = 0;
 	private int _modifierMD = 0;
@@ -115,6 +116,8 @@ public class CreatureBuilder
 		creature.setName(_name);
 		creature.setSize(_size);
 		creature.setLevel(_level);
+
+		creature.setAttackModifier(_modifierAttack);
 
 		creature.setAC(creature.getLevel() + 16 + _modifierAC);
 

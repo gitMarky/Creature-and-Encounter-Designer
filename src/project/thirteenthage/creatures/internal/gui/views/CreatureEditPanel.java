@@ -30,7 +30,7 @@ public class CreatureEditPanel extends JPanel implements IView
 		this.add(new JLabel("TODO"));
 		addSetter(_levelSetter, Constants.MIN_LEVEL, Constants.MAX_LEVEL);
 		this.add(_levelAdjust);
-		//TODO addSetter(_attackSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
+		addSetter(_attackSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
 		addSetter(_acSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
 		addSetter(_pdSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
 		addSetter(_mdSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
@@ -105,10 +105,11 @@ public class CreatureEditPanel extends JPanel implements IView
 	private void updateCreature()
 	{
 		_editedCreature.setLevel(_levelSetter.getAmount());
-		//_editedCreature.setAttack(_acSetter.getAmount()); // TODO
+		_editedCreature.setAttack(_attackSetter.getAmount());
 		_editedCreature.setAC(_acSetter.getAmount());
 		_editedCreature.setPD(_pdSetter.getAmount());
 		_editedCreature.setMD(_mdSetter.getAmount());
+		// TODO: update attacks
 		_levelAdjust.display(0, _acSetter.getAmount(), _pdSetter.getAmount(), _mdSetter.getAmount(), 1.0);
 	}
 
@@ -119,10 +120,10 @@ public class CreatureEditPanel extends JPanel implements IView
 	private void resetToDefaults()
 	{
 		_levelSetter.setAmount(_editedCreature.getLevel());
-		_attackSetter.setAmount(0); // TODO
-		_acSetter.setAmount(_editedCreature.getAC());
-		_pdSetter.setAmount(_editedCreature.getPD());
-		_mdSetter.setAmount(_editedCreature.getMD());
+		_attackSetter.setAmount(_editedCreature.getModifierAttack());
+		_acSetter.setAmount(_editedCreature.getModifierAC());
+		_pdSetter.setAmount(_editedCreature.getModifierPD());
+		_mdSetter.setAmount(_editedCreature.getModifierMD());
 		_levelAdjust.display(0, 0, 0, 0, 1.0);
 	}
 }

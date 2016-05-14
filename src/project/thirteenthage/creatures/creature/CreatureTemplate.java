@@ -65,35 +65,42 @@ public class CreatureTemplate extends BasicXmlFile implements ICreatureTemplate
 
 
 	@Override
-	public int getAC()
+	public int getModifierAttack()
+	{
+		return Integer.parseInt(getRoot().getChild("modifiers").getChildText("attack"));
+	}
+
+
+	@Override
+	public int getModifierAC()
 	{
 		return Integer.parseInt(getRoot().getChild("modifiers").getChildText("ac"));
 	}
 
 
 	@Override
-	public int getPD()
+	public int getModifierPD()
 	{
 		return Integer.parseInt(getRoot().getChild("modifiers").getChildText("pd"));
 	}
 
 
 	@Override
-	public int getMD()
+	public int getModifierMD()
 	{
 		return Integer.parseInt(getRoot().getChild("modifiers").getChildText("md"));
 	}
 
 
 	@Override
-	public double getHP()
+	public double getModifierHP()
 	{
 		return Double.parseDouble(getRoot().getChild("modifiers").getChildText("hp"));
 	}
 
 
 	@Override
-	public int getInitiative()
+	public int getModifierInitiative()
 	{
 		return Integer.parseInt(getRoot().getChild("modifiers").getChildText("ini"));
 	}
@@ -134,7 +141,7 @@ public class CreatureTemplate extends BasicXmlFile implements ICreatureTemplate
 	public ICreature toCreature()
 	{
 		CreatureBuilder builder = new CreatureBuilder();
-		builder.name(getName()).size(getSize()).level(getLevel()).addInitiative(getInitiative()).addAC(getAC()).addPD(getPD()).addMD(getMD()).scaleHP(getHP());
+		builder.name(getName()).size(getSize()).level(getLevel()).addInitiative(getModifierInitiative()).addAC(getModifierAC()).addPD(getModifierPD()).addMD(getModifierMD()).scaleHP(getModifierHP());
 
 		final Creature creature;
 		if (getLabels().contains("Mook"))

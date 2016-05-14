@@ -13,7 +13,7 @@ public class CreatureTemplateLoaderTest
 		assertNotNull(instance);
 		assertTrue("The instances should be the same", instance == CreatureTemplateLoader.getInstance());
 		
-		assertEquals(1, instance.getTemplates().size());
+		assertEquals(3, instance.getTemplates().size());
 		
 		assertNotNull(instance.get("creature_dire_rat"));
 	}

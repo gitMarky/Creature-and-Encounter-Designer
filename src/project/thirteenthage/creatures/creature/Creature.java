@@ -16,19 +16,20 @@ import project.thirteenthage.creatures.mechanics.Special;
 public class Creature implements ICreature
 {
 	private String _name = "New creature";
-	private int _level;
+	private int _level = 1;
 	private List<String> _labels = new ArrayList<String>();
-	private int _ac;
-	private int _pd;
-	private int _md;
-	private double _hp;
-	private double _damage;
-	private double _fearThreshold;
-	private int _ini;
+	private int _attack = 0;
+	private int _ac = 0;
+	private int _pd = 0;
+	private int _md = 0;
+	private double _hp = 0.0;
+	private double _damage = 0.0;
+	private double _fearThreshold = 0.0;
+	private int _ini = 0;
 	private List<IAttack> _attacks = new ArrayList<IAttack>();
 	private List<ISpecial> _specials = new ArrayList<ISpecial>();
 	private List<ISpecial> _nastierSpecials = new ArrayList<ISpecial>();
-	private CreatureSize _size;
+	private CreatureSize _size = CreatureSize.NORMAL;
 	private boolean _isMook = false;
 	private ICreatureTemplate _template;
 
@@ -144,6 +145,12 @@ public class Creature implements ICreature
 	}
 
 
+	void setAttackModifier(int attack)
+	{
+		_attack = attack;
+	}
+
+
 	void setLevel(final int level)
 	{
 		_level = level;
@@ -208,7 +215,7 @@ public class Creature implements ICreature
 	{
 		_attacks.clear();
 		// create the actual attacks from templates.
-		final int bonus = getLevel() + 5;
+		final int bonus = getLevel() + 5 + _attack;
 		for (final IAttack template : attacks)
 		{
 			final Attack attack = new Attack(this, template, bonus, getStrikeDamage());

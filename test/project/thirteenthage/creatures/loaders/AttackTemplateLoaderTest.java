@@ -14,7 +14,7 @@ public class AttackTemplateLoaderTest
 		assertNotNull(instance);
 		assertTrue("The instances should be the same", instance == AttackTemplateLoader.getInstance());
 		
-		assertEquals(1, instance.getTemplates().size());
+		assertEquals(3, instance.getTemplates().size());
 		
 		assertNotNull(instance.get("attack_infected_bite"));
 	}

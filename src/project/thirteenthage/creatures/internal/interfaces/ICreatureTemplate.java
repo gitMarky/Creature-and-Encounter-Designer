@@ -24,6 +24,14 @@ public interface ICreatureTemplate extends INamedItem, ILeveledItem
 	 * @return the size.
 	 */
 	CreatureSize getSize();
+	
+	
+	/**
+	 * Gets the attack modifier for this creature.
+	 * 
+	 * @return the modifier.
+	 */
+	int getModifierAttack();
 
 
 	/**
@@ -37,7 +45,7 @@ public interface ICreatureTemplate extends INamedItem, ILeveledItem
 	 * 
 	 * @return the modifier.
 	 */
-	int getAC();
+	int getModifierAC();
 
 
 	/**
@@ -51,7 +59,7 @@ public interface ICreatureTemplate extends INamedItem, ILeveledItem
 	 * 
 	 * @return the modifier.
 	 */
-	int getPD();
+	int getModifierPD();
 
 
 	/**
@@ -65,7 +73,7 @@ public interface ICreatureTemplate extends INamedItem, ILeveledItem
 	 * 
 	 * @return the modifier.
 	 */
-	int getMD();
+	int getModifierMD();
 
 
 	/**
@@ -79,7 +87,7 @@ public interface ICreatureTemplate extends INamedItem, ILeveledItem
 	 * 
 	 * @return the modifier.
 	 */
-	double getHP();
+	double getModifierHP();
 
 
 	/**
@@ -92,7 +100,7 @@ public interface ICreatureTemplate extends INamedItem, ILeveledItem
 	 * 
 	 * @return the modifier.
 	 */
-	int getInitiative();
+	int getModifierInitiative();
 
 
 	/**

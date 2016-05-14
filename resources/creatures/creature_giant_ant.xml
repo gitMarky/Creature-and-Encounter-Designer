@@ -8,6 +8,7 @@
 	</labels>
 	<modifiers>
 		<ini>0</ini>
+		<attack>0</attack>
 		<ac>-2</ac>
 		<pd better="true">-1</pd>
 		<md>-1</md>

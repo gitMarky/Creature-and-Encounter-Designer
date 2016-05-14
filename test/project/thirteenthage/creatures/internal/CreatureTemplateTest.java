@@ -32,11 +32,11 @@ public class CreatureTemplateTest
 		assertEquals("Mook", rat.getLabels().get(0));
 		assertEquals("Beast", rat.getLabels().get(1));
 
-		assertEquals(1, rat.getInitiative());
-		assertEquals(-2, rat.getAC());
-		assertEquals(0, rat.getPD());
-		assertEquals(-1, rat.getMD());
-		assertEquals(0.889, rat.getHP(), delta);
+		assertEquals(1, rat.getModifierInitiative());
+		assertEquals(-2, rat.getModifierAC());
+		assertEquals(0, rat.getModifierPD());
+		assertEquals(-1, rat.getModifierMD());
+		assertEquals(0.889, rat.getModifierHP(), delta);
 
 		assertEquals(1, rat.getAttacks().size());
 		assertEquals("Infected bite", rat.getAttacks().get(0).getName());

@@ -13,15 +13,16 @@ import project.thirteenthage.creatures.internal.interfaces.ISpecial;
  */
 public class EditableCreatureTemplate implements ICreatureTemplate
 {
-	private String _name;
-	private int _level;
-	private CreatureSize _size;
+	private String _name = "New creature";
+	private int _level = 1;
+	private CreatureSize _size = CreatureSize.NORMAL;
 	private List<String> _labels = new ArrayList<String>();
-	private int _ac;
-	private int _pd;
-	private int _md;
-	private double _hp;
-	private int _ini;
+	private int _attack = 0;
+	private int _ac = 0;
+	private int _pd = 0;
+	private int _md = 0;
+	private double _hp = 1.0;
+	private int _ini = 0;
 	private List<IAttack> _attacks = new ArrayList<IAttack>();
 	private List<ISpecial> _specials = new ArrayList<ISpecial>();
 	private List<ISpecial> _nastier = new ArrayList<ISpecial>();
@@ -33,11 +34,12 @@ public class EditableCreatureTemplate implements ICreatureTemplate
 		_level = template.getLevel();
 		_size = template.getSize();
 		_labels.addAll(template.getLabels());
-		_ac = template.getAC();
-		_pd = template.getPD();
-		_md = template.getMD();
-		_hp = template.getHP();
-		_ini = template.getInitiative();
+		_attack = template.getModifierAttack();
+		_ac = template.getModifierAC();
+		_pd = template.getModifierPD();
+		_md = template.getModifierMD();
+		_hp = template.getModifierHP();
+		_ini = template.getModifierInitiative();
 		_attacks.addAll(template.getAttacks());
 		_specials.addAll(template.getSpecials());
 		_nastier.addAll(template.getNastierSpecials());
@@ -70,38 +72,45 @@ public class EditableCreatureTemplate implements ICreatureTemplate
 	{
 		return _labels;
 	}
+	
+	
+	@Override
+	public int getModifierAttack()
+	{
+		return _attack;
+	}
 
 
 	@Override
-	public int getAC()
+	public int getModifierAC()
 	{
 		return _ac;
 	}
 
 
 	@Override
-	public int getPD()
+	public int getModifierPD()
 	{
 		return _pd;
 	}
 
 
 	@Override
-	public int getMD()
+	public int getModifierMD()
 	{
 		return _md;
 	}
 
 
 	@Override
-	public double getHP()
+	public double getModifierHP()
 	{
 		return _hp;
 	}
 
 
 	@Override
-	public int getInitiative()
+	public int getModifierInitiative()
 	{
 		return _ini;
 	}
@@ -132,7 +141,7 @@ public class EditableCreatureTemplate implements ICreatureTemplate
 	public ICreature toCreature()
 	{
 		CreatureBuilder builder = new CreatureBuilder();
-		builder.name(getName()).size(getSize()).level(getLevel()).addInitiative(getInitiative()).addAC(getAC()).addPD(getPD()).addMD(getMD()).scaleHP(getHP());
+		builder.name(getName()).size(getSize()).level(getLevel()).addInitiative(getModifierInitiative()).addAC(getModifierAC()).addPD(getModifierPD()).addMD(getModifierMD()).scaleHP(getModifierHP());
 
 		final Creature creature;
 		if (getLabels().contains("Mook"))
@@ -168,6 +177,12 @@ public class EditableCreatureTemplate implements ICreatureTemplate
 	public void setSize(CreatureSize size)
 	{
 		_size = size;
+	}
+
+
+	public void setAttack(int attack)
+	{
+		_attack = attack;
 	}
 
 
