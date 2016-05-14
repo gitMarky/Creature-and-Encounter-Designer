@@ -149,6 +149,7 @@ public class CreatureTemplate extends BasicXmlFile implements ICreatureTemplate
 		creature.getLabels().addAll(getLabels());
 		creature.setSpecials(getSpecials());
 		creature.setNastierSpecials(getNastierSpecials());
+		creature.setTemplate(this);
 
 		return creature;
 	}

@@ -5,6 +5,7 @@ import java.util.List;
 
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
+import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
 import project.thirteenthage.creatures.internal.interfaces.ISpecial;
 import project.thirteenthage.creatures.mechanics.Attack;
 import project.thirteenthage.creatures.mechanics.Special;
@@ -29,6 +30,7 @@ public class Creature implements ICreature
 	private List<ISpecial> _nastierSpecials = new ArrayList<ISpecial>();
 	private CreatureSize _size;
 	private boolean _isMook = false;
+	private ICreatureTemplate _template;
 
 
 	@Override
@@ -236,5 +238,18 @@ public class Creature implements ICreature
 			final Special special = new Special(this, template);
 			_nastierSpecials.add(special);
 		}
+	}
+	
+	
+	@Override
+	public ICreatureTemplate getTemplate()
+	{
+		return _template;
+	}
+
+
+	public void setTemplate(ICreatureTemplate template)
+	{
+		_template = template;
 	}
 }

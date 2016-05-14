@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 
 import project.thirteenthage.creatures.creature.Creature;
 import project.thirteenthage.creatures.creature.CreatureBuilder;
+import project.thirteenthage.creatures.creature.EditableCreatureTemplate;
 import project.thirteenthage.creatures.interfaces.IView;
 import project.thirteenthage.creatures.internal.Constants;
 import project.thirteenthage.creatures.internal.gui.CreaturePanel;
@@ -16,7 +17,7 @@ public class CreatureEditPanel extends JPanel implements IView
 	private final AmountChoicePanel _amountChoicePanel = new AmountChoicePanel("Level");
 	
 	private ICreature _originalCreature = null;
-	private CreatureBuilder _editedCreature = null;
+	private EditableCreatureTemplate _editedCreature = null;
 	
 	public CreatureEditPanel()
 	{
@@ -48,7 +49,7 @@ public class CreatureEditPanel extends JPanel implements IView
 
 	private ICreature build()
 	{
-		return _editedCreature.buildCreature();
+		return _editedCreature.toCreature();
 	}
 
 	public void cancelEditing(CreaturePanel creaturePanel, ICreature originalCreature)
@@ -62,6 +63,6 @@ public class CreatureEditPanel extends JPanel implements IView
 	{
 		_originalCreature = originalCreature;
 		
-		_editedCreature = new CreatureBuilder(originalCreature);
+		_editedCreature = new EditableCreatureTemplate(originalCreature.getTemplate());
 	}
 }
