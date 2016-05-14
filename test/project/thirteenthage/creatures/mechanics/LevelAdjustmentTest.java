@@ -156,4 +156,15 @@ public class LevelAdjustmentTest
 	{
 		testDefensive(); // this is actually the same thing...
 	}
+	
+	
+	/**
+	 * The normal level up should be reflected in this, too.
+	 */
+	@Test
+	public void testNormalLevelUp()
+	{
+		assertEquals(0.9444, LevelAdjustment.getLevelAdjustmentFine(1, 1, 1, 1, 1.25), DOUBLE_FUZZY_1E_3);
+		assertEquals(1, LevelAdjustment.getLevelAdjustment(1, 1, 1, 1, 1.25));
+	}
 }

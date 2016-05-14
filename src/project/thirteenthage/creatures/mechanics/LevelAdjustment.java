@@ -60,6 +60,6 @@ public final class LevelAdjustment
 
 	public static int getLevelAdjustment(int attack, int ac, int pd, int md, double hp)
 	{
-		return (int) getLevelAdjustmentFine(attack, ac, pd, md, hp);
+		return (int) Math.round(getLevelAdjustmentFine(attack, ac, pd, md, hp));
 	}
 }
