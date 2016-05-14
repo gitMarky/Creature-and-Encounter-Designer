@@ -8,6 +8,7 @@ import project.thirteenthage.creatures.interfaces.IView;
 import project.thirteenthage.creatures.internal.Constants;
 import project.thirteenthage.creatures.internal.gui.CreaturePanel;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
+import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
 
 @SuppressWarnings("serial")
 public class CreatureEditPanel extends JPanel implements IView
@@ -22,6 +23,7 @@ public class CreatureEditPanel extends JPanel implements IView
 
 	private ICreature _originalCreature = null;
 	private EditableCreatureTemplate _editedCreature = null;
+	private boolean _isCreatureReset;
 
 
 	public CreatureEditPanel()
@@ -95,7 +97,7 @@ public class CreatureEditPanel extends JPanel implements IView
 		_originalCreature = originalCreature;
 
 		_editedCreature = new EditableCreatureTemplate(originalCreature.getTemplate());
-		resetToDefaults();
+		resetToDefaults(_editedCreature);
 	}
 
 
@@ -104,26 +106,36 @@ public class CreatureEditPanel extends JPanel implements IView
 	 */
 	private void updateCreature()
 	{
-		_editedCreature.setLevel(_levelSetter.getAmount());
-		_editedCreature.setAttack(_attackSetter.getAmount());
-		_editedCreature.setAC(_acSetter.getAmount());
-		_editedCreature.setPD(_pdSetter.getAmount());
-		_editedCreature.setMD(_mdSetter.getAmount());
-		// TODO: update attacks
-		_levelAdjust.display(0, _acSetter.getAmount(), _pdSetter.getAmount(), _mdSetter.getAmount(), 1.0);
+		if (_isCreatureReset)
+		{
+			_editedCreature.setLevel(_levelSetter.getAmount());
+			_editedCreature.setAttack(_attackSetter.getAmount());
+			_editedCreature.setAC(_acSetter.getAmount());
+			_editedCreature.setPD(_pdSetter.getAmount());
+			_editedCreature.setMD(_mdSetter.getAmount());
+		}
+		updateLevelAdjust();
 	}
 
 
 	/**
 	 * Sets the edited creature template stats to the values of its original template.
 	 */
-	private void resetToDefaults()
+	private void resetToDefaults(final ICreatureTemplate template)
 	{
-		_levelSetter.setAmount(_editedCreature.getLevel());
-		_attackSetter.setAmount(_editedCreature.getModifierAttack());
-		_acSetter.setAmount(_editedCreature.getModifierAC());
-		_pdSetter.setAmount(_editedCreature.getModifierPD());
-		_mdSetter.setAmount(_editedCreature.getModifierMD());
-		_levelAdjust.display(0, 0, 0, 0, 1.0);
+		_isCreatureReset = false;
+		_levelSetter.setAmount(template.getLevel());
+		_attackSetter.setAmount(template.getModifierAttack());
+		_acSetter.setAmount(template.getModifierAC());
+		_pdSetter.setAmount(template.getModifierPD());
+		_mdSetter.setAmount(template.getModifierMD());
+		_isCreatureReset = true;
+		updateLevelAdjust();
+	}
+
+
+	private void updateLevelAdjust()
+	{
+		_levelAdjust.display(_attackSetter.getAmount(), _acSetter.getAmount(), _pdSetter.getAmount(), _mdSetter.getAmount(), 1.0);
 	}
 }

@@ -9,8 +9,16 @@ public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 	public ICreature toCreature()
 	{
 		CreatureBuilder builder = new CreatureBuilder();
-		builder.name(getName()).size(getSize()).level(getLevel()).addInitiative(getModifierInitiative()).addAC(getModifierAC()).addPD(getModifierPD()).addMD(getModifierMD()).scaleHP(getModifierHP());
-	
+		builder.name(getName())
+		       .size(getSize())
+		       .level(getLevel())
+		       .addInitiative(getModifierInitiative())
+		       .addAttack(getModifierAttack())
+		       .addAC(getModifierAC())
+		       .addPD(getModifierPD())
+		       .addMD(getModifierMD())
+		       .scaleHP(getModifierHP());
+
 		final Creature creature;
 		if (getLabels().contains("Mook"))
 		{
@@ -19,13 +27,13 @@ public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 		{
 			creature = builder.buildCreature();
 		}
-	
+
 		creature.setAttacks(getAttacks());
 		creature.getLabels().addAll(getLabels());
 		creature.setSpecials(getSpecials());
 		creature.setNastierSpecials(getNastierSpecials());
 		creature.setTemplate(this);
-	
+
 		return creature;
 	}
 

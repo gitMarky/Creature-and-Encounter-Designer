@@ -58,6 +58,13 @@ public class CreatureBuilder
 		_size = size;
 		return this;
 	}
+	
+	
+	public CreatureBuilder addAttack(final int amount)
+	{
+		_modifierAttack += amount;
+		return this;
+	}
 
 
 	public CreatureBuilder addAC(final int amount)
