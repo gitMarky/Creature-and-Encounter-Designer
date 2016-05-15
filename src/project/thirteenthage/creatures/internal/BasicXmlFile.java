@@ -34,6 +34,13 @@ public class BasicXmlFile
 			throw new IllegalStateException();
 		}
 	}
+	
+	
+	public BasicXmlFile(final Document doc, final File file)
+	{
+		_doc = doc;
+		_file = file;
+	}
 
 
 	public boolean saveToFile()

@@ -3,6 +3,7 @@ package project.thirteenthage.creatures.loaders;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import project.thirteenthage.creatures.internal.BasicXmlFile;
 
@@ -80,4 +81,19 @@ public abstract class AbstractLoader<T extends Object>
 	 *            the file to add.
 	 */
 	protected abstract void addEntry(final BasicXmlFile file);
+
+
+	public String getId(T object)
+	{
+		for (final Entry<String, T> entry : _templates.entrySet())
+		{
+			if (entry.getValue().equals(object))
+			{
+				return entry.getKey();
+			}
+		}
+		
+		return "*** invalid id ***";
+	}
+
 }

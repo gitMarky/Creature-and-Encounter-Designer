@@ -18,6 +18,27 @@ import project.thirteenthage.creatures.loaders.SpecialTemplateLoader;
  */
 public class CreatureTemplate extends AbstractCreatureTemplate
 {
+	public static final String ROOT_ELEMENT = "creature";
+	static final String ATTRIBUTE_VALUE_TRUE = "true";
+	static final String ATTRIBUTE_BETTER = "better";
+	static final String ATTRIBUTE_ID = "id";
+	static final String ELEMENT_NASTIER = "nastier";
+	static final String ELEMENT_SPECIAL = "special";
+	static final String ELEMENT_SPECIALS = "specials";
+	static final String ELEMENT_ATTACK = "attack";
+	static final String ELEMENT_ATTACKS = "attacks";
+	static final String ELEMENT_MODIFIERS_INI = "ini";
+	static final String ELEMENT_MODIFIERS_HP = "hp";
+	static final String ELEMENT_MODIFIERS_MD = "md";
+	static final String ELEMENT_MODIFIERS_PD = "pd";
+	static final String ELEMENT_MODIFIERS_AC = "ac";
+	static final String ELEMENT_MODIFIERS_ATTACK = "attack";
+	static final String ELEMENT_MODIFIERS = "modifiers";
+	static final String ELEMENT_LABEL = "label";
+	static final String ELEMENT_LABELS = "labels";
+	static final String ELEMENT_SIZE = "size";
+	static final String ELEMENT_LEVEL = "level";
+	static final String ELEMENT_NAME = "name";
 	private final BasicXmlFile _template;
 
 
@@ -54,26 +75,26 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 
 	public String parseName()
 	{
-		return _template.getRoot().getChildText("name");
+		return _template.getRoot().getChildText(ELEMENT_NAME);
 	}
 
 
 	public int parseLevel()
 	{
-		return Integer.parseInt(_template.getRoot().getChildText("level"));
+		return Integer.parseInt(_template.getRoot().getChildText(ELEMENT_LEVEL));
 	}
 
 
 	public CreatureSize parseSize()
 	{
-		return CreatureSize.fromString(_template.getRoot().getChildText("size"));
+		return CreatureSize.fromString(_template.getRoot().getChildText(ELEMENT_SIZE));
 	}
 
 
 	public List<String> parseLabels()
 	{
 		List<String> labels = new ArrayList<String>();
-		for (final Element label : _template.getRoot().getChild("labels").getChildren())
+		for (final Element label : _template.getRoot().getChild(ELEMENT_LABELS).getChildren())
 		{
 			labels.add(label.getText());
 		}
@@ -83,7 +104,7 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 
 	public BetterDefense parseBetterDefense()
 	{
-		if ("true".equals(_template.getRoot().getChild("modifiers").getChild("md").getAttributeValue("better")))
+		if (ATTRIBUTE_VALUE_TRUE.equals(_template.getRoot().getChild(ELEMENT_MODIFIERS).getChild(ELEMENT_MODIFIERS_MD).getAttributeValue(ATTRIBUTE_BETTER)))
 		{
 			return BetterDefense.MD;
 		}
@@ -94,37 +115,37 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 
 	public int parseModifierAttack()
 	{
-		return Integer.parseInt(_template.getRoot().getChild("modifiers").getChildText("attack"));
+		return Integer.parseInt(_template.getRoot().getChild(ELEMENT_MODIFIERS).getChildText(ELEMENT_MODIFIERS_ATTACK));
 	}
 
 
 	public int parseModifierAC()
 	{
-		return Integer.parseInt(_template.getRoot().getChild("modifiers").getChildText("ac"));
+		return Integer.parseInt(_template.getRoot().getChild(ELEMENT_MODIFIERS).getChildText(ELEMENT_MODIFIERS_AC));
 	}
 
 
 	public int parseModifierPD()
 	{
-		return Integer.parseInt(_template.getRoot().getChild("modifiers").getChildText("pd"));
+		return Integer.parseInt(_template.getRoot().getChild(ELEMENT_MODIFIERS).getChildText(ELEMENT_MODIFIERS_PD));
 	}
 
 
 	public int parseModifierMD()
 	{
-		return Integer.parseInt(_template.getRoot().getChild("modifiers").getChildText("md"));
+		return Integer.parseInt(_template.getRoot().getChild(ELEMENT_MODIFIERS).getChildText(ELEMENT_MODIFIERS_MD));
 	}
 
 
 	public double parseModifierHP()
 	{
-		return Double.parseDouble(_template.getRoot().getChild("modifiers").getChildText("hp"));
+		return Double.parseDouble(_template.getRoot().getChild(ELEMENT_MODIFIERS).getChildText(ELEMENT_MODIFIERS_HP));
 	}
 
 
 	public int parseModifierInitiative()
 	{
-		return Integer.parseInt(_template.getRoot().getChild("modifiers").getChildText("ini"));
+		return Integer.parseInt(_template.getRoot().getChild(ELEMENT_MODIFIERS).getChildText(ELEMENT_MODIFIERS_INI));
 	}
 
 
@@ -132,9 +153,9 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 	{
 		List<IAttack> attacks = new ArrayList<IAttack>();
 
-		for (final Element attack : _template.getRoot().getChild("attacks").getChildren())
+		for (final Element attack : _template.getRoot().getChild(ELEMENT_ATTACKS).getChildren())
 		{
-			String id = attack.getAttributeValue("id");
+			String id = attack.getAttributeValue(ATTRIBUTE_ID);
 
 			IAttack template = AttackTemplateLoader.getInstance().get(id);
 			if (template != null)
@@ -147,13 +168,13 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 
 	public List<ISpecial> parseSpecials()
 	{
-		return readSpecials("specials");
+		return readSpecials(ELEMENT_SPECIALS);
 	}
 
 
 	public List<ISpecial> parseNastierSpecials()
 	{
-		return readSpecials("nastier");
+		return readSpecials(ELEMENT_NASTIER);
 	}
 
 
@@ -163,7 +184,7 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 
 		for (final Element special : _template.getRoot().getChild(node).getChildren())
 		{
-			String id = special.getAttributeValue("id");
+			String id = special.getAttributeValue(ATTRIBUTE_ID);
 
 			ISpecial template = SpecialTemplateLoader.getInstance().get(id);
 			if (template != null)
@@ -171,5 +192,12 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 		}
 
 		return specials;
+	}
+
+
+	@Override
+	public void saveToFile()
+	{
+		throw new IllegalStateException("Operation not intended");
 	}
 }

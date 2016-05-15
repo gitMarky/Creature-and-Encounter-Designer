@@ -147,7 +147,7 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 	
 	private void saveCreature()
 	{
-		
+		_selectedCreature.getTemplate().saveToFile();
 	}
 
 	private void transferCreatureToEncounter(ICreature creature)

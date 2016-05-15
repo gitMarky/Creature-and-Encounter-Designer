@@ -142,4 +142,10 @@ public interface ICreatureTemplate extends INamedItem, ILeveledItem
 	 * @return the creature.
 	 */
 	ICreature toCreature();
+
+
+	/**
+	 * Saves the template to a file.
+	 */
+	void saveToFile();
 }

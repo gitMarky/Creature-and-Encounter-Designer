@@ -17,7 +17,7 @@ public class CreatureTemplateLoader extends AbstractLoader<ICreatureTemplate>
 	@Override
 	protected boolean checkEntry(BasicXmlFile template)
 	{
-		return "creature".equals(template.getRoot().getName());
+		return CreatureTemplate.ROOT_ELEMENT.equals(template.getRoot().getName());
 	}
 
 
