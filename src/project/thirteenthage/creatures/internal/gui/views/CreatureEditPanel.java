@@ -33,8 +33,7 @@ public class CreatureEditPanel extends JPanel implements IView
 	{
 		super();
 		this.add(new JLabel("TODO"));
-		this.add(_nameSetter);
-		_nameSetter.setUpdateView(this);
+		addSetter(_nameSetter);
 		addSetter(_levelSetter, Constants.MIN_LEVEL, Constants.MAX_LEVEL);
 		this.add(_levelAdjust);
 		addSetter(_attackSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
@@ -42,8 +41,7 @@ public class CreatureEditPanel extends JPanel implements IView
 		addSetter(_pdSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
 		addSetter(_mdSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
 		addSetter(_hpSetter, Constants.MIN_HP_MODIFIER, Constants.MAX_HP_MODIFIER);
-		this.add(_defenseSetter);
-		_defenseSetter.setUpdateView(this);
+		addSetter(_defenseSetter);
 
 		_hpSetter.setOutputText("%+d %%"); // display percent
 		_hpSetter.setButtonStep(5); // change 5% at once
@@ -57,7 +55,7 @@ public class CreatureEditPanel extends JPanel implements IView
 	}
 
 
-	private void addSetter(final AmountChoicePanel setter)
+	private void addSetter(final ChoicePanel setter)
 	{
 		this.add(setter);
 		setter.setUpdateView(this);

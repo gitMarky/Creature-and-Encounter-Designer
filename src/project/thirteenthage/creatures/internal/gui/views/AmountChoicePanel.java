@@ -7,16 +7,13 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import project.thirteenthage.creatures.interfaces.IView;
 
 /**
  * Lets you choose an amount and increase or decrease it.
  */
 @SuppressWarnings("serial")
-public class AmountChoicePanel extends JPanel implements ActionListener
+public class AmountChoicePanel extends ChoicePanel implements ActionListener
 {
 	private int _amount = 1;
 	private JTextField _amountField = new JTextField();
@@ -28,7 +25,6 @@ public class AmountChoicePanel extends JPanel implements ActionListener
 	private int _upperBound = Integer.MAX_VALUE;
 	private int _buttonStep = 1;
 
-	private IView _updateOnAmountChanged = null;
 	private String _outputText = "%d";
 
 
@@ -97,16 +93,7 @@ public class AmountChoicePanel extends JPanel implements ActionListener
 
 		_amountLabel.setText(String.format(_outputText , _amount));
 
-		if (_updateOnAmountChanged != null)
-		{
-			_updateOnAmountChanged.updateView();
-		}
-	}
-
-
-	public void setUpdateView(final IView view)
-	{
-		_updateOnAmountChanged = view;
+		updateView();
 	}
 
 

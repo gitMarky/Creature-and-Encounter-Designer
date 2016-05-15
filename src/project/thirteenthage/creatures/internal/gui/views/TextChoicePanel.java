@@ -5,20 +5,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import project.thirteenthage.creatures.interfaces.IView;
 
 /**
  * Lets you enter a text.
  */
 @SuppressWarnings("serial")
-public class TextChoicePanel extends JPanel implements ActionListener
+public class TextChoicePanel extends ChoicePanel implements ActionListener
 {
 	private JTextField _amountField = new JTextField();
-
-	private IView _updateOnAmountChanged = null;
 
 
 	public TextChoicePanel(final String name)
@@ -37,16 +32,7 @@ public class TextChoicePanel extends JPanel implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent event)
 	{
-		if (_updateOnAmountChanged != null)
-		{
-			_updateOnAmountChanged.updateView();
-		}
-	}
-
-
-	public void setUpdateView(final IView view)
-	{
-		_updateOnAmountChanged = view;
+		updateView();
 	}
 
 

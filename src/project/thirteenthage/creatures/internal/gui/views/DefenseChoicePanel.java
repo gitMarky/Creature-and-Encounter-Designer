@@ -6,21 +6,18 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
-import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import project.thirteenthage.creatures.creature.BetterDefense;
-import project.thirteenthage.creatures.interfaces.IView;
 
 /**
  * Lets you choose the better of two defenses.
  */
 @SuppressWarnings("serial")
-public class DefenseChoicePanel extends JPanel implements ActionListener
+public class DefenseChoicePanel extends ChoicePanel implements ActionListener
 {
 	private JRadioButton _pdButton = new JRadioButton("PD");
 	private JRadioButton _mdButton = new JRadioButton("MD");
-	private IView _updateOnAmountChanged = null;
 
 	private BetterDefense _better = BetterDefense.PD;
 
@@ -60,8 +57,7 @@ public class DefenseChoicePanel extends JPanel implements ActionListener
 			_better = BetterDefense.MD;
 		}
 
-		if (_updateOnAmountChanged != null)
-			_updateOnAmountChanged.updateView();
+		updateView();
 	}
 
 
@@ -82,11 +78,5 @@ public class DefenseChoicePanel extends JPanel implements ActionListener
 			_mdButton.setSelected(false);
 			_pdButton.setSelected(true);
 		}
-	}
-
-
-	public void setUpdateView(final IView view)
-	{
-		_updateOnAmountChanged = view;
 	}
 }
