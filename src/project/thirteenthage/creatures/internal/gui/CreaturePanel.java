@@ -1,5 +1,6 @@
 package project.thirteenthage.creatures.internal.gui;
 
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -39,25 +40,32 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 	{
 		super();
 		JPanel buttonPanel = new JPanel();
-
-		_innerPanel.setLayout(new BoxLayout(_innerPanel, BoxLayout.Y_AXIS));
-		_innerPanel.add(buttonPanel);
-		_innerPanel.add(_editPanel);
+		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		
+		// top row: buttons
+		
+		this.add(buttonPanel);
 
 		buttonPanel.add(_addButton);
 		_addButton.addActionListener(this);
-
+		
 		buttonPanel.add(_editButton);
 		_editButton.addActionListener(this);
-
+		
 		buttonPanel.add(_applyButton);
 		_applyButton.addActionListener(this);
-
+		
 		buttonPanel.add(_cancelButton);
 		_cancelButton.addActionListener(this);
 		
 		buttonPanel.add(_saveButton);
 		_saveButton.addActionListener(this);
+
+		// bottom row: inner panel with boxes from left to right: creature edit, creature view
+		
+		_innerPanel.setLayout(new BoxLayout(_innerPanel, BoxLayout.X_AXIS));
+		_innerPanel.add(_editPanel);
+
 
 		stopEditing();
 		

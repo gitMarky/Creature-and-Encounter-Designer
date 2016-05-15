@@ -1,5 +1,6 @@
 package project.thirteenthage.creatures.internal.gui.views;
 
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -32,6 +33,7 @@ public class CreatureEditPanel extends JPanel implements IView
 	public CreatureEditPanel()
 	{
 		super();
+		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.add(new JLabel("TODO"));
 		addSetter(_nameSetter);
 		addSetter(_levelSetter, Constants.MIN_LEVEL, Constants.MAX_LEVEL);
