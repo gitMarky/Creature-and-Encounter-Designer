@@ -21,6 +21,7 @@ public class CreatureEditPanel extends JPanel implements IView
 	private final AmountChoicePanel _mdSetter = new AmountChoicePanel("MD");
 	private final AmountChoicePanel _hpSetter = new AmountChoicePanel("HP");
 	private final DefenseChoicePanel _defenseSetter = new DefenseChoicePanel();
+	private final TextChoicePanel _nameSetter = new TextChoicePanel("Name");
 	private CreaturePanel _creaturePanel;
 
 	private ICreature _originalCreature = null;
@@ -32,6 +33,8 @@ public class CreatureEditPanel extends JPanel implements IView
 	{
 		super();
 		this.add(new JLabel("TODO"));
+		this.add(_nameSetter);
+		_nameSetter.setUpdateView(this);
 		addSetter(_levelSetter, Constants.MIN_LEVEL, Constants.MAX_LEVEL);
 		this.add(_levelAdjust);
 		addSetter(_attackSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
@@ -116,6 +119,7 @@ public class CreatureEditPanel extends JPanel implements IView
 	{
 		if (_isCreatureReset)
 		{
+			_editedCreature.setName(_nameSetter.getText());
 			_editedCreature.setLevel(_levelSetter.getAmount());
 			_editedCreature.setAttack(_attackSetter.getAmount());
 			_editedCreature.setAC(_acSetter.getAmount());
@@ -135,6 +139,7 @@ public class CreatureEditPanel extends JPanel implements IView
 	private void resetToDefaults(final ICreatureTemplate template)
 	{
 		_isCreatureReset = false;
+		_nameSetter.setText(template.getName());
 		_levelSetter.setAmount(template.getLevel());
 		_attackSetter.setAmount(template.getModifierAttack());
 		_acSetter.setAmount(template.getModifierAC());
