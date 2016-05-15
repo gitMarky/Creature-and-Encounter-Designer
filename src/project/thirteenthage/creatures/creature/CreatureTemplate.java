@@ -30,32 +30,47 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 	public CreatureTemplate(BasicXmlFile file)
 	{
 		_template = file;
+		
+		parse();
+	}
+	
+	private void parse()
+	{
+		setName(parseName());
+		setLevel(parseLevel());
+		setSize(parseSize());
+		getLabels().addAll(parseLabels());
+		setAttack(parseModifierAttack());
+		setAC(parseModifierAC());
+		setPD(parseModifierPD());
+		setMD(parseModifierMD());
+		setHP(parseModifierHP());
+		setInitiative(parseModifierInitiative());
+		getAttacks().addAll(parseAttacks());
+		getSpecials().addAll(parseSpecials());
+		getNastierSpecials().addAll(parseNastierSpecials());
 	}
 
 
-	@Override
-	public String getName()
+	public String parseName()
 	{
 		return _template.getRoot().getChildText("name");
 	}
 
 
-	@Override
-	public int getLevel()
+	public int parseLevel()
 	{
 		return Integer.parseInt(_template.getRoot().getChildText("level"));
 	}
 
 
-	@Override
-	public CreatureSize getSize()
+	public CreatureSize parseSize()
 	{
 		return CreatureSize.fromString(_template.getRoot().getChildText("size"));
 	}
 
 
-	@Override
-	public List<String> getLabels()
+	public List<String> parseLabels()
 	{
 		List<String> labels = new ArrayList<String>();
 		for (final Element label : _template.getRoot().getChild("labels").getChildren())
@@ -66,8 +81,7 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 	}
 
 
-	@Override
-	public BetterDefense getBetterDefense()
+	public BetterDefense parseBetterDefense()
 	{
 		if ("true".equals(_template.getRoot().getChild("modifiers").getChild("md").getAttributeValue("better")))
 		{
@@ -78,50 +92,43 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 	}
 
 
-	@Override
-	public int getModifierAttack()
+	public int parseModifierAttack()
 	{
 		return Integer.parseInt(_template.getRoot().getChild("modifiers").getChildText("attack"));
 	}
 
 
-	@Override
-	public int getModifierAC()
+	public int parseModifierAC()
 	{
 		return Integer.parseInt(_template.getRoot().getChild("modifiers").getChildText("ac"));
 	}
 
 
-	@Override
-	public int getModifierPD()
+	public int parseModifierPD()
 	{
 		return Integer.parseInt(_template.getRoot().getChild("modifiers").getChildText("pd"));
 	}
 
 
-	@Override
-	public int getModifierMD()
+	public int parseModifierMD()
 	{
 		return Integer.parseInt(_template.getRoot().getChild("modifiers").getChildText("md"));
 	}
 
 
-	@Override
-	public double getModifierHP()
+	public double parseModifierHP()
 	{
 		return Double.parseDouble(_template.getRoot().getChild("modifiers").getChildText("hp"));
 	}
 
 
-	@Override
-	public int getModifierInitiative()
+	public int parseModifierInitiative()
 	{
 		return Integer.parseInt(_template.getRoot().getChild("modifiers").getChildText("ini"));
 	}
 
 
-	@Override
-	public List<IAttack> getAttacks()
+	public List<IAttack> parseAttacks()
 	{
 		List<IAttack> attacks = new ArrayList<IAttack>();
 
@@ -138,15 +145,13 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 	}
 
 
-	@Override
-	public List<ISpecial> getSpecials()
+	public List<ISpecial> parseSpecials()
 	{
 		return readSpecials("specials");
 	}
 
 
-	@Override
-	public List<ISpecial> getNastierSpecials()
+	public List<ISpecial> parseNastierSpecials()
 	{
 		return readSpecials("nastier");
 	}
