@@ -1,6 +1,7 @@
 package project.thirteenthage.creatures.internal;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static project.thirteenthage.creatures.TestConstants.DOUBLE_EXACT_1E_8;
 import static project.thirteenthage.creatures.TestConstants.DOUBLE_FUZZY_1E_3;
 
@@ -75,6 +76,10 @@ public class CreatureTemplateTest
 
 		assertEquals(1, rat.getAttacks().size());
 		testAttack(rat.getAttacks().get(0), "Infected bite", 5, "AC", 4.0, "ongoing damage");
+		
+		ICreature rat2 = template.toCreature();
+		
+		assertTrue(rat2.equals(rat));
 	}
 
 

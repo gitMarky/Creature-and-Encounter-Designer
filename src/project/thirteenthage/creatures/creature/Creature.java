@@ -279,4 +279,39 @@ public class Creature implements ICreature
 		return _levelAdjustment;
 	}
 
+	
+	@Override
+	public boolean equals(Object other)
+	{
+		if (other instanceof Creature)
+		{
+			boolean equality = true;
+			
+			Creature otherCreature = (Creature) other;
+			
+			equality &= otherCreature.getName().equals(this.getName());
+			equality &= otherCreature.getSize() == this.getSize();
+			equality &= otherCreature.getLevel() == this.getLevel();
+			equality &= otherCreature.getLabels().equals(this.getLabels());
+			equality &= otherCreature.getAC() == this.getAC();
+			equality &= otherCreature.getPD() == this.getPD();
+			equality &= otherCreature.getMD() == this.getMD();
+			equality &= otherCreature.getHP() == this.getHP();
+			equality &= otherCreature.getInitiative() == this.getInitiative();
+			equality &= otherCreature.getStrikeDamage() == this.getStrikeDamage();
+			equality &= otherCreature.getFearThreshold() == this.getFearThreshold();
+			equality &= otherCreature.getTemplate().getAttacks().equals(this.getTemplate().getAttacks());
+			equality &= otherCreature.getTemplate().getSpecials().equals(this.getTemplate().getSpecials());
+			equality &= otherCreature.getTemplate().getNastierSpecials().equals(this.getTemplate().getNastierSpecials());
+			equality &= otherCreature.isMook() == this.isMook();
+			equality &= otherCreature.getLevelBase() == this.getLevelBase();
+			equality &= otherCreature.getLevelAdjustment() == this.getLevelAdjustment();
+			
+			return equality;
+		}
+		else
+		{
+			return super.equals(other);
+		}
+	}
 }

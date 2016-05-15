@@ -10,6 +10,8 @@ import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
 public class CreatureLoader
 {
 	private static CreatureLoader _instance = null;
+	
+	/** Maps creature ID to an instance of the creature. */
 	private Map<String, ICreature> _creatures = new HashMap<String, ICreature>();
 
 
@@ -43,5 +45,19 @@ public class CreatureLoader
 		}
 
 		return _instance;
+	}
+
+
+	public boolean isCreatureLoaded(ICreature creature)
+	{
+		for (final ICreature candidate : getCreatures().values())
+		{
+			if (candidate.equals(creature))
+			{
+				return true;
+			}
+		}
+		
+		return false;
 	}
 }

@@ -1,6 +1,5 @@
 package project.thirteenthage.creatures.internal.gui;
 
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,6 +12,7 @@ import project.thirteenthage.creatures.interfaces.IView;
 import project.thirteenthage.creatures.internal.gui.views.CreatureEditPanel;
 import project.thirteenthage.creatures.internal.gui.views.CreatureViewPanel;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
+import project.thirteenthage.creatures.loaders.CreatureLoader;
 
 //property change stuff
 
@@ -164,7 +164,6 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 			_editButton.setEnabled(false);
 			_cancelButton.setEnabled(true);
 			_applyButton.setEnabled(true);
-			_saveButton.setEnabled(false);
 			_addButton.setEnabled(false);
 			_editPanel.setVisible(true);
 		}
@@ -173,11 +172,25 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 			_editButton.setEnabled(true);
 			_cancelButton.setEnabled(false);
 			_applyButton.setEnabled(false);
-			_saveButton.setEnabled(true);
 			_addButton.setEnabled(true);
 			_editPanel.setVisible(false);
 		}
 		
+		if (canSave())
+		{			
+			_saveButton.setEnabled(true);
+		}
+		else
+		{
+			_saveButton.setEnabled(false);
+		}
+		
 		if (CreatureGui.GUI != null) CreatureGui.GUI.updateView();
+	}
+
+
+	private boolean canSave()
+	{
+		return !_isInEditMode && !CreatureLoader.getInstance().isCreatureLoaded(_selectedCreature);
 	}
 }
