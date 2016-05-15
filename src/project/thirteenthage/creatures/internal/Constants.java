@@ -12,6 +12,10 @@ public class Constants
 	
 	public static final int MAX_LEVEL = 20;
 
+	public static final int MIN_PLAYER_LEVEL = 1;
+	
+	public static final int MAX_PLAYER_LEVEL = 10;
+
 	public static final int MIN_STAT_MODIFIER = -6;
 
 	public static final int MAX_STAT_MODIFIER = +6;

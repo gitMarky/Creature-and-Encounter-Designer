@@ -82,11 +82,14 @@ public class EncounterDifficulty
 
 	private double getDifficultyTable(int levelDifference, CreatureSize size, boolean mook)
 	{
-		int row = Math.min(Math.max(levelDifference + 2, 0), 7);
+		int row = Math.min(Math.max(levelDifference + 2, -1), 7);
 
 		double difficulty = 1.0;
 		switch (row)
 		{
+			case -1:
+				difficulty = 0.5 / _level; // add a default for lower levels.
+				break;
 			case 0:
 				difficulty = 0.5;
 				break;

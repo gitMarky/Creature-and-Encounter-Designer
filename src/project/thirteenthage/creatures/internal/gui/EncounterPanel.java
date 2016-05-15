@@ -12,6 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import project.thirteenthage.creatures.interfaces.IView;
+import project.thirteenthage.creatures.internal.Constants;
+import project.thirteenthage.creatures.internal.gui.views.AmountChoicePanel;
 import project.thirteenthage.creatures.internal.gui.views.CreatureEncounterPanel;
 import project.thirteenthage.creatures.internal.gui.views.EncounterDifficultyView;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
@@ -28,6 +30,7 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 	private JPanel _creatureListPanel = new JPanel();
 	private JLabel _creatureListEmpty = new JLabel("No creatures were added to the encounter yet");
 	private EncounterDifficultyView _difficultyLabel = new EncounterDifficultyView();
+	private AmountChoicePanel _playerLevel = new AmountChoicePanel("Player level");
 
 	private JButton _clearButton = new JButton("Clear");
 
@@ -48,6 +51,10 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		_clearButton.addActionListener(this);
 		_buttonPanel.add(_clearButton);
 		_buttonPanel.add(_difficultyLabel);
+		_buttonPanel.add(_playerLevel);
+		
+		_playerLevel.setUpdateView(this);
+		_playerLevel.setBounds(Constants.MIN_PLAYER_LEVEL, Constants.MAX_PLAYER_LEVEL);
 
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.add(_buttonPanel);
@@ -103,6 +110,7 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		} else
 		{
 			_difficulty = new EncounterDifficulty(_creatures);
+			_difficulty.setPlayerLevel(_playerLevel.getAmount());
 			_difficultyLabel.displayDifficulty(_difficulty.getEncounterDifficulty());
 		}
 
