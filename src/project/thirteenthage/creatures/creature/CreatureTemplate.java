@@ -196,7 +196,7 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 
 
 	@Override
-	public void saveToFile()
+	public File saveToFile()
 	{
 		throw new IllegalStateException("Operation not intended");
 	}

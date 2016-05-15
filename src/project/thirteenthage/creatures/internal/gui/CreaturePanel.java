@@ -2,6 +2,7 @@ package project.thirteenthage.creatures.internal.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -9,10 +10,12 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import project.thirteenthage.creatures.interfaces.IView;
+import project.thirteenthage.creatures.internal.ApplicationLogger;
 import project.thirteenthage.creatures.internal.gui.views.CreatureEditPanel;
 import project.thirteenthage.creatures.internal.gui.views.CreatureViewPanel;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.loaders.CreatureLoader;
+import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
 
 //property change stuff
 
@@ -147,7 +150,15 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 	
 	private void saveCreature()
 	{
-		_selectedCreature.getTemplate().saveToFile();
+		final File template = _selectedCreature.getTemplate().saveToFile();
+
+		ApplicationLogger.getLogger().info("Loading the newly saved creature");
+		CreatureTemplateLoader.getInstance().load(template);
+		CreatureLoader.getInstance().load(CreatureTemplateLoader.getInstance());
+
+		CreatureGui.GUI.getMenuSelectionPanel().updateView();
+		
+		updateView();
 	}
 
 	private void transferCreatureToEncounter(ICreature creature)

@@ -26,8 +26,11 @@ public class CreatureLoader
 
 	protected void addEntry(final String id, final ICreatureTemplate template)
 	{
-		ICreature creature = template.toCreature();
-		getCreatures().put(id, creature);
+		if (!getCreatures().containsKey(id))
+		{
+			ICreature creature = template.toCreature();
+			getCreatures().put(id, creature);
+		}
 	}
 
 

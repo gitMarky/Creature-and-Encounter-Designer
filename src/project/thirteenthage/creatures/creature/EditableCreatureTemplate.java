@@ -5,6 +5,7 @@ import java.io.File;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
+import project.thirteenthage.creatures.internal.ApplicationLogger;
 import project.thirteenthage.creatures.internal.BasicXmlFile;
 import project.thirteenthage.creatures.internal.Constants;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
@@ -38,7 +39,7 @@ public class EditableCreatureTemplate extends AbstractCreatureTemplate
 	}
 
 	@Override
-	public void saveToFile()
+	public File saveToFile()
 	{
 		final String path = "custom/creature_" + getName().toLowerCase().replace(" ", "_") + "_" + System.currentTimeMillis() + LoaderHelper.EXTENSION_XML;
 		File targetFile = new File(Constants.RESOURCES, path);
@@ -138,5 +139,27 @@ public class EditableCreatureTemplate extends AbstractCreatureTemplate
 		
 		final BasicXmlFile template = new BasicXmlFile(document, targetFile);
 		template.saveToFile();
+		
+		ApplicationLogger.getLogger().info("Saving new creature to: " + targetFile.getAbsolutePath());
+
+		long oldLength = -1;
+		long newLength = targetFile.length();
+		for (int i = 0; oldLength != newLength && i < 60; ++i)
+		{
+			oldLength = newLength;
+			newLength = targetFile.length();
+			
+			ApplicationLogger.getLogger().info("... still writing the file");
+			
+			try
+			{
+				Thread.sleep(1000);
+			} catch (InterruptedException e)
+			{
+				e.printStackTrace();
+			}
+		}
+
+		return targetFile;
 	}
 }

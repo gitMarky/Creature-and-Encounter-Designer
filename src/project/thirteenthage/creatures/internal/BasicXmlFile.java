@@ -60,7 +60,9 @@ public class BasicXmlFile
 		// FileWriter("generatedXmlFiles/generatedXml.xml"));
 		try
 		{
-			xmlOutput.output(_doc, new FileWriter(file));
+			FileWriter fileWriter = new FileWriter(file);
+			xmlOutput.output(_doc, fileWriter);
+			fileWriter.close();
 			return true;
 		} catch (IOException e)
 		{

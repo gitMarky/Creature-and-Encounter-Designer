@@ -6,6 +6,7 @@ import java.awt.event.ItemListener;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
+import project.thirteenthage.creatures.interfaces.IView;
 import project.thirteenthage.creatures.loaders.CreatureLoader;
 import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
 
@@ -13,7 +14,7 @@ import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
  * This panel contains a combo box that lets you select the loaded creatures.
  */
 @SuppressWarnings("serial")
-class MenuSelectionPanel extends JPanel
+class MenuSelectionPanel extends JPanel implements IView
 {
 	private final JComboBox<MenuSelectionItem> _creatureList;
 
@@ -23,13 +24,27 @@ class MenuSelectionPanel extends JPanel
 		_creatureList = new JComboBox<MenuSelectionItem>();
 		_creatureList.addItemListener(new MenuSelectionListener());
 
+		updateSelectionList();
+
+		this.add(_creatureList);
+	}
+
+	
+	@Override
+	public void updateView()
+	{
+		updateSelectionList();
+	}
+
+
+	private void updateSelectionList()
+	{
+		_creatureList.removeAllItems();
 		for (final String item : CreatureTemplateLoader.getInstance().getTemplates().keySet())
 		{
 			MenuSelectionItem menuSelectionItem = new MenuSelectionItem(item);
 			_creatureList.addItem(menuSelectionItem);
 		}
-
-		this.add(_creatureList);
 	}
 
 

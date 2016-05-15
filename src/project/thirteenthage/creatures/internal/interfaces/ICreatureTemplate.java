@@ -1,5 +1,6 @@
 package project.thirteenthage.creatures.internal.interfaces;
 
+import java.io.File;
 import java.util.List;
 
 import project.thirteenthage.creatures.creature.BetterDefense;
@@ -147,5 +148,5 @@ public interface ICreatureTemplate extends INamedItem, ILeveledItem
 	/**
 	 * Saves the template to a file.
 	 */
-	void saveToFile();
+	File saveToFile();
 }
