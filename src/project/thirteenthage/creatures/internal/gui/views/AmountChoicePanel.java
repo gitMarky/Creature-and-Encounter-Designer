@@ -23,11 +23,13 @@ public class AmountChoicePanel extends JPanel implements ActionListener
 	private JLabel _amountLabel = new JLabel(Integer.toString(_amount));
 	private JButton _minusButton = new JButton("-");
 	private JButton _plusButton = new JButton("+");
-	
+
 	private int _lowerBound = 1;
 	private int _upperBound = Integer.MAX_VALUE;
+	private int _buttonStep = 1;
 
 	private IView _updateOnAmountChanged = null;
+	private String _outputText = "%d";
 
 
 	public AmountChoicePanel(final String name)
@@ -53,9 +55,9 @@ public class AmountChoicePanel extends JPanel implements ActionListener
 	public void actionPerformed(ActionEvent event)
 	{
 		if (event.getSource() == _minusButton)
-			changeAmount(-1);
+			changeAmount(-_buttonStep);
 		if (event.getSource() == _plusButton)
-			changeAmount(+1);
+			changeAmount(+_buttonStep);
 		if (event.getSource() == _amountField)
 		{
 			try
@@ -88,12 +90,12 @@ public class AmountChoicePanel extends JPanel implements ActionListener
 	{
 		if (_amount < _lowerBound)
 			_amount = _lowerBound;
-		
+
 		// this will probably fail with the max integer...
 		if (_amount > _upperBound)
 			_amount = _upperBound;
 
-		_amountLabel.setText(Integer.toString(_amount));
+		_amountLabel.setText(String.format(_outputText , _amount));
 
 		if (_updateOnAmountChanged != null)
 		{
@@ -112,7 +114,8 @@ public class AmountChoicePanel extends JPanel implements ActionListener
 	{
 		return _amount;
 	}
-	
+
+
 	public void setBounds(final int lowerBound, final int upperBound)
 	{
 		if (Integer.MIN_VALUE >= lowerBound)
@@ -127,8 +130,20 @@ public class AmountChoicePanel extends JPanel implements ActionListener
 		{
 			throw new IllegalArgumentException("The lower bound must be less than and not equal to the upper bound: " + lowerBound + " < " + upperBound);
 		}
-		
+
 		_lowerBound = lowerBound;
 		_upperBound = upperBound;
+	}
+
+
+	public void setButtonStep(final int step)
+	{
+		_buttonStep = step;
+	}
+	
+	
+	public void setOutputText(final String text)
+	{
+		_outputText = text;
 	}
 }

@@ -15,4 +15,8 @@ public class Constants
 	public static final int MIN_STAT_MODIFIER = -6;
 
 	public static final int MAX_STAT_MODIFIER = +6;
+
+	public static final int MIN_HP_MODIFIER = -50;
+
+	public static final int MAX_HP_MODIFIER = 100;
 }
