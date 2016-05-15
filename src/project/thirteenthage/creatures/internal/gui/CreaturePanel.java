@@ -82,6 +82,7 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 		_selectedCreature = creature;
 		_panel = new CreatureViewPanel(_selectedCreature);
 		_innerPanel.add(_panel);
+		updateView();
 	}
 
 

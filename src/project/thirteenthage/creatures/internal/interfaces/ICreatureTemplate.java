@@ -2,6 +2,7 @@ package project.thirteenthage.creatures.internal.interfaces;
 
 import java.util.List;
 
+import project.thirteenthage.creatures.creature.BetterDefense;
 import project.thirteenthage.creatures.creature.CreatureSize;
 
 /**
@@ -101,6 +102,14 @@ public interface ICreatureTemplate extends INamedItem, ILeveledItem
 	 * @return the modifier.
 	 */
 	int getModifierInitiative();
+	
+	
+	/**
+	 * Determines which defense from the monster template is the better defense:
+	 * MD or PD.
+	 * @return the better defense.
+	 */
+	BetterDefense getBetterDefense();
 
 
 	/**

@@ -18,6 +18,8 @@ public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 		       .addPD(getModifierPD())
 		       .addMD(getModifierMD())
 		       .scaleHP(getModifierHP());
+		
+		if (getBetterDefense() == BetterDefense.MD) builder.betterDefenseIsMD();
 
 		final Creature creature;
 		if (getLabels().contains("Mook"))

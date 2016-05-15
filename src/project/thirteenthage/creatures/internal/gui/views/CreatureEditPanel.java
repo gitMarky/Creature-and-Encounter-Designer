@@ -20,6 +20,7 @@ public class CreatureEditPanel extends JPanel implements IView
 	private final AmountChoicePanel _pdSetter = new AmountChoicePanel("PD");
 	private final AmountChoicePanel _mdSetter = new AmountChoicePanel("MD");
 	private final AmountChoicePanel _hpSetter = new AmountChoicePanel("HP");
+	private final DefenseChoicePanel _defenseSetter = new DefenseChoicePanel();
 	private CreaturePanel _creaturePanel;
 
 	private ICreature _originalCreature = null;
@@ -38,7 +39,9 @@ public class CreatureEditPanel extends JPanel implements IView
 		addSetter(_pdSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
 		addSetter(_mdSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
 		addSetter(_hpSetter, Constants.MIN_HP_MODIFIER, Constants.MAX_HP_MODIFIER);
-		
+		this.add(_defenseSetter);
+		_defenseSetter.setUpdateView(this);
+
 		_hpSetter.setOutputText("%+d %%"); // display percent
 		_hpSetter.setButtonStep(5); // change 5% at once
 	}
@@ -119,13 +122,15 @@ public class CreatureEditPanel extends JPanel implements IView
 			_editedCreature.setPD(_pdSetter.getAmount());
 			_editedCreature.setMD(_mdSetter.getAmount());
 			_editedCreature.setHP(integerToPercentage(_hpSetter.getAmount()));
+			_editedCreature.setBetterDefense(_defenseSetter.getBetterDefense());
 		}
 		updateLevelAdjust();
 	}
 
 
 	/**
-	 * Sets the edited creature template stats to the values of its original template.
+	 * Sets the edited creature template stats to the values of its original
+	 * template.
 	 */
 	private void resetToDefaults(final ICreatureTemplate template)
 	{
@@ -136,6 +141,7 @@ public class CreatureEditPanel extends JPanel implements IView
 		_pdSetter.setAmount(template.getModifierPD());
 		_mdSetter.setAmount(template.getModifierMD());
 		_hpSetter.setAmount(percentageToInteger(template.getModifierHP()));
+		_defenseSetter.setBetterDefense(template.getBetterDefense());
 		_isCreatureReset = true;
 		updateLevelAdjust();
 	}
@@ -145,12 +151,14 @@ public class CreatureEditPanel extends JPanel implements IView
 	{
 		_levelAdjust.display(_attackSetter.getAmount(), _acSetter.getAmount(), _pdSetter.getAmount(), _mdSetter.getAmount(), integerToPercentage(_hpSetter.getAmount()));
 	}
-	
+
+
 	private double integerToPercentage(int amount)
 	{
 		return 1.0 + amount / 100.0;
 	}
-	
+
+
 	private int percentageToInteger(double percentage)
 	{
 		return (int) Math.round((percentage - 1.0) * 100);

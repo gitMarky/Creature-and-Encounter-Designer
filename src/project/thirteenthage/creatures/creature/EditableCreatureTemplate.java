@@ -23,6 +23,7 @@ public class EditableCreatureTemplate extends AbstractCreatureTemplate
 	private int _md = 0;
 	private double _hp = 1.0;
 	private int _ini = 0;
+	private BetterDefense _betterDefense = BetterDefense.PD;
 	private List<IAttack> _attacks = new ArrayList<IAttack>();
 	private List<ISpecial> _specials = new ArrayList<ISpecial>();
 	private List<ISpecial> _nastier = new ArrayList<ISpecial>();
@@ -72,8 +73,15 @@ public class EditableCreatureTemplate extends AbstractCreatureTemplate
 	{
 		return _labels;
 	}
-	
-	
+
+
+	@Override
+	public BetterDefense getBetterDefense()
+	{
+		return _betterDefense;
+	}
+
+
 	@Override
 	public int getModifierAttack()
 	{
@@ -135,7 +143,7 @@ public class EditableCreatureTemplate extends AbstractCreatureTemplate
 	{
 		return _nastier;
 	}
-	
+
 
 	public void setName(String name)
 	{
@@ -190,4 +198,9 @@ public class EditableCreatureTemplate extends AbstractCreatureTemplate
 		_ini = ini;
 	}
 
+
+	public void setBetterDefense(BetterDefense defense)
+	{
+		_betterDefense = defense;
+	}
 }

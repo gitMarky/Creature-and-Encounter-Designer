@@ -19,7 +19,8 @@ import project.thirteenthage.creatures.loaders.SpecialTemplateLoader;
 public class CreatureTemplate extends AbstractCreatureTemplate
 {
 	private final BasicXmlFile _template;
-	
+
+
 	public CreatureTemplate(final File file)
 	{
 		this(new BasicXmlFile(file));
@@ -62,6 +63,18 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 			labels.add(label.getText());
 		}
 		return labels;
+	}
+
+
+	@Override
+	public BetterDefense getBetterDefense()
+	{
+		if ("true".equals(_template.getRoot().getChild("modifiers").getChild("md").getAttributeValue("better")))
+		{
+			return BetterDefense.MD;
+		}
+
+		return BetterDefense.PD;
 	}
 
 
@@ -117,7 +130,8 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 			String id = attack.getAttributeValue("id");
 
 			IAttack template = AttackTemplateLoader.getInstance().get(id);
-			if (template != null) attacks.add(template);
+			if (template != null)
+				attacks.add(template);
 		}
 
 		return attacks;
@@ -147,9 +161,10 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 			String id = special.getAttributeValue("id");
 
 			ISpecial template = SpecialTemplateLoader.getInstance().get(id);
-			if (template != null) specials.add(template);
+			if (template != null)
+				specials.add(template);
 		}
-		
+
 		return specials;
 	}
 }
