@@ -1,6 +1,7 @@
 package project.thirteenthage.creatures.creature;
 
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
+import project.thirteenthage.creatures.mechanics.LevelAdjustment;
 import project.thirteenthage.creatures.tables.CreatureTableRow;
 import project.thirteenthage.creatures.tables.CreatureTables;
 
@@ -126,25 +127,26 @@ public class CreatureBuilder
 
 		creature.setAttackModifier(_modifierAttack);
 
-		creature.setAC(creature.getLevel() + 16 + _modifierAC);
+		creature.setAC(_level + 16 + _modifierAC);
 
 		if (_betterDefenseIsPD)
 		{
-			creature.setPD(creature.getLevel() + 14 + _modifierPD);
-			creature.setMD(creature.getLevel() + 10 + _modifierMD);
+			creature.setPD(_level + 14 + _modifierPD);
+			creature.setMD(_level + 10 + _modifierMD);
 		} else
 		{
-			creature.setPD(creature.getLevel() + 10 + _modifierPD);
-			creature.setMD(creature.getLevel() + 14 + _modifierMD);
+			creature.setPD(_level + 10 + _modifierPD);
+			creature.setMD(_level + 14 + _modifierMD);
 		}
 
-		creature.setInitiative(creature.getLevel() + _modifierInitiative);
+		creature.setInitiative(_level + _modifierInitiative);
 
 		final CreatureTableRow sizeInfo = CreatureTables.bySize(_size).get(_level);
 
 		creature.setHP(sizeInfo.getHP() * _factorHP);
 		creature.setFearThreshold(sizeInfo.getFearThreshold() * _factorHP);
 		creature.setStrikeDamage(sizeInfo.getStrikeDamage() * _factorDamage);
+		creature.setLevelAdjustment(LevelAdjustment.getLevelAdjustment(_modifierAttack, _modifierAC, _modifierPD, _modifierMD, _factorHP));
 
 		return creature;
 	}

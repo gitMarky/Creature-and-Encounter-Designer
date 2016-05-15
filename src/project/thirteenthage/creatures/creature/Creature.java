@@ -17,6 +17,7 @@ public class Creature implements ICreature
 {
 	private String _name = "New creature";
 	private int _level = 1;
+	private int _levelAdjustment = 0;
 	private List<String> _labels = new ArrayList<String>();
 	private int _attack = 0;
 	private int _ac = 0;
@@ -51,7 +52,7 @@ public class Creature implements ICreature
 	@Override
 	public int getLevel()
 	{
-		return _level;
+		return getLevelBase() + getLevelAdjustment();
 	}
 
 
@@ -259,4 +260,23 @@ public class Creature implements ICreature
 	{
 		_template = template;
 	}
+
+
+	public void setLevelAdjustment(int amount)
+	{
+		_levelAdjustment = amount;
+	}
+	
+	
+	public int getLevelBase()
+	{
+		return _level;
+	}
+
+
+	public int getLevelAdjustment()
+	{
+		return _levelAdjustment;
+	}
+
 }

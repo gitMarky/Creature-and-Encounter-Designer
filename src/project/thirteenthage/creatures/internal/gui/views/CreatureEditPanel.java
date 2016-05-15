@@ -14,7 +14,7 @@ import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
 public class CreatureEditPanel extends JPanel implements IView
 {
 	private final LevelAdjustPanel _levelAdjust = new LevelAdjustPanel();
-	private final AmountChoicePanel _levelSetter = new AmountChoicePanel("Level");
+	private final AmountChoicePanel _levelSetter = new AmountChoicePanel("Base Level");
 	private final AmountChoicePanel _attackSetter = new AmountChoicePanel("Attack");
 	private final AmountChoicePanel _acSetter = new AmountChoicePanel("AC");
 	private final AmountChoicePanel _pdSetter = new AmountChoicePanel("PD");
