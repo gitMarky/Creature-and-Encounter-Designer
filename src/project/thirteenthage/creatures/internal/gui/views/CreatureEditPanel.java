@@ -23,6 +23,7 @@ public class CreatureEditPanel extends JPanel implements IView
 	private final AmountChoicePanel _hpSetter = new AmountChoicePanel("HP");
 	private final DefenseChoicePanel _defenseSetter = new DefenseChoicePanel();
 	private final TextChoicePanel _nameSetter = new TextChoicePanel("Name");
+	private final SizeChoicePanel _sizeSetter = new SizeChoicePanel();
 	private CreaturePanel _creaturePanel;
 
 	private ICreature _originalCreature = null;
@@ -38,6 +39,7 @@ public class CreatureEditPanel extends JPanel implements IView
 		addSetter(_nameSetter);
 		addSetter(_levelSetter, Constants.MIN_LEVEL, Constants.MAX_LEVEL);
 		this.add(_levelAdjust);
+		addSetter(_sizeSetter);
 		addSetter(_attackSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
 		addSetter(_acSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
 		addSetter(_pdSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
@@ -127,6 +129,7 @@ public class CreatureEditPanel extends JPanel implements IView
 			_editedCreature.setMD(_mdSetter.getAmount());
 			_editedCreature.setHP(integerToPercentage(_hpSetter.getAmount()));
 			_editedCreature.setBetterDefense(_defenseSetter.getBetterDefense());
+			_editedCreature.setSize(_sizeSetter.getCreatureSize());
 		}
 		updateLevelAdjust();
 	}
@@ -147,6 +150,7 @@ public class CreatureEditPanel extends JPanel implements IView
 		_mdSetter.setAmount(template.getModifierMD());
 		_hpSetter.setAmount(percentageToInteger(template.getModifierHP()));
 		_defenseSetter.setBetterDefense(template.getBetterDefense());
+		_sizeSetter.setCreatureSize(template.getSize());
 		_isCreatureReset = true;
 		updateLevelAdjust();
 	}
