@@ -39,7 +39,7 @@ public class DefenseChoicePanel extends ChoicePanel implements ActionListener
 		_mdButton.addActionListener(this);
 		_pdButton.addActionListener(this);
 
-		this.setLayout(new GridLayout(1, 4));
+		this.setLayout(new GridLayout(2, 1));
 		this.setBorder(BorderFactory.createTitledBorder("Better defense"));
 	}
 
