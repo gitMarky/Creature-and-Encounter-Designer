@@ -7,6 +7,7 @@ import java.io.File;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 
 import project.thirteenthage.creatures.interfaces.IView;
@@ -118,7 +119,14 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 		}
 		if (event.getSource() == _saveButton)
 		{
-			saveCreature();
+			int choice = CreatureGui.GUI.getFileChooser().showSaveDialog(this);
+			
+			if (choice == JFileChooser.APPROVE_OPTION)
+			{
+				final File file = CreatureGui.GUI.getFileChooser().getSelectedFile();
+				saveCreature(file);
+			}
+				
 		}
 	}
 
@@ -148,9 +156,9 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 		updateView();
 	}
 	
-	private void saveCreature()
+	private void saveCreature(final File file)
 	{
-		final File template = _selectedCreature.getTemplate().saveToFile();
+		final File template = _selectedCreature.getTemplate().saveToFile(file);
 
 		ApplicationLogger.getLogger().info("Loading the newly saved creature");
 		CreatureTemplateLoader.getInstance().load(template);

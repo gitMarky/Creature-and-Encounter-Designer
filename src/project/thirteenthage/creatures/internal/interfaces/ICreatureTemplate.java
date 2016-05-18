@@ -147,6 +147,15 @@ public interface ICreatureTemplate extends INamedItem, ILeveledItem
 
 	/**
 	 * Saves the template to a file.
+	 * @return the file that the template was saved to.
 	 */
 	File saveToFile();
+
+
+	/**
+	 * Saves the template to a specific file.
+	 * @param file the target file.
+	 * @return the file that the template was saved to.
+	 */
+	File saveToFile(File file);
 }

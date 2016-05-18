@@ -200,4 +200,11 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 	{
 		throw new IllegalStateException("Operation not intended");
 	}
+	
+	
+	@Override
+	public File saveToFile(final File file)
+	{
+		return saveToFile();
+	}
 }

@@ -43,7 +43,13 @@ public class EditableCreatureTemplate extends AbstractCreatureTemplate
 	{
 		final String path = "custom/creature_" + getName().toLowerCase().replace(" ", "_") + "_" + System.currentTimeMillis() + LoaderHelper.EXTENSION_XML;
 		File targetFile = new File(Constants.RESOURCES, path);
-		
+		return saveToFile(targetFile);
+	}
+	
+	
+	@Override
+	public File saveToFile(final File targetFile)
+	{
 		final Element nameElement = new Element(CreatureTemplate.ELEMENT_NAME);
 		nameElement.setText(getName());
 		
