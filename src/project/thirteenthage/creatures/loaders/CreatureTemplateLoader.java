@@ -5,6 +5,7 @@ import project.thirteenthage.creatures.internal.BasicXmlFile;
 import project.thirteenthage.creatures.internal.Constants;
 import project.thirteenthage.creatures.internal.exceptions.LoaderException;
 import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
+import project.thirteenthage.creatures.lists.Lists;
 
 /**
  * Loads attack templates from a folder.
@@ -33,6 +34,8 @@ public class CreatureTemplateLoader extends AbstractLoader<ICreatureTemplate>
 		}
 
 		getTemplates().put(id, template);
+		
+		Lists.labels().addAll(template.getLabels());
 	}
 
 

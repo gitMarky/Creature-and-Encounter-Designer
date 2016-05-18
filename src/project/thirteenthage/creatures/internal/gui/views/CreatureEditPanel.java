@@ -1,6 +1,11 @@
 package project.thirteenthage.creatures.internal.gui.views;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -10,9 +15,10 @@ import project.thirteenthage.creatures.internal.Constants;
 import project.thirteenthage.creatures.internal.gui.CreaturePanel;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
+import project.thirteenthage.creatures.lists.Lists;
 
 @SuppressWarnings("serial")
-public class CreatureEditPanel extends JPanel implements IView
+public class CreatureEditPanel extends JPanel implements IView, ActionListener
 {
 	private final LevelAdjustPanel _levelAdjust = new LevelAdjustPanel();
 	private final AmountChoicePanel _levelSetter = new AmountChoicePanel("Base Level");
@@ -24,6 +30,8 @@ public class CreatureEditPanel extends JPanel implements IView
 	private final DefenseChoicePanel _defenseSetter = new DefenseChoicePanel();
 	private final TextChoicePanel _nameSetter = new TextChoicePanel("Name");
 	private final SizeChoicePanel _sizeSetter = new SizeChoicePanel();
+	private final JButton _labelsButton = new JButton("Labels");
+	private JFrame _labelsFrame;
 	private CreaturePanel _creaturePanel;
 
 	private ICreature _originalCreature = null;
@@ -40,13 +48,16 @@ public class CreatureEditPanel extends JPanel implements IView
 		addSetter(_levelSetter, Constants.MIN_LEVEL, Constants.MAX_LEVEL);
 		this.add(_levelAdjust);
 		addSetter(_sizeSetter);
+		this.add(_labelsButton); _labelsButton.addActionListener(this);
 		addSetter(_attackSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
 		addSetter(_acSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
 		addSetter(_pdSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
 		addSetter(_mdSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
 		addSetter(_hpSetter, Constants.MIN_HP_MODIFIER, Constants.MAX_HP_MODIFIER);
 		addSetter(_defenseSetter);
-
+		
+		_labelsFrame = new JFrame();
+		
 		_hpSetter.setOutputText("%+d %%"); // display percent
 		_hpSetter.setButtonStep(5); // change 5% at once
 	}
@@ -69,6 +80,7 @@ public class CreatureEditPanel extends JPanel implements IView
 	@Override
 	public void updateView()
 	{
+		confirmLabelsSelection();
 		updateCreature();
 		displayCreature();
 	}
@@ -152,6 +164,12 @@ public class CreatureEditPanel extends JPanel implements IView
 		_defenseSetter.setBetterDefense(template.getBetterDefense());
 		_sizeSetter.setCreatureSize(template.getSize());
 		_isCreatureReset = true;
+		
+//		_labelsFrame.setVisible(false);
+//		_labelsFrame.removeAll();
+//		ListTransferPanel<String> listTransfer = new ListTransferPanel<String>(Lists.labels(), _editedCreature.getLabels());
+//		_labelsFrame.add(listTransfer);
+
 		updateLevelAdjust();
 	}
 
@@ -171,5 +189,34 @@ public class CreatureEditPanel extends JPanel implements IView
 	private int percentageToInteger(double percentage)
 	{
 		return (int) Math.round((percentage - 1.0) * 100);
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent action)
+	{
+		if (action.getSource() == _labelsButton)
+		{
+			showLabelsSelection();
+		}
+	}
+
+
+	private void showLabelsSelection()
+	{
+		_labelsFrame = new JFrame("Select labels");
+		ListTransferPanel<String> listTransfer = new ListTransferPanel<String>(Lists.labels(), _editedCreature.getLabels());
+		listTransfer.setUpdateView(this);
+		_labelsFrame.add(listTransfer);
+		_labelsFrame.pack();
+		_labelsFrame.setVisible(true);
+		_labelsButton.setEnabled(false);
+	}
+	
+	
+	private void confirmLabelsSelection()
+	{
+		_labelsButton.setEnabled(true);
+		if (_labelsFrame != null) _labelsFrame.setVisible(false);
 	}
 }
