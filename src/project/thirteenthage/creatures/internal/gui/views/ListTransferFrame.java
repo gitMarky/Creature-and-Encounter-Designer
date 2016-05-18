@@ -27,7 +27,9 @@ public class ListTransferFrame extends JFrame
 		final List<String> listB = new ArrayList<String>();
 		listB.add("D");
 		
+		
 		final ListTransferPanel<String> panel = new ListTransferPanel<String>(listA, listB);
+		panel.setLeftListLocked(true);
 		frame.add(panel);
 		frame.pack();
 		frame.setVisible(true);

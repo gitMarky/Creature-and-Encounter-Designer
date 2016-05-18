@@ -32,6 +32,9 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 	private final JList<T> _listDisplayA;
 	private final JList<T> _listDisplayB;
 
+	private boolean _listAlocked = false;
+	private boolean _listBlocked = false;
+
 
 	public ListTransferPanel(final List<T> listA, final List<T> listB)
 	{
@@ -75,7 +78,7 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 		buttonPanel.add(_transferToListBbutton);
 		buttonPanel.add(_transferToListAbutton);
 		buttonPanel.add(_confirmButton);
-		
+
 		updateListsModels();
 
 		this.setLayout(new GridLayout(1, 3));
@@ -83,6 +86,86 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 		this.add(buttonPanel);
 		this.add(listBpanel);
 
+	}
+
+
+	public void setLeftListLocked(final boolean locked)
+	{
+		_listAlocked = locked;
+	}
+
+
+	public void setRightListLocked(final boolean locked)
+	{
+		_listBlocked = locked;
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent action)
+	{
+		if (action.getSource() == _transferToListBbutton)
+		{
+			transferFromOneListToTheOther(_listA, _listB, _listDisplayA, _listAlocked);
+		}
+
+		if (action.getSource() == _transferToListAbutton)
+		{
+			transferFromOneListToTheOther(_listB, _listA, _listDisplayB, _listBlocked);
+		}
+
+		if (action.getSource() == _confirmButton)
+		{
+			updateView();
+		}
+	}
+
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public void valueChanged(ListSelectionEvent selection)
+	{
+		final JButton transferButton;
+		if (selection.getSource() == _listDisplayA)
+			transferButton = _transferToListBbutton;
+		else
+			transferButton = _transferToListAbutton;
+
+		if (((JList<T>) selection.getSource()).getSelectedIndex() == -1)
+		{
+			transferButton.setEnabled(false);
+		} else
+		{
+			transferButton.setEnabled(true);
+		}
+	}
+
+
+	private void transferFromOneListToTheOther(final List<T> listA, final List<T> listB, final JList<T> selection, boolean locked)
+	{
+		final List<T> transferSelection = new ArrayList<T>();
+
+		System.out.println("Transferring to list B:");
+		for (int index : selection.getSelectedIndices())
+		{
+			T elementAt = listA.get(index);// ;= (T)
+											// _listDisplayA.getModel().getElementAt(index);
+
+			transferSelection.add(elementAt);
+		}
+
+		for (final T element : transferSelection)
+		{
+			listB.add(element);
+			if (!locked) listA.remove(element);
+
+			System.out.println("- " + element);
+		}
+
+		updateListsModels();
+
+		_listDisplayA.setModel(_listModelA);
+		_listDisplayB.setModel(_listModelB);
 	}
 
 
@@ -102,74 +185,5 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 
 		_transferToListAbutton.setEnabled(!_listB.isEmpty() && _listDisplayB.getSelectedIndex() != -1);
 		_transferToListBbutton.setEnabled(!_listA.isEmpty() && _listDisplayA.getSelectedIndex() != -1);
-	}
-
-
-	@Override
-	public void actionPerformed(ActionEvent arg0)
-	{
-		if (arg0.getSource() == _transferToListBbutton)
-		{
-			transferFromOneListToTheOther(_listA, _listB, _listDisplayA);
-		}
-
-		if (arg0.getSource() == _transferToListAbutton)
-		{
-			transferFromOneListToTheOther(_listB, _listA, _listDisplayB);
-		}
-		
-
-		if (arg0.getSource() == _confirmButton)
-		{
-			updateView();
-		}
-	}
-
-
-	@Override
-	public void valueChanged(ListSelectionEvent arg0)
-	{
-		final JButton transferButton;
-		if (arg0.getSource() == _listDisplayA)
-			transferButton = _transferToListBbutton;
-		else
-			transferButton = _transferToListAbutton;
-		
-		if (((JList) arg0.getSource()).getSelectedIndex() == -1)
-		{
-			transferButton.setEnabled(false);
-		}
-		else
-		{
-			transferButton.setEnabled(true);
-		}
-	}
-
-
-	private void transferFromOneListToTheOther(final List<T> listA, final List<T> listB, final JList<T> selection)
-	{
-		final List<T> transferSelection = new ArrayList<T>();
-		
-		System.out.println("Transferring to list B:");
-		for (int index : selection.getSelectedIndices())
-		{
-			T elementAt = listA.get(index);// ;= (T)
-											// _listDisplayA.getModel().getElementAt(index);
-
-			transferSelection.add(elementAt);
-		}
-		
-		for (final T element : transferSelection)
-		{
-			listB.add(element);
-			listA.remove(element);
-
-			System.out.println("- " + element);
-		}
-
-		updateListsModels();
-
-		_listDisplayA.setModel(_listModelA);
-		_listDisplayB.setModel(_listModelB);
 	}
 }
