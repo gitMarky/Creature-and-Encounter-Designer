@@ -1,5 +1,7 @@
 package project.thirteenthage.creatures.loaders;
 
+import java.util.Collections;
+
 import project.thirteenthage.creatures.creature.CreatureTemplate;
 import project.thirteenthage.creatures.internal.BasicXmlFile;
 import project.thirteenthage.creatures.internal.Constants;
@@ -35,7 +37,12 @@ public class CreatureTemplateLoader extends AbstractLoader<ICreatureTemplate>
 
 		getTemplates().put(id, template);
 		
-		Lists.labels().addAll(template.getLabels());
+		for (final String label : template.getLabels())
+		{
+			if (!Lists.labels().contains(label))
+				Lists.labels().add(label);
+		}
+		Collections.sort(Lists.labels());
 	}
 
 
