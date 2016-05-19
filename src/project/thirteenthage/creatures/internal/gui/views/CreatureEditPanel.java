@@ -18,8 +18,10 @@ import project.thirteenthage.creatures.internal.gui.CreaturePanel;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
+import project.thirteenthage.creatures.internal.interfaces.ISpecial;
 import project.thirteenthage.creatures.lists.Lists;
 import project.thirteenthage.creatures.loaders.AttackTemplateLoader;
+import project.thirteenthage.creatures.loaders.SpecialTemplateLoader;
 
 @SuppressWarnings("serial")
 public class CreatureEditPanel extends JPanel implements IView, ActionListener
@@ -41,7 +43,12 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 	// editing attacks
 	private final JButton _attacksButton = new JButton("Attacks");
 	private JFrame _attacksFrame;
-	
+	// editing specials
+	private final JButton _specialsButton = new JButton("Specials");
+	private JFrame _specialsFrame;	
+	// editing nastier specials
+	private final JButton _nastierButton = new JButton("Nastier Specials");
+	private JFrame _nastierFrame;
 	// the creature view
 	private CreaturePanel _creaturePanel;
 
@@ -65,7 +72,8 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		this.add(_labelsButton); _labelsButton.addActionListener(this);
 		// center column
 		this.add(_attacksButton); _attacksButton.addActionListener(this);
-		
+		this.add(_specialsButton); _specialsButton.addActionListener(this);
+		this.add(_nastierButton); _nastierButton.addActionListener(this);
 		// right column
 		addSetter(_attackSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
 		addSetter(_acSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
@@ -221,6 +229,16 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		{
 			showAttacksSelection();
 		}
+		
+		if (action.getSource() == _specialsButton)
+		{
+			showSpecialsSelection();
+		}
+		
+		if (action.getSource() == _nastierButton)
+		{
+			showNastierSpecialsSelection();
+		}
 	}
 
 
@@ -234,7 +252,6 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		_labelsFrame.pack();
 		_labelsFrame.setVisible(true);
 		_labelsFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-		_labelsButton.setEnabled(false);
 		listTransfer.setLeftListLocked(true);
 		listTransfer.setLeftListUnique(true);
 		listTransfer.setRightListUnique(true);
@@ -248,13 +265,19 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		});
 		
 		// disable other buttons
+		_labelsButton.setEnabled(false);
 		_attacksButton.setEnabled(false);
+		_specialsButton.setEnabled(false);
+		_nastierButton.setEnabled(false);
 	}
 	
 	
 	private void confirmLabelsSelection()
 	{
 		_labelsButton.setEnabled(true);
+		_attacksButton.setEnabled(true);
+		_specialsButton.setEnabled(true);
+		_nastierButton.setEnabled(true);
 		if (_labelsFrame != null) _labelsFrame.setVisible(false);
 		updateView();
 	}
@@ -270,7 +293,6 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		_attacksFrame.pack();
 		_attacksFrame.setVisible(true);
 		_attacksFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-		_attacksButton.setEnabled(false);
 		listTransfer.setLeftListLocked(true);
 		listTransfer.setLeftListUnique(true);
 		listTransfer.setRightListUnique(true);
@@ -285,14 +307,103 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		
 		// disable other buttons
 		_labelsButton.setEnabled(false);
+		_attacksButton.setEnabled(false);
+		_specialsButton.setEnabled(false);
+		_nastierButton.setEnabled(false);
 	}
 
 	
 	private void confirmAttacksSelection()
 	{
+		_labelsButton.setEnabled(true);
 		_attacksButton.setEnabled(true);
+		_specialsButton.setEnabled(true);
+		_nastierButton.setEnabled(true);
 		if (_attacksFrame != null) _attacksFrame.setVisible(false);
 		updateView();
 	}
 
+
+
+
+	private void showSpecialsSelection()
+	{
+		// set up the new frame
+		_specialsFrame = new JFrame("Select specials");
+		ListTransferPanel<ISpecial> listTransfer = new ListTransferPanel<ISpecial>(new ArrayList<ISpecial>(SpecialTemplateLoader.getInstance().getTemplates().values()), _editedCreature.getSpecials());
+		listTransfer.setUpdateView(this);
+		_specialsFrame.add(listTransfer);
+		_specialsFrame.pack();
+		_specialsFrame.setVisible(true);
+		_specialsFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+		listTransfer.setLeftListLocked(true);
+		listTransfer.setLeftListUnique(true);
+		listTransfer.setRightListUnique(true);
+		listTransfer.getConfirmButton().addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent action)
+			{
+				confirmSpecialsSelection();
+			}
+		});
+		
+		// disable other buttons
+		_labelsButton.setEnabled(false);
+		_attacksButton.setEnabled(false);
+		_specialsButton.setEnabled(false);
+		_nastierButton.setEnabled(false);
+	}
+
+	
+	private void confirmSpecialsSelection()
+	{
+		_labelsButton.setEnabled(true);
+		_attacksButton.setEnabled(true);
+		_specialsButton.setEnabled(true);
+		_nastierButton.setEnabled(true);
+		if (_specialsFrame != null) _specialsFrame.setVisible(false);
+		updateView();
+	}
+
+	
+	private void showNastierSpecialsSelection()
+	{
+		// set up the new frame
+		_nastierFrame = new JFrame("Select nastier specials");
+		ListTransferPanel<ISpecial> listTransfer = new ListTransferPanel<ISpecial>(new ArrayList<ISpecial>(SpecialTemplateLoader.getInstance().getTemplates().values()), _editedCreature.getNastierSpecials());
+		listTransfer.setUpdateView(this);
+		_nastierFrame.add(listTransfer);
+		_nastierFrame.pack();
+		_nastierFrame.setVisible(true);
+		_nastierFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+		listTransfer.setLeftListLocked(true);
+		listTransfer.setLeftListUnique(true);
+		listTransfer.setRightListUnique(true);
+		listTransfer.getConfirmButton().addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent action)
+			{
+				confirmNastierSpecialsSelection();
+			}
+		});
+		
+		// disable other buttons
+		_labelsButton.setEnabled(false);
+		_attacksButton.setEnabled(false);
+		_specialsButton.setEnabled(false);
+		_nastierButton.setEnabled(false);
+	}
+
+	
+	private void confirmNastierSpecialsSelection()
+	{
+		_labelsButton.setEnabled(true);
+		_attacksButton.setEnabled(true);
+		_specialsButton.setEnabled(true);
+		_nastierButton.setEnabled(true);
+		if (_nastierFrame != null) _nastierFrame.setVisible(false);
+		updateView();
+	}
 }

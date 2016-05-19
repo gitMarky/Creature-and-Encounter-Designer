@@ -43,4 +43,11 @@ public class SpecialTemplate implements ISpecial
 	{
 		throw new IllegalStateException("Not implemented");
 	}
+	
+	
+	@Override
+	public String toString()
+	{
+		return getName();
+	}
 }
