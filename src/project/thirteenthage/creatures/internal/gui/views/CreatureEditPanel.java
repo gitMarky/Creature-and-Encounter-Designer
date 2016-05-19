@@ -244,14 +244,8 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 
 	private void showLabelsSelection()
 	{
-		// set up the new frame
-		_labelsFrame = new JFrame("Select labels");
 		ListTransferPanel<String> listTransfer = new ListTransferPanel<String>(Lists.labels(), _editedCreature.getLabels());
 		listTransfer.setUpdateView(this);
-		_labelsFrame.add(listTransfer);
-		_labelsFrame.pack();
-		_labelsFrame.setVisible(true);
-		_labelsFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		listTransfer.setLeftListLocked(true);
 		listTransfer.setLeftListUnique(true);
 		listTransfer.setRightListUnique(true);
@@ -264,6 +258,13 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 			}
 		});
 		
+		// set up the new frame
+		_labelsFrame = new JFrame("Select labels");
+		_labelsFrame.add(listTransfer);
+		_labelsFrame.pack();
+		_labelsFrame.setVisible(true);
+		_labelsFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+
 		setButtonsEnabled(false);
 	}
 	
@@ -278,14 +279,8 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 
 	private void showAttacksSelection()
 	{
-		// set up the new frame
-		_attacksFrame = new JFrame("Select attacks");
 		ListTransferPanel<IAttack> listTransfer = new ListTransferPanel<IAttack>(new ArrayList<IAttack>(AttackTemplateLoader.getInstance().getTemplates().values()), _editedCreature.getAttacks());
 		listTransfer.setUpdateView(this);
-		_attacksFrame.add(listTransfer);
-		_attacksFrame.pack();
-		_attacksFrame.setVisible(true);
-		_attacksFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		listTransfer.setLeftListLocked(true);
 		listTransfer.setLeftListUnique(true);
 		listTransfer.setRightListUnique(true);
@@ -298,6 +293,13 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 			}
 		});
 		
+		// set up the new frame
+		_attacksFrame = new JFrame("Select attacks");
+		_attacksFrame.add(listTransfer);
+		_attacksFrame.pack();
+		_attacksFrame.setVisible(true);
+		_attacksFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+
 		setButtonsEnabled(false);
 	}
 
@@ -314,14 +316,8 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 
 	private void showSpecialsSelection()
 	{
-		// set up the new frame
-		_specialsFrame = new JFrame("Select specials");
 		ListTransferPanel<ISpecial> listTransfer = new ListTransferPanel<ISpecial>(new ArrayList<ISpecial>(SpecialTemplateLoader.getInstance().getTemplates().values()), _editedCreature.getSpecials());
 		listTransfer.setUpdateView(this);
-		_specialsFrame.add(listTransfer);
-		_specialsFrame.pack();
-		_specialsFrame.setVisible(true);
-		_specialsFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		listTransfer.setLeftListLocked(true);
 		listTransfer.setLeftListUnique(true);
 		listTransfer.setRightListUnique(true);
@@ -333,6 +329,13 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 				confirmSpecialsSelection();
 			}
 		});
+
+		// set up the new frame
+		_specialsFrame = new JFrame("Select specials");
+		_specialsFrame.add(listTransfer);
+		_specialsFrame.pack();
+		_specialsFrame.setVisible(true);
+		_specialsFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		
 		setButtonsEnabled(false);
 	}
@@ -348,14 +351,9 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 	
 	private void showNastierSpecialsSelection()
 	{
-		// set up the new frame
-		_nastierFrame = new JFrame("Select nastier specials");
+		// set up the list
 		ListTransferPanel<ISpecial> listTransfer = new ListTransferPanel<ISpecial>(new ArrayList<ISpecial>(SpecialTemplateLoader.getInstance().getTemplates().values()), _editedCreature.getNastierSpecials());
 		listTransfer.setUpdateView(this);
-		_nastierFrame.add(listTransfer);
-		_nastierFrame.pack();
-		_nastierFrame.setVisible(true);
-		_nastierFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		listTransfer.setLeftListLocked(true);
 		listTransfer.setLeftListUnique(true);
 		listTransfer.setRightListUnique(true);
@@ -367,6 +365,13 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 				confirmNastierSpecialsSelection();
 			}
 		});
+		
+		// set up the new frame
+		_nastierFrame = new JFrame("Select nastier specials");
+		_nastierFrame.add(listTransfer);
+		_nastierFrame.pack();
+		_nastierFrame.setVisible(true);
+		_nastierFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		
 		// disable other buttons
 		setButtonsEnabled(false);
