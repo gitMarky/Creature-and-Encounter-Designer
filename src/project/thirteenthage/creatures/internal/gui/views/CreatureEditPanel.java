@@ -2,6 +2,7 @@ package project.thirteenthage.creatures.internal.gui.views;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -14,13 +15,16 @@ import project.thirteenthage.creatures.creature.EditableCreatureTemplate;
 import project.thirteenthage.creatures.interfaces.IView;
 import project.thirteenthage.creatures.internal.Constants;
 import project.thirteenthage.creatures.internal.gui.CreaturePanel;
+import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
 import project.thirteenthage.creatures.lists.Lists;
+import project.thirteenthage.creatures.loaders.AttackTemplateLoader;
 
 @SuppressWarnings("serial")
 public class CreatureEditPanel extends JPanel implements IView, ActionListener
 {
+	// editing the stats
 	private final LevelAdjustPanel _levelAdjust = new LevelAdjustPanel();
 	private final AmountChoicePanel _levelSetter = new AmountChoicePanel("Base Level");
 	private final AmountChoicePanel _attackSetter = new AmountChoicePanel("Attack");
@@ -31,10 +35,17 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 	private final DefenseChoicePanel _defenseSetter = new DefenseChoicePanel();
 	private final TextChoicePanel _nameSetter = new TextChoicePanel("Name");
 	private final SizeChoicePanel _sizeSetter = new SizeChoicePanel();
+	// editing labels
 	private final JButton _labelsButton = new JButton("Labels");
 	private JFrame _labelsFrame;
+	// editing attacks
+	private final JButton _attacksButton = new JButton("Attacks");
+	private JFrame _attacksFrame;
+	
+	// the creature view
 	private CreaturePanel _creaturePanel;
 
+	// creature data
 	private ICreature _originalCreature = null;
 	private EditableCreatureTemplate _editedCreature = null;
 	private boolean _isCreatureReset;
@@ -45,11 +56,17 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		super();
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.add(new JLabel("TODO"));
+		// layout similar to the creature display:
+		// left column
 		addSetter(_nameSetter);
 		addSetter(_levelSetter, Constants.MIN_LEVEL, Constants.MAX_LEVEL);
 		this.add(_levelAdjust);
 		addSetter(_sizeSetter);
 		this.add(_labelsButton); _labelsButton.addActionListener(this);
+		// center column
+		this.add(_attacksButton); _attacksButton.addActionListener(this);
+		
+		// right column
 		addSetter(_attackSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
 		addSetter(_acSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
 		addSetter(_pdSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
@@ -199,11 +216,17 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		{
 			showLabelsSelection();
 		}
+		
+		if (action.getSource() == _attacksButton)
+		{
+			showAttacksSelection();
+		}
 	}
 
 
 	private void showLabelsSelection()
 	{
+		// set up the new frame
 		_labelsFrame = new JFrame("Select labels");
 		ListTransferPanel<String> listTransfer = new ListTransferPanel<String>(Lists.labels(), _editedCreature.getLabels());
 		listTransfer.setUpdateView(this);
@@ -223,6 +246,9 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 				confirmLabelsSelection();
 			}
 		});
+		
+		// disable other buttons
+		_attacksButton.setEnabled(false);
 	}
 	
 	
@@ -232,4 +258,41 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		if (_labelsFrame != null) _labelsFrame.setVisible(false);
 		updateView();
 	}
+
+
+	private void showAttacksSelection()
+	{
+		// set up the new frame
+		_attacksFrame = new JFrame("Select attacks");
+		ListTransferPanel<IAttack> listTransfer = new ListTransferPanel<IAttack>(new ArrayList<IAttack>(AttackTemplateLoader.getInstance().getTemplates().values()), _editedCreature.getAttacks());
+		listTransfer.setUpdateView(this);
+		_attacksFrame.add(listTransfer);
+		_attacksFrame.pack();
+		_attacksFrame.setVisible(true);
+		_attacksFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+		_attacksButton.setEnabled(false);
+		listTransfer.setLeftListLocked(true);
+		listTransfer.setLeftListUnique(true);
+		listTransfer.setRightListUnique(true);
+		listTransfer.getConfirmButton().addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent action)
+			{
+				confirmAttacksSelection();
+			}
+		});
+		
+		// disable other buttons
+		_labelsButton.setEnabled(false);
+	}
+
+	
+	private void confirmAttacksSelection()
+	{
+		_attacksButton.setEnabled(true);
+		if (_attacksFrame != null) _attacksFrame.setVisible(false);
+		updateView();
+	}
+
 }

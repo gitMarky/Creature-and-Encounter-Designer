@@ -103,4 +103,11 @@ public class AttackTemplate implements IAttack
 	{
 		return _triggers;
 	}
+	
+	
+	@Override
+	public String toString()
+	{
+		return getName();
+	}
 }
