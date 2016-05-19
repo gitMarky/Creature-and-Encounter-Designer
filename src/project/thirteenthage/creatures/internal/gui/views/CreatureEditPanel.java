@@ -39,18 +39,15 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 	private final SizeChoicePanel _sizeSetter = new SizeChoicePanel();
 	// editing labels
 	private final JButton _labelsButton = new JButton("Labels");
-	private JFrame _labelsFrame;
 	// editing attacks
 	private final JButton _attacksButton = new JButton("Attacks");
-	private JFrame _attacksFrame;
 	// editing specials
 	private final JButton _specialsButton = new JButton("Specials");
-	private JFrame _specialsFrame;	
 	// editing nastier specials
 	private final JButton _nastierButton = new JButton("Nastier Specials");
-	private JFrame _nastierFrame;
 	// the creature view
 	private CreaturePanel _creaturePanel;
+	private JFrame _listFrame;
 
 	// creature data
 	private ICreature _originalCreature = null;
@@ -82,7 +79,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		addSetter(_hpSetter, Constants.MIN_HP_MODIFIER, Constants.MAX_HP_MODIFIER);
 		addSetter(_defenseSetter);
 		
-		_labelsFrame = new JFrame();
+		_listFrame = new JFrame();
 		
 		_hpSetter.setOutputText("%+d %%"); // display percent
 		_hpSetter.setButtonStep(5); // change 5% at once
@@ -245,107 +242,27 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 	private void showLabelsSelection()
 	{
 		ListTransferPanel<String> listTransfer = new ListTransferPanel<String>(Lists.labels(), _editedCreature.getLabels());
-		listTransfer.setUpdateView(this);
-		listTransfer.setLeftListLocked(true);
-		listTransfer.setLeftListUnique(true);
-		listTransfer.setRightListUnique(true);
-		listTransfer.getConfirmButton().addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent action)
-			{
-				confirmLabelsSelection();
-			}
-		});
-		
-		// set up the new frame
-		_labelsFrame = new JFrame("Select labels");
-		_labelsFrame.add(listTransfer);
-		_labelsFrame.pack();
-		_labelsFrame.setVisible(true);
-		_labelsFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-
+		setupListSelectionPanel(listTransfer);
+		setupListSelectionFrame("Select labels", listTransfer);
 		setButtonsEnabled(false);
 	}
 	
-	
-	private void confirmLabelsSelection()
-	{
-		setButtonsEnabled(true);
-		if (_labelsFrame != null) _labelsFrame.setVisible(false);
-		updateView();
-	}
-
 
 	private void showAttacksSelection()
 	{
 		ListTransferPanel<IAttack> listTransfer = new ListTransferPanel<IAttack>(new ArrayList<IAttack>(AttackTemplateLoader.getInstance().getTemplates().values()), _editedCreature.getAttacks());
-		listTransfer.setUpdateView(this);
-		listTransfer.setLeftListLocked(true);
-		listTransfer.setLeftListUnique(true);
-		listTransfer.setRightListUnique(true);
-		listTransfer.getConfirmButton().addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent action)
-			{
-				confirmAttacksSelection();
-			}
-		});
-		
-		// set up the new frame
-		_attacksFrame = new JFrame("Select attacks");
-		_attacksFrame.add(listTransfer);
-		_attacksFrame.pack();
-		_attacksFrame.setVisible(true);
-		_attacksFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-
+		setupListSelectionPanel(listTransfer);
+		setupListSelectionFrame("Select attacks", listTransfer);
 		setButtonsEnabled(false);
 	}
-
-	
-	private void confirmAttacksSelection()
-	{
-		setButtonsEnabled(true);
-		if (_attacksFrame != null) _attacksFrame.setVisible(false);
-		updateView();
-	}
-
-
 
 
 	private void showSpecialsSelection()
 	{
 		ListTransferPanel<ISpecial> listTransfer = new ListTransferPanel<ISpecial>(new ArrayList<ISpecial>(SpecialTemplateLoader.getInstance().getTemplates().values()), _editedCreature.getSpecials());
-		listTransfer.setUpdateView(this);
-		listTransfer.setLeftListLocked(true);
-		listTransfer.setLeftListUnique(true);
-		listTransfer.setRightListUnique(true);
-		listTransfer.getConfirmButton().addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent action)
-			{
-				confirmSpecialsSelection();
-			}
-		});
-
-		// set up the new frame
-		_specialsFrame = new JFrame("Select specials");
-		_specialsFrame.add(listTransfer);
-		_specialsFrame.pack();
-		_specialsFrame.setVisible(true);
-		_specialsFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-		
+		setupListSelectionPanel(listTransfer);
+		setupListSelectionFrame("Select specials", listTransfer);
 		setButtonsEnabled(false);
-	}
-
-	
-	private void confirmSpecialsSelection()
-	{
-		setButtonsEnabled(true);
-		if (_specialsFrame != null) _specialsFrame.setVisible(false);
-		updateView();
 	}
 
 	
@@ -353,35 +270,16 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 	{
 		// set up the list
 		ListTransferPanel<ISpecial> listTransfer = new ListTransferPanel<ISpecial>(new ArrayList<ISpecial>(SpecialTemplateLoader.getInstance().getTemplates().values()), _editedCreature.getNastierSpecials());
-		listTransfer.setUpdateView(this);
-		listTransfer.setLeftListLocked(true);
-		listTransfer.setLeftListUnique(true);
-		listTransfer.setRightListUnique(true);
-		listTransfer.getConfirmButton().addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent action)
-			{
-				confirmNastierSpecialsSelection();
-			}
-		});
-		
-		// set up the new frame
-		_nastierFrame = new JFrame("Select nastier specials");
-		_nastierFrame.add(listTransfer);
-		_nastierFrame.pack();
-		_nastierFrame.setVisible(true);
-		_nastierFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-		
-		// disable other buttons
+		setupListSelectionPanel(listTransfer);
+		setupListSelectionFrame("Select nastier specials", listTransfer);
 		setButtonsEnabled(false);
 	}
 	
 	
-	private void confirmNastierSpecialsSelection()
+	private void confirmListSelection()
 	{
 		setButtonsEnabled(true);
-		if (_nastierFrame != null) _nastierFrame.setVisible(false);
+		if (_listFrame != null) _listFrame.setVisible(false);
 		updateView();
 	}
 
@@ -392,5 +290,32 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		_attacksButton.setEnabled(enabled);
 		_specialsButton.setEnabled(enabled);
 		_nastierButton.setEnabled(enabled);
+	}
+	
+	
+	private <T> void setupListSelectionPanel(ListTransferPanel<T> listTransfer)
+	{
+		listTransfer.setUpdateView(this);
+		listTransfer.setLeftListLocked(true);
+		listTransfer.setLeftListUnique(true);
+		listTransfer.setRightListUnique(true);
+		listTransfer.getConfirmButton().addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent action)
+			{
+				confirmListSelection();
+			}
+		});
+	}
+	
+	
+	private <T> void setupListSelectionFrame(final String title, ListTransferPanel<T> listTransfer)
+	{
+		_listFrame = new JFrame(title);
+		_listFrame.add(listTransfer);
+		_listFrame.pack();
+		_listFrame.setVisible(true);
+		_listFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 	}
 }
