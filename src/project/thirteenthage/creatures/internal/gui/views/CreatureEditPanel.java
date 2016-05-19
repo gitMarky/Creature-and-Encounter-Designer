@@ -264,20 +264,13 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 			}
 		});
 		
-		// disable other buttons
-		_labelsButton.setEnabled(false);
-		_attacksButton.setEnabled(false);
-		_specialsButton.setEnabled(false);
-		_nastierButton.setEnabled(false);
+		setButtonsEnabled(false);
 	}
 	
 	
 	private void confirmLabelsSelection()
 	{
-		_labelsButton.setEnabled(true);
-		_attacksButton.setEnabled(true);
-		_specialsButton.setEnabled(true);
-		_nastierButton.setEnabled(true);
+		setButtonsEnabled(true);
 		if (_labelsFrame != null) _labelsFrame.setVisible(false);
 		updateView();
 	}
@@ -305,20 +298,13 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 			}
 		});
 		
-		// disable other buttons
-		_labelsButton.setEnabled(false);
-		_attacksButton.setEnabled(false);
-		_specialsButton.setEnabled(false);
-		_nastierButton.setEnabled(false);
+		setButtonsEnabled(false);
 	}
 
 	
 	private void confirmAttacksSelection()
 	{
-		_labelsButton.setEnabled(true);
-		_attacksButton.setEnabled(true);
-		_specialsButton.setEnabled(true);
-		_nastierButton.setEnabled(true);
+		setButtonsEnabled(true);
 		if (_attacksFrame != null) _attacksFrame.setVisible(false);
 		updateView();
 	}
@@ -348,20 +334,13 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 			}
 		});
 		
-		// disable other buttons
-		_labelsButton.setEnabled(false);
-		_attacksButton.setEnabled(false);
-		_specialsButton.setEnabled(false);
-		_nastierButton.setEnabled(false);
+		setButtonsEnabled(false);
 	}
 
 	
 	private void confirmSpecialsSelection()
 	{
-		_labelsButton.setEnabled(true);
-		_attacksButton.setEnabled(true);
-		_specialsButton.setEnabled(true);
-		_nastierButton.setEnabled(true);
+		setButtonsEnabled(true);
 		if (_specialsFrame != null) _specialsFrame.setVisible(false);
 		updateView();
 	}
@@ -390,20 +369,23 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		});
 		
 		// disable other buttons
-		_labelsButton.setEnabled(false);
-		_attacksButton.setEnabled(false);
-		_specialsButton.setEnabled(false);
-		_nastierButton.setEnabled(false);
+		setButtonsEnabled(false);
 	}
-
+	
 	
 	private void confirmNastierSpecialsSelection()
 	{
-		_labelsButton.setEnabled(true);
-		_attacksButton.setEnabled(true);
-		_specialsButton.setEnabled(true);
-		_nastierButton.setEnabled(true);
+		setButtonsEnabled(true);
 		if (_nastierFrame != null) _nastierFrame.setVisible(false);
 		updateView();
+	}
+
+
+	private void setButtonsEnabled(final boolean enabled)
+	{
+		_labelsButton.setEnabled(enabled);
+		_attacksButton.setEnabled(enabled);
+		_specialsButton.setEnabled(enabled);
+		_nastierButton.setEnabled(enabled);
 	}
 }
