@@ -66,7 +66,6 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 
 		_transferToListBbutton.addActionListener(this);
 		_transferToListAbutton.addActionListener(this);
-		_confirmButton.addActionListener(this);
 
 		listApanel.add(_listDisplayA);
 		listBpanel.add(_listDisplayB);
@@ -112,11 +111,6 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 		if (action.getSource() == _transferToListAbutton)
 		{
 			transferFromOneListToTheOther(_listB, _listA, _listDisplayB, _listBlocked);
-		}
-
-		if (action.getSource() == _confirmButton)
-		{
-			updateView();
 		}
 	}
 
@@ -185,5 +179,11 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 
 		_transferToListAbutton.setEnabled(!_listB.isEmpty() && _listDisplayB.getSelectedIndex() != -1);
 		_transferToListBbutton.setEnabled(!_listA.isEmpty() && _listDisplayA.getSelectedIndex() != -1);
+	}
+	
+	
+	public JButton getConfirmButton()
+	{
+		return _confirmButton;
 	}
 }

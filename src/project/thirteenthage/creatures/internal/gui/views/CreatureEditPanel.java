@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 
 import project.thirteenthage.creatures.creature.EditableCreatureTemplate;
 import project.thirteenthage.creatures.interfaces.IView;
@@ -80,7 +81,6 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 	@Override
 	public void updateView()
 	{
-		confirmLabelsSelection();
 		updateCreature();
 		displayCreature();
 	}
@@ -210,7 +210,17 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		_labelsFrame.add(listTransfer);
 		_labelsFrame.pack();
 		_labelsFrame.setVisible(true);
+		_labelsFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		_labelsButton.setEnabled(false);
+		listTransfer.setLeftListLocked(true);
+		listTransfer.getConfirmButton().addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent action)
+			{
+				confirmLabelsSelection();
+			}
+		});
 	}
 	
 	
@@ -218,5 +228,6 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 	{
 		_labelsButton.setEnabled(true);
 		if (_labelsFrame != null) _labelsFrame.setVisible(false);
+		updateView();
 	}
 }
