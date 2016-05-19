@@ -213,6 +213,8 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		_labelsFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		_labelsButton.setEnabled(false);
 		listTransfer.setLeftListLocked(true);
+		listTransfer.setLeftListUnique(true);
+		listTransfer.setRightListUnique(true);
 		listTransfer.getConfirmButton().addActionListener(new ActionListener()
 		{
 			@Override

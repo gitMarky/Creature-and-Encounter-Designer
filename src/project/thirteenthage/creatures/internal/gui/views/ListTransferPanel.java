@@ -34,6 +34,9 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 
 	private boolean _listAlocked = false;
 	private boolean _listBlocked = false;
+	
+	private boolean _listAunique = false;
+	private boolean _listBunique = false;
 
 
 	public ListTransferPanel(final List<T> listA, final List<T> listB)
@@ -100,17 +103,30 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 	}
 
 
+	public void setLeftListUnique(final boolean unique)
+	{
+		_listAunique = unique;
+	}
+
+
+	public void setRightListUnique(final boolean unique)
+	{
+		_listBunique = unique;
+	}
+
+
+
 	@Override
 	public void actionPerformed(ActionEvent action)
 	{
 		if (action.getSource() == _transferToListBbutton)
 		{
-			transferFromOneListToTheOther(_listA, _listB, _listDisplayA, _listAlocked);
+			transferFromOneListToTheOther(_listA, _listB, _listDisplayA, _listAlocked, _listBunique);
 		}
 
 		if (action.getSource() == _transferToListAbutton)
 		{
-			transferFromOneListToTheOther(_listB, _listA, _listDisplayB, _listBlocked);
+			transferFromOneListToTheOther(_listB, _listA, _listDisplayB, _listBlocked, _listAunique);
 		}
 	}
 
@@ -135,7 +151,7 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 	}
 
 
-	private void transferFromOneListToTheOther(final List<T> listA, final List<T> listB, final JList<T> selection, boolean locked)
+	private void transferFromOneListToTheOther(final List<T> listA, final List<T> listB, final JList<T> selection, boolean locked, boolean unique)
 	{
 		final List<T> transferSelection = new ArrayList<T>();
 
@@ -150,7 +166,7 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 
 		for (final T element : transferSelection)
 		{
-			listB.add(element);
+			if (!unique || (unique && !listB.contains(element))) listB.add(element);
 			if (!locked) listA.remove(element);
 
 			System.out.println("- " + element);
