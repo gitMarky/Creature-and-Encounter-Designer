@@ -1,7 +1,7 @@
 package project.thirteenthage.creatures.mechanics;
 
-import project.thirteenthage.creatures.internal.Html;
 import project.thirteenthage.creatures.internal.TextFormatter;
+import project.thirteenthage.creatures.internal.conversions.HtmlDescriptions;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.internal.interfaces.ISpecial;
 
@@ -34,6 +34,6 @@ public class Special implements ISpecial
 	@Override
 	public String toHtmlText()
 	{
-		return Html.BEGIN_ITALIC + getName() + Html.END_ITALIC + ": " + getDescription();
+		return HtmlDescriptions.getSpecialDescription(this);
 	}
 }

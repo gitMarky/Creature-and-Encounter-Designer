@@ -4,6 +4,7 @@ import project.thirteenthage.creatures.interfaces.ITrigger;
 import project.thirteenthage.creatures.internal.Html;
 import project.thirteenthage.creatures.internal.TextFormatter;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
+import project.thirteenthage.creatures.internal.interfaces.ISpecial;
 
 /**
  * Descriptions for various interfaces.
@@ -45,6 +46,17 @@ public class HtmlDescriptions
 		description = replaceDamage(description, creatureDamage, inPercent);
 		htmlText.append(description);
 
+		return htmlText.toString();
+	}
+	
+	
+	public static String getSpecialDescription(final ISpecial special)
+	{
+		final StringBuilder htmlText = new StringBuilder();
+		
+		htmlText.append(Html.BEGIN_ITALIC + special.getName() + Html.END_ITALIC);
+		htmlText.append( ": " + special.getDescription());
+		
 		return htmlText.toString();
 	}
 
