@@ -1,4 +1,4 @@
-package project.thirteenthage.creatures.internal;
+package project.thirteenthage.creatures.internal.conversions;
 
 public class Conversions
 {

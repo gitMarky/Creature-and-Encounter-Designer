@@ -8,9 +8,10 @@ import org.jdom2.Element;
 
 import project.thirteenthage.creatures.interfaces.ITrigger;
 import project.thirteenthage.creatures.internal.BasicXmlFile;
-import project.thirteenthage.creatures.internal.Conversions;
 import project.thirteenthage.creatures.internal.Html;
 import project.thirteenthage.creatures.internal.TextFormatter;
+import project.thirteenthage.creatures.internal.conversions.Conversions;
+import project.thirteenthage.creatures.internal.conversions.HtmlDescriptions;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 
 public class AttackTemplate implements IAttack
@@ -96,20 +97,7 @@ public class AttackTemplate implements IAttack
 	@Override
 	public String toHtmlText()
 	{
-		final StringBuilder htmlText = new StringBuilder();
-		int damageFactor = Conversions.round(100.0 * getDamageFactor());
-		
-		
-		String description = TextFormatter.parse(getDescription(), TextFormatter.PLACEHOLDER_NAME, "creature");
-		description = TextFormatter.parse(description, TextFormatter.PLACEHOLDER_DAMAGE, TextFormatter.PLACEHOLDER_DAMAGE + "%");
-		description = TextFormatter.parse(description, TextFormatter.PLACEHOLDER_DAMAGE, 100);
-		
-		htmlText.append(Html.BEGIN_BOLD + getName() + Html.END_BOLD);
-		htmlText.append(" ");
-		htmlText.append(String.format("%+d vs. %s", getAttackBonus(), getDefense()));
-		htmlText.append(String.format(" - %d%% %s", damageFactor, description));
-		
-		return htmlText.toString();
+		return HtmlDescriptions.getAttackDescription(this, "creature", 100, true);
 	}
 
 
