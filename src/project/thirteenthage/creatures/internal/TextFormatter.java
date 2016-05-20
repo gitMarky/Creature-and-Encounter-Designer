@@ -2,6 +2,8 @@ package project.thirteenthage.creatures.internal;
 
 import java.util.List;
 
+import project.thirteenthage.creatures.internal.conversions.Conversions;
+
 public class TextFormatter
 {
 	public static final String PLACEHOLDER_START = "\\$";
@@ -16,21 +18,27 @@ public class TextFormatter
 		return source.replaceAll(PLACEHOLDER_START + placeholder, text);
 	}
 
-
 	public static final String parse(final String source, final String placeholder, final double value)
+	{
+		return parse(source, placeholder, value, false);
+	}
+	
+	
+	public static final String parse(final String source, final String placeholder, final double value, final boolean inPercent)
 	{
 		// replace for example $damage[x1.2] with 1.2*value
 
 		String expression = PLACEHOLDER_START + placeholder + PLACEHOLDER_SCALABLE_DOUBLE + "+";
 
-		String text = parseDoubleScaled(source, expression, value);
-		text = parseDoubleScaled(text, PLACEHOLDER_START + placeholder, value);
+		String suffix = inPercent ? "%" : "";
+		String text = parseDoubleScaled(source, expression, value, suffix);
+		text = parseDoubleScaled(text, PLACEHOLDER_START + placeholder, value, suffix);
 
 		return text;
 	}
 
 
-	private static final String parseDoubleScaled(final String source, final String expression, final double value)
+	private static final String parseDoubleScaled(final String source, final String expression, final double value, final String suffix)
 	{
 		String text = source;
 		List<String> matches = RegexMatcher.getAllMatches(source, expression);
@@ -47,7 +55,7 @@ public class TextFormatter
 				scaledValue *= Double.parseDouble(scale);
 			}
 
-			text = text.replace(match, Double.toString(scaledValue));
+			text = text.replace(match, Integer.toString(Conversions.round(scaledValue)) + suffix);
 		}
 
 		return text;

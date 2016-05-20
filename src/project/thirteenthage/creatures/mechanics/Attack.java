@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import project.thirteenthage.creatures.interfaces.ITrigger;
-import project.thirteenthage.creatures.internal.Html;
+import project.thirteenthage.creatures.internal.Constants;
 import project.thirteenthage.creatures.internal.conversions.HtmlDescriptions;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
@@ -14,7 +14,7 @@ public class Attack implements IAttack
 	private IAttack _template;
 	private final int _attackBase;
 	private final double _damageBase;
-	private final String _creatureName;
+	private final ICreature _creature;
 
 	private final List<ITrigger> _triggers = new ArrayList<ITrigger>();
 
@@ -24,7 +24,7 @@ public class Attack implements IAttack
 		_template = template;
 		_attackBase = attack;
 		_damageBase = damage;
-		_creatureName = "creature";
+		_creature = null;
 
 		_triggers.addAll(template.getTriggers());
 	}
@@ -35,7 +35,7 @@ public class Attack implements IAttack
 		_template = template;
 		_attackBase = attack;
 		_damageBase = damage;
-		_creatureName = creature.getName();
+		_creature = creature;
 
 		for (final ITrigger source : template.getTriggers())
 		{
@@ -90,8 +90,14 @@ public class Attack implements IAttack
 	@Override
 	public String toHtmlText()
 	{
-		return HtmlDescriptions.getAttackDescription(this, _creatureName, 0, false); // TODO: real damage
-		//return Html.BEGIN_BOLD + getName() + Html.END_BOLD + " +" + getAttackBonus() + " vs. " + getDefense() + " - " + (int) getDamageFactor() + " " + getDescription();
+		if (_creature == null)
+		{
+			return HtmlDescriptions.getAttackDescription(this, Constants.TEMPLATE_CREATURE_NAME, Constants.TEMPLATE_CREATURE_DAMAGE, true);
+		}
+		else
+		{			
+			return HtmlDescriptions.getAttackDescription(this, _creature.getName(), _creature.getStrikeDamage(), false);
+		}
 	}
 
 

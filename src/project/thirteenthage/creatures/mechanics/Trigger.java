@@ -1,20 +1,22 @@
 package project.thirteenthage.creatures.mechanics;
 
 import project.thirteenthage.creatures.interfaces.ITrigger;
-import project.thirteenthage.creatures.internal.Html;
-import project.thirteenthage.creatures.internal.TextFormatter;
+import project.thirteenthage.creatures.internal.Constants;
+import project.thirteenthage.creatures.internal.conversions.HtmlDescriptions;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 
 public class Trigger implements ITrigger
 {
 	private final String _name;
 	private String _description;
+	private final boolean _isTemplate;
 
 
 	public Trigger(final String name, final String description)
 	{
 		_name = name;
 		_description = description;
+		_isTemplate = true;
 	}
 
 
@@ -22,8 +24,8 @@ public class Trigger implements ITrigger
 	{
 		_name = trigger.getName();
 
-		_description = TextFormatter.parse(trigger.getDescription(), TextFormatter.PLACEHOLDER_NAME, creature.getName().toLowerCase());
-		_description = TextFormatter.parse(_description, TextFormatter.PLACEHOLDER_DAMAGE, creature.getStrikeDamage());
+		_isTemplate = false;
+		_description = HtmlDescriptions.getTriggerDescription(trigger, creature.getName(), creature.getStrikeDamage(), false);
 	}
 
 
@@ -51,6 +53,13 @@ public class Trigger implements ITrigger
 	@Override
 	public String toHtmlText()
 	{
-		return Html.BEGIN_ITALIC + _name + Html.END_ITALIC + ": " + _description;
+		if (_isTemplate)
+		{
+			return HtmlDescriptions.getTriggerDescription(this, Constants.TEMPLATE_CREATURE_NAME, Constants.TEMPLATE_CREATURE_DAMAGE, true);
+		}
+		else
+		{
+			return _description;
+		}
 	}
 }
