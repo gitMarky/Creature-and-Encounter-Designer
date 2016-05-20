@@ -34,7 +34,7 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 
 	private boolean _listAlocked = false;
 	private boolean _listBlocked = false;
-	
+
 	private boolean _listAunique = false;
 	private boolean _listBunique = false;
 
@@ -115,7 +115,6 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 	}
 
 
-
 	@Override
 	public void actionPerformed(ActionEvent action)
 	{
@@ -166,8 +165,10 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 
 		for (final T element : transferSelection)
 		{
-			if (!unique || (unique && !listB.contains(element))) listB.add(element);
-			if (!locked) listA.remove(element);
+			if (!unique || (unique && !listB.contains(element)))
+				listB.add(element);
+			if (!locked)
+				listA.remove(element);
 
 			System.out.println("- " + element);
 		}
@@ -196,10 +197,22 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 		_transferToListAbutton.setEnabled(!_listB.isEmpty() && _listDisplayB.getSelectedIndex() != -1);
 		_transferToListBbutton.setEnabled(!_listA.isEmpty() && _listDisplayA.getSelectedIndex() != -1);
 	}
-	
-	
+
+
 	public JButton getConfirmButton()
 	{
 		return _confirmButton;
+	}
+
+
+	public JList<T> getLeftList()
+	{
+		return _listDisplayA;
+	}
+
+
+	public JList<T> getRightList()
+	{
+		return _listDisplayB;
 	}
 }

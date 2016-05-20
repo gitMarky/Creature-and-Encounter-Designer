@@ -1,15 +1,20 @@
 package project.thirteenthage.creatures.internal.gui.views;
 
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import project.thirteenthage.creatures.creature.EditableCreatureTemplate;
 import project.thirteenthage.creatures.interfaces.IView;
@@ -254,6 +259,34 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		setupListSelectionPanel(listTransfer);
 		setupListSelectionFrame("Select attacks", listTransfer);
 		setButtonsEnabled(false);
+		
+		final JPanel innerPanel = new JPanel();
+		innerPanel.setBorder(BorderFactory.createTitledBorder("Description"));
+		_listFrame.add(innerPanel);
+
+		final ListSelectionListener listener = new ListSelectionListener()
+		{
+			@Override
+			public void valueChanged(ListSelectionEvent selection)
+			{
+				innerPanel.removeAll();
+				
+				JList<IAttack> source = (JList<IAttack>) selection.getSource();
+				int index = source.getSelectedIndex();
+				if (index > -1)
+				{
+					final IAttack attack = source.getModel().getElementAt(index);
+					String name = attack.getName();
+					innerPanel.add(new AttackViewLabel(attack));
+				}
+				
+				_listFrame.pack();
+				_listFrame.setVisible(true);
+			}
+		};
+		
+		listTransfer.getLeftList().addListSelectionListener(listener);
+		listTransfer.getRightList().addListSelectionListener(listener);
 	}
 
 
@@ -313,6 +346,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 	private <T> void setupListSelectionFrame(final String title, ListTransferPanel<T> listTransfer)
 	{
 		_listFrame = new JFrame(title);
+		_listFrame.setLayout(new GridLayout(1, 2));
 		_listFrame.add(listTransfer);
 		_listFrame.pack();
 		_listFrame.setVisible(true);
