@@ -76,6 +76,11 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 
 	public void addCreature(final ICreature creature)
 	{
+		if (creature == null)
+		{
+			throw new IllegalArgumentException("Parameter 'creature' must not be null.");
+		}
+		
 		if (!_creatures.containsKey(creature))
 		{
 			final CreatureEncounterPanel panel = new CreatureEncounterPanel(creature);
@@ -89,6 +94,11 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 
 	public void removeCreature(final ICreature creature)
 	{
+		if (creature == null)
+		{
+			throw new IllegalArgumentException("Parameter 'creature' must not be null.");
+		}
+		
 		if (_creatures.containsKey(creature))
 		{
 			_creatureListPanel.remove(_creatures.get(creature));

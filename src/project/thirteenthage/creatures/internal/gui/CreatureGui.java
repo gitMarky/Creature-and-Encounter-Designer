@@ -62,6 +62,11 @@ public class CreatureGui implements IView
 			@Override
 			public boolean accept(final File file)
 			{
+				if (file == null)
+				{
+					throw new IllegalArgumentException("Parameter 'file' must not be null.");
+				}
+				
 				return file.isDirectory() || file.getName().toLowerCase().endsWith(LoaderHelper.EXTENSION_XML);
 			}
 

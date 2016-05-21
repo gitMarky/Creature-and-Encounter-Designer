@@ -142,6 +142,11 @@ public class Creature implements ICreature
 
 	void setName(final String name)
 	{
+		if (name == null)
+		{
+			throw new IllegalArgumentException("Parameter 'name' must not be null.");
+		}
+		
 		_name = name;
 	}
 
@@ -190,6 +195,11 @@ public class Creature implements ICreature
 
 	void setSize(final CreatureSize size)
 	{
+		if (size == null)
+		{
+			throw new IllegalArgumentException("Parameter 'size' must not be null.");
+		}
+		
 		_size = size;
 	}
 
@@ -214,6 +224,11 @@ public class Creature implements ICreature
 
 	public void setAttacks(final List<IAttack> attacks)
 	{
+		if (attacks == null)
+		{
+			throw new IllegalArgumentException("Parameter 'attacks' must not be null.");
+		}
+		
 		_attacks.clear();
 		// create the actual attacks from templates.
 		final int bonus = getLevel() + 5 + _attack;
@@ -228,6 +243,11 @@ public class Creature implements ICreature
 	@Override
 	public void setSpecials(final List<ISpecial> specials)
 	{
+		if (specials == null)
+		{
+			throw new IllegalArgumentException("Parameter 'specials' must not be null.");
+		}
+		
 		_specials.clear();
 		for (final ISpecial template : specials)
 		{
@@ -240,6 +260,11 @@ public class Creature implements ICreature
 	@Override
 	public void setNastierSpecials(final List<ISpecial> nastierSpecials)
 	{
+		if (nastierSpecials == null)
+		{
+			throw new IllegalArgumentException("Parameter 'nastierSpecials' must not be null.");
+		}
+		
 		_nastierSpecials.clear();
 		for (final ISpecial template : nastierSpecials)
 		{
@@ -258,6 +283,11 @@ public class Creature implements ICreature
 
 	public void setTemplate(final ICreatureTemplate template)
 	{
+		if (template == null)
+		{
+			throw new IllegalArgumentException("Parameter 'template' must not be null.");
+		}
+		
 		_template = template;
 	}
 
@@ -283,6 +313,11 @@ public class Creature implements ICreature
 	@Override
 	public boolean equals(final Object other)
 	{
+		if (other == null)
+		{
+			throw new IllegalArgumentException("Parameter 'other' must not be null.");
+		}
+		
 		if (other instanceof Creature)
 		{
 			boolean equality = true;

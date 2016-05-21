@@ -21,6 +21,11 @@ public class SpecialTemplate implements ISpecial
 
 	public SpecialTemplate(final BasicXmlFile template)
 	{
+		if (template == null)
+		{
+			throw new IllegalArgumentException("Parameter 'template' must not be null.");
+		}
+		
 		_name = template.getRoot().getChildText("name");
 		_description = template.getRoot().getChildText("description");
 	}

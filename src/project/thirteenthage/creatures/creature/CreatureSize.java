@@ -11,12 +11,22 @@ public enum CreatureSize implements IDisplayableInGui
 
 	private CreatureSize(final String guiText)
 	{
+		if (guiText == null)
+		{
+			throw new IllegalArgumentException("Parameter 'guiText' must not be null.");
+		}
+		
 		_guiText = guiText;
 	}
 
 
 	public static CreatureSize fromString(final String name)
 	{
+		if (name == null)
+		{
+			throw new IllegalArgumentException("Parameter 'name' must not be null.");
+		}
+		
 		for (final CreatureSize size : CreatureSize.values())
 		{
 			if (size.name().equalsIgnoreCase(name))

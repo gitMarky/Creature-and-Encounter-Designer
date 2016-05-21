@@ -19,6 +19,11 @@ public class TextChoicePanel extends ChoicePanel implements ActionListener
 	public TextChoicePanel(final String name)
 	{
 		super();
+		
+		if (name == null)
+		{
+			throw new IllegalArgumentException("Parameter 'name' must not be null.");
+		}
 
 		_amountField.addActionListener(this);
 		this.add(_amountField);
@@ -44,6 +49,11 @@ public class TextChoicePanel extends ChoicePanel implements ActionListener
 
 	public void setText(final String text)
 	{
+		if (text == null)
+		{
+			throw new IllegalArgumentException("Parameter 'text' must not be null.");
+		}
+		
 		_amountField.setText(text);
 	}
 }

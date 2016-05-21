@@ -15,6 +15,19 @@ public class TextFormatter
 
 	public static String parse(final String source, final String placeholder, final String text)
 	{
+		if (source == null)
+		{
+			throw new IllegalArgumentException("Parameter 'source' must not be null.");
+		}
+		if (placeholder == null)
+		{
+			throw new IllegalArgumentException("Parameter 'placeholder' must not be null.");
+		}
+		if (text == null)
+		{
+			throw new IllegalArgumentException("Parameter 'text' must not be null.");
+		}
+		
 		return source.replaceAll(PLACEHOLDER_START + placeholder, text);
 	}
 
@@ -27,6 +40,14 @@ public class TextFormatter
 
 	public static final String parse(final String source, final String placeholder, final double value, final boolean inPercent)
 	{
+		if (source == null)
+		{
+			throw new IllegalArgumentException("Parameter 'source' must not be null.");
+		}
+		if (placeholder == null)
+		{
+			throw new IllegalArgumentException("Parameter 'placeholder' must not be null.");
+		}
 		// replace for example $damage[x1.2] with 1.2*value
 
 		final String expression = PLACEHOLDER_START + placeholder + PLACEHOLDER_SCALABLE_DOUBLE + "+";
@@ -41,6 +62,16 @@ public class TextFormatter
 
 	private static final String parseDoubleScaled(final String source, final String expression, final double value, final String suffix)
 	{
+		if (source == null)
+		{
+			throw new IllegalArgumentException("Parameter 'source' must not be null.");
+		}
+		if (expression == null)
+		{
+			throw new IllegalArgumentException("Parameter 'placeholder' must not be null.");
+		}
+
+		
 		String text = source;
 		final List<String> matches = RegexMatcher.getAllMatches(source, expression);
 

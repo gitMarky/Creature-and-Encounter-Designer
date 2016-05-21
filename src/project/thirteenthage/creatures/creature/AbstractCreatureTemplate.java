@@ -126,6 +126,11 @@ public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 
 	public void setName(final String name)
 	{
+		if (name == null)
+		{
+			throw new IllegalArgumentException("Parameter 'name' must not be null.");
+		}
+		
 		_name = name;
 	}
 
@@ -138,6 +143,11 @@ public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 
 	public void setSize(final CreatureSize size)
 	{
+		if (size == null)
+		{
+			throw new IllegalArgumentException("Parameter 'size' must not be null.");
+		}
+		
 		_size = size;
 	}
 
@@ -180,6 +190,11 @@ public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 
 	public void setBetterDefense(final BetterDefense defense)
 	{
+		if (defense == null)
+		{
+			throw new IllegalArgumentException("Parameter 'defense' must not be null.");
+		}
+		
 		_betterDefense = defense;
 	}
 

@@ -17,6 +17,10 @@ public class AttackTemplateLoader extends AbstractLoader<IAttack>
 	@Override
 	protected boolean checkEntry(final BasicXmlFile template)
 	{
+		if (template == null)
+		{
+			throw new IllegalArgumentException("Parameter 'template' must not be null.");
+		}
 		return "attack".equals(template.getRoot().getName());
 	}
 
@@ -24,6 +28,11 @@ public class AttackTemplateLoader extends AbstractLoader<IAttack>
 	@Override
 	protected void addEntry(final BasicXmlFile file)
 	{
+		if (file == null)
+		{
+			throw new IllegalArgumentException("Parameter 'file' must not be null.");
+		}
+		
 		final AttackTemplate template = new AttackTemplate(file);
 		final String id = LoaderHelper.getId(file);
 

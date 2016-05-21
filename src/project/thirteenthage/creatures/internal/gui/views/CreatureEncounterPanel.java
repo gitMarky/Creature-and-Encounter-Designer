@@ -34,6 +34,11 @@ public class CreatureEncounterPanel extends JPanel implements IView, ActionListe
 	public CreatureEncounterPanel(final ICreature creature)
 	{
 		super();
+		if (creature == null)
+		{
+			throw new IllegalArgumentException("Parameter 'creature' must not be null.");
+		}
+		
 		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
 		_creature = creature;

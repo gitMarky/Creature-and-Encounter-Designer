@@ -86,6 +86,11 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 	 */
 	public void displayCreature(final ICreature creature)
 	{
+		if (creature == null)
+		{
+			throw new IllegalArgumentException("Parameter 'creature' must not be null.");
+		}
+		
 		if (_panel != null)
 		{
 			_innerPanel.remove(_panel);
@@ -215,6 +220,13 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 
 	private boolean canSave()
 	{
-		return !_isInEditMode && !CreatureLoader.getInstance().isCreatureLoaded(_selectedCreature);
+		if (_selectedCreature == null)
+		{
+			return false;
+		}
+		else
+		{
+			return !_isInEditMode && !CreatureLoader.getInstance().isCreatureLoaded(_selectedCreature);
+		}
 	}
 }

@@ -29,6 +29,11 @@ public class AttackTemplate implements IAttack
 
 	public AttackTemplate(final BasicXmlFile template)
 	{
+		if (template == null)
+		{
+			throw new IllegalArgumentException("Parameter 'template' must not be null.");
+		}
+		
 		_name = template.getRoot().getChildText("name");
 		_attack = Integer.parseInt(template.getRoot().getChildText("bonus"));
 		_defense = template.getRoot().getChildText("defense");

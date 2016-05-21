@@ -38,6 +38,11 @@ public class CreatureViewPanel extends JPanel implements IView
 	public CreatureViewPanel(final ICreature creature)
 	{
 		super();
+		if (creature == null)
+		{
+			throw new IllegalArgumentException("Parameter 'creature' must not be null.");
+		}
+		
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		_creature = creature;
 
@@ -140,6 +145,8 @@ public class CreatureViewPanel extends JPanel implements IView
 
 		private String ith(final int level)
 		{
+			if (level == 11 || level == 12 || level == 13) return level + "th";
+			
 			switch (level % 10)
 			{
 				case 1:

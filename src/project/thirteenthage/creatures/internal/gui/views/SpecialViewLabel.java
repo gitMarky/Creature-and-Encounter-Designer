@@ -19,6 +19,11 @@ public class SpecialViewLabel extends JLabel
 
 	private void displaySpecial(final ISpecial special)
 	{
+		if (special == null)
+		{
+			throw new IllegalArgumentException("Parameter 'special' must not be null.");
+		}
+		
 		final StringBuilder guiText = new StringBuilder(Html.BEGIN);
 		guiText.append(special.toHtmlText());
 		guiText.append(Html.END);

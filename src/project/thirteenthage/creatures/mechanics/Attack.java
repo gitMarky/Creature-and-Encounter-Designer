@@ -21,6 +21,11 @@ public class Attack implements IAttack
 
 	public Attack(final IAttack template, final int attack, final double damage)
 	{
+		if (template == null)
+		{
+			throw new IllegalArgumentException("Parameter 'template' must not be null.");
+		}
+		
 		_template = template;
 		_attackBase = attack;
 		_damageBase = damage;
@@ -32,6 +37,15 @@ public class Attack implements IAttack
 
 	public Attack(final ICreature creature, final IAttack template, final int attack, final double damage)
 	{
+		if (template == null)
+		{
+			throw new IllegalArgumentException("Parameter 'template' must not be null.");
+		}
+		if (creature == null)
+		{
+			throw new IllegalArgumentException("Parameter 'creature' must not be null.");
+		}
+		
 		_template = template;
 		_attackBase = attack;
 		_damageBase = damage;

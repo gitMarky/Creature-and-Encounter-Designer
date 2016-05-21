@@ -13,6 +13,15 @@ public class Special implements ISpecial
 
 	public Special(final ICreature creature, final ISpecial template)
 	{
+		if (creature == null)
+		{
+			throw new IllegalArgumentException("Parameter 'creature' must not be null.");
+		}
+		if (template == null)
+		{
+			throw new IllegalArgumentException("Parameter 'template' must not be null.");
+		}
+		
 		_name = template.getName();
 		_description = template.getDescription();
 		_creatureName = creature.getName();

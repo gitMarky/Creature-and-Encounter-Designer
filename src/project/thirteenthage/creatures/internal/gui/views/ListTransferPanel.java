@@ -16,6 +16,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import project.thirteenthage.creatures.internal.ApplicationLogger;
+
 /**
  * A panel that contains two lists and two transfer buttons.
  */
@@ -42,6 +44,16 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 	public ListTransferPanel(final List<T> listA, final List<T> listB)
 	{
 		super();
+		
+		if (listA == null)
+		{
+			throw new IllegalArgumentException("Parameter 'listA' must not be null.");
+		}
+		if (listB == null)
+		{
+			throw new IllegalArgumentException("Parameter 'listB' must not be null.");
+		}
+		
 		_listA = listA;
 		_listB = listB;
 
@@ -151,25 +163,37 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 	}
 
 
-	private void transferFromOneListToTheOther(final List<T> listA, final List<T> listB, final JList<T> selection, final boolean locked, final boolean unique)
+	private void transferFromOneListToTheOther(final List<T> sourceList, final List<T> targetList, final JList<T> selection, final boolean locked, final boolean unique)
 	{
+		if (sourceList == null)
+		{
+			throw new IllegalArgumentException("Parameter 'sourceList' must not be null.");
+		}
+		if (targetList == null)
+		{
+			throw new IllegalArgumentException("Parameter 'targetList' must not be null.");
+		}
+		if (selection == null)
+		{
+			throw new IllegalArgumentException("Parameter 'selection' must not be null.");
+		}
+		
 		final List<T> transferSelection = new ArrayList<T>();
 
-		System.out.println("Transferring to list B:");
+		ApplicationLogger.getLogger().fine("Transferring to list B:");
 		for (final int index : selection.getSelectedIndices())
 		{
-			final T elementAt = listA.get(index);// ;= (T)
-			// _listDisplayA.getModel().getElementAt(index);
+			final T elementAt = sourceList.get(index);// ;= (T)
 
 			transferSelection.add(elementAt);
 		}
 
 		for (final T element : transferSelection)
 		{
-			if (!unique || unique && !listB.contains(element)) listB.add(element);
-			if (!locked) listA.remove(element);
+			if (!unique || unique && !targetList.contains(element)) targetList.add(element);
+			if (!locked) sourceList.remove(element);
 
-			System.out.println("- " + element);
+			ApplicationLogger.getLogger().fine("- " + element);
 		}
 
 		updateListsModels();

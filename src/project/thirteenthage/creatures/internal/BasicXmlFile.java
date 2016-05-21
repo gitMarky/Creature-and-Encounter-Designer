@@ -19,6 +19,11 @@ public class BasicXmlFile
 
 	public BasicXmlFile(final File file)
 	{
+		if (file == null)
+		{
+			throw new IllegalArgumentException("Parameter 'file' must not be null.");
+		}
+		
 		_file = file;
 		_doc = null;
 
@@ -40,6 +45,15 @@ public class BasicXmlFile
 
 	public BasicXmlFile(final Document doc, final File file)
 	{
+		if (doc == null)
+		{
+			throw new IllegalArgumentException("Parameter 'doc' must not be null.");
+		}
+		if (file == null)
+		{
+			throw new IllegalArgumentException("Parameter 'file' must not be null.");
+		}
+		
 		_doc = doc;
 		_file = file;
 	}
@@ -53,6 +67,11 @@ public class BasicXmlFile
 
 	public boolean saveToFile(final File file)
 	{
+		if (file == null)
+		{
+			throw new IllegalArgumentException("Parameter 'file' must not be null.");
+		}
+		
 		// get object to see output of prepared document
 		final XMLOutputter xmlOutput = new XMLOutputter();
 

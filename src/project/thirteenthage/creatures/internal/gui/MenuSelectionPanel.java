@@ -70,6 +70,11 @@ class MenuSelectionPanel extends JPanel implements IView
 
 		private MenuSelectionItem(final String id)
 		{
+			if (id == null)
+			{
+				throw new IllegalArgumentException("Parameter 'id' must not be null.");
+			}
+			
 			_id = id;
 		}
 
@@ -89,6 +94,11 @@ class MenuSelectionPanel extends JPanel implements IView
 		@Override
 		public void itemStateChanged(final ItemEvent e)
 		{
+			if (e == null)
+			{
+				throw new IllegalArgumentException("Parameter 'e' must not be null.");
+			}
+			
 			if (e.getStateChange() == ItemEvent.SELECTED)
 			{
 				onCreatureSelected();

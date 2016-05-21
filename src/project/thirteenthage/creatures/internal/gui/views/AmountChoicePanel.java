@@ -31,6 +31,11 @@ public class AmountChoicePanel extends ChoicePanel implements ActionListener
 	public AmountChoicePanel(final String name)
 	{
 		super();
+		
+		if (name == null)
+		{
+			throw new IllegalArgumentException("Parameter 'name' must not be null.");
+		}
 
 		this.add(_amountLabel);
 		this.add(_plusButton);
@@ -128,6 +133,11 @@ public class AmountChoicePanel extends ChoicePanel implements ActionListener
 
 	public void setOutputText(final String text)
 	{
+		if (text == null)
+		{
+			throw new IllegalArgumentException("Parameter 'text' must not be null.");
+		}
+		
 		_outputText = text;
 	}
 }

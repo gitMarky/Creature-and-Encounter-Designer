@@ -51,6 +51,11 @@ public class ApplicationLogger
 		@Override
 		public String format(final LogRecord record)
 		{
+			if (record == null)
+			{
+				throw new IllegalArgumentException("Parameter 'record' must not be null.");
+			}
+			
 			final StringBuilder format = new StringBuilder();
 			format.append(new Date(record.getMillis()).toLocaleString());
 			extend(format, 25);
@@ -66,6 +71,11 @@ public class ApplicationLogger
 
 		private String getShortClassName(final LogRecord record)
 		{
+			if (record == null)
+			{
+				throw new IllegalArgumentException("Parameter 'record' must not be null.");
+			}
+			
 			final String name = record.getSourceClassName();
 			return name.substring(name.lastIndexOf(".") + 1);
 		}
@@ -73,6 +83,11 @@ public class ApplicationLogger
 
 		private void extend(final StringBuilder builder, final int size)
 		{
+			if (builder == null)
+			{
+				throw new IllegalArgumentException("Parameter 'builder' must not be null.");
+			}
+			
 			while (builder.length() < size)
 				builder.append(" ");
 		}

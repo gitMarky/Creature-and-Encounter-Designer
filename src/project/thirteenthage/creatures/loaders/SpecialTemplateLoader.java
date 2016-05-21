@@ -17,6 +17,11 @@ public class SpecialTemplateLoader extends AbstractLoader<ISpecial>
 	@Override
 	protected boolean checkEntry(final BasicXmlFile template)
 	{
+		if (template == null)
+		{
+			throw new IllegalArgumentException("Parameter 'template' must not be null.");
+		}
+		
 		return "special".equals(template.getRoot().getName());
 	}
 
@@ -24,6 +29,11 @@ public class SpecialTemplateLoader extends AbstractLoader<ISpecial>
 	@Override
 	protected void addEntry(final BasicXmlFile file)
 	{
+		if (file == null)
+		{
+			throw new IllegalArgumentException("Parameter 'file' must not be null.");
+		}
+		
 		final SpecialTemplate template = new SpecialTemplate(file);
 		final String id = LoaderHelper.getId(file);
 

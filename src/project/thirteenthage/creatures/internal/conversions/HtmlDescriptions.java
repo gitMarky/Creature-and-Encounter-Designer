@@ -13,6 +13,15 @@ public class HtmlDescriptions
 {
 	public static String getAttackDescription(final IAttack attack, final String creatureName, final double creatureDamage, final boolean inPercent)
 	{
+		if (attack == null)
+		{
+			throw new IllegalArgumentException("Parameter 'attack' must not be null.");
+		}
+		if (creatureName == null)
+		{
+			throw new IllegalArgumentException("Parameter 'creatureName' must not be null.");
+		}
+		
 		final StringBuilder htmlText = new StringBuilder();
 		final int damageFactor = Conversions.round(attack.getDamageFactor() * (inPercent ? 100.0 : 1.0));
 
@@ -36,6 +45,15 @@ public class HtmlDescriptions
 
 	public static String getTriggerDescription(final ITrigger trigger, final String creatureName, final double creatureDamage, final boolean inPercent)
 	{
+		if (trigger == null)
+		{
+			throw new IllegalArgumentException("Parameter 'trigger' must not be null.");
+		}
+		if (creatureName == null)
+		{
+			throw new IllegalArgumentException("Parameter 'creatureName' must not be null.");
+		}
+		
 		final StringBuilder htmlText = new StringBuilder();
 
 		htmlText.append(Html.BEGIN_ITALIC + trigger.getName() + Html.END_ITALIC);
@@ -51,6 +69,15 @@ public class HtmlDescriptions
 
 	public static String getSpecialDescription(final ISpecial special, final String creatureName)
 	{
+		if (special == null)
+		{
+			throw new IllegalArgumentException("Parameter 'special' must not be null.");
+		}
+		if (creatureName == null)
+		{
+			throw new IllegalArgumentException("Parameter 'creatureName' must not be null.");
+		}
+		
 		final StringBuilder htmlText = new StringBuilder();
 
 		final String description = TextFormatter.parse(special.getDescription(), TextFormatter.PLACEHOLDER_NAME, creatureName);

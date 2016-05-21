@@ -54,6 +54,19 @@ class DisplayDescriptionListener<T, C extends Component> implements ListSelectio
 	@SuppressWarnings("unchecked")
 	private <C extends Component, T> C createNewLabel(final Class<C> descriptionComponentType, final Class<T> listSelectionType, final T listSelectionItem)
 	{
+		if (descriptionComponentType == null)
+		{
+			throw new IllegalArgumentException("Parameter 'descriptionComponentType' must not be null.");
+		}
+		if (listSelectionType == null)
+		{
+			throw new IllegalArgumentException("Parameter 'listSelectionType' must not be null.");
+		}
+		if (listSelectionItem == null)
+		{
+			throw new IllegalArgumentException("Parameter 'listSelectionItem' must not be null.");
+		}
+		
 		C label = null;
 		Constructor<?> constructor;
 		Exception ex = null;

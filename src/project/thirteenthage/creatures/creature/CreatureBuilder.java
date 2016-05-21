@@ -1,6 +1,5 @@
 package project.thirteenthage.creatures.creature;
 
-import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.mechanics.LevelAdjustment;
 import project.thirteenthage.creatures.tables.CreatureTableRow;
 import project.thirteenthage.creatures.tables.CreatureTables;
@@ -30,20 +29,13 @@ public class CreatureBuilder
 	}
 
 
-	/**
-	 * Constructor for a new creature, based on a different creature.
-	 * 
-	 * @param originalCreature
-	 *            the original creature.
-	 */
-	public CreatureBuilder(final ICreature originalCreature)
-	{
-		// TODO Auto-generated constructor stub
-	}
-
-
 	public CreatureBuilder name(final String name)
 	{
+		if (name == null)
+		{
+			throw new IllegalArgumentException("Parameter 'name' must not be null.");
+		}
+		
 		_name = name;
 		return this;
 	}
@@ -58,6 +50,11 @@ public class CreatureBuilder
 
 	public CreatureBuilder size(final CreatureSize size)
 	{
+		if (size == null)
+		{
+			throw new IllegalArgumentException("Parameter 'size' must not be null.");
+		}
+		
 		_size = size;
 		return this;
 	}

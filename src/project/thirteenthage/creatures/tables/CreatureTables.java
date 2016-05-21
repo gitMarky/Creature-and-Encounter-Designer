@@ -14,6 +14,11 @@ public class CreatureTables
 
 	public static List<CreatureTableRow> bySize(final CreatureSize size)
 	{
+		if (size == null)
+		{
+			throw new IllegalArgumentException("Parameter 'size' must not be null.");
+		}
+		
 		switch (size)
 		{
 			case NORMAL:

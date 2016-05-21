@@ -19,6 +19,11 @@ public class AttackViewLabel extends JLabel
 
 	private void displayAttack(final IAttack attack)
 	{
+		if (attack == null)
+		{
+			throw new IllegalArgumentException("Parameter 'attack' must not be null.");
+		}
+		
 		final StringBuilder guiText = new StringBuilder(Html.BEGIN);
 		guiText.append(attack.toHtmlText());
 		guiText.append(Html.END);

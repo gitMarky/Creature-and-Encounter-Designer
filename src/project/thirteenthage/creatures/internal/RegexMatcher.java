@@ -9,6 +9,15 @@ public class RegexMatcher
 {
 	public static List<String> getAllMatches(final String source, final String expression)
 	{
+		if (source == null)
+		{
+			throw new IllegalArgumentException("Parameter 'source' must not be null.");
+		}
+		if (expression == null)
+		{
+			throw new IllegalArgumentException("Parameter 'expression' must not be null.");
+		}
+		
 		final List<String> allMatches = new ArrayList<String>();
 		final Matcher m = Pattern.compile(expression).matcher(source);
 		while (m.find())
