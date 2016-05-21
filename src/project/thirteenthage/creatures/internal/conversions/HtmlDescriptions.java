@@ -50,12 +50,15 @@ public class HtmlDescriptions
 	}
 	
 	
-	public static String getSpecialDescription(final ISpecial special)
+	public static String getSpecialDescription(final ISpecial special, final String creatureName)
 	{
 		final StringBuilder htmlText = new StringBuilder();
+
+		String description = TextFormatter.parse(special.getDescription(), TextFormatter.PLACEHOLDER_NAME, creatureName);
+
 		
 		htmlText.append(Html.BEGIN_ITALIC + special.getName() + Html.END_ITALIC);
-		htmlText.append( ": " + special.getDescription());
+		htmlText.append( ": " + description);
 		
 		return htmlText.toString();
 	}

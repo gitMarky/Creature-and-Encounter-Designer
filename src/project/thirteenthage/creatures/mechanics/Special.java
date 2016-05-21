@@ -9,11 +9,13 @@ public class Special implements ISpecial
 {
 	private final String _name;
 	private final String _description;
+	private final String _creatureName;
 
 	public Special(final ICreature creature, final ISpecial template)
 	{
 		_name = template.getName();
-		_description = TextFormatter.parse(template.getDescription(), TextFormatter.PLACEHOLDER_NAME, creature.getName());
+		_description = template.getDescription();
+		_creatureName = creature.getName();
 	}
 
 
@@ -34,6 +36,6 @@ public class Special implements ISpecial
 	@Override
 	public String toHtmlText()
 	{
-		return HtmlDescriptions.getSpecialDescription(this);
+		return HtmlDescriptions.getSpecialDescription(this, _creatureName);
 	}
 }

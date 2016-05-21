@@ -26,5 +26,7 @@ public class Constants
 
 	public static final String TEMPLATE_CREATURE_NAME = "creature";
 
+	public static final String TEMPLATE_CREATURE_OF_TYPE = "creature of this type";
+
 	public static final double TEMPLATE_CREATURE_DAMAGE = 100.0;
 }

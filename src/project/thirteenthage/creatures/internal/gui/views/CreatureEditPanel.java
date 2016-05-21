@@ -259,34 +259,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		setupListSelectionPanel(listTransfer);
 		setupListSelectionFrame("Select attacks", listTransfer);
 		setButtonsEnabled(false);
-		
-		final JPanel innerPanel = new JPanel();
-		innerPanel.setBorder(BorderFactory.createTitledBorder("Description"));
-		_listFrame.add(innerPanel);
-
-		final ListSelectionListener listener = new ListSelectionListener()
-		{
-			@Override
-			public void valueChanged(ListSelectionEvent selection)
-			{
-				innerPanel.removeAll();
-				
-				JList<IAttack> source = (JList<IAttack>) selection.getSource();
-				int index = source.getSelectedIndex();
-				if (index > -1)
-				{
-					final IAttack attack = source.getModel().getElementAt(index);
-					String name = attack.getName();
-					innerPanel.add(new AttackViewLabel(attack));
-				}
-				
-				_listFrame.pack();
-				_listFrame.setVisible(true);
-			}
-		};
-		
-		listTransfer.getLeftList().addListSelectionListener(listener);
-		listTransfer.getRightList().addListSelectionListener(listener);
+		addAttackDescription(listTransfer);
 	}
 
 
@@ -296,6 +269,8 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		setupListSelectionPanel(listTransfer);
 		setupListSelectionFrame("Select specials", listTransfer);
 		setButtonsEnabled(false);
+		
+		addSpecialsDescription(listTransfer);
 	}
 
 	
@@ -306,6 +281,8 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		setupListSelectionPanel(listTransfer);
 		setupListSelectionFrame("Select nastier specials", listTransfer);
 		setButtonsEnabled(false);
+		
+		addSpecialsDescription(listTransfer);
 	}
 	
 	
@@ -351,5 +328,67 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		_listFrame.pack();
 		_listFrame.setVisible(true);
 		_listFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+	}
+	
+	
+	private void addAttackDescription(final ListTransferPanel<IAttack> listTransfer)
+	{
+		final JPanel innerPanel = new JPanel();
+		innerPanel.setBorder(BorderFactory.createTitledBorder("Description"));
+		_listFrame.add(innerPanel);
+
+		final ListSelectionListener listener = new ListSelectionListener()
+		{
+			@Override
+			public void valueChanged(ListSelectionEvent selection)
+			{
+				innerPanel.removeAll();
+				
+				JList<IAttack> source = (JList<IAttack>) selection.getSource();
+				int index = source.getSelectedIndex();
+				if (index > -1)
+				{
+					final IAttack attack = source.getModel().getElementAt(index);
+					innerPanel.add(new AttackViewLabel(attack));
+				}
+				
+				_listFrame.pack();
+				_listFrame.setVisible(true);
+			}
+		};
+		
+		listTransfer.getLeftList().addListSelectionListener(listener);
+		listTransfer.getRightList().addListSelectionListener(listener);
+	}
+	
+	
+	private void addSpecialsDescription(final ListTransferPanel<ISpecial> listTransfer)
+	{
+		final JPanel innerPanel = new JPanel();
+		innerPanel.setBorder(BorderFactory.createTitledBorder("Description"));
+		_listFrame.add(innerPanel);
+
+		final ListSelectionListener listener = new ListSelectionListener()
+		{
+			@Override
+			public void valueChanged(ListSelectionEvent selection)
+			{
+				innerPanel.removeAll();
+				
+				JList<ISpecial> source = (JList<ISpecial>) selection.getSource();
+				int index = source.getSelectedIndex();
+				if (index > -1)
+				{
+					final ISpecial attack = source.getModel().getElementAt(index);
+					innerPanel.add(new SpecialViewLabel(attack));
+				}
+				
+				_listFrame.pack();
+				_listFrame.setVisible(true);
+			}
+		};
+		
+		listTransfer.getLeftList().addListSelectionListener(listener);
+		listTransfer.getRightList().addListSelectionListener(listener);
 	}
 }

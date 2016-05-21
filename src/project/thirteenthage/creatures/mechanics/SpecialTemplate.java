@@ -3,6 +3,8 @@ package project.thirteenthage.creatures.mechanics;
 import java.io.File;
 
 import project.thirteenthage.creatures.internal.BasicXmlFile;
+import project.thirteenthage.creatures.internal.Constants;
+import project.thirteenthage.creatures.internal.conversions.HtmlDescriptions;
 import project.thirteenthage.creatures.internal.interfaces.ISpecial;
 
 public class SpecialTemplate implements ISpecial
@@ -41,7 +43,7 @@ public class SpecialTemplate implements ISpecial
 	@Override
 	public String toHtmlText()
 	{
-		throw new IllegalStateException("Not implemented");
+		return HtmlDescriptions.getSpecialDescription(this, Constants.TEMPLATE_CREATURE_OF_TYPE);
 	}
 	
 	
