@@ -14,9 +14,20 @@ import project.thirteenthage.creatures.internal.conversions.Conversions;
  */
 public final class LevelAdjustment
 {
+	private static LevelAdjustment _instance = new LevelAdjustment();
+
+	private boolean _calculateOriginalValue = true;
+
+
 	private LevelAdjustment()
 	{
 		// hide public constructor, this is a utility class
+	}
+
+
+	private boolean useOriginalCalculation()
+	{
+		return _calculateOriginalValue;
 	}
 
 
@@ -24,17 +35,47 @@ public final class LevelAdjustment
 	{
 		double adjustment = 0.0;
 
-		adjustment += valueOfAttack(attack);
-		adjustment += valueOfDefense(ac);
-		adjustment += valueOfDefense(pd);
-		adjustment += valueOfDefense(md);
-		adjustment += valueOfHP(hp);
+		adjustment += _instance.valueOfAttack(attack);
+		adjustment += _instance.valueOfDefense(ac);
+		adjustment += _instance.valueOfDefense(pd);
+		adjustment += _instance.valueOfDefense(md);
+		adjustment += _instance.valueOfHP(hp);
 
 		return adjustment;
 	}
+	
+	
+	public static void setUseOriginalCalculation(final boolean use)
+	{
+		_instance._calculateOriginalValue = use;
+	}
 
 
-	private static double valueOfAttack(final int attack)
+	public static int getLevelAdjustment(final int attack, final int ac, final int pd, final int md, final double hp)
+	{
+		return Conversions.round(getLevelAdjustmentFine(attack, ac, pd, md, hp));
+	}
+
+
+	private double valueOfAttack(final int attack)
+	{
+		return useOriginalCalculation() ? valueOfAttackOriginal(attack) : valueOfAttackModified(attack);
+	}
+
+
+	private double valueOfDefense(final int defense)
+	{
+		return useOriginalCalculation() ? valueOfDefenseOriginal(defense) : valueOfDefenseModified(defense);
+	}
+
+
+	private double valueOfHP(final double hp)
+	{
+		return useOriginalCalculation() ? valueOfHPOriginal(hp) : valueOfHPModified(hp);
+	}
+
+
+	private double valueOfAttackOriginal(final int attack)
 	{
 		// a boost of +6 is worth one level
 		final double value = attack / 6.0;
@@ -42,7 +83,7 @@ public final class LevelAdjustment
 	}
 
 
-	private static double valueOfDefense(final int defense)
+	private double valueOfDefenseOriginal(final int defense)
 	{
 		// a boost of +6 is worth one level
 		double value = defense / 6.0;
@@ -53,7 +94,7 @@ public final class LevelAdjustment
 	}
 
 
-	private static double valueOfHP(final double hp)
+	private double valueOfHPOriginal(final double hp)
 	{
 		double value = hp - 1.0; // offset first
 		value /= 0.15; // seems to go in 15% steps
@@ -62,8 +103,21 @@ public final class LevelAdjustment
 	}
 
 
-	public static int getLevelAdjustment(final int attack, final int ac, final int pd, final int md, final double hp)
+	private double valueOfAttackModified(final int attack)
 	{
-		return Conversions.round(getLevelAdjustmentFine(attack, ac, pd, md, hp));
+		return 0.0;
 	}
+
+
+	private double valueOfDefenseModified(final int defense)
+	{
+		return 0.0;
+	}
+
+
+	private double valueOfHPModified(final double hp)
+	{
+		return 0.0;
+	}
+
 }
