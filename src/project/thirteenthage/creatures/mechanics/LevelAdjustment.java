@@ -1,6 +1,7 @@
 package project.thirteenthage.creatures.mechanics;
 
 import project.thirteenthage.creatures.internal.conversions.Conversions;
+import project.thirteenthage.creatures.internal.interfaces.ILevelAdjustment;
 
 /**
  * <p>
@@ -14,9 +15,10 @@ import project.thirteenthage.creatures.internal.conversions.Conversions;
  */
 public final class LevelAdjustment
 {
-	private static LevelAdjustment _instance = new LevelAdjustment();
+	private static ILevelAdjustment _original = new LevelAdjustmentOriginal();
+	private static ILevelAdjustment _alternate = new LevelAdjustmentAlternate();
 
-	private boolean _calculateOriginalValue = true;
+	private static boolean _calculateOriginalValue = true;
 
 
 	private LevelAdjustment()
@@ -25,29 +27,17 @@ public final class LevelAdjustment
 	}
 
 
-	private boolean useOriginalCalculation()
-	{
-		return _calculateOriginalValue;
-	}
-
-
 	public static double getLevelAdjustmentFine(final int attack, final int ac, final int pd, final int md, final double hp)
 	{
 		double adjustment = 0.0;
 
-		adjustment += _instance.valueOfAttack(attack);
-		adjustment += _instance.valueOfDefense(ac);
-		adjustment += _instance.valueOfDefense(pd);
-		adjustment += _instance.valueOfDefense(md);
-		adjustment += _instance.valueOfHP(hp);
+		adjustment += getInstance().valueOfAttack(attack);
+		adjustment += getInstance().valueOfDefense(ac);
+		adjustment += getInstance().valueOfDefense(pd);
+		adjustment += getInstance().valueOfDefense(md);
+		adjustment += getInstance().valueOfHP(hp);
 
 		return adjustment;
-	}
-	
-	
-	public static void setUseOriginalCalculation(final boolean use)
-	{
-		_instance._calculateOriginalValue = use;
 	}
 
 
@@ -55,69 +45,30 @@ public final class LevelAdjustment
 	{
 		return Conversions.round(getLevelAdjustmentFine(attack, ac, pd, md, hp));
 	}
-
-
-	private double valueOfAttack(final int attack)
+	
+	
+	public static void setUseOriginalCalculation(final boolean use)
 	{
-		return useOriginalCalculation() ? valueOfAttackOriginal(attack) : valueOfAttackModified(attack);
+		_calculateOriginalValue = use;
 	}
 
 
-	private double valueOfDefense(final int defense)
+	private static boolean useOriginalCalculation()
 	{
-		return useOriginalCalculation() ? valueOfDefenseOriginal(defense) : valueOfDefenseModified(defense);
+		return _calculateOriginalValue;
 	}
-
-
-	private double valueOfHP(final double hp)
+	
+	
+	private static ILevelAdjustment getInstance()
 	{
-		return useOriginalCalculation() ? valueOfHPOriginal(hp) : valueOfHPModified(hp);
-	}
-
-
-	private double valueOfAttackOriginal(final int attack)
-	{
-		// a boost of +6 is worth one level
-		final double value = attack / 6.0;
-		return value;
-	}
-
-
-	private double valueOfDefenseOriginal(final int defense)
-	{
-		// a boost of +6 is worth one level
-		double value = defense / 6.0;
-		// -1 to all defenses is worth the same as a +1 attack (see offensive
-		// example)
-		if (defense < 0) value /= 3.0;
-		return value;
-	}
-
-
-	private double valueOfHPOriginal(final double hp)
-	{
-		double value = hp - 1.0; // offset first
-		value /= 0.15; // seems to go in 15% steps
-		value /= 6.0; // 6 x0.15 = 0.9, is about the same as twice the hp
-		return value;
-	}
-
-
-	private double valueOfAttackModified(final int attack)
-	{
-		return 0.0;
-	}
-
-
-	private double valueOfDefenseModified(final int defense)
-	{
-		return 0.0;
-	}
-
-
-	private double valueOfHPModified(final double hp)
-	{
-		return 0.0;
+		if (useOriginalCalculation())
+		{
+			return _original;
+		}
+		else
+		{
+			return _alternate;
+		}
 	}
 
 }
