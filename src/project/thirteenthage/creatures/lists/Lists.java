@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class Lists
 {
-	private List<String> _labels = new ArrayList<String>();
+	private final List<String> _labels = new ArrayList<String>();
 
 	private static Lists _instance = null;
 

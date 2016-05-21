@@ -9,8 +9,8 @@ public class RegexMatcher
 {
 	public static List<String> getAllMatches(final String source, final String expression)
 	{
-		List<String> allMatches = new ArrayList<String>();
-		Matcher m = Pattern.compile(expression).matcher(source);
+		final List<String> allMatches = new ArrayList<String>();
+		final Matcher m = Pattern.compile(expression).matcher(source);
 		while (m.find())
 		{
 			allMatches.add(m.group());

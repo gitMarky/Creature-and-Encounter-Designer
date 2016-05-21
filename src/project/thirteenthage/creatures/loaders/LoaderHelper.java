@@ -15,7 +15,7 @@ public final class LoaderHelper
 
 	public static String getId(final BasicXmlFile template)
 	{
-		String name = template.getFile().getName();
+		final String name = template.getFile().getName();
 		return name.substring(0, name.length() - EXTENSION_XML.length());
 	}
 }

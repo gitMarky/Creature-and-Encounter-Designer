@@ -29,9 +29,9 @@ public class TextFormatter
 	{
 		// replace for example $damage[x1.2] with 1.2*value
 
-		String expression = PLACEHOLDER_START + placeholder + PLACEHOLDER_SCALABLE_DOUBLE + "+";
+		final String expression = PLACEHOLDER_START + placeholder + PLACEHOLDER_SCALABLE_DOUBLE + "+";
 
-		String suffix = inPercent ? "%" : "";
+		final String suffix = inPercent ? "%" : "";
 		String text = parseDoubleScaled(source, expression, value, suffix);
 		text = parseDoubleScaled(text, PLACEHOLDER_START + placeholder, value, suffix);
 
@@ -42,16 +42,16 @@ public class TextFormatter
 	private static final String parseDoubleScaled(final String source, final String expression, final double value, final String suffix)
 	{
 		String text = source;
-		List<String> matches = RegexMatcher.getAllMatches(source, expression);
+		final List<String> matches = RegexMatcher.getAllMatches(source, expression);
 
 		for (final String match : matches)
 		{
 			double scaledValue = value;
 
-			List<String> scales = RegexMatcher.getAllMatches(match, PLACEHOLDER_SCALABLE_DOUBLE);
+			final List<String> scales = RegexMatcher.getAllMatches(match, PLACEHOLDER_SCALABLE_DOUBLE);
 			if (scales.size() == 1)
 			{
-				String scale = scales.get(0).replace("[x", "").replace("]", "");
+				final String scale = scales.get(0).replace("[x", "").replace("]", "");
 
 				scaledValue *= Double.parseDouble(scale);
 			}

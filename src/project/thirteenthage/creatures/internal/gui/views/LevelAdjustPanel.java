@@ -23,10 +23,10 @@ public class LevelAdjustPanel extends JPanel
 	}
 
 
-	public void display(int attack, int ac, int pd, int md, double hp)
+	public void display(final int attack, final int ac, final int pd, final int md, final double hp)
 	{
-		int integer = LevelAdjustment.getLevelAdjustment(attack, ac, pd, md, hp);
-		double fine = LevelAdjustment.getLevelAdjustmentFine(attack, ac, pd, md, hp);
+		final int integer = LevelAdjustment.getLevelAdjustment(attack, ac, pd, md, hp);
+		final double fine = LevelAdjustment.getLevelAdjustmentFine(attack, ac, pd, md, hp);
 
 		_label.setText(String.format("%+d, (%+.2f)", integer, fine));
 	}

@@ -15,7 +15,7 @@ public class CreatureTableRow
 	private final double _fear;
 
 
-	public CreatureTableRow(double strikeDamage, double hp, final double fear)
+	public CreatureTableRow(final double strikeDamage, final double hp, final double fear)
 	{
 		_strikeDamage = strikeDamage;
 		_hp = hp;

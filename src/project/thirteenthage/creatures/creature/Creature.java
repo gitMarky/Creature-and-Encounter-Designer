@@ -18,7 +18,7 @@ public class Creature implements ICreature
 	private String _name = "New creature";
 	private int _level = 1;
 	private int _levelAdjustment = 0;
-	private List<String> _labels = new ArrayList<String>();
+	private final List<String> _labels = new ArrayList<String>();
 	private int _attack = 0;
 	private int _ac = 0;
 	private int _pd = 0;
@@ -27,9 +27,9 @@ public class Creature implements ICreature
 	private double _damage = 0.0;
 	private double _fearThreshold = 0.0;
 	private int _ini = 0;
-	private List<IAttack> _attacks = new ArrayList<IAttack>();
-	private List<ISpecial> _specials = new ArrayList<ISpecial>();
-	private List<ISpecial> _nastierSpecials = new ArrayList<ISpecial>();
+	private final List<IAttack> _attacks = new ArrayList<IAttack>();
+	private final List<ISpecial> _specials = new ArrayList<ISpecial>();
+	private final List<ISpecial> _nastierSpecials = new ArrayList<ISpecial>();
 	private CreatureSize _size = CreatureSize.NORMAL;
 	private boolean _isMook = false;
 	private ICreatureTemplate _template;
@@ -146,7 +146,7 @@ public class Creature implements ICreature
 	}
 
 
-	void setAttackModifier(int attack)
+	void setAttackModifier(final int attack)
 	{
 		_attack = attack;
 	}
@@ -212,7 +212,7 @@ public class Creature implements ICreature
 	}
 
 
-	public void setAttacks(List<IAttack> attacks)
+	public void setAttacks(final List<IAttack> attacks)
 	{
 		_attacks.clear();
 		// create the actual attacks from templates.
@@ -226,7 +226,7 @@ public class Creature implements ICreature
 
 
 	@Override
-	public void setSpecials(List<ISpecial> specials)
+	public void setSpecials(final List<ISpecial> specials)
 	{
 		_specials.clear();
 		for (final ISpecial template : specials)
@@ -238,7 +238,7 @@ public class Creature implements ICreature
 
 
 	@Override
-	public void setNastierSpecials(List<ISpecial> nastierSpecials)
+	public void setNastierSpecials(final List<ISpecial> nastierSpecials)
 	{
 		_nastierSpecials.clear();
 		for (final ISpecial template : nastierSpecials)
@@ -256,13 +256,13 @@ public class Creature implements ICreature
 	}
 
 
-	public void setTemplate(ICreatureTemplate template)
+	public void setTemplate(final ICreatureTemplate template)
 	{
 		_template = template;
 	}
 
 
-	public void setLevelAdjustment(int amount)
+	public void setLevelAdjustment(final int amount)
 	{
 		_levelAdjustment = amount;
 	}
@@ -281,13 +281,13 @@ public class Creature implements ICreature
 
 
 	@Override
-	public boolean equals(Object other)
+	public boolean equals(final Object other)
 	{
 		if (other instanceof Creature)
 		{
 			boolean equality = true;
 
-			Creature otherCreature = (Creature) other;
+			final Creature otherCreature = (Creature) other;
 
 			equality &= otherCreature.getName().equals(this.getName());
 			equality &= otherCreature.getSize() == this.getSize();

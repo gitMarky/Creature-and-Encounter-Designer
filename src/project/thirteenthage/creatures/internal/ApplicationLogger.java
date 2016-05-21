@@ -27,11 +27,11 @@ public class ApplicationLogger
 			{
 				fh = new FileHandler(new File("ApplicationLog.log").getAbsolutePath());
 			}
-			catch (SecurityException e)
+			catch (final SecurityException e)
 			{
 				throw new IllegalStateException(e);
 			}
-			catch (IOException e)
+			catch (final IOException e)
 			{
 				throw new IllegalStateException(e);
 			}
@@ -51,7 +51,7 @@ public class ApplicationLogger
 		@Override
 		public String format(final LogRecord record)
 		{
-			StringBuilder format = new StringBuilder();
+			final StringBuilder format = new StringBuilder();
 			format.append(new Date(record.getMillis()).toLocaleString());
 			extend(format, 25);
 			format.append(getShortClassName(record) + "." + record.getSourceMethodName() + "()");
@@ -64,14 +64,14 @@ public class ApplicationLogger
 		}
 
 
-		private String getShortClassName(LogRecord record)
+		private String getShortClassName(final LogRecord record)
 		{
-			String name = record.getSourceClassName();
+			final String name = record.getSourceClassName();
 			return name.substring(name.lastIndexOf(".") + 1);
 		}
 
 
-		private void extend(final StringBuilder builder, int size)
+		private void extend(final StringBuilder builder, final int size)
 		{
 			while (builder.length() < size)
 				builder.append(" ");

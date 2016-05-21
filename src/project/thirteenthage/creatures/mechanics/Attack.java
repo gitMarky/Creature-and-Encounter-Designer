@@ -11,7 +11,7 @@ import project.thirteenthage.creatures.internal.interfaces.ICreature;
 
 public class Attack implements IAttack
 {
-	private IAttack _template;
+	private final IAttack _template;
 	private final int _attackBase;
 	private final double _damageBase;
 	private final ICreature _creature;

@@ -16,8 +16,8 @@ import project.thirteenthage.creatures.creature.BetterDefense;
 @SuppressWarnings("serial")
 public class DefenseChoicePanel extends ChoicePanel implements ActionListener
 {
-	private JRadioButton _pdButton = new JRadioButton("PD");
-	private JRadioButton _mdButton = new JRadioButton("MD");
+	private final JRadioButton _pdButton = new JRadioButton("PD");
+	private final JRadioButton _mdButton = new JRadioButton("MD");
 
 	private BetterDefense _better = BetterDefense.PD;
 
@@ -32,7 +32,7 @@ public class DefenseChoicePanel extends ChoicePanel implements ActionListener
 		_mdButton.setSelected(false);
 		_pdButton.setSelected(true);
 
-		ButtonGroup group = new ButtonGroup();
+		final ButtonGroup group = new ButtonGroup();
 		group.add(_pdButton);
 		group.add(_mdButton);
 
@@ -45,7 +45,7 @@ public class DefenseChoicePanel extends ChoicePanel implements ActionListener
 
 
 	@Override
-	public void actionPerformed(ActionEvent event)
+	public void actionPerformed(final ActionEvent event)
 	{
 		if (event.getSource() == _pdButton)
 		{

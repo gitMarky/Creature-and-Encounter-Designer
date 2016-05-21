@@ -8,7 +8,7 @@ import project.thirteenthage.creatures.internal.interfaces.ICreature;
 public class Trigger implements ITrigger
 {
 	private final String _name;
-	private String _description;
+	private final String _description;
 	private final boolean _isTemplate;
 
 

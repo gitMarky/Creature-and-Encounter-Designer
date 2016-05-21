@@ -48,7 +48,7 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 	}
 
 
-	public CreatureTemplate(BasicXmlFile file)
+	public CreatureTemplate(final BasicXmlFile file)
 	{
 		_template = file;
 
@@ -94,7 +94,7 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 
 	public List<String> parseLabels()
 	{
-		List<String> labels = new ArrayList<String>();
+		final List<String> labels = new ArrayList<String>();
 		for (final Element label : _template.getRoot().getChild(ELEMENT_LABELS).getChildren())
 		{
 			labels.add(label.getText());
@@ -152,13 +152,13 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 
 	public List<IAttack> parseAttacks()
 	{
-		List<IAttack> attacks = new ArrayList<IAttack>();
+		final List<IAttack> attacks = new ArrayList<IAttack>();
 
 		for (final Element attack : _template.getRoot().getChild(ELEMENT_ATTACKS).getChildren())
 		{
-			String id = attack.getAttributeValue(ATTRIBUTE_ID);
+			final String id = attack.getAttributeValue(ATTRIBUTE_ID);
 
-			IAttack template = AttackTemplateLoader.getInstance().get(id);
+			final IAttack template = AttackTemplateLoader.getInstance().get(id);
 			if (template != null) attacks.add(template);
 		}
 
@@ -180,13 +180,13 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 
 	private List<ISpecial> readSpecials(final String node)
 	{
-		List<ISpecial> specials = new ArrayList<ISpecial>();
+		final List<ISpecial> specials = new ArrayList<ISpecial>();
 
 		for (final Element special : _template.getRoot().getChild(node).getChildren())
 		{
-			String id = special.getAttributeValue(ATTRIBUTE_ID);
+			final String id = special.getAttributeValue(ATTRIBUTE_ID);
 
-			ISpecial template = SpecialTemplateLoader.getInstance().get(id);
+			final ISpecial template = SpecialTemplateLoader.getInstance().get(id);
 			if (template != null) specials.add(template);
 		}
 

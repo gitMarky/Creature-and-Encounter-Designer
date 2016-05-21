@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 @SuppressWarnings("serial")
 public class TextChoicePanel extends ChoicePanel implements ActionListener
 {
-	private JTextField _amountField = new JTextField();
+	private final JTextField _amountField = new JTextField();
 
 
 	public TextChoicePanel(final String name)
@@ -30,7 +30,7 @@ public class TextChoicePanel extends ChoicePanel implements ActionListener
 
 
 	@Override
-	public void actionPerformed(ActionEvent event)
+	public void actionPerformed(final ActionEvent event)
 	{
 		updateView();
 	}

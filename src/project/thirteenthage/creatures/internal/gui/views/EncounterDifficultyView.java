@@ -10,7 +10,7 @@ public class EncounterDifficultyView extends JPanel
 {
 	public static String DIFFICULTY_NOT_SET = "-";
 
-	private JLabel _difficultyLabel = new JLabel(DIFFICULTY_NOT_SET);
+	private final JLabel _difficultyLabel = new JLabel(DIFFICULTY_NOT_SET);
 
 
 	public EncounterDifficultyView()
@@ -23,7 +23,7 @@ public class EncounterDifficultyView extends JPanel
 	}
 
 
-	public void displayDifficulty(double difficulty)
+	public void displayDifficulty(final double difficulty)
 	{
 		if (Double.isNaN(difficulty))
 		{

@@ -37,8 +37,8 @@ public class AttackTemplate implements IAttack
 
 		for (final Element element : template.getRoot().getChild("triggers").getChildren())
 		{
-			String name = element.getAttributeValue("name");
-			String description = element.getAttributeValue("description");
+			final String name = element.getAttributeValue("name");
+			final String description = element.getAttributeValue("description");
 
 			if (name.isEmpty() || description.isEmpty()) continue;
 

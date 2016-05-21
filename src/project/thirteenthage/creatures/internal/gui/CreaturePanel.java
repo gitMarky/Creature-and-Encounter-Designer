@@ -27,8 +27,8 @@ import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
 @SuppressWarnings("serial")
 public class CreaturePanel extends JPanel implements ActionListener, IView
 {
-	private JPanel _innerPanel = new JPanel();
-	private CreatureEditPanel _editPanel = new CreatureEditPanel();
+	private final JPanel _innerPanel = new JPanel();
+	private final CreatureEditPanel _editPanel = new CreatureEditPanel();
 	private CreatureViewPanel _panel = null;
 	private final JButton _addButton = new JButton("Add to encounter");
 	private final JButton _editButton = new JButton("Edit");
@@ -43,7 +43,7 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 	CreaturePanel()
 	{
 		super();
-		JPanel buttonPanel = new JPanel();
+		final JPanel buttonPanel = new JPanel();
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
 		// top row: buttons
@@ -84,7 +84,7 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 	 * @param creature
 	 *            the creature.
 	 */
-	public void displayCreature(ICreature creature)
+	public void displayCreature(final ICreature creature)
 	{
 		if (_panel != null)
 		{
@@ -99,7 +99,7 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 
 
 	@Override
-	public void actionPerformed(ActionEvent event)
+	public void actionPerformed(final ActionEvent event)
 	{
 		if (event.getSource() == _addButton)
 		{
@@ -119,7 +119,7 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 		}
 		if (event.getSource() == _saveButton)
 		{
-			int choice = CreatureGui.GUI.getFileChooser().showSaveDialog(this);
+			final int choice = CreatureGui.GUI.getFileChooser().showSaveDialog(this);
 
 			if (choice == JFileChooser.APPROVE_OPTION)
 			{
@@ -174,7 +174,7 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 	}
 
 
-	private void transferCreatureToEncounter(ICreature creature)
+	private void transferCreatureToEncounter(final ICreature creature)
 	{
 		CreatureGui.GUI.getEncounterPanel().addCreature(creature);
 	}

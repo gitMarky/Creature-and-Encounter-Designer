@@ -13,7 +13,7 @@ public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 	private String _name = "New creature";
 	private int _level = 1;
 	private CreatureSize _size = CreatureSize.NORMAL;
-	private List<String> _labels = new ArrayList<String>();
+	private final List<String> _labels = new ArrayList<String>();
 	private int _attack = 0;
 	private int _ac = 0;
 	private int _pd = 0;
@@ -21,9 +21,9 @@ public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 	private double _hp = 1.0;
 	private int _ini = 0;
 	private BetterDefense _betterDefense = BetterDefense.PD;
-	private List<IAttack> _attacks = new ArrayList<IAttack>();
-	private List<ISpecial> _specials = new ArrayList<ISpecial>();
-	private List<ISpecial> _nastier = new ArrayList<ISpecial>();
+	private final List<IAttack> _attacks = new ArrayList<IAttack>();
+	private final List<ISpecial> _specials = new ArrayList<ISpecial>();
+	private final List<ISpecial> _nastier = new ArrayList<ISpecial>();
 
 
 	@Override
@@ -124,61 +124,61 @@ public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 	}
 
 
-	public void setName(String name)
+	public void setName(final String name)
 	{
 		_name = name;
 	}
 
 
-	public void setLevel(int level)
+	public void setLevel(final int level)
 	{
 		_level = level;
 	}
 
 
-	public void setSize(CreatureSize size)
+	public void setSize(final CreatureSize size)
 	{
 		_size = size;
 	}
 
 
-	public void setAttack(int attack)
+	public void setAttack(final int attack)
 	{
 		_attack = attack;
 	}
 
 
-	public void setAC(int ac)
+	public void setAC(final int ac)
 	{
 		_ac = ac;
 	}
 
 
-	public void setPD(int pd)
+	public void setPD(final int pd)
 	{
 		_pd = pd;
 	}
 
 
-	public void setMD(int md)
+	public void setMD(final int md)
 	{
 		_md = md;
 	}
 
 
-	public void setHP(double hp)
+	public void setHP(final double hp)
 	{
 		_hp = hp;
 	}
 
 
-	public void setInitiative(int ini)
+	public void setInitiative(final int ini)
 	{
 		_ini = ini;
 	}
 
 
-	public void setBetterDefense(BetterDefense defense)
+	public void setBetterDefense(final BetterDefense defense)
 	{
 		_betterDefense = defense;
 	}
@@ -187,7 +187,7 @@ public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 	@Override
 	public ICreature toCreature()
 	{
-		CreatureBuilder builder = new CreatureBuilder();
+		final CreatureBuilder builder = new CreatureBuilder();
 		builder.name(getName()).size(getSize()).level(getLevel()).addInitiative(getModifierInitiative()).addAttack(getModifierAttack()).addAC(getModifierAC()).addPD(getModifierPD()).addMD(getModifierMD()).scaleHP(getModifierHP());
 
 		if (getBetterDefense() == BetterDefense.MD) builder.betterDefenseIsMD();

@@ -15,16 +15,16 @@ public class AttackTemplateLoader extends AbstractLoader<IAttack>
 
 
 	@Override
-	protected boolean checkEntry(BasicXmlFile template)
+	protected boolean checkEntry(final BasicXmlFile template)
 	{
 		return "attack".equals(template.getRoot().getName());
 	}
 
 
 	@Override
-	protected void addEntry(BasicXmlFile file)
+	protected void addEntry(final BasicXmlFile file)
 	{
-		AttackTemplate template = new AttackTemplate(file);
+		final AttackTemplate template = new AttackTemplate(file);
 		final String id = LoaderHelper.getId(file);
 
 		if (getTemplates().containsKey(id))

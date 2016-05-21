@@ -16,10 +16,10 @@ import javax.swing.JTextField;
 public class AmountChoicePanel extends ChoicePanel implements ActionListener
 {
 	private int _amount = 1;
-	private JTextField _amountField = new JTextField();
-	private JLabel _amountLabel = new JLabel(Integer.toString(_amount));
-	private JButton _minusButton = new JButton("-");
-	private JButton _plusButton = new JButton("+");
+	private final JTextField _amountField = new JTextField();
+	private final JLabel _amountLabel = new JLabel(Integer.toString(_amount));
+	private final JButton _minusButton = new JButton("-");
+	private final JButton _plusButton = new JButton("+");
 
 	private int _lowerBound = 1;
 	private int _upperBound = Integer.MAX_VALUE;
@@ -48,7 +48,7 @@ public class AmountChoicePanel extends ChoicePanel implements ActionListener
 
 
 	@Override
-	public void actionPerformed(ActionEvent event)
+	public void actionPerformed(final ActionEvent event)
 	{
 		if (event.getSource() == _minusButton) changeAmount(-_buttonStep);
 		if (event.getSource() == _plusButton) changeAmount(+_buttonStep);
@@ -56,7 +56,7 @@ public class AmountChoicePanel extends ChoicePanel implements ActionListener
 		{
 			try
 			{
-				int amount = Integer.parseInt(_amountField.getText());
+				final int amount = Integer.parseInt(_amountField.getText());
 				setAmount(amount);
 			}
 			catch (final NumberFormatException e)
@@ -67,14 +67,14 @@ public class AmountChoicePanel extends ChoicePanel implements ActionListener
 	}
 
 
-	private void changeAmount(int change)
+	private void changeAmount(final int change)
 	{
 		_amount += change;
 		updateAmount();
 	}
 
 
-	public void setAmount(int amount)
+	public void setAmount(final int amount)
 	{
 		_amount = amount;
 		updateAmount();

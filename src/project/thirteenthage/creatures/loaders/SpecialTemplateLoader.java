@@ -15,16 +15,16 @@ public class SpecialTemplateLoader extends AbstractLoader<ISpecial>
 
 
 	@Override
-	protected boolean checkEntry(BasicXmlFile template)
+	protected boolean checkEntry(final BasicXmlFile template)
 	{
 		return "special".equals(template.getRoot().getName());
 	}
 
 
 	@Override
-	protected void addEntry(BasicXmlFile file)
+	protected void addEntry(final BasicXmlFile file)
 	{
-		SpecialTemplate template = new SpecialTemplate(file);
+		final SpecialTemplate template = new SpecialTemplate(file);
 		final String id = LoaderHelper.getId(file);
 
 		if (getTemplates().containsKey(id))

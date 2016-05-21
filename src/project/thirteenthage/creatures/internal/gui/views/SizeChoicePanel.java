@@ -21,14 +21,14 @@ public class SizeChoicePanel extends ChoicePanel implements ActionListener
 {
 	private CreatureSize _choice;
 
-	private Map<JRadioButton, CreatureSize> _map = new HashMap<JRadioButton, CreatureSize>();
+	private final Map<JRadioButton, CreatureSize> _map = new HashMap<JRadioButton, CreatureSize>();
 
 
 	public SizeChoicePanel()
 	{
 		super();
 
-		ButtonGroup group = new ButtonGroup();
+		final ButtonGroup group = new ButtonGroup();
 
 		for (final CreatureSize size : CreatureSize.values())
 		{
@@ -48,9 +48,9 @@ public class SizeChoicePanel extends ChoicePanel implements ActionListener
 
 
 	@Override
-	public void actionPerformed(ActionEvent event)
+	public void actionPerformed(final ActionEvent event)
 	{
-		CreatureSize creatureSize = _map.get(event.getSource());
+		final CreatureSize creatureSize = _map.get(event.getSource());
 		if (creatureSize != null)
 		{
 			_choice = creatureSize;

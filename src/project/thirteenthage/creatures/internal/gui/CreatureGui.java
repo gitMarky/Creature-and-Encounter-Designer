@@ -31,7 +31,7 @@ public class CreatureGui implements IView
 	private final JFileChooser _fileChooser = new JFileChooser();
 
 
-	public static void main(String[] args)
+	public static void main(final String[] args)
 	{
 		GUI = new CreatureGui();
 		GUI.getMenuSelectionPanel().onCreatureSelected();
@@ -60,7 +60,7 @@ public class CreatureGui implements IView
 		final FileFilter fileFilter = new javax.swing.filechooser.FileFilter()
 		{
 			@Override
-			public boolean accept(File file)
+			public boolean accept(final File file)
 			{
 				return file.isDirectory() || file.getName().toLowerCase().endsWith(LoaderHelper.EXTENSION_XML);
 			}

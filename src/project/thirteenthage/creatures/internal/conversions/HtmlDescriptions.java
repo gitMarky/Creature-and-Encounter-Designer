@@ -14,7 +14,7 @@ public class HtmlDescriptions
 	public static String getAttackDescription(final IAttack attack, final String creatureName, final double creatureDamage, final boolean inPercent)
 	{
 		final StringBuilder htmlText = new StringBuilder();
-		int damageFactor = Conversions.round(attack.getDamageFactor() * (inPercent ? 100.0 : 1.0));
+		final int damageFactor = Conversions.round(attack.getDamageFactor() * (inPercent ? 100.0 : 1.0));
 
 		String description = replaceName(attack.getDescription(), creatureName);
 		description = replaceDamage(description, creatureDamage, inPercent);
@@ -53,7 +53,7 @@ public class HtmlDescriptions
 	{
 		final StringBuilder htmlText = new StringBuilder();
 
-		String description = TextFormatter.parse(special.getDescription(), TextFormatter.PLACEHOLDER_NAME, creatureName);
+		final String description = TextFormatter.parse(special.getDescription(), TextFormatter.PLACEHOLDER_NAME, creatureName);
 
 		htmlText.append(Html.BEGIN_ITALIC + special.getName() + Html.END_ITALIC);
 		htmlText.append(": " + description);

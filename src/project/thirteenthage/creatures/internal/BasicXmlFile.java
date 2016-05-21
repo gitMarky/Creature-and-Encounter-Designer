@@ -22,16 +22,16 @@ public class BasicXmlFile
 		_file = file;
 		_doc = null;
 
-		SAXBuilder builder = new SAXBuilder();
+		final SAXBuilder builder = new SAXBuilder();
 		try
 		{
 			_doc = builder.build(_file);
 		}
-		catch (JDOMException e)
+		catch (final JDOMException e)
 		{
 			_doc = new Document();
 		}
-		catch (IOException e)
+		catch (final IOException e)
 		{
 			throw new IllegalStateException();
 		}
@@ -54,7 +54,7 @@ public class BasicXmlFile
 	public boolean saveToFile(final File file)
 	{
 		// get object to see output of prepared document
-		XMLOutputter xmlOutput = new XMLOutputter();
+		final XMLOutputter xmlOutput = new XMLOutputter();
 
 		// passed fileWriter to write content in specified file
 		xmlOutput.setFormat(Format.getPrettyFormat());
@@ -62,12 +62,12 @@ public class BasicXmlFile
 		// FileWriter("generatedXmlFiles/generatedXml.xml"));
 		try
 		{
-			FileWriter fileWriter = new FileWriter(file);
+			final FileWriter fileWriter = new FileWriter(file);
 			xmlOutput.output(_doc, fileWriter);
 			fileWriter.close();
 			return true;
 		}
-		catch (IOException e)
+		catch (final IOException e)
 		{
 			return false;
 		}

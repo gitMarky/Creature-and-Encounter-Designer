@@ -36,7 +36,7 @@ public class CreatureBuilder
 	 * @param originalCreature
 	 *            the original creature.
 	 */
-	public CreatureBuilder(ICreature originalCreature)
+	public CreatureBuilder(final ICreature originalCreature)
 	{
 		// TODO Auto-generated constructor stub
 	}
@@ -121,7 +121,7 @@ public class CreatureBuilder
 
 	public Creature buildCreature()
 	{
-		Creature creature = new Creature();
+		final Creature creature = new Creature();
 
 		creature.setName(_name);
 		creature.setSize(_size);
@@ -157,7 +157,7 @@ public class CreatureBuilder
 
 	public Creature buildMook()
 	{
-		Creature mook = buildCreature();
+		final Creature mook = buildCreature();
 
 		mook.setFearThreshold(0); // people are not afraid of mooks
 		mook.setHP(mook.getHP() * 0.25);
@@ -168,7 +168,7 @@ public class CreatureBuilder
 	}
 
 
-	public Creature build(boolean isMook)
+	public Creature build(final boolean isMook)
 	{
 		if (isMook)
 			return buildMook();

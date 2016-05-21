@@ -18,7 +18,7 @@ public final class LevelAdjustment
 	}
 
 
-	public static double getLevelAdjustmentFine(int attack, int ac, int pd, int md, double hp)
+	public static double getLevelAdjustmentFine(final int attack, final int ac, final int pd, final int md, final double hp)
 	{
 		double adjustment = 0.0;
 
@@ -32,15 +32,15 @@ public final class LevelAdjustment
 	}
 
 
-	private static double valueOfAttack(int attack)
+	private static double valueOfAttack(final int attack)
 	{
 		// a boost of +6 is worth one level
-		double value = attack / 6.0;
+		final double value = attack / 6.0;
 		return value;
 	}
 
 
-	private static double valueOfDefense(int defense)
+	private static double valueOfDefense(final int defense)
 	{
 		// a boost of +6 is worth one level
 		double value = defense / 6.0;
@@ -51,7 +51,7 @@ public final class LevelAdjustment
 	}
 
 
-	private static double valueOfHP(double hp)
+	private static double valueOfHP(final double hp)
 	{
 		double value = hp - 1.0; // offset first
 		value /= 0.15; // seems to go in 15% steps
@@ -60,7 +60,7 @@ public final class LevelAdjustment
 	}
 
 
-	public static int getLevelAdjustment(int attack, int ac, int pd, int md, double hp)
+	public static int getLevelAdjustment(final int attack, final int ac, final int pd, final int md, final double hp)
 	{
 		return (int) Math.round(getLevelAdjustmentFine(attack, ac, pd, md, hp));
 	}

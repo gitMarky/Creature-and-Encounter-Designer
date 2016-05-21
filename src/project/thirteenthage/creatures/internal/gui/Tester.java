@@ -15,7 +15,7 @@ public class Tester
 		final File xml = new File("resources/creatures/creature_dire_rat.xml");
 
 		final CreatureTemplate template = new CreatureTemplate(xml);
-		ICreature rat = template.toCreature();
+		final ICreature rat = template.toCreature();
 
 		final JFrame frame = new JFrame("Test viewer");
 

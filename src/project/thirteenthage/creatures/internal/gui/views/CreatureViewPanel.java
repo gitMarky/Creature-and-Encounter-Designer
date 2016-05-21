@@ -41,8 +41,8 @@ public class CreatureViewPanel extends JPanel implements IView
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		_creature = creature;
 
-		JPanel namePanel = new JPanel();
-		JPanel blockPanel = new JPanel();
+		final JPanel namePanel = new JPanel();
+		final JPanel blockPanel = new JPanel();
 		blockPanel.setLayout(new BoxLayout(blockPanel, BoxLayout.X_AXIS));
 
 		_infoPanel = new CreatureInfoPanel();
@@ -54,7 +54,7 @@ public class CreatureViewPanel extends JPanel implements IView
 		blockPanel.add(_attackPanel);
 		blockPanel.add(_statsPanel);
 
-		JLabel nameLabel = new JLabel(_creature.getName());
+		final JLabel nameLabel = new JLabel(_creature.getName());
 		namePanel.add(nameLabel);
 		namePanel.setBackground(StyleConstants.BACKGROUND_DARK);
 		nameLabel.setForeground(Color.WHITE);
@@ -82,9 +82,9 @@ public class CreatureViewPanel extends JPanel implements IView
 	 */
 	private class CreatureInfoPanel extends JPanel implements IView
 	{
-		private JLabel _size;
-		private JLabel _level;
-		private List<JLabel> _labels = new ArrayList<JLabel>();
+		private final JLabel _size;
+		private final JLabel _level;
+		private final List<JLabel> _labels = new ArrayList<JLabel>();
 
 
 		private CreatureInfoPanel()
@@ -118,7 +118,7 @@ public class CreatureViewPanel extends JPanel implements IView
 
 			for (final String labelText : _creature.getLabels())
 			{
-				JLabel label = new JLabel(labelText);
+				final JLabel label = new JLabel(labelText);
 				_labels.add(label);
 			}
 
@@ -132,13 +132,13 @@ public class CreatureViewPanel extends JPanel implements IView
 		}
 
 
-		private String getLevelText(int level)
+		private String getLevelText(final int level)
 		{
 			return ith(level) + " level";
 		}
 
 
-		private String ith(int level)
+		private String ith(final int level)
 		{
 			switch (level % 10)
 			{
@@ -198,13 +198,13 @@ public class CreatureViewPanel extends JPanel implements IView
 
 			for (final IAttack attack : _creature.getAttacks())
 			{
-				AttackViewLabel label = new AttackViewLabel(attack);
+				final AttackViewLabel label = new AttackViewLabel(attack);
 				_attacks.add(label);
 				this.add(label);
 			}
 			for (final ISpecial special : _creature.getSpecials())
 			{
-				SpecialViewLabel label = new SpecialViewLabel(special);
+				final SpecialViewLabel label = new SpecialViewLabel(special);
 				_specials.add(label);
 				this.add(label);
 			}
@@ -213,7 +213,7 @@ public class CreatureViewPanel extends JPanel implements IView
 
 			for (final ISpecial special : _creature.getNastierSpecials())
 			{
-				SpecialViewLabel label = new SpecialViewLabel(special);
+				final SpecialViewLabel label = new SpecialViewLabel(special);
 				_nastier.add(label);
 				this.add(label);
 			}

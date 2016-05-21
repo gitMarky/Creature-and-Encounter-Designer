@@ -18,16 +18,16 @@ public class CreatureTemplateLoader extends AbstractLoader<ICreatureTemplate>
 
 
 	@Override
-	protected boolean checkEntry(BasicXmlFile template)
+	protected boolean checkEntry(final BasicXmlFile template)
 	{
 		return CreatureTemplate.ROOT_ELEMENT.equals(template.getRoot().getName());
 	}
 
 
 	@Override
-	protected void addEntry(BasicXmlFile file)
+	protected void addEntry(final BasicXmlFile file)
 	{
-		CreatureTemplate template = new CreatureTemplate(file);
+		final CreatureTemplate template = new CreatureTemplate(file);
 		final String id = LoaderHelper.getId(file);
 
 		if (getTemplates().containsKey(id))

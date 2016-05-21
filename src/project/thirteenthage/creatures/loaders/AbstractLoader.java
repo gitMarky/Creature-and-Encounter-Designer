@@ -9,7 +9,7 @@ import project.thirteenthage.creatures.internal.BasicXmlFile;
 
 public abstract class AbstractLoader<T extends Object>
 {
-	private Map<String, T> _templates = new HashMap<String, T>();
+	private final Map<String, T> _templates = new HashMap<String, T>();
 
 
 	public void load(final File fromDirectory)
@@ -37,13 +37,13 @@ public abstract class AbstractLoader<T extends Object>
 	}
 
 
-	private void loadFile(File file)
+	private void loadFile(final File file)
 	{
 		// skip anything that is not an xml file
 		if (!file.getName().endsWith(LoaderHelper.EXTENSION_XML)) return;
 		if (file.getName().startsWith("template")) return;
 
-		BasicXmlFile template = new BasicXmlFile(file);
+		final BasicXmlFile template = new BasicXmlFile(file);
 
 		if (checkEntry(template))
 		{
@@ -83,7 +83,7 @@ public abstract class AbstractLoader<T extends Object>
 	protected abstract void addEntry(final BasicXmlFile file);
 
 
-	public String getId(T object)
+	public String getId(final T object)
 	{
 		for (final Entry<String, T> entry : _templates.entrySet())
 		{

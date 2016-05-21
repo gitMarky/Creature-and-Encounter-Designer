@@ -77,7 +77,7 @@ public class CreatureEncounterPanel extends JPanel implements IView, ActionListe
 
 
 	@Override
-	public void actionPerformed(ActionEvent event)
+	public void actionPerformed(final ActionEvent event)
 	{
 		if (event.getSource() == _removeButton)
 		{

@@ -26,15 +26,15 @@ import project.thirteenthage.creatures.mechanics.EncounterDifficulty;
 @SuppressWarnings("serial")
 public class EncounterPanel extends JPanel implements IView, ActionListener
 {
-	private JPanel _buttonPanel = new JPanel();
-	private JPanel _creatureListPanel = new JPanel();
-	private JLabel _creatureListEmpty = new JLabel("No creatures were added to the encounter yet");
-	private EncounterDifficultyView _difficultyLabel = new EncounterDifficultyView();
-	private AmountChoicePanel _playerLevel = new AmountChoicePanel("Player level");
+	private final JPanel _buttonPanel = new JPanel();
+	private final JPanel _creatureListPanel = new JPanel();
+	private final JLabel _creatureListEmpty = new JLabel("No creatures were added to the encounter yet");
+	private final EncounterDifficultyView _difficultyLabel = new EncounterDifficultyView();
+	private final AmountChoicePanel _playerLevel = new AmountChoicePanel("Player level");
 
-	private JButton _clearButton = new JButton("Clear");
+	private final JButton _clearButton = new JButton("Clear");
 
-	private Map<ICreature, CreatureEncounterPanel> _creatures = new HashMap<ICreature, CreatureEncounterPanel>();
+	private final Map<ICreature, CreatureEncounterPanel> _creatures = new HashMap<ICreature, CreatureEncounterPanel>();
 	private EncounterDifficulty _difficulty = null;
 
 
@@ -74,7 +74,7 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 	}
 
 
-	public void addCreature(ICreature creature)
+	public void addCreature(final ICreature creature)
 	{
 		if (!_creatures.containsKey(creature))
 		{
@@ -87,7 +87,7 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 	}
 
 
-	public void removeCreature(ICreature creature)
+	public void removeCreature(final ICreature creature)
 	{
 		if (_creatures.containsKey(creature))
 		{
@@ -119,7 +119,7 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 
 
 	@Override
-	public void actionPerformed(ActionEvent event)
+	public void actionPerformed(final ActionEvent event)
 	{
 		if (event.getSource() == _clearButton)
 		{

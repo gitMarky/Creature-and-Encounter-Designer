@@ -116,7 +116,7 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 
 
 	@Override
-	public void actionPerformed(ActionEvent action)
+	public void actionPerformed(final ActionEvent action)
 	{
 		if (action.getSource() == _transferToListBbutton)
 		{
@@ -132,7 +132,7 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void valueChanged(ListSelectionEvent selection)
+	public void valueChanged(final ListSelectionEvent selection)
 	{
 		final JButton transferButton;
 		if (selection.getSource() == _listDisplayA)
@@ -151,22 +151,22 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 	}
 
 
-	private void transferFromOneListToTheOther(final List<T> listA, final List<T> listB, final JList<T> selection, boolean locked, boolean unique)
+	private void transferFromOneListToTheOther(final List<T> listA, final List<T> listB, final JList<T> selection, final boolean locked, final boolean unique)
 	{
 		final List<T> transferSelection = new ArrayList<T>();
 
 		System.out.println("Transferring to list B:");
-		for (int index : selection.getSelectedIndices())
+		for (final int index : selection.getSelectedIndices())
 		{
-			T elementAt = listA.get(index);// ;= (T)
-											// _listDisplayA.getModel().getElementAt(index);
+			final T elementAt = listA.get(index);// ;= (T)
+			// _listDisplayA.getModel().getElementAt(index);
 
 			transferSelection.add(elementAt);
 		}
 
 		for (final T element : transferSelection)
 		{
-			if (!unique || (unique && !listB.contains(element))) listB.add(element);
+			if (!unique || unique && !listB.contains(element)) listB.add(element);
 			if (!locked) listA.remove(element);
 
 			System.out.println("- " + element);

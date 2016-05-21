@@ -12,7 +12,7 @@ public class CreatureLoader
 	private static CreatureLoader _instance = null;
 
 	/** Maps creature ID to an instance of the creature. */
-	private Map<String, ICreature> _creatures = new HashMap<String, ICreature>();
+	private final Map<String, ICreature> _creatures = new HashMap<String, ICreature>();
 
 
 	public void load(final CreatureTemplateLoader templates)
@@ -28,7 +28,7 @@ public class CreatureLoader
 	{
 		if (!getCreatures().containsKey(id))
 		{
-			ICreature creature = template.toCreature();
+			final ICreature creature = template.toCreature();
 			getCreatures().put(id, creature);
 		}
 	}
@@ -51,7 +51,7 @@ public class CreatureLoader
 	}
 
 
-	public boolean isCreatureLoaded(ICreature creature)
+	public boolean isCreatureLoaded(final ICreature creature)
 	{
 		for (final ICreature candidate : getCreatures().values())
 		{

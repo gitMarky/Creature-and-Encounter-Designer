@@ -21,7 +21,7 @@ import project.thirteenthage.creatures.loaders.SpecialTemplateLoader;
  */
 public class EditableCreatureTemplate extends AbstractCreatureTemplate
 {
-	public EditableCreatureTemplate(ICreatureTemplate template)
+	public EditableCreatureTemplate(final ICreatureTemplate template)
 	{
 		setName(template.getName());
 		setLevel(template.getLevel());
@@ -43,7 +43,7 @@ public class EditableCreatureTemplate extends AbstractCreatureTemplate
 	public File saveToFile()
 	{
 		final String path = "custom/creature_" + getName().toLowerCase().replace(" ", "_") + "_" + System.currentTimeMillis() + LoaderHelper.EXTENSION_XML;
-		File targetFile = new File(Constants.RESOURCES, path);
+		final File targetFile = new File(Constants.RESOURCES, path);
 		return saveToFile(targetFile);
 	}
 
@@ -127,7 +127,7 @@ public class EditableCreatureTemplate extends AbstractCreatureTemplate
 			nastierElement.addContent(specialTemplateElement);
 		}
 
-		Element rootElement = new Element(CreatureTemplate.ROOT_ELEMENT);
+		final Element rootElement = new Element(CreatureTemplate.ROOT_ELEMENT);
 
 		rootElement.addContent(nameElement);
 		rootElement.addContent(sizeElement);
@@ -158,7 +158,7 @@ public class EditableCreatureTemplate extends AbstractCreatureTemplate
 			{
 				Thread.sleep(1000);
 			}
-			catch (InterruptedException e)
+			catch (final InterruptedException e)
 			{
 				e.printStackTrace();
 			}

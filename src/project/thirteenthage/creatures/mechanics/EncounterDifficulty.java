@@ -13,11 +13,11 @@ import project.thirteenthage.creatures.internal.interfaces.ICreature;
  */
 public class EncounterDifficulty
 {
-	private Map<ICreature, Integer> _amount = new HashMap<ICreature, Integer>();
+	private final Map<ICreature, Integer> _amount = new HashMap<ICreature, Integer>();
 	private int _level = 1;
 
 
-	public EncounterDifficulty(Map<ICreature, CreatureEncounterPanel> creatures)
+	public EncounterDifficulty(final Map<ICreature, CreatureEncounterPanel> creatures)
 	{
 		for (final Entry<ICreature, CreatureEncounterPanel> entry : creatures.entrySet())
 		{
@@ -41,7 +41,7 @@ public class EncounterDifficulty
 	}
 
 
-	public void setPlayerLevel(int level)
+	public void setPlayerLevel(final int level)
 	{
 		if (level < 1)
 		{
@@ -70,19 +70,19 @@ public class EncounterDifficulty
 		int levelDifference = creature.getLevel() - _level;
 
 		if (_level >= 5) levelDifference -= 1; // monsters for champion battles
-												// are fair if
-												// level is one higher
+		// are fair if
+		// level is one higher
 		if (_level >= 8) levelDifference -= 2; // same goes for epic battles,
-												// with 2 levels
-												// instead
+		// with 2 levels
+		// instead
 
 		return getDifficultyTable(levelDifference, creature.getSize(), creature.isMook());
 	}
 
 
-	private double getDifficultyTable(int levelDifference, CreatureSize size, boolean mook)
+	private double getDifficultyTable(final int levelDifference, final CreatureSize size, final boolean mook)
 	{
-		int row = Math.min(Math.max(levelDifference + 2, -1), 7);
+		final int row = Math.min(Math.max(levelDifference + 2, -1), 7);
 
 		double difficulty = 1.0;
 		switch (row)

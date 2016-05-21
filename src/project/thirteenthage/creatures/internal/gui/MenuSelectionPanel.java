@@ -42,7 +42,7 @@ class MenuSelectionPanel extends JPanel implements IView
 		_creatureList.removeAllItems();
 		for (final String item : CreatureTemplateLoader.getInstance().getTemplates().keySet())
 		{
-			MenuSelectionItem menuSelectionItem = new MenuSelectionItem(item);
+			final MenuSelectionItem menuSelectionItem = new MenuSelectionItem(item);
 			_creatureList.addItem(menuSelectionItem);
 		}
 	}
@@ -50,7 +50,7 @@ class MenuSelectionPanel extends JPanel implements IView
 
 	void onCreatureSelected()
 	{
-		MenuSelectionItem selectedItem = (MenuSelectionItem) _creatureList.getSelectedItem();
+		final MenuSelectionItem selectedItem = (MenuSelectionItem) _creatureList.getSelectedItem();
 
 		if (CreatureGui.GUI != null && selectedItem != null)
 		{
@@ -87,7 +87,7 @@ class MenuSelectionPanel extends JPanel implements IView
 	private class MenuSelectionListener implements ItemListener
 	{
 		@Override
-		public void itemStateChanged(ItemEvent e)
+		public void itemStateChanged(final ItemEvent e)
 		{
 			if (e.getStateChange() == ItemEvent.SELECTED)
 			{
