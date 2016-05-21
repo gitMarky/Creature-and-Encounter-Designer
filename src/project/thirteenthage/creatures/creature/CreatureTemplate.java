@@ -51,10 +51,11 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 	public CreatureTemplate(BasicXmlFile file)
 	{
 		_template = file;
-		
+
 		parse();
 	}
-	
+
+
 	private void parse()
 	{
 		setName(parseName());
@@ -158,8 +159,7 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 			String id = attack.getAttributeValue(ATTRIBUTE_ID);
 
 			IAttack template = AttackTemplateLoader.getInstance().get(id);
-			if (template != null)
-				attacks.add(template);
+			if (template != null) attacks.add(template);
 		}
 
 		return attacks;
@@ -187,8 +187,7 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 			String id = special.getAttributeValue(ATTRIBUTE_ID);
 
 			ISpecial template = SpecialTemplateLoader.getInstance().get(id);
-			if (template != null)
-				specials.add(template);
+			if (template != null) specials.add(template);
 		}
 
 		return specials;
@@ -200,8 +199,8 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 	{
 		throw new IllegalStateException("Operation not intended");
 	}
-	
-	
+
+
 	@Override
 	public File saveToFile(final File file)
 	{

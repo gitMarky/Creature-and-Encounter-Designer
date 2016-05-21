@@ -29,7 +29,7 @@ class MenuSelectionPanel extends JPanel implements IView
 		this.add(_creatureList);
 	}
 
-	
+
 	@Override
 	public void updateView()
 	{

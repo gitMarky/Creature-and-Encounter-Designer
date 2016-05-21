@@ -23,10 +23,11 @@ public class SizeChoicePanel extends ChoicePanel implements ActionListener
 
 	private Map<JRadioButton, CreatureSize> _map = new HashMap<JRadioButton, CreatureSize>();
 
+
 	public SizeChoicePanel()
 	{
 		super();
-		
+
 		ButtonGroup group = new ButtonGroup();
 
 		for (final CreatureSize size : CreatureSize.values())
@@ -37,10 +38,10 @@ public class SizeChoicePanel extends ChoicePanel implements ActionListener
 			group.add(button);
 			button.addActionListener(this);
 		}
-		
+
 		_choice = _map.values().iterator().next();
 		_map.keySet().iterator().next().setSelected(true);
-		
+
 		this.setLayout(new GridLayout(CreatureSize.values().length, 1));
 		this.setBorder(BorderFactory.createTitledBorder("Size"));
 	}

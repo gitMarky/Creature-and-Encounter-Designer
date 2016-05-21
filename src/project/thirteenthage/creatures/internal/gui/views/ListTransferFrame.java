@@ -15,18 +15,17 @@ public class ListTransferFrame extends JFrame
 	public static void main(final String[] args)
 	{
 		final JFrame frame = new JFrame();
-		
+
 		final List<String> listA = new ArrayList<String>();
 		listA.add("A");
 		listA.add("B");
 		listA.add("C");
 		listA.add("E");
 		listA.add("F");
-		
+
 		final List<String> listB = new ArrayList<String>();
 		listB.add("D");
-		
-		
+
 		final ListTransferPanel<String> panel = new ListTransferPanel<String>(listA, listB);
 		panel.setLeftListLocked(true);
 		frame.add(panel);

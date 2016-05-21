@@ -190,14 +190,14 @@ public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 		CreatureBuilder builder = new CreatureBuilder();
 		builder.name(getName()).size(getSize()).level(getLevel()).addInitiative(getModifierInitiative()).addAttack(getModifierAttack()).addAC(getModifierAC()).addPD(getModifierPD()).addMD(getModifierMD()).scaleHP(getModifierHP());
 
-		if (getBetterDefense() == BetterDefense.MD)
-			builder.betterDefenseIsMD();
+		if (getBetterDefense() == BetterDefense.MD) builder.betterDefenseIsMD();
 
 		final Creature creature;
 		if (getLabels().contains("Mook"))
 		{
 			creature = builder.buildMook();
-		} else
+		}
+		else
 		{
 			creature = builder.buildCreature();
 		}

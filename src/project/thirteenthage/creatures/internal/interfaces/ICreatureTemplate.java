@@ -26,8 +26,8 @@ public interface ICreatureTemplate extends INamedItem, ILeveledItem
 	 * @return the size.
 	 */
 	CreatureSize getSize();
-	
-	
+
+
 	/**
 	 * Gets the attack modifier for this creature.
 	 * 
@@ -103,11 +103,12 @@ public interface ICreatureTemplate extends INamedItem, ILeveledItem
 	 * @return the modifier.
 	 */
 	int getModifierInitiative();
-	
-	
+
+
 	/**
 	 * Determines which defense from the monster template is the better defense:
 	 * MD or PD.
+	 * 
 	 * @return the better defense.
 	 */
 	BetterDefense getBetterDefense();
@@ -147,6 +148,7 @@ public interface ICreatureTemplate extends INamedItem, ILeveledItem
 
 	/**
 	 * Saves the template to a file.
+	 * 
 	 * @return the file that the template was saved to.
 	 */
 	File saveToFile();
@@ -154,7 +156,9 @@ public interface ICreatureTemplate extends INamedItem, ILeveledItem
 
 	/**
 	 * Saves the template to a specific file.
-	 * @param file the target file.
+	 * 
+	 * @param file
+	 *            the target file.
 	 * @return the file that the template was saved to.
 	 */
 	File saveToFile(File file);

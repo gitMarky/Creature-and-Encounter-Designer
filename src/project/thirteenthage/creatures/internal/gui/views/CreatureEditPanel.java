@@ -118,8 +118,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 
 	public void applyEditing(final CreaturePanel creaturePanel, final ICreature originalCreature)
 	{
-		if (_editedCreature == null)
-			return;
+		if (_editedCreature == null) return;
 
 		displayCreature();
 	}
@@ -139,8 +138,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 
 	public void cancelEditing(final CreaturePanel creaturePanel, final ICreature originalCreature)
 	{
-		if (_originalCreature == null)
-			return;
+		if (_originalCreature == null) return;
 
 		creaturePanel.displayCreature(_originalCreature);
 	}
@@ -294,8 +292,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 	private void confirmListSelection()
 	{
 		setButtonsEnabled(true);
-		if (_listFrame != null)
-			_listFrame.setVisible(false);
+		if (_listFrame != null) _listFrame.setVisible(false);
 		updateView();
 	}
 

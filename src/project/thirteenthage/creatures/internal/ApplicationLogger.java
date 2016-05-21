@@ -26,10 +26,12 @@ public class ApplicationLogger
 			try
 			{
 				fh = new FileHandler(new File("ApplicationLog.log").getAbsolutePath());
-			} catch (SecurityException e)
+			}
+			catch (SecurityException e)
 			{
 				throw new IllegalStateException(e);
-			} catch (IOException e)
+			}
+			catch (IOException e)
 			{
 				throw new IllegalStateException(e);
 			}

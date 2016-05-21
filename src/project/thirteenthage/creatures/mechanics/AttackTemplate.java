@@ -40,8 +40,7 @@ public class AttackTemplate implements IAttack
 			String name = element.getAttributeValue("name");
 			String description = element.getAttributeValue("description");
 
-			if (name.isEmpty() || description.isEmpty())
-				continue;
+			if (name.isEmpty() || description.isEmpty()) continue;
 
 			final Trigger trigger = new Trigger(name, description);
 			_triggers.add(trigger);
@@ -98,14 +97,13 @@ public class AttackTemplate implements IAttack
 	}
 
 
-
 	@Override
 	public List<ITrigger> getTriggers()
 	{
 		return _triggers;
 	}
-	
-	
+
+
 	@Override
 	public String toString()
 	{

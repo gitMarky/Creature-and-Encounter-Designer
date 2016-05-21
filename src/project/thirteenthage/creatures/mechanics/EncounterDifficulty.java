@@ -69,12 +69,12 @@ public class EncounterDifficulty
 	{
 		int levelDifference = creature.getLevel() - _level;
 
-		if (_level >= 5)
-			levelDifference -= 1; // monsters for champion battles are fair if
-									// level is one higher
-		if (_level >= 8)
-			levelDifference -= 2; // same goes for epic battles, with 2 levels
-									// instead
+		if (_level >= 5) levelDifference -= 1; // monsters for champion battles
+												// are fair if
+												// level is one higher
+		if (_level >= 8) levelDifference -= 2; // same goes for epic battles,
+												// with 2 levels
+												// instead
 
 		return getDifficultyTable(levelDifference, creature.getSize(), creature.isMook());
 	}
@@ -119,7 +119,8 @@ public class EncounterDifficulty
 		if (size == CreatureSize.LARGE)
 		{
 			difficulty *= 2.0;
-		} else if (size == CreatureSize.HUGE)
+		}
+		else if (size == CreatureSize.HUGE)
 		{
 			difficulty *= 3.0;
 		}

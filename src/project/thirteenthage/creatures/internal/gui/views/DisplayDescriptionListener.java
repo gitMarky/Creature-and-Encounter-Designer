@@ -36,8 +36,7 @@ class DisplayDescriptionListener<T, C extends Component> implements ListSelectio
 		innerPanel.removeAll();
 
 		@SuppressWarnings("unchecked")
-		final
-		JList<T> source = (JList<T>) selection.getSource();
+		final JList<T> source = (JList<T>) selection.getSource();
 		final int index = source.getSelectedIndex();
 		if (index > -1)
 		{
@@ -62,22 +61,28 @@ class DisplayDescriptionListener<T, C extends Component> implements ListSelectio
 		{
 			constructor = descriptionComponentType.getDeclaredConstructor(listSelectionType);
 			label = (C) constructor.newInstance(listSelectionItem);
-		} catch (final NoSuchMethodException e)
+		}
+		catch (final NoSuchMethodException e)
 		{
 			ex = e;
-		} catch (final SecurityException e)
+		}
+		catch (final SecurityException e)
 		{
 			ex = e;
-		} catch (final InstantiationException e)
+		}
+		catch (final InstantiationException e)
 		{
 			ex = e;
-		} catch (final IllegalAccessException e)
+		}
+		catch (final IllegalAccessException e)
 		{
 			ex = e;
-		} catch (final IllegalArgumentException e)
+		}
+		catch (final IllegalArgumentException e)
 		{
 			ex = e;
-		} catch (final InvocationTargetException e)
+		}
+		catch (final InvocationTargetException e)
 		{
 			ex = e;
 		}
@@ -98,4 +103,3 @@ class DisplayDescriptionListener<T, C extends Component> implements ListSelectio
 		return label;
 	}
 }
-

@@ -44,7 +44,7 @@ public class CreatureGui implements IView
 		CreatureTemplateLoader.getInstance();
 		CreatureLoader.getInstance().load(CreatureTemplateLoader.getInstance());
 		SpecialTemplateLoader.getInstance();
-		
+
 		final JFrame frame = new JFrame();
 		final JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -56,7 +56,7 @@ public class CreatureGui implements IView
 		panel.add(_menuSelectionPanel);
 		panel.add(_creaturePanel);
 		panel.add(_encounterPanel);
-		
+
 		final FileFilter fileFilter = new javax.swing.filechooser.FileFilter()
 		{
 			@Override
@@ -65,13 +65,14 @@ public class CreatureGui implements IView
 				return file.isDirectory() || file.getName().toLowerCase().endsWith(LoaderHelper.EXTENSION_XML);
 			}
 
+
 			@Override
 			public String getDescription()
 			{
 				return "xml files";
 			}
 		};
-		
+
 		_fileChooser.setCurrentDirectory(Constants.RESOURCES);
 		_fileChooser.setFileFilter(fileFilter);
 
@@ -118,8 +119,8 @@ public class CreatureGui implements IView
 	{
 		return _encounterPanel;
 	}
-	
-	
+
+
 	/**
 	 * Getter for a file chooser.
 	 */

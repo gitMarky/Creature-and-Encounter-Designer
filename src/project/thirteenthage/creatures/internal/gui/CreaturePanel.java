@@ -36,7 +36,7 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 	private final JButton _applyButton = new JButton("Apply");
 	private final JButton _saveButton = new JButton("Save as");
 	private ICreature _selectedCreature = null;
-	
+
 	private boolean _isInEditMode = false;
 
 
@@ -45,34 +45,34 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 		super();
 		JPanel buttonPanel = new JPanel();
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		
+
 		// top row: buttons
-		
+
 		this.add(buttonPanel);
 
 		buttonPanel.add(_addButton);
 		_addButton.addActionListener(this);
-		
+
 		buttonPanel.add(_editButton);
 		_editButton.addActionListener(this);
-		
+
 		buttonPanel.add(_applyButton);
 		_applyButton.addActionListener(this);
-		
+
 		buttonPanel.add(_cancelButton);
 		_cancelButton.addActionListener(this);
-		
+
 		buttonPanel.add(_saveButton);
 		_saveButton.addActionListener(this);
 
-		// bottom row: inner panel with boxes from left to right: creature edit, creature view
-		
+		// bottom row: inner panel with boxes from left to right: creature edit,
+		// creature view
+
 		_innerPanel.setLayout(new BoxLayout(_innerPanel, BoxLayout.X_AXIS));
 		_innerPanel.add(_editPanel);
 
-
 		stopEditing();
-		
+
 		this.add(_innerPanel);
 		this.setBorder(BorderFactory.createTitledBorder("Selected creature"));
 	}
@@ -120,13 +120,13 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 		if (event.getSource() == _saveButton)
 		{
 			int choice = CreatureGui.GUI.getFileChooser().showSaveDialog(this);
-			
+
 			if (choice == JFileChooser.APPROVE_OPTION)
 			{
 				final File file = CreatureGui.GUI.getFileChooser().getSelectedFile();
 				saveCreature(file);
 			}
-				
+
 		}
 	}
 
@@ -137,25 +137,29 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 		_editPanel.startEditing(this, _selectedCreature);
 		updateView();
 	}
-	
+
+
 	private void cancelEditing()
 	{
 		_editPanel.cancelEditing(this, _selectedCreature);
 		stopEditing();
 	}
-	
+
+
 	private void applyEditing()
 	{
 		_editPanel.applyEditing(this, _selectedCreature);
 		stopEditing();
 	}
-	
+
+
 	private void stopEditing()
 	{
-		_isInEditMode = false;		
+		_isInEditMode = false;
 		updateView();
 	}
-	
+
+
 	private void saveCreature(final File file)
 	{
 		final File template = _selectedCreature.getTemplate().saveToFile(file);
@@ -165,9 +169,10 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 		CreatureLoader.getInstance().load(CreatureTemplateLoader.getInstance());
 
 		CreatureGui.GUI.getMenuSelectionPanel().updateView();
-		
+
 		updateView();
 	}
+
 
 	private void transferCreatureToEncounter(ICreature creature)
 	{
@@ -194,16 +199,16 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 			_addButton.setEnabled(true);
 			_editPanel.setVisible(false);
 		}
-		
+
 		if (canSave())
-		{			
+		{
 			_saveButton.setEnabled(true);
 		}
 		else
 		{
 			_saveButton.setEnabled(false);
 		}
-		
+
 		if (CreatureGui.GUI != null) CreatureGui.GUI.updateView();
 	}
 

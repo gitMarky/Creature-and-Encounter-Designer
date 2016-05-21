@@ -73,7 +73,8 @@ public class DefenseChoicePanel extends ChoicePanel implements ActionListener
 		{
 			_mdButton.setSelected(true);
 			_pdButton.setSelected(false);
-		} else
+		}
+		else
 		{
 			_mdButton.setSelected(false);
 			_pdButton.setSelected(true);

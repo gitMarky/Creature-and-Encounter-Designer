@@ -95,7 +95,7 @@ public class Attack implements IAttack
 			return HtmlDescriptions.getAttackDescription(this, Constants.TEMPLATE_CREATURE_NAME, Constants.TEMPLATE_CREATURE_DAMAGE, true);
 		}
 		else
-		{			
+		{
 			return HtmlDescriptions.getAttackDescription(this, _creature.getName(), _creature.getStrikeDamage(), false);
 		}
 	}

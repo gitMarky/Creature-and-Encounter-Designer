@@ -18,12 +18,13 @@ public class TextFormatter
 		return source.replaceAll(PLACEHOLDER_START + placeholder, text);
 	}
 
+
 	public static final String parse(final String source, final String placeholder, final double value)
 	{
 		return parse(source, placeholder, value, false);
 	}
-	
-	
+
+
 	public static final String parse(final String source, final String placeholder, final double value, final boolean inPercent)
 	{
 		// replace for example $damage[x1.2] with 1.2*value

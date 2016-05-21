@@ -22,13 +22,15 @@ public abstract class AbstractLoader<T extends Object>
 		if (fromDirectory.isFile())
 		{
 			loadFile(fromDirectory);
-		} else if (fromDirectory.isDirectory())
+		}
+		else if (fromDirectory.isDirectory())
 		{
 			for (final File file : fromDirectory.listFiles())
 			{
 				load(file);
 			}
-		} else
+		}
+		else
 		{
 			throw new IllegalArgumentException("Not a file or directory: " + fromDirectory.getAbsolutePath());
 		}
@@ -38,10 +40,8 @@ public abstract class AbstractLoader<T extends Object>
 	private void loadFile(File file)
 	{
 		// skip anything that is not an xml file
-		if (!file.getName().endsWith(LoaderHelper.EXTENSION_XML))
-			return;
-		if (file.getName().startsWith("template"))
-			return;
+		if (!file.getName().endsWith(LoaderHelper.EXTENSION_XML)) return;
+		if (file.getName().startsWith("template")) return;
 
 		BasicXmlFile template = new BasicXmlFile(file);
 
@@ -92,7 +92,7 @@ public abstract class AbstractLoader<T extends Object>
 				return entry.getKey();
 			}
 		}
-		
+
 		return "*** invalid id ***";
 	}
 

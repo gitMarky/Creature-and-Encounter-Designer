@@ -36,11 +36,10 @@ public class CreatureTemplateLoader extends AbstractLoader<ICreatureTemplate>
 		}
 
 		getTemplates().put(id, template);
-		
+
 		for (final String label : template.getLabels())
 		{
-			if (!Lists.labels().contains(label))
-				Lists.labels().add(label);
+			if (!Lists.labels().contains(label)) Lists.labels().add(label);
 		}
 		Collections.sort(Lists.labels());
 	}

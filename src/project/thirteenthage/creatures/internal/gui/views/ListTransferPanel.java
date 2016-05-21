@@ -143,7 +143,8 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 		if (((JList<T>) selection.getSource()).getSelectedIndex() == -1)
 		{
 			transferButton.setEnabled(false);
-		} else
+		}
+		else
 		{
 			transferButton.setEnabled(true);
 		}
@@ -165,10 +166,8 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 
 		for (final T element : transferSelection)
 		{
-			if (!unique || (unique && !listB.contains(element)))
-				listB.add(element);
-			if (!locked)
-				listA.remove(element);
+			if (!unique || (unique && !listB.contains(element))) listB.add(element);
+			if (!locked) listA.remove(element);
 
 			System.out.println("- " + element);
 		}

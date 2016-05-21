@@ -28,7 +28,8 @@ public class EncounterDifficultyView extends JPanel
 		if (Double.isNaN(difficulty))
 		{
 			_difficultyLabel.setText(DIFFICULTY_NOT_SET);
-		} else
+		}
+		else
 		{
 			_difficultyLabel.setText(String.format("%.2f", difficulty));
 		}

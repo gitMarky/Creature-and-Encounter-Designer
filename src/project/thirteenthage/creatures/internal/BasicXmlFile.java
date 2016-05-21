@@ -26,16 +26,18 @@ public class BasicXmlFile
 		try
 		{
 			_doc = builder.build(_file);
-		} catch (JDOMException e)
+		}
+		catch (JDOMException e)
 		{
 			_doc = new Document();
-		} catch (IOException e)
+		}
+		catch (IOException e)
 		{
 			throw new IllegalStateException();
 		}
 	}
-	
-	
+
+
 	public BasicXmlFile(final Document doc, final File file)
 	{
 		_doc = doc;
@@ -64,7 +66,8 @@ public class BasicXmlFile
 			xmlOutput.output(_doc, fileWriter);
 			fileWriter.close();
 			return true;
-		} catch (IOException e)
+		}
+		catch (IOException e)
 		{
 			return false;
 		}

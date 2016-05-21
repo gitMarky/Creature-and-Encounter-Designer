@@ -16,21 +16,22 @@ public final class LevelAdjustment
 	{
 		// hide public constructor, this is a utility class
 	}
-	
-	
+
+
 	public static double getLevelAdjustmentFine(int attack, int ac, int pd, int md, double hp)
 	{
 		double adjustment = 0.0;
-		
+
 		adjustment += valueOfAttack(attack);
 		adjustment += valueOfDefense(ac);
 		adjustment += valueOfDefense(pd);
 		adjustment += valueOfDefense(md);
 		adjustment += valueOfHP(hp);
-		
+
 		return adjustment;
 	}
-	
+
+
 	private static double valueOfAttack(int attack)
 	{
 		// a boost of +6 is worth one level
@@ -43,7 +44,8 @@ public final class LevelAdjustment
 	{
 		// a boost of +6 is worth one level
 		double value = defense / 6.0;
-		// -1 to all defenses is worth the same as a +1 attack (see offensive example)
+		// -1 to all defenses is worth the same as a +1 attack (see offensive
+		// example)
 		if (defense < 0) value /= 3.0;
 		return value;
 	}

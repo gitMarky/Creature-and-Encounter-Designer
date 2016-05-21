@@ -50,17 +50,16 @@ public class AmountChoicePanel extends ChoicePanel implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent event)
 	{
-		if (event.getSource() == _minusButton)
-			changeAmount(-_buttonStep);
-		if (event.getSource() == _plusButton)
-			changeAmount(+_buttonStep);
+		if (event.getSource() == _minusButton) changeAmount(-_buttonStep);
+		if (event.getSource() == _plusButton) changeAmount(+_buttonStep);
 		if (event.getSource() == _amountField)
 		{
 			try
 			{
 				int amount = Integer.parseInt(_amountField.getText());
 				setAmount(amount);
-			} catch (final NumberFormatException e)
+			}
+			catch (final NumberFormatException e)
 			{
 				// do nothing
 			}
@@ -84,14 +83,12 @@ public class AmountChoicePanel extends ChoicePanel implements ActionListener
 
 	private void updateAmount()
 	{
-		if (_amount < _lowerBound)
-			_amount = _lowerBound;
+		if (_amount < _lowerBound) _amount = _lowerBound;
 
 		// this will probably fail with the max integer...
-		if (_amount > _upperBound)
-			_amount = _upperBound;
+		if (_amount > _upperBound) _amount = _upperBound;
 
-		_amountLabel.setText(String.format(_outputText , _amount));
+		_amountLabel.setText(String.format(_outputText, _amount));
 
 		updateView();
 	}
@@ -127,8 +124,8 @@ public class AmountChoicePanel extends ChoicePanel implements ActionListener
 	{
 		_buttonStep = step;
 	}
-	
-	
+
+
 	public void setOutputText(final String text)
 	{
 		_outputText = text;

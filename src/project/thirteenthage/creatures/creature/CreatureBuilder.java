@@ -20,19 +20,21 @@ public class CreatureBuilder
 	private double _factorHP = 1.0;
 	private double _factorDamage = 1.0;
 
-	
+
 	/**
 	 * Constructor for a new creature, usually from a template.
 	 */
 	public CreatureBuilder()
 	{
-		
+
 	}
-	
+
 
 	/**
 	 * Constructor for a new creature, based on a different creature.
-	 * @param originalCreature the original creature.
+	 * 
+	 * @param originalCreature
+	 *            the original creature.
 	 */
 	public CreatureBuilder(ICreature originalCreature)
 	{
@@ -59,8 +61,8 @@ public class CreatureBuilder
 		_size = size;
 		return this;
 	}
-	
-	
+
+
 	public CreatureBuilder addAttack(final int amount)
 	{
 		_modifierAttack += amount;
@@ -133,7 +135,8 @@ public class CreatureBuilder
 		{
 			creature.setPD(_level + 14 + _modifierPD);
 			creature.setMD(_level + 10 + _modifierMD);
-		} else
+		}
+		else
 		{
 			creature.setPD(_level + 10 + _modifierPD);
 			creature.setMD(_level + 14 + _modifierMD);
@@ -163,8 +166,8 @@ public class CreatureBuilder
 
 		return mook;
 	}
-	
-	
+
+
 	public Creature build(boolean isMook)
 	{
 		if (isMook)

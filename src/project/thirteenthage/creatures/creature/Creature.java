@@ -247,8 +247,8 @@ public class Creature implements ICreature
 			_nastierSpecials.add(special);
 		}
 	}
-	
-	
+
+
 	@Override
 	public ICreatureTemplate getTemplate()
 	{
@@ -266,8 +266,8 @@ public class Creature implements ICreature
 	{
 		_levelAdjustment = amount;
 	}
-	
-	
+
+
 	public int getLevelBase()
 	{
 		return _level;
@@ -279,16 +279,16 @@ public class Creature implements ICreature
 		return _levelAdjustment;
 	}
 
-	
+
 	@Override
 	public boolean equals(Object other)
 	{
 		if (other instanceof Creature)
 		{
 			boolean equality = true;
-			
+
 			Creature otherCreature = (Creature) other;
-			
+
 			equality &= otherCreature.getName().equals(this.getName());
 			equality &= otherCreature.getSize() == this.getSize();
 			equality &= otherCreature.getLevel() == this.getLevel();
@@ -306,7 +306,7 @@ public class Creature implements ICreature
 			equality &= otherCreature.isMook() == this.isMook();
 			equality &= otherCreature.getLevelBase() == this.getLevelBase();
 			equality &= otherCreature.getLevelAdjustment() == this.getLevelAdjustment();
-			
+
 			return equality;
 		}
 		else

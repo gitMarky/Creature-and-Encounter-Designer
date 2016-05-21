@@ -45,8 +45,8 @@ public class SpecialTemplate implements ISpecial
 	{
 		return HtmlDescriptions.getSpecialDescription(this, Constants.TEMPLATE_CREATURE_OF_TYPE);
 	}
-	
-	
+
+
 	@Override
 	public String toString()
 	{

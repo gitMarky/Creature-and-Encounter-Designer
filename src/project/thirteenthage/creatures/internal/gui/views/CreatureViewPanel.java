@@ -189,7 +189,7 @@ public class CreatureViewPanel extends JPanel implements IView
 				remove(label);
 			for (final JLabel label : _nastier)
 				remove(label);
-			
+
 			remove(_nastierLabel);
 
 			_attacks.clear();
@@ -208,9 +208,9 @@ public class CreatureViewPanel extends JPanel implements IView
 				_specials.add(label);
 				this.add(label);
 			}
-			
+
 			if (!_creature.getNastierSpecials().isEmpty()) this.add(_nastierLabel);
-			
+
 			for (final ISpecial special : _creature.getNastierSpecials())
 			{
 				SpecialViewLabel label = new SpecialViewLabel(special);

@@ -23,17 +23,16 @@ public class HtmlDescriptions
 		htmlText.append(" ");
 		htmlText.append(String.format("%+d vs. %s", attack.getAttackBonus(), attack.getDefense()));
 		htmlText.append(String.format(" - %d%s %s", damageFactor, inPercent ? "%" : "", description));
-		
+
 		for (final ITrigger trigger : attack.getTriggers())
 		{
 			htmlText.append(Html.LINE_BREAK);
 			htmlText.append(trigger.toHtmlText());
 		}
 
-
 		return htmlText.toString();
 	}
-	
+
 
 	public static String getTriggerDescription(final ITrigger trigger, final String creatureName, final double creatureDamage, final boolean inPercent)
 	{
@@ -41,25 +40,24 @@ public class HtmlDescriptions
 
 		htmlText.append(Html.BEGIN_ITALIC + trigger.getName() + Html.END_ITALIC);
 		htmlText.append(": ");
-		
+
 		String description = replaceName(trigger.getDescription(), creatureName);
 		description = replaceDamage(description, creatureDamage, inPercent);
 		htmlText.append(description);
 
 		return htmlText.toString();
 	}
-	
-	
+
+
 	public static String getSpecialDescription(final ISpecial special, final String creatureName)
 	{
 		final StringBuilder htmlText = new StringBuilder();
 
 		String description = TextFormatter.parse(special.getDescription(), TextFormatter.PLACEHOLDER_NAME, creatureName);
 
-		
 		htmlText.append(Html.BEGIN_ITALIC + special.getName() + Html.END_ITALIC);
-		htmlText.append( ": " + description);
-		
+		htmlText.append(": " + description);
+
 		return htmlText.toString();
 	}
 

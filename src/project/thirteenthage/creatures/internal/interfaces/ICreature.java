@@ -151,7 +151,7 @@ public interface ICreature extends INamedItem, ILeveledItem
 
 
 	void setSpecials(List<ISpecial> specials);
-	
-	
+
+
 	ICreatureTemplate getTemplate();
 }

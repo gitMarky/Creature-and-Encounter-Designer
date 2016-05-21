@@ -10,6 +10,7 @@ public class Special implements ISpecial
 	private final String _description;
 	private final String _creatureName;
 
+
 	public Special(final ICreature creature, final ISpecial template)
 	{
 		_name = template.getName();

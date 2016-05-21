@@ -52,7 +52,7 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		_buttonPanel.add(_clearButton);
 		_buttonPanel.add(_difficultyLabel);
 		_buttonPanel.add(_playerLevel);
-		
+
 		_playerLevel.setUpdateView(this);
 		_playerLevel.setBounds(Constants.MIN_PLAYER_LEVEL, Constants.MAX_PLAYER_LEVEL);
 
@@ -94,8 +94,7 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 			_creatureListPanel.remove(_creatures.get(creature));
 			_creatures.remove(creature);
 
-			if (_creatures.isEmpty())
-				_creatureListEmpty.setVisible(true);
+			if (_creatures.isEmpty()) _creatureListEmpty.setVisible(true);
 			updateView();
 		}
 	}
@@ -107,15 +106,15 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		if (_creatures.isEmpty())
 		{
 			_difficultyLabel.displayDifficulty(Double.NaN);
-		} else
+		}
+		else
 		{
 			_difficulty = new EncounterDifficulty(_creatures);
 			_difficulty.setPlayerLevel(_playerLevel.getAmount());
 			_difficultyLabel.displayDifficulty(_difficulty.getEncounterDifficulty());
 		}
 
-		if (CreatureGui.GUI != null)
-			CreatureGui.GUI.updateView();
+		if (CreatureGui.GUI != null) CreatureGui.GUI.updateView();
 	}
 
 
