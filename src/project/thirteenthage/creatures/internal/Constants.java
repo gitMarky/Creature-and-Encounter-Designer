@@ -29,4 +29,8 @@ public class Constants
 	public static final String TEMPLATE_CREATURE_OF_TYPE = "creature of this type";
 
 	public static final double TEMPLATE_CREATURE_DAMAGE = 100.0;
+
+	public static final int MIN_INITIATIVE = -1;
+
+	public static final int MAX_INITIATIVE = +9;
 }

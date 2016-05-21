@@ -38,6 +38,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 	private final AmountChoicePanel _pdSetter = new AmountChoicePanel("PD");
 	private final AmountChoicePanel _mdSetter = new AmountChoicePanel("MD");
 	private final AmountChoicePanel _hpSetter = new AmountChoicePanel("HP");
+	private final AmountChoicePanel _iniSetter = new AmountChoicePanel("Initiative");
 	private final DefenseChoicePanel _defenseSetter = new DefenseChoicePanel();
 	private final TextChoicePanel _nameSetter = new TextChoicePanel("Name");
 	private final SizeChoicePanel _sizeSetter = new SizeChoicePanel();
@@ -80,6 +81,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		this.add(_nastierButton);
 		_nastierButton.addActionListener(this);
 		// right column
+		addSetter(_iniSetter, Constants.MIN_INITIATIVE, Constants.MAX_INITIATIVE);
 		addSetter(_attackSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
 		addSetter(_acSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
 		addSetter(_pdSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
@@ -200,6 +202,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		{
 			_editedCreature.setName(_nameSetter.getText());
 			_editedCreature.setLevel(_levelSetter.getAmount());
+			_editedCreature.setInitiative(_iniSetter.getAmount());
 			_editedCreature.setAttack(_attackSetter.getAmount());
 			_editedCreature.setAC(_acSetter.getAmount());
 			_editedCreature.setPD(_pdSetter.getAmount());
@@ -227,6 +230,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		_nameSetter.setText(template.getName());
 		_levelSetter.setAmount(template.getLevel());
 		_attackSetter.setAmount(template.getModifierAttack());
+		_iniSetter.setAmount(template.getModifierInitiative());
 		_acSetter.setAmount(template.getModifierAC());
 		_pdSetter.setAmount(template.getModifierPD());
 		_mdSetter.setAmount(template.getModifierMD());
@@ -234,13 +238,6 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		_defenseSetter.setBetterDefense(template.getBetterDefense());
 		_sizeSetter.setCreatureSize(template.getSize());
 		_isCreatureReset = true;
-
-		// _labelsFrame.setVisible(false);
-		// _labelsFrame.removeAll();
-		// ListTransferPanel<String> listTransfer = new
-		// ListTransferPanel<String>(Lists.labels(),
-		// _editedCreature.getLabels());
-		// _labelsFrame.add(listTransfer);
 
 		updateLevelAdjust();
 	}
