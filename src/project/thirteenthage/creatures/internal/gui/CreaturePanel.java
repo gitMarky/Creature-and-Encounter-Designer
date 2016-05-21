@@ -214,6 +214,7 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 			_saveButton.setEnabled(false);
 		}
 
+		if (_panel != null) _panel.updateView();
 		if (CreatureGui.GUI != null) CreatureGui.GUI.updateView();
 	}
 

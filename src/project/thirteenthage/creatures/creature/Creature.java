@@ -8,6 +8,7 @@ import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
 import project.thirteenthage.creatures.internal.interfaces.ISpecial;
 import project.thirteenthage.creatures.mechanics.Attack;
+import project.thirteenthage.creatures.mechanics.LevelAdjustment;
 import project.thirteenthage.creatures.mechanics.Special;
 
 /**
@@ -306,7 +307,17 @@ public class Creature implements ICreature
 
 	public int getLevelAdjustment()
 	{
-		return _levelAdjustment;
+		if (getTemplate() == null)
+		{
+			return 0;
+		}
+		
+		return LevelAdjustment
+			  .getLevelAdjustment(getTemplate().getModifierAttack(),
+				                  getTemplate().getModifierAC(),
+				                  getTemplate().getModifierPD(),
+				                  getTemplate().getModifierMD(),
+				                  getTemplate().getModifierHP());
 	}
 
 

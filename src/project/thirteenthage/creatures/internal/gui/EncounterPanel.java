@@ -113,6 +113,11 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 	@Override
 	public void updateView()
 	{
+		for (final CreatureEncounterPanel panel : _creatures.values())
+		{
+			panel.updateView();
+		}
+		
 		if (_creatures.isEmpty())
 		{
 			_difficultyLabel.displayDifficulty(Double.NaN);

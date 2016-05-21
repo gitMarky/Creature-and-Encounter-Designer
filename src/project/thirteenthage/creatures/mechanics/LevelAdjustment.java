@@ -1,6 +1,7 @@
 package project.thirteenthage.creatures.mechanics;
 
 import project.thirteenthage.creatures.internal.conversions.Conversions;
+import project.thirteenthage.creatures.internal.gui.CreatureGui;
 import project.thirteenthage.creatures.internal.interfaces.ILevelAdjustment;
 
 /**
@@ -50,6 +51,12 @@ public final class LevelAdjustment
 	public static void setUseOriginalCalculation(final boolean use)
 	{
 		_calculateOriginalValue = use;
+		
+		if (CreatureGui.GUI != null)
+		{
+			CreatureGui.GUI.getCreaturePanel().updateView();
+			CreatureGui.GUI.getEncounterPanel().updateView();
+		}
 	}
 
 

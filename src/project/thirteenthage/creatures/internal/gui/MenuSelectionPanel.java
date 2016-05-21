@@ -7,6 +7,7 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 import project.thirteenthage.creatures.interfaces.IView;
+import project.thirteenthage.creatures.internal.gui.views.LevelAdjustmentChoicePanel;
 import project.thirteenthage.creatures.loaders.CreatureLoader;
 import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
 
@@ -17,6 +18,8 @@ import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
 class MenuSelectionPanel extends JPanel implements IView
 {
 	private final JComboBox<MenuSelectionItem> _creatureList;
+	
+	private final LevelAdjustmentChoicePanel _levelAdjust = new LevelAdjustmentChoicePanel();
 
 
 	MenuSelectionPanel()
@@ -27,6 +30,7 @@ class MenuSelectionPanel extends JPanel implements IView
 		updateSelectionList();
 
 		this.add(_creatureList);
+		this.add(_levelAdjust);
 	}
 
 
