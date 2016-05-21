@@ -1,5 +1,7 @@
 package project.thirteenthage.creatures.mechanics;
 
+import project.thirteenthage.creatures.internal.conversions.Conversions;
+
 /**
  * <p>
  * Adds a modifier to the level of a creature, based on how much it deviates
@@ -62,6 +64,6 @@ public final class LevelAdjustment
 
 	public static int getLevelAdjustment(final int attack, final int ac, final int pd, final int md, final double hp)
 	{
-		return (int) Math.round(getLevelAdjustmentFine(attack, ac, pd, md, hp));
+		return Conversions.round(getLevelAdjustmentFine(attack, ac, pd, md, hp));
 	}
 }
