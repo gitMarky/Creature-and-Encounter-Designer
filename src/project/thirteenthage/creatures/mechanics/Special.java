@@ -1,6 +1,5 @@
 package project.thirteenthage.creatures.mechanics;
 
-import project.thirteenthage.creatures.internal.TextFormatter;
 import project.thirteenthage.creatures.internal.conversions.HtmlDescriptions;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.internal.interfaces.ISpecial;

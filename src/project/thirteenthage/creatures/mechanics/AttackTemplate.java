@@ -8,9 +8,6 @@ import org.jdom2.Element;
 
 import project.thirteenthage.creatures.interfaces.ITrigger;
 import project.thirteenthage.creatures.internal.BasicXmlFile;
-import project.thirteenthage.creatures.internal.Html;
-import project.thirteenthage.creatures.internal.TextFormatter;
-import project.thirteenthage.creatures.internal.conversions.Conversions;
 import project.thirteenthage.creatures.internal.conversions.HtmlDescriptions;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 

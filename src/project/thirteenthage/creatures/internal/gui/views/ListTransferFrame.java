@@ -6,11 +6,10 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
-import com.sun.glass.ui.Window;
-
 /**
  * A frame that allows transfer from one list to another list.
  */
+@SuppressWarnings("serial")
 public class ListTransferFrame extends JFrame
 {
 	public static void main(final String[] args)

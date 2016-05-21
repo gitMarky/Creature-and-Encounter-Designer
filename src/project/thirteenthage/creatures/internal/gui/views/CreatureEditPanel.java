@@ -1,5 +1,6 @@
 package project.thirteenthage.creatures.internal.gui.views;
 
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,10 +11,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
-import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import project.thirteenthage.creatures.creature.EditableCreatureTemplate;
@@ -71,11 +70,15 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		addSetter(_levelSetter, Constants.MIN_LEVEL, Constants.MAX_LEVEL);
 		this.add(_levelAdjust);
 		addSetter(_sizeSetter);
-		this.add(_labelsButton); _labelsButton.addActionListener(this);
+		this.add(_labelsButton);
+		_labelsButton.addActionListener(this);
 		// center column
-		this.add(_attacksButton); _attacksButton.addActionListener(this);
-		this.add(_specialsButton); _specialsButton.addActionListener(this);
-		this.add(_nastierButton); _nastierButton.addActionListener(this);
+		this.add(_attacksButton);
+		_attacksButton.addActionListener(this);
+		this.add(_specialsButton);
+		_specialsButton.addActionListener(this);
+		this.add(_nastierButton);
+		_nastierButton.addActionListener(this);
 		// right column
 		addSetter(_attackSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
 		addSetter(_acSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
@@ -83,15 +86,15 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		addSetter(_mdSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
 		addSetter(_hpSetter, Constants.MIN_HP_MODIFIER, Constants.MAX_HP_MODIFIER);
 		addSetter(_defenseSetter);
-		
+
 		_listFrame = new JFrame();
-		
+
 		_hpSetter.setOutputText("%+d %%"); // display percent
 		_hpSetter.setButtonStep(5); // change 5% at once
 	}
 
 
-	private void addSetter(final AmountChoicePanel setter, int lowerBound, int upperBound)
+	private void addSetter(final AmountChoicePanel setter, final int lowerBound, final int upperBound)
 	{
 		addSetter(setter);
 		setter.setBounds(lowerBound, upperBound);
@@ -113,7 +116,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 	}
 
 
-	public void applyEditing(CreaturePanel creaturePanel, ICreature originalCreature)
+	public void applyEditing(final CreaturePanel creaturePanel, final ICreature originalCreature)
 	{
 		if (_editedCreature == null)
 			return;
@@ -134,7 +137,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 	}
 
 
-	public void cancelEditing(CreaturePanel creaturePanel, ICreature originalCreature)
+	public void cancelEditing(final CreaturePanel creaturePanel, final ICreature originalCreature)
 	{
 		if (_originalCreature == null)
 			return;
@@ -143,7 +146,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 	}
 
 
-	public void startEditing(CreaturePanel creaturePanel, ICreature originalCreature)
+	public void startEditing(final CreaturePanel creaturePanel, final ICreature originalCreature)
 	{
 		_creaturePanel = creaturePanel;
 		_originalCreature = originalCreature;
@@ -191,11 +194,13 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		_defenseSetter.setBetterDefense(template.getBetterDefense());
 		_sizeSetter.setCreatureSize(template.getSize());
 		_isCreatureReset = true;
-		
-//		_labelsFrame.setVisible(false);
-//		_labelsFrame.removeAll();
-//		ListTransferPanel<String> listTransfer = new ListTransferPanel<String>(Lists.labels(), _editedCreature.getLabels());
-//		_labelsFrame.add(listTransfer);
+
+		// _labelsFrame.setVisible(false);
+		// _labelsFrame.removeAll();
+		// ListTransferPanel<String> listTransfer = new
+		// ListTransferPanel<String>(Lists.labels(),
+		// _editedCreature.getLabels());
+		// _labelsFrame.add(listTransfer);
 
 		updateLevelAdjust();
 	}
@@ -207,36 +212,36 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 	}
 
 
-	private double integerToPercentage(int amount)
+	private double integerToPercentage(final int amount)
 	{
 		return 1.0 + amount / 100.0;
 	}
 
 
-	private int percentageToInteger(double percentage)
+	private int percentageToInteger(final double percentage)
 	{
 		return (int) Math.round((percentage - 1.0) * 100);
 	}
 
 
 	@Override
-	public void actionPerformed(ActionEvent action)
+	public void actionPerformed(final ActionEvent action)
 	{
 		if (action.getSource() == _labelsButton)
 		{
 			showLabelsSelection();
 		}
-		
+
 		if (action.getSource() == _attacksButton)
 		{
 			showAttacksSelection();
 		}
-		
+
 		if (action.getSource() == _specialsButton)
 		{
 			showSpecialsSelection();
 		}
-		
+
 		if (action.getSource() == _nastierButton)
 		{
 			showNastierSpecialsSelection();
@@ -246,16 +251,16 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 
 	private void showLabelsSelection()
 	{
-		ListTransferPanel<String> listTransfer = new ListTransferPanel<String>(Lists.labels(), _editedCreature.getLabels());
+		final ListTransferPanel<String> listTransfer = new ListTransferPanel<String>(Lists.labels(), _editedCreature.getLabels());
 		setupListSelectionPanel(listTransfer);
 		setupListSelectionFrame("Select labels", listTransfer);
 		setButtonsEnabled(false);
 	}
-	
+
 
 	private void showAttacksSelection()
 	{
-		ListTransferPanel<IAttack> listTransfer = new ListTransferPanel<IAttack>(new ArrayList<IAttack>(AttackTemplateLoader.getInstance().getTemplates().values()), _editedCreature.getAttacks());
+		final ListTransferPanel<IAttack> listTransfer = new ListTransferPanel<IAttack>(new ArrayList<IAttack>(AttackTemplateLoader.getInstance().getTemplates().values()), _editedCreature.getAttacks());
 		setupListSelectionPanel(listTransfer);
 		setupListSelectionFrame("Select attacks", listTransfer);
 		setButtonsEnabled(false);
@@ -265,31 +270,32 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 
 	private void showSpecialsSelection()
 	{
-		ListTransferPanel<ISpecial> listTransfer = new ListTransferPanel<ISpecial>(new ArrayList<ISpecial>(SpecialTemplateLoader.getInstance().getTemplates().values()), _editedCreature.getSpecials());
+		final ListTransferPanel<ISpecial> listTransfer = new ListTransferPanel<ISpecial>(new ArrayList<ISpecial>(SpecialTemplateLoader.getInstance().getTemplates().values()), _editedCreature.getSpecials());
 		setupListSelectionPanel(listTransfer);
 		setupListSelectionFrame("Select specials", listTransfer);
 		setButtonsEnabled(false);
-		
+
 		addSpecialsDescription(listTransfer);
 	}
 
-	
+
 	private void showNastierSpecialsSelection()
 	{
 		// set up the list
-		ListTransferPanel<ISpecial> listTransfer = new ListTransferPanel<ISpecial>(new ArrayList<ISpecial>(SpecialTemplateLoader.getInstance().getTemplates().values()), _editedCreature.getNastierSpecials());
+		final ListTransferPanel<ISpecial> listTransfer = new ListTransferPanel<ISpecial>(new ArrayList<ISpecial>(SpecialTemplateLoader.getInstance().getTemplates().values()), _editedCreature.getNastierSpecials());
 		setupListSelectionPanel(listTransfer);
 		setupListSelectionFrame("Select nastier specials", listTransfer);
 		setButtonsEnabled(false);
-		
+
 		addSpecialsDescription(listTransfer);
 	}
-	
-	
+
+
 	private void confirmListSelection()
 	{
 		setButtonsEnabled(true);
-		if (_listFrame != null) _listFrame.setVisible(false);
+		if (_listFrame != null)
+			_listFrame.setVisible(false);
 		updateView();
 	}
 
@@ -301,9 +307,9 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		_specialsButton.setEnabled(enabled);
 		_nastierButton.setEnabled(enabled);
 	}
-	
-	
-	private <T> void setupListSelectionPanel(ListTransferPanel<T> listTransfer)
+
+
+	private <T> void setupListSelectionPanel(final ListTransferPanel<T> listTransfer)
 	{
 		listTransfer.setUpdateView(this);
 		listTransfer.setLeftListLocked(true);
@@ -312,15 +318,15 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		listTransfer.getConfirmButton().addActionListener(new ActionListener()
 		{
 			@Override
-			public void actionPerformed(ActionEvent action)
+			public void actionPerformed(final ActionEvent action)
 			{
 				confirmListSelection();
 			}
 		});
 	}
-	
-	
-	private <T> void setupListSelectionFrame(final String title, ListTransferPanel<T> listTransfer)
+
+
+	private <T> void setupListSelectionFrame(final String title, final ListTransferPanel<T> listTransfer)
 	{
 		_listFrame = new JFrame(title);
 		_listFrame.setLayout(new GridLayout(1, 2));
@@ -329,66 +335,35 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		_listFrame.setVisible(true);
 		_listFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 	}
-	
-	
+
+
 	private void addAttackDescription(final ListTransferPanel<IAttack> listTransfer)
 	{
 		final JPanel innerPanel = new JPanel();
-		innerPanel.setBorder(BorderFactory.createTitledBorder("Description"));
-		_listFrame.add(innerPanel);
-
-		final ListSelectionListener listener = new ListSelectionListener()
-		{
-			@Override
-			public void valueChanged(ListSelectionEvent selection)
-			{
-				innerPanel.removeAll();
-				
-				JList<IAttack> source = (JList<IAttack>) selection.getSource();
-				int index = source.getSelectedIndex();
-				if (index > -1)
-				{
-					final IAttack attack = source.getModel().getElementAt(index);
-					innerPanel.add(new AttackViewLabel(attack));
-				}
-				
-				_listFrame.pack();
-				_listFrame.setVisible(true);
-			}
-		};
-		
-		listTransfer.getLeftList().addListSelectionListener(listener);
-		listTransfer.getRightList().addListSelectionListener(listener);
+		final ListSelectionListener listener = createListSelectionListener(innerPanel, IAttack.class, AttackViewLabel.class);
+		addListSelectionDescription(listTransfer, innerPanel, listener);
 	}
-	
-	
+
+
 	private void addSpecialsDescription(final ListTransferPanel<ISpecial> listTransfer)
 	{
 		final JPanel innerPanel = new JPanel();
+		final ListSelectionListener listener = createListSelectionListener(innerPanel, ISpecial.class, SpecialViewLabel.class);
+		addListSelectionDescription(listTransfer, innerPanel, listener);
+	}
+
+
+	private <T> void addListSelectionDescription(final ListTransferPanel<T> listTransfer, final JPanel innerPanel, final ListSelectionListener listener)
+	{
 		innerPanel.setBorder(BorderFactory.createTitledBorder("Description"));
 		_listFrame.add(innerPanel);
-
-		final ListSelectionListener listener = new ListSelectionListener()
-		{
-			@Override
-			public void valueChanged(ListSelectionEvent selection)
-			{
-				innerPanel.removeAll();
-				
-				JList<ISpecial> source = (JList<ISpecial>) selection.getSource();
-				int index = source.getSelectedIndex();
-				if (index > -1)
-				{
-					final ISpecial attack = source.getModel().getElementAt(index);
-					innerPanel.add(new SpecialViewLabel(attack));
-				}
-				
-				_listFrame.pack();
-				_listFrame.setVisible(true);
-			}
-		};
-		
 		listTransfer.getLeftList().addListSelectionListener(listener);
 		listTransfer.getRightList().addListSelectionListener(listener);
 	}
+
+
+	private <T, C extends Component> ListSelectionListener createListSelectionListener(final JPanel innerPanel, final Class<T> listSelectionType, final Class<C> descriptionComponentType)
+	{
+		return new DisplayDescriptionListener<T, C>(_listFrame, innerPanel, listSelectionType, descriptionComponentType);
+	};
 }
