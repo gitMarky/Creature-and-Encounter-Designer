@@ -43,7 +43,7 @@ public abstract class AbstractLoader<T extends Object>
 		{
 			throw new IllegalArgumentException("Parameter 'file' must not be null.");
 		}
-		
+
 		// skip anything that is not an xml file
 		if (!file.getName().endsWith(LoaderHelper.EXTENSION_XML)) return;
 		if (file.getName().startsWith("template")) return;
@@ -94,7 +94,7 @@ public abstract class AbstractLoader<T extends Object>
 		{
 			throw new IllegalArgumentException("Parameter '_templates' must not be null.");
 		}
-		
+
 		for (final Entry<String, T> entry : _templates.entrySet())
 		{
 			if (entry.getValue().equals(object))

@@ -15,7 +15,7 @@ public enum CreatureSize implements IDisplayableInGui
 		{
 			throw new IllegalArgumentException("Parameter 'guiText' must not be null.");
 		}
-		
+
 		_guiText = guiText;
 	}
 
@@ -26,7 +26,7 @@ public enum CreatureSize implements IDisplayableInGui
 		{
 			throw new IllegalArgumentException("Parameter 'name' must not be null.");
 		}
-		
+
 		for (final CreatureSize size : CreatureSize.values())
 		{
 			if (size.name().equalsIgnoreCase(name))

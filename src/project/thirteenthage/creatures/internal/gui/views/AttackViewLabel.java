@@ -23,7 +23,7 @@ public class AttackViewLabel extends JLabel
 		{
 			throw new IllegalArgumentException("Parameter 'attack' must not be null.");
 		}
-		
+
 		final StringBuilder guiText = new StringBuilder(Html.BEGIN);
 		guiText.append(attack.toHtmlText());
 		guiText.append(Html.END);

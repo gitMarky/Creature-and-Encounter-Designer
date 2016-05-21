@@ -90,7 +90,7 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 		{
 			throw new IllegalArgumentException("Parameter 'creature' must not be null.");
 		}
-		
+
 		if (_panel != null)
 		{
 			_innerPanel.remove(_panel);

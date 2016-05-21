@@ -35,7 +35,7 @@ public class CreatureBuilder
 		{
 			throw new IllegalArgumentException("Parameter 'name' must not be null.");
 		}
-		
+
 		_name = name;
 		return this;
 	}
@@ -54,7 +54,7 @@ public class CreatureBuilder
 		{
 			throw new IllegalArgumentException("Parameter 'size' must not be null.");
 		}
-		
+
 		_size = size;
 		return this;
 	}

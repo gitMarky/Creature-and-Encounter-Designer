@@ -44,7 +44,7 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 	public ListTransferPanel(final List<T> listA, final List<T> listB)
 	{
 		super();
-		
+
 		if (listA == null)
 		{
 			throw new IllegalArgumentException("Parameter 'listA' must not be null.");
@@ -53,7 +53,7 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 		{
 			throw new IllegalArgumentException("Parameter 'listB' must not be null.");
 		}
-		
+
 		_listA = listA;
 		_listB = listB;
 
@@ -177,7 +177,7 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 		{
 			throw new IllegalArgumentException("Parameter 'selection' must not be null.");
 		}
-		
+
 		final List<T> transferSelection = new ArrayList<T>();
 
 		ApplicationLogger.getLogger().fine("Transferring to list B:");

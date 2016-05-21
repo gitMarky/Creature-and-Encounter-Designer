@@ -146,7 +146,7 @@ public class Creature implements ICreature
 		{
 			throw new IllegalArgumentException("Parameter 'name' must not be null.");
 		}
-		
+
 		_name = name;
 	}
 
@@ -199,7 +199,7 @@ public class Creature implements ICreature
 		{
 			throw new IllegalArgumentException("Parameter 'size' must not be null.");
 		}
-		
+
 		_size = size;
 	}
 
@@ -228,7 +228,7 @@ public class Creature implements ICreature
 		{
 			throw new IllegalArgumentException("Parameter 'attacks' must not be null.");
 		}
-		
+
 		_attacks.clear();
 		// create the actual attacks from templates.
 		final int bonus = getLevel() + 5 + _attack;
@@ -247,7 +247,7 @@ public class Creature implements ICreature
 		{
 			throw new IllegalArgumentException("Parameter 'specials' must not be null.");
 		}
-		
+
 		_specials.clear();
 		for (final ISpecial template : specials)
 		{
@@ -264,7 +264,7 @@ public class Creature implements ICreature
 		{
 			throw new IllegalArgumentException("Parameter 'nastierSpecials' must not be null.");
 		}
-		
+
 		_nastierSpecials.clear();
 		for (final ISpecial template : nastierSpecials)
 		{
@@ -287,7 +287,7 @@ public class Creature implements ICreature
 		{
 			throw new IllegalArgumentException("Parameter 'template' must not be null.");
 		}
-		
+
 		_template = template;
 	}
 
@@ -317,7 +317,7 @@ public class Creature implements ICreature
 		{
 			throw new IllegalArgumentException("Parameter 'other' must not be null.");
 		}
-		
+
 		if (other instanceof Creature)
 		{
 			boolean equality = true;

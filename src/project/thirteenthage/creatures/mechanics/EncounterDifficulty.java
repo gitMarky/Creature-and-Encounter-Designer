@@ -23,7 +23,7 @@ public class EncounterDifficulty
 		{
 			throw new IllegalArgumentException("Parameter 'creatures' must not be null.");
 		}
-		
+
 		for (final Entry<ICreature, CreatureEncounterPanel> entry : creatures.entrySet())
 		{
 			addCreature(entry.getKey(), entry.getValue().getAmount());
@@ -76,7 +76,7 @@ public class EncounterDifficulty
 		{
 			throw new IllegalArgumentException("Parameter 'creature' must not be null.");
 		}
-		
+
 		int levelDifference = creature.getLevel() - _level;
 
 		if (_level >= 5) levelDifference -= 1; // monsters for champion battles
@@ -96,7 +96,7 @@ public class EncounterDifficulty
 		{
 			throw new IllegalArgumentException("Parameter 'size' must not be null.");
 		}
-		
+
 		final int row = Math.min(Math.max(levelDifference + 2, -1), 7);
 
 		double difficulty = 1.0;

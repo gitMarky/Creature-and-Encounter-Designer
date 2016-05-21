@@ -18,7 +18,7 @@ public class CreatureTables
 		{
 			throw new IllegalArgumentException("Parameter 'size' must not be null.");
 		}
-		
+
 		switch (size)
 		{
 			case NORMAL:

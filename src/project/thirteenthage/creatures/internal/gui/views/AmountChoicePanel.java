@@ -31,7 +31,7 @@ public class AmountChoicePanel extends ChoicePanel implements ActionListener
 	public AmountChoicePanel(final String name)
 	{
 		super();
-		
+
 		if (name == null)
 		{
 			throw new IllegalArgumentException("Parameter 'name' must not be null.");
@@ -137,7 +137,7 @@ public class AmountChoicePanel extends ChoicePanel implements ActionListener
 		{
 			throw new IllegalArgumentException("Parameter 'text' must not be null.");
 		}
-		
+
 		_outputText = text;
 	}
 }

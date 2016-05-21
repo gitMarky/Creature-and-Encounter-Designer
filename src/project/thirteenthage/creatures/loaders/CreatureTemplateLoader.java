@@ -24,7 +24,7 @@ public class CreatureTemplateLoader extends AbstractLoader<ICreatureTemplate>
 		{
 			throw new IllegalArgumentException("Parameter 'template' must not be null.");
 		}
-		
+
 		return CreatureTemplate.ROOT_ELEMENT.equals(template.getRoot().getName());
 	}
 
@@ -36,7 +36,7 @@ public class CreatureTemplateLoader extends AbstractLoader<ICreatureTemplate>
 		{
 			throw new IllegalArgumentException("Parameter 'file' must not be null.");
 		}
-		
+
 		final CreatureTemplate template = new CreatureTemplate(file);
 		final String id = LoaderHelper.getId(file);
 

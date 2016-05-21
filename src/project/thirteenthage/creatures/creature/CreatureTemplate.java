@@ -54,7 +54,7 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 		{
 			throw new IllegalArgumentException("Parameter 'file' must not be null.");
 		}
-		
+
 		_template = file;
 
 		parse();
@@ -189,7 +189,7 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 		{
 			throw new IllegalArgumentException("Parameter 'node' must not be null.");
 		}
-		
+
 		final List<ISpecial> specials = new ArrayList<ISpecial>();
 
 		for (final Element special : _template.getRoot().getChild(node).getChildren())
@@ -218,7 +218,7 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 		{
 			throw new IllegalArgumentException("Parameter 'file' must not be null.");
 		}
-		
+
 		return saveToFile();
 	}
 }

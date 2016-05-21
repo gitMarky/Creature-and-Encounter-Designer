@@ -73,7 +73,7 @@ public class DefenseChoicePanel extends ChoicePanel implements ActionListener
 		{
 			throw new IllegalArgumentException("Parameter 'defense' must not be null.");
 		}
-		
+
 		if (defense == BetterDefense.MD)
 		{
 			_mdButton.setSelected(true);

@@ -19,7 +19,7 @@ public final class LoaderHelper
 		{
 			throw new IllegalArgumentException("Parameter 'template' must not be null.");
 		}
-		
+
 		final String name = template.getFile().getName();
 		return name.substring(0, name.length() - EXTENSION_XML.length());
 	}

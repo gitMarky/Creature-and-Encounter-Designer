@@ -25,7 +25,7 @@ public class SpecialTemplate implements ISpecial
 		{
 			throw new IllegalArgumentException("Parameter 'template' must not be null.");
 		}
-		
+
 		_name = template.getRoot().getChildText("name");
 		_description = template.getRoot().getChildText("description");
 	}

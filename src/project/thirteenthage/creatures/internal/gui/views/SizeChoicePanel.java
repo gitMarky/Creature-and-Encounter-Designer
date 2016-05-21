@@ -72,7 +72,7 @@ public class SizeChoicePanel extends ChoicePanel implements ActionListener
 		{
 			throw new IllegalArgumentException("Parameter 'size' must not be null.");
 		}
-		
+
 		_choice = size;
 		for (final Entry<JRadioButton, CreatureSize> entry : _map.entrySet())
 		{

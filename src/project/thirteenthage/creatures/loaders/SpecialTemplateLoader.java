@@ -21,7 +21,7 @@ public class SpecialTemplateLoader extends AbstractLoader<ISpecial>
 		{
 			throw new IllegalArgumentException("Parameter 'template' must not be null.");
 		}
-		
+
 		return "special".equals(template.getRoot().getName());
 	}
 
@@ -33,7 +33,7 @@ public class SpecialTemplateLoader extends AbstractLoader<ISpecial>
 		{
 			throw new IllegalArgumentException("Parameter 'file' must not be null.");
 		}
-		
+
 		final SpecialTemplate template = new SpecialTemplate(file);
 		final String id = LoaderHelper.getId(file);
 

@@ -27,7 +27,7 @@ public class EditableCreatureTemplate extends AbstractCreatureTemplate
 		{
 			throw new IllegalArgumentException("Parameter 'template' must not be null.");
 		}
-		
+
 		setName(template.getName());
 		setLevel(template.getLevel());
 		setSize(template.getSize());
@@ -60,7 +60,7 @@ public class EditableCreatureTemplate extends AbstractCreatureTemplate
 		{
 			throw new IllegalArgumentException("Parameter 'targetFile' must not be null.");
 		}
-		
+
 		final Element nameElement = new Element(CreatureTemplate.ELEMENT_NAME);
 		nameElement.setText(getName());
 

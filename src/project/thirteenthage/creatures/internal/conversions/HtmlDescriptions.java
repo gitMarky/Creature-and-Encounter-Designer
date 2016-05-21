@@ -21,7 +21,7 @@ public class HtmlDescriptions
 		{
 			throw new IllegalArgumentException("Parameter 'creatureName' must not be null.");
 		}
-		
+
 		final StringBuilder htmlText = new StringBuilder();
 		final int damageFactor = Conversions.round(attack.getDamageFactor() * (inPercent ? 100.0 : 1.0));
 
@@ -53,7 +53,7 @@ public class HtmlDescriptions
 		{
 			throw new IllegalArgumentException("Parameter 'creatureName' must not be null.");
 		}
-		
+
 		final StringBuilder htmlText = new StringBuilder();
 
 		htmlText.append(Html.BEGIN_ITALIC + trigger.getName() + Html.END_ITALIC);
@@ -77,7 +77,7 @@ public class HtmlDescriptions
 		{
 			throw new IllegalArgumentException("Parameter 'creatureName' must not be null.");
 		}
-		
+
 		final StringBuilder htmlText = new StringBuilder();
 
 		final String description = TextFormatter.parse(special.getDescription(), TextFormatter.PLACEHOLDER_NAME, creatureName);

@@ -25,7 +25,7 @@ public class Attack implements IAttack
 		{
 			throw new IllegalArgumentException("Parameter 'template' must not be null.");
 		}
-		
+
 		_template = template;
 		_attackBase = attack;
 		_damageBase = damage;
@@ -45,7 +45,7 @@ public class Attack implements IAttack
 		{
 			throw new IllegalArgumentException("Parameter 'creature' must not be null.");
 		}
-		
+
 		_template = template;
 		_attackBase = attack;
 		_damageBase = damage;

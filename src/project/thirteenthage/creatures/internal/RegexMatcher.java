@@ -17,7 +17,7 @@ public class RegexMatcher
 		{
 			throw new IllegalArgumentException("Parameter 'expression' must not be null.");
 		}
-		
+
 		final List<String> allMatches = new ArrayList<String>();
 		final Matcher m = Pattern.compile(expression).matcher(source);
 		while (m.find())

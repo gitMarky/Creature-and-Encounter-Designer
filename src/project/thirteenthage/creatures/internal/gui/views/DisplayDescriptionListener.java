@@ -66,7 +66,7 @@ class DisplayDescriptionListener<T, C extends Component> implements ListSelectio
 		{
 			throw new IllegalArgumentException("Parameter 'listSelectionItem' must not be null.");
 		}
-		
+
 		C label = null;
 		Constructor<?> constructor;
 		Exception ex = null;

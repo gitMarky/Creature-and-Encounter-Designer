@@ -21,7 +21,7 @@ public class Special implements ISpecial
 		{
 			throw new IllegalArgumentException("Parameter 'template' must not be null.");
 		}
-		
+
 		_name = template.getName();
 		_description = template.getDescription();
 		_creatureName = creature.getName();

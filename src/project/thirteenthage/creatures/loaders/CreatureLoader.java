@@ -21,7 +21,7 @@ public class CreatureLoader
 		{
 			throw new IllegalArgumentException("Parameter 'templates' must not be null.");
 		}
-		
+
 		for (final Entry<String, ICreatureTemplate> template : templates.getTemplates().entrySet())
 		{
 			addEntry(template.getKey(), template.getValue());
@@ -35,7 +35,7 @@ public class CreatureLoader
 		{
 			throw new IllegalArgumentException("Parameter 'template' must not be null.");
 		}
-		
+
 		if (!getCreatures().containsKey(id))
 		{
 			final ICreature creature = template.toCreature();
@@ -67,7 +67,7 @@ public class CreatureLoader
 		{
 			throw new IllegalArgumentException("Parameter 'creature' must not be null.");
 		}
-		
+
 		for (final ICreature candidate : getCreatures().values())
 		{
 			if (candidate.equals(creature))

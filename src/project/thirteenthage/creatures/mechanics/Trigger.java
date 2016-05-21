@@ -22,7 +22,7 @@ public class Trigger implements ITrigger
 		{
 			throw new IllegalArgumentException("Parameter 'description' must not be null.");
 		}
-		
+
 		_name = name;
 		_description = description;
 		_isTemplate = true;
@@ -39,7 +39,7 @@ public class Trigger implements ITrigger
 		{
 			throw new IllegalArgumentException("Parameter 'creature' must not be null.");
 		}
-		
+
 		_name = trigger.getName();
 
 		_isTemplate = false;

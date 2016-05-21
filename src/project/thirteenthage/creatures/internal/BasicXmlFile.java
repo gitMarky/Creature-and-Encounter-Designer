@@ -23,7 +23,7 @@ public class BasicXmlFile
 		{
 			throw new IllegalArgumentException("Parameter 'file' must not be null.");
 		}
-		
+
 		_file = file;
 		_doc = null;
 
@@ -53,7 +53,7 @@ public class BasicXmlFile
 		{
 			throw new IllegalArgumentException("Parameter 'file' must not be null.");
 		}
-		
+
 		_doc = doc;
 		_file = file;
 	}
@@ -71,7 +71,7 @@ public class BasicXmlFile
 		{
 			throw new IllegalArgumentException("Parameter 'file' must not be null.");
 		}
-		
+
 		// get object to see output of prepared document
 		final XMLOutputter xmlOutput = new XMLOutputter();
 

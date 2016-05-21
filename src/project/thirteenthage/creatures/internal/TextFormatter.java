@@ -27,7 +27,7 @@ public class TextFormatter
 		{
 			throw new IllegalArgumentException("Parameter 'text' must not be null.");
 		}
-		
+
 		return source.replaceAll(PLACEHOLDER_START + placeholder, text);
 	}
 
@@ -71,7 +71,6 @@ public class TextFormatter
 			throw new IllegalArgumentException("Parameter 'placeholder' must not be null.");
 		}
 
-		
 		String text = source;
 		final List<String> matches = RegexMatcher.getAllMatches(source, expression);
 

@@ -74,7 +74,7 @@ class MenuSelectionPanel extends JPanel implements IView
 			{
 				throw new IllegalArgumentException("Parameter 'id' must not be null.");
 			}
-			
+
 			_id = id;
 		}
 
@@ -98,7 +98,7 @@ class MenuSelectionPanel extends JPanel implements IView
 			{
 				throw new IllegalArgumentException("Parameter 'e' must not be null.");
 			}
-			
+
 			if (e.getStateChange() == ItemEvent.SELECTED)
 			{
 				onCreatureSelected();

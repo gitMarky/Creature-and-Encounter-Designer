@@ -32,7 +32,7 @@ public class AttackTemplateLoader extends AbstractLoader<IAttack>
 		{
 			throw new IllegalArgumentException("Parameter 'file' must not be null.");
 		}
-		
+
 		final AttackTemplate template = new AttackTemplate(file);
 		final String id = LoaderHelper.getId(file);
 

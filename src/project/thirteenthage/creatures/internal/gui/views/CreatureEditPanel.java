@@ -100,7 +100,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		{
 			throw new IllegalArgumentException("Parameter 'setter' must not be null.");
 		}
-		
+
 		addSetter(setter);
 		setter.setBounds(lowerBound, upperBound);
 	}
@@ -112,7 +112,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		{
 			throw new IllegalArgumentException("Parameter 'setter' must not be null.");
 		}
-		
+
 		this.add(setter);
 		setter.setUpdateView(this);
 	}
@@ -136,7 +136,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		{
 			throw new IllegalArgumentException("Parameter 'originalCreature' must not be null.");
 		}
-				
+
 		if (_editedCreature == null) return;
 
 		displayCreature();
@@ -222,7 +222,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		{
 			throw new IllegalArgumentException("Parameter 'template' must not be null.");
 		}
-		
+
 		_isCreatureReset = false;
 		_nameSetter.setText(template.getName());
 		_levelSetter.setAmount(template.getLevel());
@@ -354,7 +354,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		{
 			throw new IllegalArgumentException("Parameter 'listTransfer' must not be null.");
 		}
-		
+
 		listTransfer.setUpdateView(this);
 		listTransfer.setLeftListLocked(true);
 		listTransfer.setLeftListUnique(true);
@@ -380,7 +380,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		{
 			throw new IllegalArgumentException("Parameter 'listTransfer' must not be null.");
 		}
-		
+
 		_listFrame = new JFrame(title);
 		_listFrame.setLayout(new GridLayout(1, 2));
 		_listFrame.add(listTransfer);
@@ -396,7 +396,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		{
 			throw new IllegalArgumentException("Parameter 'listTransfer' must not be null.");
 		}
-		
+
 		final JPanel innerPanel = new JPanel();
 		final ListSelectionListener listener = createListSelectionListener(innerPanel, IAttack.class, AttackViewLabel.class);
 		addListSelectionDescription(listTransfer, innerPanel, listener);
@@ -409,7 +409,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		{
 			throw new IllegalArgumentException("Parameter 'listTransfer' must not be null.");
 		}
-		
+
 		final JPanel innerPanel = new JPanel();
 		final ListSelectionListener listener = createListSelectionListener(innerPanel, ISpecial.class, SpecialViewLabel.class);
 		addListSelectionDescription(listTransfer, innerPanel, listener);
@@ -430,7 +430,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		{
 			throw new IllegalArgumentException("Parameter 'innerPanel' must not be null.");
 		}
-		
+
 		innerPanel.setBorder(BorderFactory.createTitledBorder("Description"));
 		_listFrame.add(innerPanel);
 		listTransfer.getLeftList().addListSelectionListener(listener);
