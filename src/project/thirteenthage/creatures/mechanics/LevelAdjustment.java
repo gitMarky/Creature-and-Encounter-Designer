@@ -1,6 +1,5 @@
 package project.thirteenthage.creatures.mechanics;
 
-import project.thirteenthage.creatures.internal.conversions.Conversions;
 import project.thirteenthage.creatures.internal.gui.CreatureGui;
 import project.thirteenthage.creatures.internal.interfaces.ILevelAdjustment;
 
@@ -28,23 +27,15 @@ public final class LevelAdjustment
 	}
 
 
-	public static double getLevelAdjustmentFine(final int attack, final int ac, final int pd, final int md, final double hp)
+	public static double getLevelAdjustmentFine(final int attack, final int ac, final int pd, final int md, final double hp, final double damage)
 	{
-		double adjustment = 0.0;
-
-		adjustment += getInstance().valueOfAttack(attack);
-		adjustment += getInstance().valueOfDefense(ac);
-		adjustment += getInstance().valueOfDefense(pd);
-		adjustment += getInstance().valueOfDefense(md);
-		adjustment += getInstance().valueOfHP(hp);
-
-		return adjustment;
+		return getInstance().getLevelAdjustmentFine(attack, ac, pd, md, hp, damage);
 	}
 
 
-	public static int getLevelAdjustment(final int attack, final int ac, final int pd, final int md, final double hp)
+	public static int getLevelAdjustment(final int attack, final int ac, final int pd, final int md, final double hp, final double damage)
 	{
-		return Conversions.round(getLevelAdjustmentFine(attack, ac, pd, md, hp));
+		return getInstance().getLevelAdjustment(attack, ac, pd, md, hp, damage);
 	}
 	
 	

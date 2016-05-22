@@ -7,4 +7,10 @@ public interface ILevelAdjustment
 	double valueOfDefense(final int defense);
 	
 	double valueOfHP(final double hp);
+	
+	double valueOfDamage(final double damage);
+	
+	double getLevelAdjustmentFine(final int attack, final int ac, final int pd, final int md, final double hp, final double damage);
+
+	int getLevelAdjustment(final int attack, final int ac, final int pd, final int md, final double hp, final double damage);
 }

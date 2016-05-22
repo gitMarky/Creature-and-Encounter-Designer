@@ -1,6 +1,5 @@
 package project.thirteenthage.creatures.mechanics;
 
-import project.thirteenthage.creatures.internal.interfaces.ILevelAdjustment;
 
 /**
  * <p>
@@ -12,7 +11,7 @@ import project.thirteenthage.creatures.internal.interfaces.ILevelAdjustment;
  * calculating the difficulty.
  * </p>
  */
-public final class LevelAdjustmentOriginal implements ILevelAdjustment
+public final class LevelAdjustmentOriginal extends LevelAdjustmentBase
 {
 	LevelAdjustmentOriginal()
 	{
@@ -45,5 +44,11 @@ public final class LevelAdjustmentOriginal implements ILevelAdjustment
 		value /= 0.15; // seems to go in 15% steps
 		value /= 6.0; // 6 x0.15 = 0.9, is about the same as twice the hp
 		return value;
+	}
+	
+	
+	public double valueOfDamage(final double damage)
+	{
+		return 0.0; // this is not possible in the original adjustment anyway
 	}
 }
