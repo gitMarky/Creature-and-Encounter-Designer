@@ -19,6 +19,7 @@ public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 	private int _pd = 0;
 	private int _md = 0;
 	private double _hp = 1.0;
+	private double _damage = 1.0;
 	private int _ini = 0;
 	private BetterDefense _betterDefense = BetterDefense.PD;
 	private final List<IAttack> _attacks = new ArrayList<IAttack>();
@@ -93,6 +94,13 @@ public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 	public double getModifierHP()
 	{
 		return _hp;
+	}
+
+
+	@Override
+	public double getModifierDamage()
+	{
+		return _damage;
 	}
 
 
@@ -179,6 +187,12 @@ public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 	public void setHP(final double hp)
 	{
 		_hp = hp;
+	}
+
+
+	public void setDamage(final double damage)
+	{
+		_damage = damage;
 	}
 
 

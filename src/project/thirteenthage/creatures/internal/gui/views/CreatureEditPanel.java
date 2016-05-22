@@ -18,6 +18,7 @@ import javax.swing.event.ListSelectionListener;
 import project.thirteenthage.creatures.creature.EditableCreatureTemplate;
 import project.thirteenthage.creatures.interfaces.IView;
 import project.thirteenthage.creatures.internal.Constants;
+import project.thirteenthage.creatures.internal.gui.CreatureGui;
 import project.thirteenthage.creatures.internal.gui.CreaturePanel;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
@@ -26,6 +27,7 @@ import project.thirteenthage.creatures.internal.interfaces.ISpecial;
 import project.thirteenthage.creatures.lists.Lists;
 import project.thirteenthage.creatures.loaders.AttackTemplateLoader;
 import project.thirteenthage.creatures.loaders.SpecialTemplateLoader;
+import project.thirteenthage.creatures.mechanics.LevelAdjustment;
 
 @SuppressWarnings("serial")
 public class CreatureEditPanel extends JPanel implements IView, ActionListener
@@ -38,6 +40,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 	private final AmountChoicePanel _pdSetter = new AmountChoicePanel("PD");
 	private final AmountChoicePanel _mdSetter = new AmountChoicePanel("MD");
 	private final AmountChoicePanel _hpSetter = new AmountChoicePanel("HP");
+	private final AmountChoicePanel _damageSetter = new AmountChoicePanel("Damage");
 	private final AmountChoicePanel _iniSetter = new AmountChoicePanel("Initiative");
 	private final DefenseChoicePanel _defenseSetter = new DefenseChoicePanel();
 	private final TextChoicePanel _nameSetter = new TextChoicePanel("Name");
@@ -87,12 +90,16 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		addSetter(_pdSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
 		addSetter(_mdSetter, Constants.MIN_STAT_MODIFIER, Constants.MAX_STAT_MODIFIER);
 		addSetter(_hpSetter, Constants.MIN_HP_MODIFIER, Constants.MAX_HP_MODIFIER);
+		addSetter(_damageSetter, Constants.MIN_HP_MODIFIER, Constants.MAX_HP_MODIFIER);
 		addSetter(_defenseSetter);
 
 		_listFrame = new JFrame();
 
 		_hpSetter.setOutputText("%+d %%"); // display percent
 		_hpSetter.setButtonStep(5); // change 5% at once
+
+		_damageSetter.setOutputText("%+d %%"); // display percent
+		_damageSetter.setButtonStep(5); // change 5% at once
 	}
 
 
@@ -147,7 +154,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 
 	private void displayCreature()
 	{
-		_creaturePanel.displayCreature(build());
+		if (_editedCreature != null) _creaturePanel.displayCreature(build());
 	}
 
 
@@ -208,6 +215,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 			_editedCreature.setPD(_pdSetter.getAmount());
 			_editedCreature.setMD(_mdSetter.getAmount());
 			_editedCreature.setHP(integerToPercentage(_hpSetter.getAmount()));
+			_editedCreature.setDamage(integerToPercentage(_damageSetter.getAmount()));
 			_editedCreature.setBetterDefense(_defenseSetter.getBetterDefense());
 			_editedCreature.setSize(_sizeSetter.getCreatureSize());
 		}
@@ -235,16 +243,19 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		_pdSetter.setAmount(template.getModifierPD());
 		_mdSetter.setAmount(template.getModifierMD());
 		_hpSetter.setAmount(percentageToInteger(template.getModifierHP()));
+		_damageSetter.setAmount(percentageToInteger(template.getModifierDamage()));
 		_defenseSetter.setBetterDefense(template.getBetterDefense());
 		_sizeSetter.setCreatureSize(template.getSize());
 		_isCreatureReset = true;
-
+		
 		updateLevelAdjust();
 	}
 
 
 	private void updateLevelAdjust()
 	{
+		_damageSetter.setVisible(!LevelAdjustment.useOriginalCalculation());
+
 		_levelAdjust.display(_attackSetter.getAmount(), _acSetter.getAmount(), _pdSetter.getAmount(), _mdSetter.getAmount(), integerToPercentage(_hpSetter.getAmount()));
 	}
 

@@ -90,6 +90,22 @@ public interface ICreatureTemplate extends INamedItem, ILeveledItem
 	 * @return the modifier.
 	 */
 	double getModifierHP();
+	
+	
+
+
+	/**
+	 * <p>
+	 * Gets the damage factor of this creature.
+	 * </p>
+	 * <p>
+	 * Multiplying the modifier with the baseline stats of the creature gets the
+	 * final stats.
+	 * </p>
+	 * 
+	 * @return the modifier.
+	 */
+	double getModifierDamage();
 
 
 	/**

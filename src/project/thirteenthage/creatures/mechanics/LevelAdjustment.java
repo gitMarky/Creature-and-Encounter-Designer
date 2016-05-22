@@ -60,7 +60,7 @@ public final class LevelAdjustment
 	}
 
 
-	private static boolean useOriginalCalculation()
+	public static boolean useOriginalCalculation()
 	{
 		return _calculateOriginalValue;
 	}
@@ -77,5 +77,4 @@ public final class LevelAdjustment
 			return _alternate;
 		}
 	}
-
 }

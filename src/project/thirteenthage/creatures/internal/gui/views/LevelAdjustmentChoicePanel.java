@@ -8,6 +8,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
 
+import project.thirteenthage.creatures.internal.gui.CreatureGui;
 import project.thirteenthage.creatures.mechanics.LevelAdjustment;
 
 /**
@@ -56,5 +57,7 @@ public class LevelAdjustmentChoicePanel extends ChoicePanel implements ActionLis
 		}
 
 		updateView();
+		
+		CreatureGui.GUI.getCreaturePanel().getEditPanel().updateView();
 	}
 }

@@ -9,6 +9,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import project.thirteenthage.creatures.interfaces.IView;
 import project.thirteenthage.creatures.internal.ApplicationLogger;
@@ -29,6 +30,7 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 {
 	private final JPanel _innerPanel = new JPanel();
 	private final CreatureEditPanel _editPanel = new CreatureEditPanel();
+	private final JScrollPane _editScrollbar;
 	private CreatureViewPanel _panel = null;
 	private final JButton _addButton = new JButton("Add to encounter");
 	private final JButton _editButton = new JButton("Edit");
@@ -70,6 +72,8 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 
 		_innerPanel.setLayout(new BoxLayout(_innerPanel, BoxLayout.X_AXIS));
 		_innerPanel.add(_editPanel);
+		_editScrollbar = new JScrollPane(_editPanel);
+		_innerPanel.add(_editScrollbar);
 
 		stopEditing();
 
@@ -194,6 +198,7 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 			_cancelButton.setEnabled(true);
 			_applyButton.setEnabled(true);
 			_addButton.setEnabled(false);
+			_editScrollbar.setVisible(true);
 			_editPanel.setVisible(true);
 		}
 		else
@@ -202,6 +207,7 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 			_cancelButton.setEnabled(false);
 			_applyButton.setEnabled(false);
 			_addButton.setEnabled(true);
+			_editScrollbar.setVisible(false);
 			_editPanel.setVisible(false);
 		}
 
@@ -214,6 +220,7 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 			_saveButton.setEnabled(false);
 		}
 
+		
 		if (_panel != null) _panel.updateView();
 		if (CreatureGui.GUI != null) CreatureGui.GUI.updateView();
 	}
@@ -229,5 +236,11 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 		{
 			return !_isInEditMode && !CreatureLoader.getInstance().isCreatureLoaded(_selectedCreature);
 		}
+	}
+	
+	
+	public CreatureEditPanel getEditPanel()
+	{
+		return _editPanel;
 	}
 }

@@ -72,6 +72,7 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 		setPD(parseModifierPD());
 		setMD(parseModifierMD());
 		setHP(parseModifierHP());
+		setDamage(parseModifierDamage());
 		setInitiative(parseModifierInitiative());
 		getAttacks().addAll(parseAttacks());
 		getSpecials().addAll(parseSpecials());
@@ -146,6 +147,12 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 	public double parseModifierHP()
 	{
 		return Double.parseDouble(_template.getRoot().getChild(ELEMENT_MODIFIERS).getChildText(ELEMENT_MODIFIERS_HP));
+	}
+
+
+	public double parseModifierDamage()
+	{
+		return 1.0; // TODO
 	}
 
 
