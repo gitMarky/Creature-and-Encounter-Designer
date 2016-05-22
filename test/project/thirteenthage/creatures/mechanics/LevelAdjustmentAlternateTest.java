@@ -1,6 +1,8 @@
 package project.thirteenthage.creatures.mechanics;
 
 import static org.junit.Assert.assertEquals;
+import static project.thirteenthage.creatures.TestConstants.DOUBLE_EXACT_1E_8;
+import static project.thirteenthage.creatures.TestConstants.DOUBLE_FUZZY_1E_3;
 
 import java.util.List;
 
@@ -88,5 +90,166 @@ public class LevelAdjustmentAlternateTest
 		{
 			System.out.println(e.getMessage());
 		}
+	}
+	
+	
+	@Test
+	public void testNoChange()
+	{
+		double actual = _object.getLevelAdjustmentFine(0, 0, 0, 0, 1.0, 1.0);
+		assertEquals(0.0, actual, DOUBLE_EXACT_1E_8);
+	}
+
+
+	/**
+	 * Tests the "increase attack only" example from the core rules.
+	 */
+	@Test
+	public void testOnlyAttack()
+	{
+		double actual = _object.getLevelAdjustmentFine(6, 0, 0, 0, 1.0, 1.0);
+		assertEquals(0.6, actual, DOUBLE_EXACT_1E_8);
+	}
+
+
+	/**
+	 * Tests the "increase AC only" example from the core rules.
+	 */
+	@Test
+	public void testOnlyAC()
+	{
+		double actual = _object.getLevelAdjustmentFine(0, 6, 0, 0, 1.0, 1.0);
+		assertEquals(0.6, actual, DOUBLE_EXACT_1E_8);
+	}
+
+
+	/**
+	 * Tests the "increase HP only" example from the core rules.
+	 */
+	@Test
+	public void testOnlyHP()
+	{
+		int rough = _object.getLevelAdjustment(0, 0, 0, 0, 2.0, 1.0);
+		assertEquals(1, rough);
+
+		double actual = _object.getLevelAdjustmentFine(0, 0, 0, 0, 2.0, 1.0);
+		assertEquals(1.0, actual, DOUBLE_EXACT_1E_8);
+	}
+
+	
+	/**
+	 * Tests the "scrapper" example from the core rules/13 true ways.
+	 */
+	@Test
+	public void testScrapper()
+	{
+		double actual = _object.getLevelAdjustmentFine(3, 0, 0, 0, 0.7, 1.0);
+		assertEquals(-0.1897, actual, DOUBLE_FUZZY_1E_3);
+
+		actual = _object.getLevelAdjustmentFine(2, 0, 0, 0, 0.8, 1.0);
+		assertEquals(-0.0968, actual, DOUBLE_FUZZY_1E_3);
+
+		actual = _object.getLevelAdjustmentFine(1, 0, 0, 0, 0.9, 1.0);
+		assertEquals(-0.0358, actual, DOUBLE_FUZZY_1E_3);
+	}
+
+
+	/**
+	 * Tests the "offensive" example from the core rules/13 true ways.
+	 */
+	@Test
+	public void testOffensive()
+	{
+		double actual = _object.getLevelAdjustmentFine(3, -3, -3, -3, 1.0, 1.0);
+		assertEquals(-0.6, actual, DOUBLE_FUZZY_1E_3);
+
+		actual = _object.getLevelAdjustmentFine(2, -2, -2, -2, 1.0, 1.0);
+		assertEquals(-0.3999, actual, DOUBLE_FUZZY_1E_3);
+
+		actual = _object.getLevelAdjustmentFine(1, -1, -1, -1, 1.0, 1.0);
+		assertEquals(-0.1999, actual, DOUBLE_FUZZY_1E_3);
+	}
+
+
+	/**
+	 * Tests the "oaf" example from the core rules/13 true ways.
+	 */
+	@Test
+	public void testOaf()
+	{
+		double actual = _object.getLevelAdjustmentFine(-3, +3, 0, 0, 1.0, 1.0);
+		assertEquals(0.0, actual, DOUBLE_FUZZY_1E_3);
+
+		actual = _object.getLevelAdjustmentFine(-2, +2, 0, 0, 1.0, 1.0);
+		assertEquals(0.0, actual, DOUBLE_FUZZY_1E_3);
+
+		actual = _object.getLevelAdjustmentFine(-1, +1, 0, 0, 1.0, 1.0);
+		assertEquals(0.0, actual, DOUBLE_FUZZY_1E_3);
+	}
+
+
+	/**
+	 * Tests the "defensive" example from the core rules/13 true ways.
+	 */
+	@Test
+	public void testDefensive()
+	{
+		double actual = _object.getLevelAdjustmentFine(0, +3, 0, 0, 0.7, 1.0);
+		assertEquals(-0.1897, actual, DOUBLE_FUZZY_1E_3);
+
+		actual = _object.getLevelAdjustmentFine(0, +2, 0, 0, 0.8, 1.0);
+		assertEquals(-0.0968, actual, DOUBLE_FUZZY_1E_3);
+
+		actual = _object.getLevelAdjustmentFine(0, +1, 0, 0, 0.9, 1.0);
+		assertEquals(-0.0358, actual, DOUBLE_FUZZY_1E_3);
+	}
+
+
+	/**
+	 * Tests the "lunk" example from the core rules/13 true ways.
+	 */
+	@Test
+	public void testLunk()
+	{
+		int rough = _object.getLevelAdjustment(0, -3, -3, -3, 1.4, 1.0);
+		assertEquals(0, rough);
+
+		rough = _object.getLevelAdjustment(0, -2, -2, -2, 1.3, 1.0);
+		assertEquals(0, rough);
+
+		rough = _object.getLevelAdjustment(0, -1, -1, -1, 1.15, 1.0);
+		assertEquals(0, rough);
+
+		// fine
+		
+		double actual = _object.getLevelAdjustmentFine(0, -3, -3, -3, 1.4, 1.0);
+		assertEquals(-0.4400, actual, DOUBLE_FUZZY_1E_3);
+
+		actual = _object.getLevelAdjustmentFine(0, -2, -2, -2, 1.3, 1.0);
+		assertEquals(-0.2475, actual, DOUBLE_FUZZY_1E_3);
+
+		actual = _object.getLevelAdjustmentFine(0, -1, -1, -1, 1.15, 1.0);
+		assertEquals(-0.1181, actual, DOUBLE_FUZZY_1E_3);
+	}
+
+
+	/**
+	 * Tests the "brittle" example from the core rules/13 true ways.
+	 */
+	@Test
+	public void testBrittle()
+	{
+		testDefensive(); // this is actually the same thing...
+	}
+	
+	
+	/**
+	 * The normal level up should be reflected in this, too.
+	 */
+	@Test
+	public void testNormalLevelUp()
+	{
+		assertEquals(0.6968, _object.getLevelAdjustmentFine(1, 1, 1, 1, 1.25, 1.0), DOUBLE_FUZZY_1E_3);
+		assertEquals(1, _object.getLevelAdjustment(1, 1, 1, 1, 1.25, 1.0));
 	}
 }

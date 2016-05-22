@@ -11,7 +11,7 @@ public class LevelAdjustmentTest
 	@Test
 	public void testNoChange()
 	{
-		double actual = LevelAdjustment.getLevelAdjustmentFine(0, 0, 0, 0, 1.0);
+		double actual = LevelAdjustment.getLevelAdjustmentFine(0, 0, 0, 0, 1.0, 1.0);
 		assertEquals(0.0, actual, DOUBLE_EXACT_1E_8);
 	}
 
@@ -22,7 +22,7 @@ public class LevelAdjustmentTest
 	@Test
 	public void testOnlyAttack()
 	{
-		double actual = LevelAdjustment.getLevelAdjustmentFine(6, 0, 0, 0, 1.0);
+		double actual = LevelAdjustment.getLevelAdjustmentFine(6, 0, 0, 0, 1.0, 1.0);
 		assertEquals(1.0, actual, DOUBLE_EXACT_1E_8);
 	}
 
@@ -33,7 +33,7 @@ public class LevelAdjustmentTest
 	@Test
 	public void testOnlyAC()
 	{
-		double actual = LevelAdjustment.getLevelAdjustmentFine(0, 6, 0, 0, 1.0);
+		double actual = LevelAdjustment.getLevelAdjustmentFine(0, 6, 0, 0, 1.0, 1.0);
 		assertEquals(1.0, actual, DOUBLE_EXACT_1E_8);
 	}
 
@@ -44,10 +44,10 @@ public class LevelAdjustmentTest
 	@Test
 	public void testOnlyHP()
 	{
-		int rough = LevelAdjustment.getLevelAdjustment(0, 0, 0, 0, 2.0);
+		int rough = LevelAdjustment.getLevelAdjustment(0, 0, 0, 0, 2.0, 1.0);
 		assertEquals(1, rough);
 
-		double actual = LevelAdjustment.getLevelAdjustmentFine(0, 0, 0, 0, 2.0);
+		double actual = LevelAdjustment.getLevelAdjustmentFine(0, 0, 0, 0, 2.0, 1.0);
 		assertEquals(1.11111111, actual, DOUBLE_EXACT_1E_8);
 	}
 
@@ -58,13 +58,13 @@ public class LevelAdjustmentTest
 	@Test
 	public void testScrapper()
 	{
-		double actual = LevelAdjustment.getLevelAdjustmentFine(3, 0, 0, 0, 0.7);
+		double actual = LevelAdjustment.getLevelAdjustmentFine(3, 0, 0, 0, 0.7, 1.0);
 		assertEquals(0.1666, actual, DOUBLE_FUZZY_1E_3);
 
-		actual = LevelAdjustment.getLevelAdjustmentFine(2, 0, 0, 0, 0.8);
+		actual = LevelAdjustment.getLevelAdjustmentFine(2, 0, 0, 0, 0.8, 1.0);
 		assertEquals(0.1111, actual, DOUBLE_FUZZY_1E_3);
 
-		actual = LevelAdjustment.getLevelAdjustmentFine(1, 0, 0, 0, 0.9);
+		actual = LevelAdjustment.getLevelAdjustmentFine(1, 0, 0, 0, 0.9, 1.0);
 		assertEquals(0.0555, actual, DOUBLE_FUZZY_1E_3);
 	}
 
@@ -75,13 +75,13 @@ public class LevelAdjustmentTest
 	@Test
 	public void testOffensive()
 	{
-		double actual = LevelAdjustment.getLevelAdjustmentFine(3, -3, -3, -3, 1.0);
+		double actual = LevelAdjustment.getLevelAdjustmentFine(3, -3, -3, -3, 1.0, 1.0);
 		assertEquals(0.0, actual, DOUBLE_FUZZY_1E_3);
 
-		actual = LevelAdjustment.getLevelAdjustmentFine(2, -2, -2, -2, 1.0);
+		actual = LevelAdjustment.getLevelAdjustmentFine(2, -2, -2, -2, 1.0, 1.0);
 		assertEquals(0.0, actual, DOUBLE_FUZZY_1E_3);
 
-		actual = LevelAdjustment.getLevelAdjustmentFine(1, -1, -1, -1, 1.0);
+		actual = LevelAdjustment.getLevelAdjustmentFine(1, -1, -1, -1, 1.0, 1.0);
 		assertEquals(0.0, actual, DOUBLE_FUZZY_1E_3);
 	}
 
@@ -92,13 +92,13 @@ public class LevelAdjustmentTest
 	@Test
 	public void testOaf()
 	{
-		double actual = LevelAdjustment.getLevelAdjustmentFine(-3, +3, 0, 0, 1.0);
+		double actual = LevelAdjustment.getLevelAdjustmentFine(-3, +3, 0, 0, 1.0, 1.0);
 		assertEquals(0.0, actual, DOUBLE_FUZZY_1E_3);
 
-		actual = LevelAdjustment.getLevelAdjustmentFine(-2, +2, 0, 0, 1.0);
+		actual = LevelAdjustment.getLevelAdjustmentFine(-2, +2, 0, 0, 1.0, 1.0);
 		assertEquals(0.0, actual, DOUBLE_FUZZY_1E_3);
 
-		actual = LevelAdjustment.getLevelAdjustmentFine(-1, +1, 0, 0, 1.0);
+		actual = LevelAdjustment.getLevelAdjustmentFine(-1, +1, 0, 0, 1.0, 1.0);
 		assertEquals(0.0, actual, DOUBLE_FUZZY_1E_3);
 	}
 
@@ -109,13 +109,13 @@ public class LevelAdjustmentTest
 	@Test
 	public void testDefensive()
 	{
-		double actual = LevelAdjustment.getLevelAdjustmentFine(0, +3, 0, 0, 0.7);
+		double actual = LevelAdjustment.getLevelAdjustmentFine(0, +3, 0, 0, 0.7, 1.0);
 		assertEquals(0.1666, actual, DOUBLE_FUZZY_1E_3);
 
-		actual = LevelAdjustment.getLevelAdjustmentFine(0, +2, 0, 0, 0.8);
+		actual = LevelAdjustment.getLevelAdjustmentFine(0, +2, 0, 0, 0.8, 1.0);
 		assertEquals(0.1111, actual, DOUBLE_FUZZY_1E_3);
 
-		actual = LevelAdjustment.getLevelAdjustmentFine(0, +1, 0, 0, 0.9);
+		actual = LevelAdjustment.getLevelAdjustmentFine(0, +1, 0, 0, 0.9, 1.0);
 		assertEquals(0.0555, actual, DOUBLE_FUZZY_1E_3);
 	}
 
@@ -126,24 +126,24 @@ public class LevelAdjustmentTest
 	@Test
 	public void testLunk()
 	{
-		int rough = LevelAdjustment.getLevelAdjustment(0, -3, -3, -3, 1.4);
+		int rough = LevelAdjustment.getLevelAdjustment(0, -3, -3, -3, 1.4, 1.0);
 		assertEquals(0, rough);
 
-		rough = LevelAdjustment.getLevelAdjustment(0, -2, -2, -2, 1.3);
+		rough = LevelAdjustment.getLevelAdjustment(0, -2, -2, -2, 1.3, 1.0);
 		assertEquals(0, rough);
 
-		rough = LevelAdjustment.getLevelAdjustment(0, -1, -1, -1, 1.15);
+		rough = LevelAdjustment.getLevelAdjustment(0, -1, -1, -1, 1.15, 1.0);
 		assertEquals(0, rough);
 
 		// fine
 		
-		double actual = LevelAdjustment.getLevelAdjustmentFine(0, -3, -3, -3, 1.4);
+		double actual = LevelAdjustment.getLevelAdjustmentFine(0, -3, -3, -3, 1.4, 1.0);
 		assertEquals(-0.0555, actual, DOUBLE_FUZZY_1E_3);
 
-		actual = LevelAdjustment.getLevelAdjustmentFine(0, -2, -2, -2, 1.3);
+		actual = LevelAdjustment.getLevelAdjustmentFine(0, -2, -2, -2, 1.3, 1.0);
 		assertEquals(0.0, actual, DOUBLE_FUZZY_1E_3);
 
-		actual = LevelAdjustment.getLevelAdjustmentFine(0, -1, -1, -1, 1.15);
+		actual = LevelAdjustment.getLevelAdjustmentFine(0, -1, -1, -1, 1.15, 1.0);
 		assertEquals(0.0, actual, DOUBLE_FUZZY_1E_3);
 	}
 
@@ -164,7 +164,7 @@ public class LevelAdjustmentTest
 	@Test
 	public void testNormalLevelUp()
 	{
-		assertEquals(0.9444, LevelAdjustment.getLevelAdjustmentFine(1, 1, 1, 1, 1.25), DOUBLE_FUZZY_1E_3);
-		assertEquals(1, LevelAdjustment.getLevelAdjustment(1, 1, 1, 1, 1.25));
+		assertEquals(0.9444, LevelAdjustment.getLevelAdjustmentFine(1, 1, 1, 1, 1.25, 1.0), DOUBLE_FUZZY_1E_3);
+		assertEquals(1, LevelAdjustment.getLevelAdjustment(1, 1, 1, 1, 1.25, 1.0));
 	}
 }
