@@ -23,7 +23,7 @@ public final class LevelAdjustmentAlternate extends LevelAdjustmentBase
 	{
 		// a boost of +6 is worth one level
 		final double value = attack / 6.0;
-		return value;
+		return value * 0.6;
 	}
 
 
@@ -31,7 +31,7 @@ public final class LevelAdjustmentAlternate extends LevelAdjustmentBase
 	{
 		// a boost of +6 is worth one level
 		double value = defense / 6.0;
-		return value;
+		return value * 0.6;
 	}
 
 

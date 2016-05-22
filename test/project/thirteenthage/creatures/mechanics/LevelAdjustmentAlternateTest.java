@@ -45,19 +45,8 @@ public class LevelAdjustmentAlternateTest
 			final double hpDown = base.getHP() / upgrade.getHP();
 			final double damageDown = base.getStrikeDamage() / upgrade.getStrikeDamage();
 			
-			
-			System.out.println("Calculating fine adjustment");
-			
-			final double fineUp =  _object.getLevelAdjustmentFine(0, 0, 0, 0, hpUp, damageUp);
-			final double fineDown =  _object.getLevelAdjustmentFine(0, 0, 0, 0, hpDown, damageDown);
-			
-			System.out.println("Upgrade: " + fineUp + " / downgrade: " + fineDown);
-
-			System.out.println("Calculating rough adjustment");
-
-			
-			safeAssertEquals("Upgrade of " + tableName + " creature by one level " + (i-1) + " to " + i, 1, _object.getLevelAdjustment(1, 1, 1, 1, hpUp, damageUp));
-			safeAssertEquals("Downgrade of " + tableName + " creature by one level " + i + " to " + (i - 1), -1, _object.getLevelAdjustment(-1, -1, -1, -1, hpDown, damageDown));
+			assertEquals("Upgrade of " + tableName + " creature by one level " + (i-1) + " to " + i, 1, _object.getLevelAdjustment(1, 1, 1, 1, hpUp, damageUp));
+			assertEquals("Downgrade of " + tableName + " creature by one level " + i + " to " + (i - 1), -1, _object.getLevelAdjustment(-1, -1, -1, -1, hpDown, damageDown));
 		}
 	}
 
@@ -90,14 +79,14 @@ public class LevelAdjustmentAlternateTest
 	
 	private void safeAssertEquals(final String message, final int expected, final int actual)
 	{
-//		try
-//		{
+		try
+		{
 			System.out.println(message + ": Expected = " + expected + "/" + actual);
 			assertEquals(message, expected, actual);
-//		}
-//		catch (final AssertionError e)
-//		{
-//			System.out.println(e.getMessage());
-//		}
+		}
+		catch (final AssertionError e)
+		{
+			System.out.println(e.getMessage());
+		}
 	}
 }
