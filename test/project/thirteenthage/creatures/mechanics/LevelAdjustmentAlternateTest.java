@@ -45,8 +45,19 @@ public class LevelAdjustmentAlternateTest
 			final double hpDown = base.getHP() / upgrade.getHP();
 			final double damageDown = base.getStrikeDamage() / upgrade.getStrikeDamage();
 			
-			assertEquals("Upgrade of " + tableName + " creature by one level " + (i-1) + " to " + i, 1, _object.getLevelAdjustment(1, 1, 1, 1, hpUp, damageUp));
-			assertEquals("Downgrade of " + tableName + " creature by one level " + i + " to " + (i - 1), -1, _object.getLevelAdjustment(-1, -1, -1, -1, hpDown, damageDown));
+			
+			System.out.println("Calculating fine adjustment");
+			
+			final double fineUp =  _object.getLevelAdjustmentFine(0, 0, 0, 0, hpUp, damageUp);
+			final double fineDown =  _object.getLevelAdjustmentFine(0, 0, 0, 0, hpDown, damageDown);
+			
+			System.out.println("Upgrade: " + fineUp + " / downgrade: " + fineDown);
+
+			System.out.println("Calculating rough adjustment");
+
+			
+			safeAssertEquals("Upgrade of " + tableName + " creature by one level " + (i-1) + " to " + i, 1, _object.getLevelAdjustment(1, 1, 1, 1, hpUp, damageUp));
+			safeAssertEquals("Downgrade of " + tableName + " creature by one level " + i + " to " + (i - 1), -1, _object.getLevelAdjustment(-1, -1, -1, -1, hpDown, damageDown));
 		}
 	}
 
@@ -71,8 +82,8 @@ public class LevelAdjustmentAlternateTest
 
 //			System.out.println("Calculating rough adjustment");
 			
-			safeAssertEquals("Upgrade of creature (" + nameNormal + "->" + nameLarge + ": " + i + "): " + String.format("%+.2f", fineUp), level, _object.getLevelAdjustment(0, 0, 0, 0, hpUp, damageUp));
-			safeAssertEquals("Downgrade of creature (" + nameLarge + "->" + nameNormal + ": " + i + "): " + String.format("%+.2f", fineDown), -level, _object.getLevelAdjustment(0, 0, 0, 0, hpDown, damageDown));
+			assertEquals("Upgrade of creature (" + nameNormal + "->" + nameLarge + ": " + i + "): " + String.format("%+.2f", fineUp), level, _object.getLevelAdjustment(0, 0, 0, 0, hpUp, damageUp));
+			assertEquals("Downgrade of creature (" + nameLarge + "->" + nameNormal + ": " + i + "): " + String.format("%+.2f", fineDown), -level, _object.getLevelAdjustment(0, 0, 0, 0, hpDown, damageDown));
 		}
 	}
 

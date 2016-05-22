@@ -40,18 +40,12 @@ public final class LevelAdjustmentAlternate extends LevelAdjustmentBase
 		final double value;
 		if (hp < 1.0)
 		{
-			value = -polynomial( 1.0 / hp);
+			value = -polynomialForHPandDamage(1.0 / hp); 
 		}
 		else
 		{
-			value = polynomial(hp);
+			value = polynomialForHPandDamage(hp);
 		}
-		
-//		double value = hp - 1.0; // offset first		
-//		if (value < 0) value = 0.5 / value; // invert negative steps
-//		value /= 0.15; // seems to go in 15% steps
-//		value /= 6.0; // 6 x0.15 = 0.9, is about the same as twice the hp
-//		System.out.println("** value of hp (" + String.format("%+.2f", hp) + ") " + String.format("%+.2f", value));
 		return value;
 
 	}
@@ -62,22 +56,27 @@ public final class LevelAdjustmentAlternate extends LevelAdjustmentBase
 		final double value;
 		if (damage < 1.0)
 		{
-			value = -polynomial( 1.0 / damage);
+			value = -polynomialForHPandDamage(1.0 / damage);
 		}
 		else
 		{
-			value = polynomial(damage);
+			value = polynomialForHPandDamage(damage);
 		}
-		
-//		double value = damage - 1.0; // offset first
-//		if (value < 0) value = 0.5 / value; // invert negative steps
-//		value /= 0.15; // seems to go in 15% steps
-//		value /= 6.0; // 6 x0.15 = 0.9, is about the same as twice the hp
-//		System.out.println("** value of damage (" + String.format("%+.2f", damage) + ") " + String.format("%+.2f", value));
 		return value;
 	}
 	
-	final double polynomial(final double x)
+	/**
+	 * Polynomial for calculating the damage value.
+	 * @param x the input. 
+	 * @return the value.
+	 *         <p>An input of 2.0 returns 1.0, resulting in a +1 level upgrade on double HP, as specified
+	 *         by the core rule book. This is also consistent with
+	 *         the large creature, which doubles damage and HP for a total of +2 levels (which is double strength according to the difficulty table).
+	 *         </p><p>
+	 *         A value of 3.0 returns 1.5. This is consistent for the huge creature,
+	 *         which triples HP and damage and results in a +3 difficulty according to the difficulty table).
+	 */
+	final double polynomialForHPandDamage(final double x)
 	{
 		final double a = -0.25;
 		final double b = 1.75;
