@@ -146,7 +146,7 @@ public class CreatureBuilder
 		creature.setHP(sizeInfo.getHP() * _factorHP);
 		creature.setFearThreshold(sizeInfo.getFearThreshold() * _factorHP);
 		creature.setStrikeDamage(sizeInfo.getStrikeDamage() * _factorDamage);
-		creature.setLevelAdjustment(LevelAdjustment.getLevelAdjustment(_modifierAttack, _modifierAC, _modifierPD, _modifierMD, _factorHP));
+		creature.setLevelAdjustment(LevelAdjustment.getLevelAdjustment(_modifierAttack, _modifierAC, _modifierPD, _modifierMD, _factorHP, _factorDamage));
 
 		return creature;
 	}

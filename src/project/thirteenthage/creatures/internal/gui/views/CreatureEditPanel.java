@@ -18,7 +18,6 @@ import javax.swing.event.ListSelectionListener;
 import project.thirteenthage.creatures.creature.EditableCreatureTemplate;
 import project.thirteenthage.creatures.interfaces.IView;
 import project.thirteenthage.creatures.internal.Constants;
-import project.thirteenthage.creatures.internal.gui.CreatureGui;
 import project.thirteenthage.creatures.internal.gui.CreaturePanel;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
@@ -256,7 +255,12 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 	{
 		_damageSetter.setVisible(!LevelAdjustment.useOriginalCalculation());
 
-		_levelAdjust.display(_attackSetter.getAmount(), _acSetter.getAmount(), _pdSetter.getAmount(), _mdSetter.getAmount(), integerToPercentage(_hpSetter.getAmount()));
+		_levelAdjust.display(_attackSetter.getAmount(),
+				             _acSetter.getAmount(),
+				             _pdSetter.getAmount(),
+				             _mdSetter.getAmount(),
+				             integerToPercentage(_hpSetter.getAmount()),
+				             integerToPercentage(_damageSetter.getAmount()));
 	}
 
 

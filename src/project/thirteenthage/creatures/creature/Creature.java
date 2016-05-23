@@ -317,7 +317,8 @@ public class Creature implements ICreature
 				                  getTemplate().getModifierAC(),
 				                  getTemplate().getModifierPD(),
 				                  getTemplate().getModifierMD(),
-				                  getTemplate().getModifierHP());
+				                  getTemplate().getModifierHP(),
+				                  getTemplate().getModifierDamage());
 	}
 
 

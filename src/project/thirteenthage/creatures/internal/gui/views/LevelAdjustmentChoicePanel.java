@@ -28,8 +28,8 @@ public class LevelAdjustmentChoicePanel extends ChoicePanel implements ActionLis
 		this.add(_alternateButton);
 		this.add(_originalButton);
 
-		_alternateButton.setSelected(false);
-		_originalButton.setSelected(true);
+		_alternateButton.setSelected(!LevelAdjustment.useOriginalCalculation());
+		_originalButton.setSelected(LevelAdjustment.useOriginalCalculation());
 
 		final ButtonGroup group = new ButtonGroup();
 		group.add(_originalButton);
