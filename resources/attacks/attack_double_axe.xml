@@ -1,0 +1,9 @@
+<attack>
+	<name>Double axe</name>
+	<bonus>0</bonus>
+	<defense>AC</defense>
+	<damage factor="0.67" description="damage" />
+	<triggers>
+		<trigger name="Natural 11+" description="The $name can make a second double axe attack (no more) as a free action."/>
+	</triggers>
+</attack>

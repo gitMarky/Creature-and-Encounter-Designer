@@ -106,7 +106,6 @@ Orc Warrior
 Orc Berserker
 Orc Shaman
 Orc Rager
-Great Fang Cadre
 
 Otyugh
 Owlbear

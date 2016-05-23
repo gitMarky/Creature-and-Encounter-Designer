@@ -1,0 +1,4 @@
+<special>
+	<name>On the spot mutation</name>
+	<description>Whenever an attack eliminates one or more members of the mob, there is a 50% chance that each survivor gains a mutation like a sudden new body part or temporary magical aura. The GM chooses one of the following improvements, perhaps at random, and invents a new part or magic effect to explain it: extra melee attack, damage aura: 1d20 damage vs. any enemy that starts its turn engaged with the $name, or +4 bonus to AC..</description>
+</special>

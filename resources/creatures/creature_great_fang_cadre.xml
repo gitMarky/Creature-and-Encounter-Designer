@@ -1,0 +1,27 @@
+<creature>
+	<name>Great Fang Cadre</name>
+	<size>Normal</size>
+	<level>10</level>
+	<labels>
+		<label>Mook</label>
+		<label>Humanoid</label>
+	</labels>
+	<modifiers>
+		<ini>3</ini>
+		<attack>0</attack>
+		<ac>+1</ac>
+		<pd better="true">+1</pd>
+		<md>+1</md>
+		<hp>0.93</hp>
+	</modifiers>
+	<attacks>
+		<attack id="attack_big_black_bow" />
+		<attack id="attack_double_axe" />
+	</attacks>
+	<specials>
+		<special id="special_dangerous_mooks" />
+	</specials>
+	<nastier>
+		<special id="special_on_the_spot_mutation" />
+	</nastier>
+</creature>

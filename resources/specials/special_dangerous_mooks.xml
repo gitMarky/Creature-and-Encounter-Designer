@@ -1,0 +1,4 @@
+<special>
+	<name>Dangerous mooks</name>
+	<description>The crit range of melee attacks by $name expands by 3 until half the $name mob has been dropped.</description>
+</special>

@@ -1,0 +1,10 @@
+<attack>
+	<name>Big, black, creaking bow</name>
+	<bonus>0</bonus>
+	<defense>AC</defense>
+	<damage factor="1.0" description="damage" />
+	<ranged>true</ranged>
+	<triggers>
+		<trigger name="Natural even hit or miss" description="The attack targets PD instead of AC."/>
+	</triggers>
+</attack>
