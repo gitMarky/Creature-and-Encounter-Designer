@@ -97,6 +97,9 @@ public class EditableCreatureTemplate extends AbstractCreatureTemplate
 		final Element hpElement = new Element(CreatureTemplate.ELEMENT_MODIFIERS_HP);
 		hpElement.setText(String.format("%.2f", getModifierHP()).replace(",", "."));
 
+		final Element damageElement = new Element(CreatureTemplate.ELEMENT_MODIFIERS_DAMAGE);
+		damageElement.setText(String.format("%.2f", getModifierDamage()).replace(",", "."));
+
 		if (getBetterDefense() == BetterDefense.MD)
 		{
 			mdElement.setAttribute(CreatureTemplate.ATTRIBUTE_BETTER, CreatureTemplate.ATTRIBUTE_VALUE_TRUE);

@@ -29,6 +29,7 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 	static final String ELEMENT_ATTACKS = "attacks";
 	static final String ELEMENT_MODIFIERS_INI = "ini";
 	static final String ELEMENT_MODIFIERS_HP = "hp";
+	static final String ELEMENT_MODIFIERS_DAMAGE = "damage";
 	static final String ELEMENT_MODIFIERS_MD = "md";
 	static final String ELEMENT_MODIFIERS_PD = "pd";
 	static final String ELEMENT_MODIFIERS_AC = "ac";
@@ -152,7 +153,14 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 
 	public double parseModifierDamage()
 	{
-		return 1.0; // TODO
+		try
+		{
+			return Double.parseDouble(_template.getRoot().getChild(ELEMENT_MODIFIERS).getChildText(ELEMENT_MODIFIERS_DAMAGE));
+		}
+		catch (final NullPointerException e)
+		{
+			return 1.0; // default value if the element is not present.
+		}
 	}
 
 
