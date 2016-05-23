@@ -272,4 +272,48 @@ public class LevelAdjustmentAlternateTest
 		assertEquals(0.6968, _object.getLevelAdjustmentFine(1, 1, 1, 1, 1.25, 1.0), DOUBLE_FUZZY_1E_3);
 		assertEquals(1, _object.getLevelAdjustment(1, 1, 1, 1, 1.25, 1.0));
 	}
+	
+	
+	@Test
+	public void compareLargeCreatureAndLevelUp()
+	{
+		int level = 7;
+		int levelUp = 10;
+		CreatureTableRow base = CreatureTables.normal().get(level);
+		CreatureTableRow large = CreatureTables.large().get(level);
+		CreatureTableRow leveled = CreatureTables.normal().get(levelUp);
+		
+		int adjustmentLarge = _object.getLevelAdjustment(0, 0, 0, 0, large.getHP() / base.getHP(), large.getStrikeDamage() / base.getStrikeDamage());
+		int adjustmentLeveled = _object.getLevelAdjustment(levelUp - level, levelUp - level, levelUp - level, levelUp - level, leveled.getHP() / base.getHP(), leveled.getStrikeDamage() / base.getStrikeDamage());
+		
+		double adjustmentRelative = _object.getLevelAdjustment(levelUp - level, levelUp - level, levelUp - level, levelUp - level, leveled.getHP() / large.getHP(), leveled.getStrikeDamage() / large.getStrikeDamage());
+
+		assertEquals(2, adjustmentLarge);
+		assertEquals(3, adjustmentLeveled);
+		
+		// the upgrade from "large" to "leveled up normal monster" should be the difference between the two.
+		assertEquals(1.0, adjustmentRelative, DOUBLE_EXACT_1E_8);
+	}
+	
+	
+	@Test
+	public void compareHugeCreatureAndLevelUp()
+	{
+		int level = 7;
+		int levelUp = 10;
+		CreatureTableRow base = CreatureTables.normal().get(level);
+		CreatureTableRow huge = CreatureTables.huge().get(level);
+		CreatureTableRow leveled = CreatureTables.normal().get(levelUp);
+		
+		int adjustmentLarge = _object.getLevelAdjustment(0, 0, 0, 0, huge.getHP() / base.getHP(), huge.getStrikeDamage() / base.getStrikeDamage());
+		int adjustmentLeveled = _object.getLevelAdjustment(levelUp - level, levelUp - level, levelUp - level, levelUp - level, leveled.getHP() / base.getHP(), leveled.getStrikeDamage() / base.getStrikeDamage());
+		
+		double adjustmentRelative = _object.getLevelAdjustment(levelUp - level, levelUp - level, levelUp - level, levelUp - level, leveled.getHP() / huge.getHP(), leveled.getStrikeDamage() / huge.getStrikeDamage());
+
+		assertEquals(3, adjustmentLarge);
+		assertEquals(3, adjustmentLeveled);
+		
+		// the upgrade from "huge" to "leveled up normal monster" should be the difference between the two.
+		assertEquals(0.0, adjustmentRelative, DOUBLE_EXACT_1E_8);
+	}
 }
