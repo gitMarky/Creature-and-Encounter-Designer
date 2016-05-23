@@ -22,7 +22,7 @@ public class Constants
 
 	public static final int MIN_HP_MODIFIER = -50;
 
-	public static final int MAX_HP_MODIFIER = 100;
+	public static final int MAX_HP_MODIFIER = 200;
 
 	public static final String TEMPLATE_CREATURE_NAME = "creature";
 

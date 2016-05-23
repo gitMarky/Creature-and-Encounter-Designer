@@ -217,7 +217,16 @@ public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 	public ICreature toCreature()
 	{
 		final CreatureBuilder builder = new CreatureBuilder();
-		builder.name(getName()).size(getSize()).level(getLevel()).addInitiative(getModifierInitiative()).addAttack(getModifierAttack()).addAC(getModifierAC()).addPD(getModifierPD()).addMD(getModifierMD()).scaleHP(getModifierHP());
+		builder.name(getName())
+		       .size(getSize())
+		       .level(getLevel())
+		       .addInitiative(getModifierInitiative())
+		       .addAttack(getModifierAttack())
+		       .addAC(getModifierAC())
+		       .addPD(getModifierPD())
+		       .addMD(getModifierMD())
+		       .scaleHP(getModifierHP())
+		       .scaleDamage(getModifierDamage());
 
 		if (getBetterDefense() == BetterDefense.MD) builder.betterDefenseIsMD();
 
