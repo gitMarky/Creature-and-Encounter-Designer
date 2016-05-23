@@ -1,0 +1,4 @@
+<special>
+	<name>Bow teeth</name>
+	<description>Whenever an attacker hits the $name with a melee attack, that creature takes 1d6 damage as the bow chews on it.</description>
+</special>

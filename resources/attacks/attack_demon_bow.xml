@@ -1,0 +1,11 @@
+<attack>
+	<name>Demon bow</name>
+	<bonus>0</bonus>
+	<defense>AC</defense>
+	<damage factor="0.85" description="damage, and the target is dazed (–4 attack) until it pulls the arrow out using a quick action, which deals $damage[x0.55] ongoing damage." />
+	<melee>true</melee>
+	<ranged>true</ranged>
+	<triggers>
+		<trigger name="Natural odd hit or miss" description="The demon bow eats at the $name's arm and the $name takes 1d6 damage."/>
+	</triggers>
+</attack>

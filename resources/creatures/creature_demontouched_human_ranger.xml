@@ -1,0 +1,25 @@
+<creature>
+	<name>Demon-touched Human Ranger</name>
+	<size>Normal</size>
+	<level>5</level>
+	<labels>
+		<label>Archer</label>
+		<label>Humanoid</label>
+	</labels>
+	<modifiers>
+		<ini>5</ini>
+		<attack>0</attack>
+		<ac>+0</ac>
+		<pd>-1</pd>
+		<md better="true">0</md>
+		<hp>1.12</hp>
+	</modifiers>
+	<attacks>
+		<attack id="attack_demon_bow" />
+	</attacks>
+	<specials>
+		<special id="special_bow_teeth" />
+	</specials>
+	<nastier>
+	</nastier>
+</creature>
