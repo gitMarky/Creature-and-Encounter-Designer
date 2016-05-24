@@ -26,15 +26,21 @@ public class PlayerVersusCreature
 	}
 	
 	
-	public double getPlayerDamage()
+	public double getPlayerDamage(int round)
 	{
 		int attackBonus = _player.getAttackBonus();
 		double damage = getPlayerStrikeDamage();
-		PlayerAttack attack = new PlayerAttack(attackBonus, damage, _player.getLevel());
+		PlayerAttack attack = new PlayerAttack(attackBonus + escalationDie(round), damage, _player.getLevel());
 		
 		return attack.expectedDamage(_monster.getAC());
 	}
 	
+	private int escalationDie(int round)
+	{
+		return Math.min(Math.max(round, 0), 6);
+	}
+
+
 	public double getPlayerStrikeDamage()
 	{
 		// assume an average of D8 damage, with +3 damage
@@ -42,7 +48,7 @@ public class PlayerVersusCreature
 		double base = 4.5;
 		double dice =  base * _player.getLevel();
 		double mod = Math.max(1, (_player.getLevel() + 1) / 3);
-		System.out.println("mod: " + mod + " / level: " + _player.getLevel());
+		//System.out.println("mod: " + mod + " / level: " + _player.getLevel());
 		
 		return dice + _player.getDamageModifier() * mod;
 	}
@@ -50,12 +56,26 @@ public class PlayerVersusCreature
 	
 	public double getExpectedSurvivalTime()
 	{
-		return _player.getHP() / getMonsterDamage();
+//		return _player.getHP() / getMonsterDamage();
+		double hp = _player.getHP();
+		int round;
+		for (round = 0; hp > 0; ++round)
+		{
+			hp -= getMonsterDamage();
+		}
+		
+		return round;
 	}
 	
 	
 	public double getExpectedKillingTime()
 	{
-		return _monster.getHP() / getPlayerDamage();
+		double hp = _monster.getHP();
+		int round;
+		for (round = 0; hp > 0; ++round)
+		{
+			hp -= getPlayerDamage(round);
+		}
+		return round;
 	}
 }
