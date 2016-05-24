@@ -6,7 +6,10 @@ public class AveragePlayerCharacter extends PlayerCharacter
 	@Override
 	protected int getAttackModifier()
 	{
-		return 4;
+		int mod = 4;
+		if (getLevel() >= 4) mod += 1;
+		if (getLevel() >= 8) mod += 1;
+		return mod;
 	}
 
 	@Override
@@ -30,19 +33,25 @@ public class AveragePlayerCharacter extends PlayerCharacter
 	@Override
 	protected int getACmodifier()
 	{
-		return 2;
+		int mod = 2;
+		if (getLevel() >= 2) mod += 1;
+		return mod;
 	}
 
 	@Override
 	protected int getMDmodifier()
 	{
-		return 2;
+		int mod = 2;
+		if (getLevel() >= 2) mod += 1;
+		return mod;
 	}
 
 	@Override
 	protected int getPDmodifier()
 	{
-		return 2;
+		int mod = 2;
+		if (getLevel() >= 2) mod += 1;
+		return mod;
 	}
 
 	@Override
@@ -54,7 +63,16 @@ public class AveragePlayerCharacter extends PlayerCharacter
 	@Override
 	protected int getConModifier()
 	{
-		return 2;
+		int mod = 2;
+		if (getLevel() >= 6) mod += 1;
+		return mod;
 	}
 
+	@Override
+	public int getDamageModifier()
+	{
+		int mod = 3;
+		if (getLevel() >= 6) mod += 1;
+		return mod;
+	}
 }

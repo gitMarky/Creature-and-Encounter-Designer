@@ -44,7 +44,7 @@ public class PlayerVersusCreature
 		double mod = Math.max(1, (_player.getLevel() + 1) / 3);
 		System.out.println("mod: " + mod + " / level: " + _player.getLevel());
 		
-		return dice + 3 * mod;
+		return dice + _player.getDamageModifier() * mod;
 	}
 	
 	

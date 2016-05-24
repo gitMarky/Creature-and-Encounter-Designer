@@ -64,6 +64,8 @@ public abstract class PlayerCharacter implements ILeveledItem
 	protected abstract int baseHP();
 	protected abstract int getConModifier();
 	
+	public abstract int getDamageModifier();
+	
 	private int getHPlevelFactor()
 	{
 		switch (getLevel())
