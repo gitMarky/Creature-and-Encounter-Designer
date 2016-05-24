@@ -28,6 +28,15 @@ public class PlayerVersusCreature
 	
 	public double getPlayerDamage()
 	{
+		int attackBonus = _player.getAttackBonus();
+		double damage = getPlayerStrikeDamage();
+		CreatureAttack attack = new CreatureAttack(attackBonus, damage);
+		
+		return attack.expectedDamage(_monster.getAC());
+	}
+	
+	public double getPlayerStrikeDamage()
+	{
 		// assume an average of D8 damage, with +3 damage
 		
 		double base = 4.5;

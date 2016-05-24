@@ -3,9 +3,9 @@ package project.thirteenthage.creatures.player.comparison;
 public class CreatureAttack
 {
 	final int _attack;
-	final int _damage;
+	final double _damage;
 	
-	public CreatureAttack(final int attackBonus, final int strikeDamage)
+	public CreatureAttack(final int attackBonus, final double strikeDamage)
 	{
 		_attack = attackBonus;
 		_damage = strikeDamage;
@@ -14,8 +14,6 @@ public class CreatureAttack
 	public double expectedDamage(int defense)
 	{
 		int targetNumber = defense - getAttackBonus();
-		
-		int dummy = 1;
 		
 		double hitChance = getHitChance(targetNumber);
 		
@@ -45,7 +43,7 @@ public class CreatureAttack
 		return _attack;
 	}
 	
-	private int getDamage()
+	private double getDamage()
 	{
 		return _damage;
 	}

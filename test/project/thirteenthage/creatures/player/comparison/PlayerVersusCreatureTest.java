@@ -57,6 +57,7 @@ public class PlayerVersusCreatureTest
 		}
 
 		printAverages(playerVSsameLevel);
+		printAverages(playerVSsuggestedLevel);
 	}
 
 	private void printAverages(List<BattleInfo> data)
@@ -88,7 +89,7 @@ public class PlayerVersusCreatureTest
 		final PlayerVersusCreature battle = new PlayerVersusCreature(player, monster);
 		double expectedSurvivalTime = battle.getExpectedSurvivalTime();
 		double expectedKillingTime = battle.getExpectedKillingTime();
-		System.out.println(String.format("Rounds until player dead: %.2f - rounds until monster dead %.2f (in player lvl " + monsterLevel + " vs. " + monster.getName() + " lvl " + monsterLevel + ")", expectedSurvivalTime, expectedKillingTime));
+		System.out.println(String.format("Rounds until player dead: %.2f - rounds until monster dead %.2f (in player lvl " + playerLevel + " vs. " + monster.getName() + " lvl " + monsterLevel + ")", expectedSurvivalTime, expectedKillingTime));
 		
 		return new BattleInfo(expectedSurvivalTime, expectedKillingTime);
 	}
