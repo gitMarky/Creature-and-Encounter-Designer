@@ -30,7 +30,7 @@ public class PlayerVersusCreature
 	{
 		int attackBonus = _player.getAttackBonus();
 		double damage = getPlayerStrikeDamage();
-		CreatureAttack attack = new CreatureAttack(attackBonus, damage);
+		PlayerAttack attack = new PlayerAttack(attackBonus, damage, _player.getLevel());
 		
 		return attack.expectedDamage(_monster.getAC());
 	}
