@@ -51,9 +51,9 @@ public class PlayerVersusCreatureTest
 			if (i >= 8) monsterLevel +=1;
 			
 			playerVSsuggestedLevel.add(printBattle(player, lvl1template, i, i + monsterLevel));
-			playerVSsameLevel.add(printBattle(player, lvl3template, i, i + monsterLevel));
-//			playerVSsameLevel.add(printBattle(player, lvl6template, i, i + monsterLevel));
-			playerVSsameLevel.add(printBattle(player, lvl10template, i, i + monsterLevel));
+			playerVSsuggestedLevel.add(printBattle(player, lvl3template, i, i + monsterLevel));
+//			playerVSsuggestedLevel.add(printBattle(player, lvl6template, i, i + monsterLevel));
+			playerVSsuggestedLevel.add(printBattle(player, lvl10template, i, i + monsterLevel));
 		}
 
 		printAverages(playerVSsameLevel);
