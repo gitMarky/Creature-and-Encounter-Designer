@@ -55,7 +55,6 @@ Fire Giant Warlord
 Storm Giant
 
 Gnoll Ranger
-Gnoll Savage
 Gnoll War Leader
 
 Goblin Grunt

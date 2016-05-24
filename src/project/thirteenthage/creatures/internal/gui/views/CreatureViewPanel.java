@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import project.thirteenthage.creatures.interfaces.IView;
 import project.thirteenthage.creatures.internal.Html;
+import project.thirteenthage.creatures.internal.conversions.Conversions;
 import project.thirteenthage.creatures.internal.gui.StyleConstants;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
@@ -265,7 +266,7 @@ public class CreatureViewPanel extends JPanel implements IView
 			_labelAC.setText("AC " + _creature.getAC());
 			_labelPD.setText("PD " + _creature.getPD());
 			_labelMD.setText("MD " + _creature.getMD());
-			_labelHP.setText("HP " + (int) _creature.getHP());
+			_labelHP.setText("HP " + Conversions.round(_creature.getHP()));
 		}
 	}
 }

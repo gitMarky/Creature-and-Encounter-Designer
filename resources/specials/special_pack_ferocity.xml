@@ -1,0 +1,4 @@
+<special>
+	<name>Pack ferocity</name>
+	<description>If more than one $name is engaged with the target, each $name melee attack that misses that target deals half damage.</description>
+</special>

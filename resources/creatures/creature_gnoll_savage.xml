@@ -1,0 +1,26 @@
+<creature>
+	<name>Gnoll Savage</name>
+	<size>Normal</size>
+	<level>3</level>
+	<labels>
+		<label>Troop</label>
+		<label>Humanoid</label>
+	</labels>
+	<modifiers>
+		<ini>4</ini>
+		<attack>-1</attack>
+		<ac>+0</ac>
+		<pd better="true">-1</pd>
+		<md>0</md>
+		<hp>0.93</hp>
+	</modifiers>
+	<attacks>
+		<attack id="attack_gnoll_spear" />
+		<attack id="attack_gnoll_thrown_spear" />
+	</attacks>
+	<specials>
+		<special id="special_pack_ferocity" />
+	</specials>
+	<nastier>
+	</nastier>
+</creature>

@@ -1,0 +1,8 @@
+<attack>
+	<name>Spear</name>
+	<bonus>0</bonus>
+	<defense>AC</defense>
+	<damage factor="1.0" description="damage" />
+	<triggers>
+	</triggers>
+</attack>

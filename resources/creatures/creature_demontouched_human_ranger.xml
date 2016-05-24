@@ -12,7 +12,7 @@
 		<ac>+0</ac>
 		<pd>-1</pd>
 		<md better="true">0</md>
-		<hp>1.12</hp>
+		<hp>1.11</hp>
 	</modifiers>
 	<attacks>
 		<attack id="attack_demon_bow" />

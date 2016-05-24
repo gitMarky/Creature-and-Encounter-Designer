@@ -1,0 +1,9 @@
+<attack>
+	<name>Thrown spear</name>
+	<bonus>-1</bonus>
+	<defense>AC</defense>
+	<damage factor="0.8" description="damage" />
+	<ranged>true</ranged>
+	<triggers>
+	</triggers>
+</attack>
