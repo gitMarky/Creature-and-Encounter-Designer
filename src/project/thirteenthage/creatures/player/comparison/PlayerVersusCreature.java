@@ -9,6 +9,8 @@ public class PlayerVersusCreature
 	private final PlayerCharacter _player;
 	private final ICreature _monster;
 	
+	private boolean _withPowers = true;
+	
 	public PlayerVersusCreature(final PlayerCharacter player, final ICreature monster)
 	{
 		_player = player;
@@ -49,7 +51,8 @@ public class PlayerVersusCreature
 		double dice =  base * _player.getLevel();
 		double mod = Math.max(1, (_player.getLevel() + 1) / 3);
 		
-		return dice + _player.getDamageModifier() * mod;
+		double damage = dice + _player.getDamageModifier() * mod;
+		return damage * (_withPowers ? 1.5 : 1.0); // multiply with 1.5 for powers
 	}
 	
 	
