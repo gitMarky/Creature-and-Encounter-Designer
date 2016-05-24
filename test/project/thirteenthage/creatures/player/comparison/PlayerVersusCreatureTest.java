@@ -58,6 +58,24 @@ public class PlayerVersusCreatureTest
 
 		printAverages(playerVSsameLevel);
 		printAverages(playerVSsuggestedLevel);
+		
+		
+		System.out.println("*** Player versus different monster levels");
+		for (int p = 1; p < 11; ++p)
+		{
+			for (int monsterLevel = 0; monsterLevel < 14; ++monsterLevel)
+			{
+				final List<BattleInfo> playerVSmonster = new ArrayList<BattleInfo>();
+			
+				playerVSmonster.add(printBattle(player, lvl1template, p, monsterLevel));
+				playerVSmonster.add(printBattle(player, lvl3template, p, monsterLevel));
+//				playerVSmonster.add(printBattle(player, lvl6template, p, monsterLevel));
+				playerVSmonster.add(printBattle(player, lvl10template, p, monsterLevel));
+				System.out.println("*** Player lvl " + p + " versus monster lvl " + monsterLevel);
+				printAverages(playerVSmonster);
+			}
+		}
+
 	}
 
 	private void printAverages(List<BattleInfo> data)
