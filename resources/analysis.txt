@@ -1,205 +1,157 @@
 *** Player versus same level monster
-Rounds until player dead: 16,00 - rounds until monster dead 3,00 (in player lvl 1 vs. Human Thug lvl 1)
-Rounds until player dead: 13,00 - rounds until monster dead 3,00 (in player lvl 1 vs. Gnoll Savage lvl 1)
-Rounds until player dead: 11,00 - rounds until monster dead 3,00 (in player lvl 1 vs. Great Fang Cadre lvl 1)
-Rounds until player dead: 16,00 - rounds until monster dead 3,00 (in player lvl 2 vs. Human Thug lvl 2)
-Rounds until player dead: 14,00 - rounds until monster dead 3,00 (in player lvl 2 vs. Gnoll Savage lvl 2)
-Rounds until player dead: 12,00 - rounds until monster dead 3,00 (in player lvl 2 vs. Great Fang Cadre lvl 2)
-Rounds until player dead: 15,00 - rounds until monster dead 3,00 (in player lvl 3 vs. Human Thug lvl 3)
-Rounds until player dead: 12,00 - rounds until monster dead 2,00 (in player lvl 3 vs. Gnoll Savage lvl 3)
-Rounds until player dead: 11,00 - rounds until monster dead 3,00 (in player lvl 3 vs. Great Fang Cadre lvl 3)
-Rounds until player dead: 13,00 - rounds until monster dead 2,00 (in player lvl 4 vs. Human Thug lvl 4)
-Rounds until player dead: 10,00 - rounds until monster dead 2,00 (in player lvl 4 vs. Gnoll Savage lvl 4)
-Rounds until player dead: 9,00 - rounds until monster dead 2,00 (in player lvl 4 vs. Great Fang Cadre lvl 4)
-Rounds until player dead: 14,00 - rounds until monster dead 2,00 (in player lvl 5 vs. Human Thug lvl 5)
-Rounds until player dead: 11,00 - rounds until monster dead 2,00 (in player lvl 5 vs. Gnoll Savage lvl 5)
-Rounds until player dead: 9,00 - rounds until monster dead 2,00 (in player lvl 5 vs. Great Fang Cadre lvl 5)
-Rounds until player dead: 16,00 - rounds until monster dead 2,00 (in player lvl 6 vs. Human Thug lvl 6)
-Rounds until player dead: 13,00 - rounds until monster dead 2,00 (in player lvl 6 vs. Gnoll Savage lvl 6)
-Rounds until player dead: 11,00 - rounds until monster dead 2,00 (in player lvl 6 vs. Great Fang Cadre lvl 6)
-Rounds until player dead: 15,00 - rounds until monster dead 2,00 (in player lvl 7 vs. Human Thug lvl 7)
-Rounds until player dead: 11,00 - rounds until monster dead 2,00 (in player lvl 7 vs. Gnoll Savage lvl 7)
-Rounds until player dead: 10,00 - rounds until monster dead 2,00 (in player lvl 7 vs. Great Fang Cadre lvl 7)
-Rounds until player dead: 14,00 - rounds until monster dead 2,00 (in player lvl 8 vs. Human Thug lvl 8)
-Rounds until player dead: 11,00 - rounds until monster dead 2,00 (in player lvl 8 vs. Gnoll Savage lvl 8)
-Rounds until player dead: 10,00 - rounds until monster dead 2,00 (in player lvl 8 vs. Great Fang Cadre lvl 8)
-Rounds until player dead: 13,00 - rounds until monster dead 3,00 (in player lvl 9 vs. Human Thug lvl 9)
-Rounds until player dead: 10,00 - rounds until monster dead 3,00 (in player lvl 9 vs. Gnoll Savage lvl 9)
-Rounds until player dead: 9,00 - rounds until monster dead 3,00 (in player lvl 9 vs. Great Fang Cadre lvl 9)
-Rounds until player dead: 14,00 - rounds until monster dead 3,00 (in player lvl 10 vs. Human Thug lvl 10)
-Rounds until player dead: 11,00 - rounds until monster dead 3,00 (in player lvl 10 vs. Gnoll Savage lvl 10)
-Rounds until player dead: 10,00 - rounds until monster dead 3,00 (in player lvl 10 vs. Great Fang Cadre lvl 10)
 *** Player versus correct level monster
-Rounds until player dead: 16,00 - rounds until monster dead 3,00 (in player lvl 1 vs. Human Thug lvl 1)
-Rounds until player dead: 13,00 - rounds until monster dead 3,00 (in player lvl 1 vs. Gnoll Savage lvl 1)
-Rounds until player dead: 11,00 - rounds until monster dead 3,00 (in player lvl 1 vs. Great Fang Cadre lvl 1)
-Rounds until player dead: 16,00 - rounds until monster dead 3,00 (in player lvl 2 vs. Human Thug lvl 2)
-Rounds until player dead: 14,00 - rounds until monster dead 3,00 (in player lvl 2 vs. Gnoll Savage lvl 2)
-Rounds until player dead: 12,00 - rounds until monster dead 3,00 (in player lvl 2 vs. Great Fang Cadre lvl 2)
-Rounds until player dead: 15,00 - rounds until monster dead 3,00 (in player lvl 3 vs. Human Thug lvl 3)
-Rounds until player dead: 12,00 - rounds until monster dead 2,00 (in player lvl 3 vs. Gnoll Savage lvl 3)
-Rounds until player dead: 11,00 - rounds until monster dead 3,00 (in player lvl 3 vs. Great Fang Cadre lvl 3)
-Rounds until player dead: 13,00 - rounds until monster dead 2,00 (in player lvl 4 vs. Human Thug lvl 4)
-Rounds until player dead: 10,00 - rounds until monster dead 2,00 (in player lvl 4 vs. Gnoll Savage lvl 4)
-Rounds until player dead: 9,00 - rounds until monster dead 2,00 (in player lvl 4 vs. Great Fang Cadre lvl 4)
-Rounds until player dead: 10,00 - rounds until monster dead 3,00 (in player lvl 5 vs. Human Thug lvl 6)
-Rounds until player dead: 8,00 - rounds until monster dead 3,00 (in player lvl 5 vs. Gnoll Savage lvl 6)
-Rounds until player dead: 7,00 - rounds until monster dead 3,00 (in player lvl 5 vs. Great Fang Cadre lvl 6)
-Rounds until player dead: 11,00 - rounds until monster dead 3,00 (in player lvl 6 vs. Human Thug lvl 7)
-Rounds until player dead: 8,00 - rounds until monster dead 3,00 (in player lvl 6 vs. Gnoll Savage lvl 7)
-Rounds until player dead: 7,00 - rounds until monster dead 3,00 (in player lvl 6 vs. Great Fang Cadre lvl 7)
-Rounds until player dead: 9,00 - rounds until monster dead 3,00 (in player lvl 7 vs. Human Thug lvl 8)
-Rounds until player dead: 7,00 - rounds until monster dead 3,00 (in player lvl 7 vs. Gnoll Savage lvl 8)
-Rounds until player dead: 6,00 - rounds until monster dead 3,00 (in player lvl 7 vs. Great Fang Cadre lvl 8)
-Rounds until player dead: 7,00 - rounds until monster dead 4,00 (in player lvl 8 vs. Human Thug lvl 10)
-Rounds until player dead: 6,00 - rounds until monster dead 4,00 (in player lvl 8 vs. Gnoll Savage lvl 10)
-Rounds until player dead: 5,00 - rounds until monster dead 4,00 (in player lvl 8 vs. Great Fang Cadre lvl 10)
-Rounds until player dead: 7,00 - rounds until monster dead 5,00 (in player lvl 9 vs. Human Thug lvl 11)
-Rounds until player dead: 6,00 - rounds until monster dead 5,00 (in player lvl 9 vs. Gnoll Savage lvl 11)
-Rounds until player dead: 5,00 - rounds until monster dead 5,00 (in player lvl 9 vs. Great Fang Cadre lvl 11)
-Rounds until player dead: 7,00 - rounds until monster dead 6,00 (in player lvl 10 vs. Human Thug lvl 12)
-Rounds until player dead: 5,00 - rounds until monster dead 5,00 (in player lvl 10 vs. Gnoll Savage lvl 12)
-Rounds until player dead: 5,00 - rounds until monster dead 6,00 (in player lvl 10 vs. Great Fang Cadre lvl 12)
-Average survival time: 12.133333333333333 / average killing time: 2.466666666666667
-Average survival time: 9.266666666666667 / average killing time: 3.433333333333333
+Player versus same level mosnter: Average survival time:  12,13 / average killing time:   2,47
+Player versus 'correct' level monster: Average survival time:   9,27 / average killing time:   3,43
 *** Player versus different monster levels
-*** Player lvl  1 versus monster lvl 0 Average survival time: 19.666666666666668 / average killing time: 2.0
-*** Player lvl  1 versus monster lvl  1 Average survival time: 13.333333333333334 / average killing time: 3.0
-*** Player lvl  1 versus monster lvl  2 Average survival time: 8.0 / average killing time: 5.0
-*** Player lvl  1 versus monster lvl  3 Average survival time: 5.0 / average killing time: 6.0
-*** Player lvl  1 versus monster lvl  4 Average survival time: 3.3333333333333335 / average killing time: 7.666666666666667
-*** Player lvl  1 versus monster lvl  5 Average survival time: 2.3333333333333335 / average killing time: 10.666666666666666
-*** Player lvl  1 versus monster lvl  6 Average survival time: 1.6666666666666667 / average killing time: 14.666666666666666
-*** Player lvl  1 versus monster lvl  7 Average survival time: 1.0 / average killing time: 18.666666666666668
-*** Player lvl  1 versus monster lvl  8 Average survival time: 0.3333333333333333 / average killing time: 26.666666666666668
-*** Player lvl  1 versus monster lvl  9 Average survival time: 0.0 / average killing time: 36.333333333333336
-*** Player lvl  1 versus monster lvl 10 Average survival time: 0.0 / average killing time: 48.666666666666664
-*** Player lvl  1 versus monster lvl 11 Average survival time: 0.0 / average killing time: 72.0
-*** Player lvl  1 versus monster lvl 12 Average survival time: 0.0 / average killing time: 103.33333333333333
-*** Player lvl  1 versus monster lvl 13 Average survival time: 0.0 / average killing time: 145.0
-*** Player lvl  2 versus monster lvl  0 Average survival time: 35.0 / average killing time: 1.0
-*** Player lvl  2 versus monster lvl  1 Average survival time: 23.0 / average killing time: 2.0
-*** Player lvl  2 versus monster lvl  2 Average survival time: 14.0 / average killing time: 3.0
-*** Player lvl  2 versus monster lvl  3 Average survival time: 8.666666666666666 / average killing time: 4.0
-*** Player lvl  2 versus monster lvl  4 Average survival time: 5.666666666666667 / average killing time: 5.0
-*** Player lvl  2 versus monster lvl  5 Average survival time: 4.0 / average killing time: 6.666666666666667
-*** Player lvl  2 versus monster lvl  6 Average survival time: 2.6666666666666665 / average killing time: 8.666666666666666
-*** Player lvl  2 versus monster lvl  7 Average survival time: 2.0 / average killing time: 10.666666666666666
-*** Player lvl  2 versus monster lvl  8 Average survival time: 1.0 / average killing time: 15.666666666666666
-*** Player lvl  2 versus monster lvl  9 Average survival time: 0.6666666666666666 / average killing time: 20.666666666666668
-*** Player lvl  2 versus monster lvl 10 Average survival time: 0.3333333333333333 / average killing time: 26.666666666666668
-*** Player lvl  2 versus monster lvl 11 Average survival time: 0.0 / average killing time: 39.333333333333336
-*** Player lvl  2 versus monster lvl 12 Average survival time: 0.0 / average killing time: 54.333333333333336
-*** Player lvl  2 versus monster lvl 13 Average survival time: 0.0 / average killing time: 73.0
-*** Player lvl  3 versus monster lvl  0 Average survival time: 52.0 / average killing time: 1.0
-*** Player lvl  3 versus monster lvl  1 Average survival time: 34.0 / average killing time: 1.0
-*** Player lvl  3 versus monster lvl  2 Average survival time: 20.0 / average killing time: 2.0
-*** Player lvl  3 versus monster lvl  3 Average survival time: 12.666666666666666 / average killing time: 2.6666666666666665
-*** Player lvl  3 versus monster lvl  4 Average survival time: 8.0 / average killing time: 3.0
-*** Player lvl  3 versus monster lvl  5 Average survival time: 5.666666666666667 / average killing time: 4.666666666666667
-*** Player lvl  3 versus monster lvl  6 Average survival time: 4.0 / average killing time: 6.0
-*** Player lvl  3 versus monster lvl  7 Average survival time: 2.3333333333333335 / average killing time: 7.666666666666667
-*** Player lvl  3 versus monster lvl  8 Average survival time: 1.6666666666666667 / average killing time: 10.666666666666666
-*** Player lvl  3 versus monster lvl  9 Average survival time: 1.0 / average killing time: 13.666666666666666
-*** Player lvl  3 versus monster lvl 10 Average survival time: 1.0 / average killing time: 18.0
-*** Player lvl  3 versus monster lvl 11 Average survival time: 0.3333333333333333 / average killing time: 25.666666666666668
-*** Player lvl  3 versus monster lvl 12 Average survival time: 0.0 / average killing time: 35.0
-*** Player lvl  3 versus monster lvl 13 Average survival time: 0.0 / average killing time: 46.666666666666664
-*** Player lvl  4 versus monster lvl  0 Average survival time: 77.66666666666667 / average killing time: 0.0
-*** Player lvl  4 versus monster lvl  1 Average survival time: 48.333333333333336 / average killing time: 1.0
-*** Player lvl  4 versus monster lvl  2 Average survival time: 28.333333333333332 / average killing time: 1.0
-*** Player lvl  4 versus monster lvl  3 Average survival time: 17.333333333333332 / average killing time: 1.6666666666666667
-*** Player lvl  4 versus monster lvl  4 Average survival time: 10.666666666666666 / average killing time: 2.0
-*** Player lvl  4 versus monster lvl  5 Average survival time: 7.333333333333333 / average killing time: 3.0
-*** Player lvl  4 versus monster lvl  6 Average survival time: 5.666666666666667 / average killing time: 4.0
-*** Player lvl  4 versus monster lvl  7 Average survival time: 3.3333333333333335 / average killing time: 5.0
-*** Player lvl  4 versus monster lvl  8 Average survival time: 2.3333333333333335 / average killing time: 7.0
-*** Player lvl  4 versus monster lvl  9 Average survival time: 1.3333333333333333 / average killing time: 9.666666666666666
-*** Player lvl  4 versus monster lvl 10 Average survival time: 1.0 / average killing time: 12.0
-*** Player lvl  4 versus monster lvl 11 Average survival time: 1.0 / average killing time: 17.0
-*** Player lvl  4 versus monster lvl 12 Average survival time: 0.3333333333333333 / average killing time: 23.0
-*** Player lvl  4 versus monster lvl 13 Average survival time: 0.0 / average killing time: 29.666666666666668
-*** Player lvl  5 versus monster lvl  0 Average survival time: 136.66666666666666 / average killing time: 0.0
-*** Player lvl  5 versus monster lvl  1 Average survival time: 80.66666666666667 / average killing time: 0.0
-*** Player lvl  5 versus monster lvl  2 Average survival time: 45.333333333333336 / average killing time: 1.0
-*** Player lvl  5 versus monster lvl  3 Average survival time: 27.0 / average killing time: 1.0
-*** Player lvl  5 versus monster lvl  4 Average survival time: 16.666666666666668 / average killing time: 1.0
-*** Player lvl  5 versus monster lvl  5 Average survival time: 11.333333333333334 / average killing time: 2.0
-*** Player lvl  5 versus monster lvl  6 Average survival time: 8.333333333333334 / average killing time: 3.0
-*** Player lvl  5 versus monster lvl  7 Average survival time: 5.666666666666667 / average killing time: 4.0
-*** Player lvl  5 versus monster lvl  8 Average survival time: 3.3333333333333335 / average killing time: 5.0
-*** Player lvl  5 versus monster lvl  9 Average survival time: 2.3333333333333335 / average killing time: 7.0
-*** Player lvl  5 versus monster lvl 10 Average survival time: 1.6666666666666667 / average killing time: 8.666666666666666
-*** Player lvl  5 versus monster lvl 11 Average survival time: 1.3333333333333333 / average killing time: 11.666666666666666
-*** Player lvl  5 versus monster lvl 12 Average survival time: 1.0 / average killing time: 16.0
-*** Player lvl  5 versus monster lvl 13 Average survival time: 0.3333333333333333 / average killing time: 20.666666666666668
-*** Player lvl  6 versus monster lvl  0 Average survival time: 274.3333333333333 / average killing time: 0.0
-*** Player lvl  6 versus monster lvl  1 Average survival time: 146.0 / average killing time: 0.0
-*** Player lvl  6 versus monster lvl  2 Average survival time: 77.0 / average killing time: 0.0
-*** Player lvl  6 versus monster lvl  3 Average survival time: 44.333333333333336 / average killing time: 1.0
-*** Player lvl  6 versus monster lvl  4 Average survival time: 27.0 / average killing time: 1.0
-*** Player lvl  6 versus monster lvl  5 Average survival time: 18.0 / average killing time: 1.6666666666666667
-*** Player lvl  6 versus monster lvl  6 Average survival time: 13.333333333333334 / average killing time: 2.0
-*** Player lvl  6 versus monster lvl  7 Average survival time: 8.666666666666666 / average killing time: 3.0
-*** Player lvl  6 versus monster lvl  8 Average survival time: 5.666666666666667 / average killing time: 4.0
-*** Player lvl  6 versus monster lvl  9 Average survival time: 3.3333333333333335 / average killing time: 5.0
-*** Player lvl  6 versus monster lvl 10 Average survival time: 2.6666666666666665 / average killing time: 6.666666666666667
-*** Player lvl  6 versus monster lvl 11 Average survival time: 2.3333333333333335 / average killing time: 9.333333333333334
-*** Player lvl  6 versus monster lvl 12 Average survival time: 1.3333333333333333 / average killing time: 12.333333333333334
-*** Player lvl  6 versus monster lvl 13 Average survival time: 1.0 / average killing time: 15.666666666666666
-*** Player lvl  7 versus monster lvl  0 Average survival time: 366.0 / average killing time: 0.0
-*** Player lvl  7 versus monster lvl  1 Average survival time: 255.66666666666666 / average killing time: 0.0
-*** Player lvl  7 versus monster lvl  2 Average survival time: 121.66666666666667 / average killing time: 0.0
-*** Player lvl  7 versus monster lvl  3 Average survival time: 66.33333333333333 / average killing time: 0.0
-*** Player lvl  7 versus monster lvl  4 Average survival time: 38.333333333333336 / average killing time: 1.0
-*** Player lvl  7 versus monster lvl  5 Average survival time: 25.0 / average killing time: 1.0
-*** Player lvl  7 versus monster lvl  6 Average survival time: 18.0 / average killing time: 2.0
-*** Player lvl  7 versus monster lvl  7 Average survival time: 12.0 / average killing time: 2.0
-*** Player lvl  7 versus monster lvl  8 Average survival time: 7.333333333333333 / average killing time: 3.0
-*** Player lvl  7 versus monster lvl  9 Average survival time: 5.0 / average killing time: 4.666666666666667
-*** Player lvl  7 versus monster lvl 10 Average survival time: 4.0 / average killing time: 5.666666666666667
-*** Player lvl  7 versus monster lvl 11 Average survival time: 2.6666666666666665 / average killing time: 7.666666666666667
-*** Player lvl  7 versus monster lvl 12 Average survival time: 2.0 / average killing time: 10.0
-*** Player lvl  7 versus monster lvl 13 Average survival time: 1.3333333333333333 / average killing time: 12.666666666666666
-*** Player lvl  8 versus monster lvl  0 Average survival time: 488.0 / average killing time: 0.0
-*** Player lvl  8 versus monster lvl  1 Average survival time: 380.3333333333333 / average killing time: 0.0
-*** Player lvl  8 versus monster lvl  2 Average survival time: 237.0 / average killing time: 0.0
-*** Player lvl  8 versus monster lvl  3 Average survival time: 116.66666666666667 / average killing time: 0.0
-*** Player lvl  8 versus monster lvl  4 Average survival time: 64.0 / average killing time: 0.0
-*** Player lvl  8 versus monster lvl  5 Average survival time: 40.333333333333336 / average killing time: 1.0
-*** Player lvl  8 versus monster lvl  6 Average survival time: 28.0 / average killing time: 1.0
-*** Player lvl  8 versus monster lvl  7 Average survival time: 18.0 / average killing time: 1.6666666666666667
-*** Player lvl  8 versus monster lvl  8 Average survival time: 11.666666666666666 / average killing time: 2.0
-*** Player lvl  8 versus monster lvl  9 Average survival time: 7.666666666666667 / average killing time: 3.0
-*** Player lvl  8 versus monster lvl 10 Average survival time: 6.0 / average killing time: 4.0
-*** Player lvl  8 versus monster lvl 11 Average survival time: 4.333333333333333 / average killing time: 5.666666666666667
-*** Player lvl  8 versus monster lvl 12 Average survival time: 3.3333333333333335 / average killing time: 7.666666666666667
-*** Player lvl  8 versus monster lvl 13 Average survival time: 2.3333333333333335 / average killing time: 9.666666666666666
-*** Player lvl  9 versus monster lvl  0 Average survival time: 610.3333333333334 / average killing time: 0.0
-*** Player lvl  9 versus monster lvl  1 Average survival time: 475.6666666666667 / average killing time: 0.0
-*** Player lvl  9 versus monster lvl  2 Average survival time: 331.3333333333333 / average killing time: 0.0
-*** Player lvl  9 versus monster lvl  3 Average survival time: 213.0 / average killing time: 0.0
-*** Player lvl  9 versus monster lvl  4 Average survival time: 105.0 / average killing time: 0.0
-*** Player lvl  9 versus monster lvl  5 Average survival time: 62.333333333333336 / average killing time: 1.0
-*** Player lvl  9 versus monster lvl  6 Average survival time: 42.0 / average killing time: 1.0
-*** Player lvl  9 versus monster lvl  7 Average survival time: 27.0 / average killing time: 1.0
-*** Player lvl  9 versus monster lvl  8 Average survival time: 16.666666666666668 / average killing time: 2.0
-*** Player lvl  9 versus monster lvl  9 Average survival time: 10.666666666666666 / average killing time: 3.0
-*** Player lvl  9 versus monster lvl 10 Average survival time: 8.333333333333334 / average killing time: 3.6666666666666665
-*** Player lvl  9 versus monster lvl 11 Average survival time: 6.0 / average killing time: 5.0
-*** Player lvl  9 versus monster lvl 12 Average survival time: 4.333333333333333 / average killing time: 6.666666666666667
-*** Player lvl  9 versus monster lvl 13 Average survival time: 3.3333333333333335 / average killing time: 8.0
-*** Player lvl 10 versus monster lvl  0 Average survival time: 732.3333333333334 / average killing time: 0.0
-*** Player lvl 10 versus monster lvl  1 Average survival time: 571.0 / average killing time: 0.0
-*** Player lvl 10 versus monster lvl  2 Average survival time: 398.0 / average killing time: 0.0
-*** Player lvl 10 versus monster lvl  3 Average survival time: 285.0 / average killing time: 0.0
-*** Player lvl 10 versus monster lvl  4 Average survival time: 184.33333333333334 / average killing time: 0.0
-*** Player lvl 10 versus monster lvl  5 Average survival time: 98.33333333333333 / average killing time: 0.0
-*** Player lvl 10 versus monster lvl  6 Average survival time: 63.0 / average killing time: 1.0
-*** Player lvl 10 versus monster lvl  7 Average survival time: 38.333333333333336 / average killing time: 1.0
-*** Player lvl 10 versus monster lvl  8 Average survival time: 23.666666666666668 / average killing time: 2.0
-*** Player lvl 10 versus monster lvl  9 Average survival time: 15.333333333333334 / average killing time: 2.0
-*** Player lvl 10 versus monster lvl 10 Average survival time: 11.666666666666666 / average killing time: 3.0
-*** Player lvl 10 versus monster lvl 11 Average survival time: 8.333333333333334 / average killing time: 4.0
-*** Player lvl 10 versus monster lvl 12 Average survival time: 5.666666666666667 / average killing time: 5.666666666666667
-*** Player lvl 10 versus monster lvl 13 Average survival time: 4.0 / average killing time: 7.0
+*** Player lvl 01 vs. monster lvl 00 Average survival time:  19,67 / average killing time:   2,00
+*** Player lvl 01 vs. monster lvl 01 Average survival time:  13,33 / average killing time:   3,00
+*** Player lvl 01 vs. monster lvl 02 Average survival time:   8,00 / average killing time:   5,00
+*** Player lvl 01 vs. monster lvl 03 Average survival time:   5,00 / average killing time:   6,00
+*** Player lvl 01 vs. monster lvl 04 Average survival time:   3,33 / average killing time:   7,67
+*** Player lvl 01 vs. monster lvl 05 Average survival time:   2,33 / average killing time:  10,67
+*** Player lvl 01 vs. monster lvl 06 Average survival time:   1,67 / average killing time:  14,67
+*** Player lvl 01 vs. monster lvl 07 Average survival time:   1,00 / average killing time:  18,67
+*** Player lvl 01 vs. monster lvl 08 Average survival time:   0,33 / average killing time:  26,67
+*** Player lvl 01 vs. monster lvl 09 Average survival time:   0,00 / average killing time:  36,33
+*** Player lvl 01 vs. monster lvl 10 Average survival time:   0,00 / average killing time:  48,67
+*** Player lvl 01 vs. monster lvl 11 Average survival time:   0,00 / average killing time:  72,00
+*** Player lvl 01 vs. monster lvl 12 Average survival time:   0,00 / average killing time: 103,33
+*** Player lvl 01 vs. monster lvl 13 Average survival time:   0,00 / average killing time: 145,00
+*** Player lvl 02 vs. monster lvl 00 Average survival time:  35,00 / average killing time:   1,00
+*** Player lvl 02 vs. monster lvl 01 Average survival time:  23,00 / average killing time:   2,00
+*** Player lvl 02 vs. monster lvl 02 Average survival time:  14,00 / average killing time:   3,00
+*** Player lvl 02 vs. monster lvl 03 Average survival time:   8,67 / average killing time:   4,00
+*** Player lvl 02 vs. monster lvl 04 Average survival time:   5,67 / average killing time:   5,00
+*** Player lvl 02 vs. monster lvl 05 Average survival time:   4,00 / average killing time:   6,67
+*** Player lvl 02 vs. monster lvl 06 Average survival time:   2,67 / average killing time:   8,67
+*** Player lvl 02 vs. monster lvl 07 Average survival time:   2,00 / average killing time:  10,67
+*** Player lvl 02 vs. monster lvl 08 Average survival time:   1,00 / average killing time:  15,67
+*** Player lvl 02 vs. monster lvl 09 Average survival time:   0,67 / average killing time:  20,67
+*** Player lvl 02 vs. monster lvl 10 Average survival time:   0,33 / average killing time:  26,67
+*** Player lvl 02 vs. monster lvl 11 Average survival time:   0,00 / average killing time:  39,33
+*** Player lvl 02 vs. monster lvl 12 Average survival time:   0,00 / average killing time:  54,33
+*** Player lvl 02 vs. monster lvl 13 Average survival time:   0,00 / average killing time:  73,00
+*** Player lvl 03 vs. monster lvl 00 Average survival time:  52,00 / average killing time:   1,00
+*** Player lvl 03 vs. monster lvl 01 Average survival time:  34,00 / average killing time:   1,00
+*** Player lvl 03 vs. monster lvl 02 Average survival time:  20,00 / average killing time:   2,00
+*** Player lvl 03 vs. monster lvl 03 Average survival time:  12,67 / average killing time:   2,67
+*** Player lvl 03 vs. monster lvl 04 Average survival time:   8,00 / average killing time:   3,00
+*** Player lvl 03 vs. monster lvl 05 Average survival time:   5,67 / average killing time:   4,67
+*** Player lvl 03 vs. monster lvl 06 Average survival time:   4,00 / average killing time:   6,00
+*** Player lvl 03 vs. monster lvl 07 Average survival time:   2,33 / average killing time:   7,67
+*** Player lvl 03 vs. monster lvl 08 Average survival time:   1,67 / average killing time:  10,67
+*** Player lvl 03 vs. monster lvl 09 Average survival time:   1,00 / average killing time:  13,67
+*** Player lvl 03 vs. monster lvl 10 Average survival time:   1,00 / average killing time:  18,00
+*** Player lvl 03 vs. monster lvl 11 Average survival time:   0,33 / average killing time:  25,67
+*** Player lvl 03 vs. monster lvl 12 Average survival time:   0,00 / average killing time:  35,00
+*** Player lvl 03 vs. monster lvl 13 Average survival time:   0,00 / average killing time:  46,67
+*** Player lvl 04 vs. monster lvl 00 Average survival time:  77,67 / average killing time:   0,00
+*** Player lvl 04 vs. monster lvl 01 Average survival time:  48,33 / average killing time:   1,00
+*** Player lvl 04 vs. monster lvl 02 Average survival time:  28,33 / average killing time:   1,00
+*** Player lvl 04 vs. monster lvl 03 Average survival time:  17,33 / average killing time:   1,67
+*** Player lvl 04 vs. monster lvl 04 Average survival time:  10,67 / average killing time:   2,00
+*** Player lvl 04 vs. monster lvl 05 Average survival time:   7,33 / average killing time:   3,00
+*** Player lvl 04 vs. monster lvl 06 Average survival time:   5,67 / average killing time:   4,00
+*** Player lvl 04 vs. monster lvl 07 Average survival time:   3,33 / average killing time:   5,00
+*** Player lvl 04 vs. monster lvl 08 Average survival time:   2,33 / average killing time:   7,00
+*** Player lvl 04 vs. monster lvl 09 Average survival time:   1,33 / average killing time:   9,67
+*** Player lvl 04 vs. monster lvl 10 Average survival time:   1,00 / average killing time:  12,00
+*** Player lvl 04 vs. monster lvl 11 Average survival time:   1,00 / average killing time:  17,00
+*** Player lvl 04 vs. monster lvl 12 Average survival time:   0,33 / average killing time:  23,00
+*** Player lvl 04 vs. monster lvl 13 Average survival time:   0,00 / average killing time:  29,67
+*** Player lvl 05 vs. monster lvl 00 Average survival time: 136,67 / average killing time:   0,00
+*** Player lvl 05 vs. monster lvl 01 Average survival time:  80,67 / average killing time:   0,00
+*** Player lvl 05 vs. monster lvl 02 Average survival time:  45,33 / average killing time:   1,00
+*** Player lvl 05 vs. monster lvl 03 Average survival time:  27,00 / average killing time:   1,00
+*** Player lvl 05 vs. monster lvl 04 Average survival time:  16,67 / average killing time:   1,00
+*** Player lvl 05 vs. monster lvl 05 Average survival time:  11,33 / average killing time:   2,00
+*** Player lvl 05 vs. monster lvl 06 Average survival time:   8,33 / average killing time:   3,00
+*** Player lvl 05 vs. monster lvl 07 Average survival time:   5,67 / average killing time:   4,00
+*** Player lvl 05 vs. monster lvl 08 Average survival time:   3,33 / average killing time:   5,00
+*** Player lvl 05 vs. monster lvl 09 Average survival time:   2,33 / average killing time:   7,00
+*** Player lvl 05 vs. monster lvl 10 Average survival time:   1,67 / average killing time:   8,67
+*** Player lvl 05 vs. monster lvl 11 Average survival time:   1,33 / average killing time:  11,67
+*** Player lvl 05 vs. monster lvl 12 Average survival time:   1,00 / average killing time:  16,00
+*** Player lvl 05 vs. monster lvl 13 Average survival time:   0,33 / average killing time:  20,67
+*** Player lvl 06 vs. monster lvl 00 Average survival time: 274,33 / average killing time:   0,00
+*** Player lvl 06 vs. monster lvl 01 Average survival time: 146,00 / average killing time:   0,00
+*** Player lvl 06 vs. monster lvl 02 Average survival time:  77,00 / average killing time:   0,00
+*** Player lvl 06 vs. monster lvl 03 Average survival time:  44,33 / average killing time:   1,00
+*** Player lvl 06 vs. monster lvl 04 Average survival time:  27,00 / average killing time:   1,00
+*** Player lvl 06 vs. monster lvl 05 Average survival time:  18,00 / average killing time:   1,67
+*** Player lvl 06 vs. monster lvl 06 Average survival time:  13,33 / average killing time:   2,00
+*** Player lvl 06 vs. monster lvl 07 Average survival time:   8,67 / average killing time:   3,00
+*** Player lvl 06 vs. monster lvl 08 Average survival time:   5,67 / average killing time:   4,00
+*** Player lvl 06 vs. monster lvl 09 Average survival time:   3,33 / average killing time:   5,00
+*** Player lvl 06 vs. monster lvl 10 Average survival time:   2,67 / average killing time:   6,67
+*** Player lvl 06 vs. monster lvl 11 Average survival time:   2,33 / average killing time:   9,33
+*** Player lvl 06 vs. monster lvl 12 Average survival time:   1,33 / average killing time:  12,33
+*** Player lvl 06 vs. monster lvl 13 Average survival time:   1,00 / average killing time:  15,67
+*** Player lvl 07 vs. monster lvl 00 Average survival time: 366,00 / average killing time:   0,00
+*** Player lvl 07 vs. monster lvl 01 Average survival time: 255,67 / average killing time:   0,00
+*** Player lvl 07 vs. monster lvl 02 Average survival time: 121,67 / average killing time:   0,00
+*** Player lvl 07 vs. monster lvl 03 Average survival time:  66,33 / average killing time:   0,00
+*** Player lvl 07 vs. monster lvl 04 Average survival time:  38,33 / average killing time:   1,00
+*** Player lvl 07 vs. monster lvl 05 Average survival time:  25,00 / average killing time:   1,00
+*** Player lvl 07 vs. monster lvl 06 Average survival time:  18,00 / average killing time:   2,00
+*** Player lvl 07 vs. monster lvl 07 Average survival time:  12,00 / average killing time:   2,00
+*** Player lvl 07 vs. monster lvl 08 Average survival time:   7,33 / average killing time:   3,00
+*** Player lvl 07 vs. monster lvl 09 Average survival time:   5,00 / average killing time:   4,67
+*** Player lvl 07 vs. monster lvl 10 Average survival time:   4,00 / average killing time:   5,67
+*** Player lvl 07 vs. monster lvl 11 Average survival time:   2,67 / average killing time:   7,67
+*** Player lvl 07 vs. monster lvl 12 Average survival time:   2,00 / average killing time:  10,00
+*** Player lvl 07 vs. monster lvl 13 Average survival time:   1,33 / average killing time:  12,67
+*** Player lvl 08 vs. monster lvl 00 Average survival time: 488,00 / average killing time:   0,00
+*** Player lvl 08 vs. monster lvl 01 Average survival time: 380,33 / average killing time:   0,00
+*** Player lvl 08 vs. monster lvl 02 Average survival time: 237,00 / average killing time:   0,00
+*** Player lvl 08 vs. monster lvl 03 Average survival time: 116,67 / average killing time:   0,00
+*** Player lvl 08 vs. monster lvl 04 Average survival time:  64,00 / average killing time:   0,00
+*** Player lvl 08 vs. monster lvl 05 Average survival time:  40,33 / average killing time:   1,00
+*** Player lvl 08 vs. monster lvl 06 Average survival time:  28,00 / average killing time:   1,00
+*** Player lvl 08 vs. monster lvl 07 Average survival time:  18,00 / average killing time:   1,67
+*** Player lvl 08 vs. monster lvl 08 Average survival time:  11,67 / average killing time:   2,00
+*** Player lvl 08 vs. monster lvl 09 Average survival time:   7,67 / average killing time:   3,00
+*** Player lvl 08 vs. monster lvl 10 Average survival time:   6,00 / average killing time:   4,00
+*** Player lvl 08 vs. monster lvl 11 Average survival time:   4,33 / average killing time:   5,67
+*** Player lvl 08 vs. monster lvl 12 Average survival time:   3,33 / average killing time:   7,67
+*** Player lvl 08 vs. monster lvl 13 Average survival time:   2,33 / average killing time:   9,67
+*** Player lvl 09 vs. monster lvl 00 Average survival time: 610,33 / average killing time:   0,00
+*** Player lvl 09 vs. monster lvl 01 Average survival time: 475,67 / average killing time:   0,00
+*** Player lvl 09 vs. monster lvl 02 Average survival time: 331,33 / average killing time:   0,00
+*** Player lvl 09 vs. monster lvl 03 Average survival time: 213,00 / average killing time:   0,00
+*** Player lvl 09 vs. monster lvl 04 Average survival time: 105,00 / average killing time:   0,00
+*** Player lvl 09 vs. monster lvl 05 Average survival time:  62,33 / average killing time:   1,00
+*** Player lvl 09 vs. monster lvl 06 Average survival time:  42,00 / average killing time:   1,00
+*** Player lvl 09 vs. monster lvl 07 Average survival time:  27,00 / average killing time:   1,00
+*** Player lvl 09 vs. monster lvl 08 Average survival time:  16,67 / average killing time:   2,00
+*** Player lvl 09 vs. monster lvl 09 Average survival time:  10,67 / average killing time:   3,00
+*** Player lvl 09 vs. monster lvl 10 Average survival time:   8,33 / average killing time:   3,67
+*** Player lvl 09 vs. monster lvl 11 Average survival time:   6,00 / average killing time:   5,00
+*** Player lvl 09 vs. monster lvl 12 Average survival time:   4,33 / average killing time:   6,67
+*** Player lvl 09 vs. monster lvl 13 Average survival time:   3,33 / average killing time:   8,00
+*** Player lvl 10 vs. monster lvl 00 Average survival time: 732,33 / average killing time:   0,00
+*** Player lvl 10 vs. monster lvl 01 Average survival time: 571,00 / average killing time:   0,00
+*** Player lvl 10 vs. monster lvl 02 Average survival time: 398,00 / average killing time:   0,00
+*** Player lvl 10 vs. monster lvl 03 Average survival time: 285,00 / average killing time:   0,00
+*** Player lvl 10 vs. monster lvl 04 Average survival time: 184,33 / average killing time:   0,00
+*** Player lvl 10 vs. monster lvl 05 Average survival time:  98,33 / average killing time:   0,00
+*** Player lvl 10 vs. monster lvl 06 Average survival time:  63,00 / average killing time:   1,00
+*** Player lvl 10 vs. monster lvl 07 Average survival time:  38,33 / average killing time:   1,00
+*** Player lvl 10 vs. monster lvl 08 Average survival time:  23,67 / average killing time:   2,00
+*** Player lvl 10 vs. monster lvl 09 Average survival time:  15,33 / average killing time:   2,00
+*** Player lvl 10 vs. monster lvl 10 Average survival time:  11,67 / average killing time:   3,00
+*** Player lvl 10 vs. monster lvl 11 Average survival time:   8,33 / average killing time:   4,00
+*** Player lvl 10 vs. monster lvl 12 Average survival time:   5,67 / average killing time:   5,67
+*** Player lvl 10 vs. monster lvl 13 Average survival time:   4,00 / average killing time:   7,00
+*** Player versus different monster levels
+*** Player lvl vs. monster lvl + 00 Average survival time:  12,13 / average killing time:   2,47
+*** Player lvl vs. monster lvl + 01 Average survival time:   8,07 / average killing time:   3,47
+*** Player lvl vs. monster lvl + 02 Average survival time:   5,60 / average killing time:   4,70
+*** Player lvl vs. monster lvl + 03 Average survival time:   3,80 / average killing time:   6,03
+*** Player lvl vs. monster lvl + 04 Average survival time:   2,73 / average killing time:   8,07
+*** Player lvl vs. monster lvl + 05 Average survival time:   1,93 / average killing time:  10,70
+*** Player lvl vs. monster lvl + 06 Average survival time:   1,20 / average killing time:  14,13
+*** Player lvl vs. monster lvl + 07 Average survival time:   0,90 / average killing time:  19,30
+*** Player lvl vs. monster lvl + 08 Average survival time:   0,37 / average killing time:  26,07
+*** Player lvl vs. monster lvl + 09 Average survival time:   0,00 / average killing time:  35,73
+*** Player lvl vs. monster lvl + 10 Average survival time:   0,00 / average killing time:  49,83

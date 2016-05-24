@@ -56,8 +56,8 @@ public class PlayerVersusCreatureTest
 			playerVSsuggestedLevel.add(printBattle(player, lvl10template, i, i + monsterLevel));
 		}
 
-		printAverages(playerVSsameLevel);
-		printAverages(playerVSsuggestedLevel);
+		printAverages(playerVSsameLevel, "Player versus same level mosnter: ");
+		printAverages(playerVSsuggestedLevel, "Player versus 'correct' level monster: ");
 		
 		
 		System.out.println("*** Player versus different monster levels");
@@ -71,14 +71,26 @@ public class PlayerVersusCreatureTest
 				playerVSmonster.add(printBattle(player, lvl3template, p, monsterLevel));
 //				playerVSmonster.add(printBattle(player, lvl6template, p, monsterLevel));
 				playerVSmonster.add(printBattle(player, lvl10template, p, monsterLevel));
-				System.out.println("*** Player lvl " + p + " versus monster lvl " + monsterLevel);
-				printAverages(playerVSmonster);
+				printAverages(playerVSmonster, String.format("*** Player lvl %02d vs. monster lvl %02d ", p, monsterLevel));
 			}
 		}
 
+		System.out.println("*** Player versus different monster levels");
+		for (int monsterLevel = 0; monsterLevel < 11; ++monsterLevel)
+		{
+			final List<BattleInfo> playerVSmonster = new ArrayList<BattleInfo>();
+			for (int p = 1; p < 11; ++p)
+			{
+				playerVSmonster.add(printBattle(player, lvl1template, p, p + monsterLevel));
+				playerVSmonster.add(printBattle(player, lvl3template, p, p + monsterLevel));
+//				playerVSmonster.add(printBattle(player, lvl6template, p, p + monsterLevel));
+				playerVSmonster.add(printBattle(player, lvl10template, p, p + monsterLevel));
+			}
+			printAverages(playerVSmonster, String.format("*** Player lvl vs. monster lvl + %02d ", monsterLevel));
+		}
 	}
 
-	private void printAverages(List<BattleInfo> data)
+	private void printAverages(List<BattleInfo> data, final String message)
 	{
 		double totalSurvivalTime = 0.0;
 		double totalKillingTime = 0.0;
@@ -92,7 +104,7 @@ public class PlayerVersusCreatureTest
 		double averageSurvivalTime = totalSurvivalTime / ((double) data.size());
 		double averageKillingTime = totalKillingTime / ((double) data.size());
 		
-		System.out.println("Average survival time: " + averageSurvivalTime + " / average killing time: "+ averageKillingTime);
+		System.out.println((message == null ? "" : message) + String.format("Average survival time: %6.2f / average killing time: %6.2f",  averageSurvivalTime, averageKillingTime));
 	}
 
 	private BattleInfo printBattle(PlayerCharacter player, ICreatureTemplate lvlTemplate, int playerLevel, int monsterLevel)
@@ -107,7 +119,7 @@ public class PlayerVersusCreatureTest
 		final PlayerVersusCreature battle = new PlayerVersusCreature(player, monster);
 		double expectedSurvivalTime = battle.getExpectedSurvivalTime();
 		double expectedKillingTime = battle.getExpectedKillingTime();
-		System.out.println(String.format("Rounds until player dead: %.2f - rounds until monster dead %.2f (in player lvl " + playerLevel + " vs. " + monster.getName() + " lvl " + monsterLevel + ")", expectedSurvivalTime, expectedKillingTime));
+		//System.out.println(String.format("Rounds until player dead: %.2f - rounds until monster dead %.2f (in player lvl " + playerLevel + " vs. " + monster.getName() + " lvl " + monsterLevel + ")", expectedSurvivalTime, expectedKillingTime));
 		
 		return new BattleInfo(expectedSurvivalTime, expectedKillingTime);
 	}
