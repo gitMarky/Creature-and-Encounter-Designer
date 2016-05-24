@@ -48,7 +48,6 @@ public class PlayerVersusCreature
 		double base = 4.5;
 		double dice =  base * _player.getLevel();
 		double mod = Math.max(1, (_player.getLevel() + 1) / 3);
-		//System.out.println("mod: " + mod + " / level: " + _player.getLevel());
 		
 		return dice + _player.getDamageModifier() * mod;
 	}
@@ -56,16 +55,20 @@ public class PlayerVersusCreature
 	
 	public double getExpectedSurvivalTime()
 	{
-//		return _player.getHP() / getMonsterDamage();
 		double hp = _player.getHP();
 		int round;
 		for (round = 0; hp > 0; ++round)
 		{
 			hp -= getMonsterDamage();
+			if (hp <= 0)
+			{
+//				System.out.println("Player dead in round " + round);
+				break;
+			}
 		}
 		
 		return round;
-	}
+	}	
 	
 	
 	public double getExpectedKillingTime()
@@ -75,6 +78,11 @@ public class PlayerVersusCreature
 		for (round = 0; hp > 0; ++round)
 		{
 			hp -= getPlayerDamage(round);
+			if (hp <= 0)
+			{
+//				System.out.println("Monster dead in round " + round);
+				break;
+			}
 		}
 		return round;
 	}
