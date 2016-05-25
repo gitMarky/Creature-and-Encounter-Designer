@@ -17,9 +17,8 @@ public class PlayerVersusCreatureTest
 {
 
 	@Test
-	public void test()
+	public void testNormalCreature()
 	{
-		final PlayerCharacter player = new AveragePlayerCharacter();
 		
 		CreatureTemplateLoader.getInstance();
 		CreatureLoader.getInstance().load(CreatureTemplateLoader.getInstance());
@@ -31,9 +30,16 @@ public class PlayerVersusCreatureTest
 		final ICreatureTemplate lvl10template = CreatureTemplateLoader.getInstance().getTemplates().get("creature_great_fang_cadre");
 		lvl10template.getLabels().remove("Mook");
 
+		testBattles(lvl1template, lvl3template, lvl6template, lvl10template);
+	}
+	
+	private void testBattles(final ICreatureTemplate lvl1template, final ICreatureTemplate lvl3template, final ICreatureTemplate lvl6template, final ICreatureTemplate lvl10template)
+	{
+		final PlayerCharacter player = new AveragePlayerCharacter();
+
 		final List<BattleInfo> playerVSsameLevel = new ArrayList<BattleInfo>();
 		final List<BattleInfo> playerVSsuggestedLevel = new ArrayList<BattleInfo>();
-		
+
 		System.out.println("*** Player versus same level monster");
 		for (int i = 1; i < 11; ++i)
 		{
