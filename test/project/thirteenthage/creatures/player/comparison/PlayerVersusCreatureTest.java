@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import project.thirteenthage.creatures.creature.CreatureSize;
 import project.thirteenthage.creatures.creature.EditableCreatureTemplate;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
@@ -19,7 +20,28 @@ public class PlayerVersusCreatureTest
 	@Test
 	public void testNormalCreature()
 	{
-		
+		testBattles(CreatureSize.NORMAL);
+	}
+	
+
+	@Test
+	public void testLargeCreature()
+	{
+		testBattles(CreatureSize.LARGE);
+	}
+	
+
+	@Test
+	public void testHugeCreature()
+	{
+		testBattles(CreatureSize.HUGE);
+	}
+
+
+	private void testBattles(final CreatureSize size)
+	{
+		final PlayerCharacter player = new AveragePlayerCharacter();
+
 		CreatureTemplateLoader.getInstance();
 		CreatureLoader.getInstance().load(CreatureTemplateLoader.getInstance());
 
@@ -30,12 +52,6 @@ public class PlayerVersusCreatureTest
 		final ICreatureTemplate lvl10template = CreatureTemplateLoader.getInstance().getTemplates().get("creature_great_fang_cadre");
 		lvl10template.getLabels().remove("Mook");
 
-		testBattles(lvl1template, lvl3template, lvl6template, lvl10template);
-	}
-	
-	private void testBattles(final ICreatureTemplate lvl1template, final ICreatureTemplate lvl3template, final ICreatureTemplate lvl6template, final ICreatureTemplate lvl10template)
-	{
-		final PlayerCharacter player = new AveragePlayerCharacter();
 
 		final List<BattleInfo> playerVSsameLevel = new ArrayList<BattleInfo>();
 		final List<BattleInfo> playerVSsuggestedLevel = new ArrayList<BattleInfo>();
@@ -43,10 +59,10 @@ public class PlayerVersusCreatureTest
 		System.out.println("*** Player versus same level monster");
 		for (int i = 1; i < 11; ++i)
 		{
-			playerVSsameLevel.add(printBattle(player, lvl1template, i, i));
-			playerVSsameLevel.add(printBattle(player, lvl3template, i, i));
-//			playerVSsameLevel.add(printBattle(player, lvl6template, i, i));
-			playerVSsameLevel.add(printBattle(player, lvl10template, i, i));
+			playerVSsameLevel.add(printBattle(player, lvl1template, i, i, size));
+			playerVSsameLevel.add(printBattle(player, lvl3template, i, i, size));
+//			playerVSsameLevel.add(printBattle(player, lvl6template, i, i, size));
+			playerVSsameLevel.add(printBattle(player, lvl10template, i, i, size));
 		}
 		
 		System.out.println("*** Player versus correct level monster");
@@ -56,10 +72,10 @@ public class PlayerVersusCreatureTest
 			if (i >= 5) monsterLevel +=1;
 			if (i >= 8) monsterLevel +=1;
 			
-			playerVSsuggestedLevel.add(printBattle(player, lvl1template, i, i + monsterLevel));
-			playerVSsuggestedLevel.add(printBattle(player, lvl3template, i, i + monsterLevel));
-//			playerVSsuggestedLevel.add(printBattle(player, lvl6template, i, i + monsterLevel));
-			playerVSsuggestedLevel.add(printBattle(player, lvl10template, i, i + monsterLevel));
+			playerVSsuggestedLevel.add(printBattle(player, lvl1template, i, i + monsterLevel, size));
+			playerVSsuggestedLevel.add(printBattle(player, lvl3template, i, i + monsterLevel, size));
+//			playerVSsuggestedLevel.add(printBattle(player, lvl6template, i, i + monsterLevel, size));
+			playerVSsuggestedLevel.add(printBattle(player, lvl10template, i, i + monsterLevel, size));
 		}
 
 		printAverages(playerVSsameLevel, "Player versus same level mosnter: ");
@@ -73,10 +89,10 @@ public class PlayerVersusCreatureTest
 			{
 				final List<BattleInfo> playerVSmonster = new ArrayList<BattleInfo>();
 			
-				playerVSmonster.add(printBattle(player, lvl1template, p, monsterLevel));
-				playerVSmonster.add(printBattle(player, lvl3template, p, monsterLevel));
-//				playerVSmonster.add(printBattle(player, lvl6template, p, monsterLevel));
-				playerVSmonster.add(printBattle(player, lvl10template, p, monsterLevel));
+				playerVSmonster.add(printBattle(player, lvl1template, p, monsterLevel, size));
+				playerVSmonster.add(printBattle(player, lvl3template, p, monsterLevel, size));
+//				playerVSmonster.add(printBattle(player, lvl6template, p, monsterLevel, size));
+				playerVSmonster.add(printBattle(player, lvl10template, p, monsterLevel, size));
 				printAverages(playerVSmonster, String.format("*** Player lvl %02d vs. monster lvl %02d ", p, monsterLevel));
 			}
 		}
@@ -87,10 +103,10 @@ public class PlayerVersusCreatureTest
 			final List<BattleInfo> playerVSmonster = new ArrayList<BattleInfo>();
 			for (int p = 1; p < 11; ++p)
 			{
-				playerVSmonster.add(printBattle(player, lvl1template, p, p + monsterLevel));
-				playerVSmonster.add(printBattle(player, lvl3template, p, p + monsterLevel));
-//				playerVSmonster.add(printBattle(player, lvl6template, p, p + monsterLevel));
-				playerVSmonster.add(printBattle(player, lvl10template, p, p + monsterLevel));
+				playerVSmonster.add(printBattle(player, lvl1template, p, p + monsterLevel, size));
+				playerVSmonster.add(printBattle(player, lvl3template, p, p + monsterLevel, size));
+//				playerVSmonster.add(printBattle(player, lvl6template, p, p + monsterLevel, size));
+				playerVSmonster.add(printBattle(player, lvl10template, p, p + monsterLevel, size));
 			}
 			printAverages(playerVSmonster, String.format("*** Player lvl vs. monster lvl + %02d ", monsterLevel));
 		}
@@ -113,12 +129,13 @@ public class PlayerVersusCreatureTest
 		System.out.println((message == null ? "" : message) + String.format("Average survival time: %6.2f / average killing time: %6.2f",  averageSurvivalTime, averageKillingTime));
 	}
 
-	private BattleInfo printBattle(PlayerCharacter player, ICreatureTemplate lvlTemplate, int playerLevel, int monsterLevel)
+	private BattleInfo printBattle(PlayerCharacter player, ICreatureTemplate lvlTemplate, int playerLevel, int monsterLevel, final CreatureSize size)
 	{
 		player.setLevel(playerLevel);
 		
 		EditableCreatureTemplate template = new EditableCreatureTemplate(lvlTemplate);
 		template.setLevel(monsterLevel);
+		template.setSize(size);
 		
 		ICreature monster = template.toCreature();
 		
