@@ -17,7 +17,7 @@ import project.thirteenthage.creatures.internal.gui.views.AmountChoicePanel;
 import project.thirteenthage.creatures.internal.gui.views.CreatureEncounterPanel;
 import project.thirteenthage.creatures.internal.gui.views.EncounterDifficultyView;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
-import project.thirteenthage.creatures.mechanics.EncounterDifficulty;
+import project.thirteenthage.creatures.mechanics.analysis.EncounterDifficulty;
 
 /**
  * This panel should be able to contain several creatures that were selected for

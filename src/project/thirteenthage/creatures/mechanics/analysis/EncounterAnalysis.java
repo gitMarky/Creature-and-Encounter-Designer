@@ -1,4 +1,4 @@
-package project.thirteenthage.creatures.mechanics;
+package project.thirteenthage.creatures.mechanics.analysis;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,13 +11,14 @@ import project.thirteenthage.creatures.internal.interfaces.ICreature;
 /**
  * Calculates the encounter difficulty.
  */
-public class EncounterDifficulty
+public class EncounterAnalysis
 {
 	private final Map<ICreature, Integer> _amount = new HashMap<ICreature, Integer>();
 	private int _level = 1;
+	private int _players = 1;
 
 
-	public EncounterDifficulty(final Map<ICreature, CreatureEncounterPanel> creatures)
+	public EncounterAnalysis(final Map<ICreature, CreatureEncounterPanel> creatures)
 	{
 		if (creatures == null)
 		{
