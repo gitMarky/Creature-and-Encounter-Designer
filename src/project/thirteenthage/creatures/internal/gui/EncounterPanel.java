@@ -17,6 +17,7 @@ import project.thirteenthage.creatures.internal.gui.views.AmountChoicePanel;
 import project.thirteenthage.creatures.internal.gui.views.CreatureEncounterPanel;
 import project.thirteenthage.creatures.internal.gui.views.EncounterDifficultyView;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
+import project.thirteenthage.creatures.mechanics.analysis.Encounter;
 import project.thirteenthage.creatures.mechanics.analysis.EncounterDifficulty;
 
 /**
@@ -124,8 +125,9 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		}
 		else
 		{
-			_difficulty = new EncounterDifficulty(_creatures);
-			_difficulty.setPlayerLevel(_playerLevel.getAmount());
+			Encounter encounter = new Encounter(_creatures);
+			encounter.setPlayerLevel(_playerLevel.getAmount());
+			_difficulty = new EncounterDifficulty(encounter);
 			_difficultyLabel.displayDifficulty(_difficulty.getEncounterDifficulty());
 		}
 

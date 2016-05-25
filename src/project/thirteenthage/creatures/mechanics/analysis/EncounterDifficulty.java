@@ -1,11 +1,8 @@
 package project.thirteenthage.creatures.mechanics.analysis;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Map.Entry;
 
 import project.thirteenthage.creatures.creature.CreatureSize;
-import project.thirteenthage.creatures.internal.gui.views.CreatureEncounterPanel;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 
 /**
@@ -13,55 +10,19 @@ import project.thirteenthage.creatures.internal.interfaces.ICreature;
  */
 public class EncounterDifficulty
 {
-	private final Map<ICreature, Integer> _amount = new HashMap<ICreature, Integer>();
-	private int _level = 1;
+	private final Encounter _encounter;
 
-
-	public EncounterDifficulty(final Map<ICreature, CreatureEncounterPanel> creatures)
+	public EncounterDifficulty(final Encounter encounter)
 	{
-		if (creatures == null)
-		{
-			throw new IllegalArgumentException("Parameter 'creatures' must not be null.");
-		}
-
-		for (final Entry<ICreature, CreatureEncounterPanel> entry : creatures.entrySet())
-		{
-			addCreature(entry.getKey(), entry.getValue().getAmount());
-		}
+		_encounter = encounter;
 	}
 
-
-	public void addCreature(final ICreature creature, final int amount)
-	{
-		if (creature == null)
-		{
-			throw new IllegalArgumentException("Creature must not be null");
-		}
-		if (amount < 1)
-		{
-			throw new IllegalArgumentException("You have to add at least one creature, added " + amount);
-		}
-
-		_amount.put(creature, amount);
-	}
-
-
-	public void setPlayerLevel(final int level)
-	{
-		if (level < 1)
-		{
-			throw new IllegalArgumentException("Player level has to be at least 1, got " + level);
-		}
-
-		_level = level;
-	}
-
-
+	
 	public double getEncounterDifficulty()
 	{
 		double difficulty = 0;
 
-		for (final Entry<ICreature, Integer> entry : _amount.entrySet())
+		for (final Entry<ICreature, Integer> entry : _encounter.getOpposition().entrySet())
 		{
 			difficulty += entry.getValue() * getCreatureDifficulty(entry.getKey());
 		}
@@ -77,12 +38,12 @@ public class EncounterDifficulty
 			throw new IllegalArgumentException("Parameter 'creature' must not be null.");
 		}
 
-		int levelDifference = creature.getLevel() - _level;
+		int levelDifference = creature.getLevel() - _encounter.getPlayerLevel();
 
-		if (_level >= 5) levelDifference -= 1; // monsters for champion battles
+		if (_encounter.getPlayerLevel() >= 5) levelDifference -= 1; // monsters for champion battles
 		// are fair if
 		// level is one higher
-		if (_level >= 8) levelDifference -= 2; // same goes for epic battles,
+		if (_encounter.getPlayerLevel() >= 8) levelDifference -= 2; // same goes for epic battles,
 		// with 2 levels
 		// instead
 
@@ -103,7 +64,7 @@ public class EncounterDifficulty
 		switch (row)
 		{
 			case -1:
-				difficulty = 0.5 / _level; // add a default for lower levels.
+				difficulty = 0.5 / _encounter.getPlayerLevel(); // add a default for lower levels.
 				break;
 			case 0:
 				difficulty = 0.5;
