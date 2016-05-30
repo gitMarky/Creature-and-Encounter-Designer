@@ -12,7 +12,7 @@ class CombatMonster extends AbstractCombattant
 	}
 
 	@Override
-	public int getDamage(final ICreature target, final int escalationDie)
+	public int getDamage(final ICreature target, final int escalationDie, final AnalysisMode mode)
 	{
 		int attackBonus = getCreature().getAttacks().get(0).getAttackBonus();
 		int damage = Conversions.round(getCreature().getAttacks().get(0).getDamageFactor());

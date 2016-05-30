@@ -13,6 +13,8 @@ public class Combat
 	private final List<ICombattant> _monsters;
 	private boolean _isResolved = false;
 	private int _round = 0;
+	
+	private AnalysisMode _mode = AnalysisMode.AVERAGE;
 
 
 	public Combat(List<ICombattant> players, List<ICombattant> monsters)
@@ -26,8 +28,8 @@ public class Combat
 	{
 		assertNotResolved();
 
-		initializeCombattants(_players);
-		initializeCombattants(_monsters);
+		initializeCombattants(_players, _mode == AnalysisMode.MONSTER_SURVIVAL);
+		initializeCombattants(_monsters, _mode == AnalysisMode.PLAYER_SURVIVAL);
 
 		_round = 0;
 		while(!_isResolved)
@@ -50,11 +52,15 @@ public class Combat
 	}
 
 
-	private void initializeCombattants(List<ICombattant> creatures)
+	private void initializeCombattants(final List<ICombattant> creatures, final boolean invulnerable)
 	{
 		for (final ICombattant creature : creatures)
 		{
 			creature.initialize();
+			if (invulnerable)
+			{
+				creature.setInvulnerable();
+			}
 		}
 	}
 
@@ -63,9 +69,6 @@ public class Combat
 	{
 		ApplicationLogger.getLogger().info(">> Starting combat round " + round);;
 		
-		//final Stack<ICombattant> players = getStack(_players);
-		//final Stack<ICombattant> monsters = getStack(_monsters);
-
 		// give the players a little edge, to account for recoveries, special
 		// items
 		// and other stuff that is not accounted for in the average player
@@ -107,7 +110,7 @@ public class Combat
 		// do nothing if there is no target
 		if (target == null) return;
 		
-		int damage = attacker.getDamage(target.getCreature(), escalationDie);
+		int damage = attacker.getDamage(target.getCreature(), escalationDie, _mode);
 		ApplicationLogger.getLogger().info(attacker.getName() + " hits " + target.getName() + " for " + damage + " damage");
 		target.takeDamage(damage);
 	}
@@ -133,5 +136,11 @@ public class Combat
 	private void assertNotResolved()
 	{
 		if (_isResolved) throw new IllegalStateException("The combat was resolved already.");
+	}
+
+
+	public void setMode(AnalysisMode mode)
+	{
+		_mode = mode;
 	}
 }

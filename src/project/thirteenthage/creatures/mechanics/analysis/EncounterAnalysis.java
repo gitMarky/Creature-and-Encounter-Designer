@@ -12,6 +12,14 @@ import project.thirteenthage.creatures.player.PlayerCharacter;
 
 /**
  * Calculates the encounter difficulty.
+ * 
+ * Criteria:
+ * - player side max survival
+ * - player side min survival
+ * - monster side max survival
+ * - monster side min survival
+ * - expected survival
+ * - player characters / monsters hp left
  */
 public class EncounterAnalysis
 {
@@ -46,7 +54,16 @@ public class EncounterAnalysis
 		}
 
 		final Combat combat = new Combat(players2, monsters2);
+		combat.setMode(AnalysisMode.AVERAGE);
 		combat.resolve();
+
+		final Combat player_survival = new Combat(players2, monsters2);
+		player_survival.setMode(AnalysisMode.PLAYER_SURVIVAL);
+		player_survival.resolve();
+	
+		final Combat monster_survival = new Combat(players2, monsters2);
+		monster_survival.setMode(AnalysisMode.MONSTER_SURVIVAL);
+		monster_survival.resolve();
 	}
 
 

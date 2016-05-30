@@ -31,14 +31,22 @@ public class CombatTest
 		monsters.add(new CombatMonster(human_thug));
 		monsters.add(new CombatMonster(human_thug));
 		monsters.add(new CombatMonster(human_thug));
-		monsters.add(new CombatMonster(human_thug));
-		monsters.add(new CombatMonster(human_thug));
-		monsters.add(new CombatMonster(human_thug));
-		monsters.add(new CombatMonster(human_thug));
 		
 		Combat combat = new Combat(players, monsters);
 		combat.resolve();
+		
+		final Combat player_survival = new Combat(players, monsters);
+		player_survival.setMode(AnalysisMode.PLAYER_SURVIVAL);
+		player_survival.resolve();
+	
+		final Combat monster_survival = new Combat(players, monsters);
+		monster_survival.setMode(AnalysisMode.MONSTER_SURVIVAL);
+		monster_survival.resolve();
+
+		
 		System.out.println("Combat was over in round:" + combat.getLastRound());
+		System.out.println("Combat was over in round:" + player_survival.getLastRound());
+		System.out.println("Combat was over in round:" + monster_survival.getLastRound());
 	}
 
 }

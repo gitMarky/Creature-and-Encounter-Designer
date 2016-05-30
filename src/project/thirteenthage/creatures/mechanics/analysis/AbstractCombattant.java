@@ -11,31 +11,34 @@ public abstract class AbstractCombattant implements ICombattant
 	private final ICreature _creature;
 	private int _hp = 0;
 	private String _name;
-	
+	private boolean _invulnerable = false;
+
+
 	public AbstractCombattant(ICreature creature)
 	{
 		_creature = creature;
 		_name = creature.getName() + creature.toString().substring(creature.toString().lastIndexOf("@"));
 	}
-	
-	
+
+
 	public ICreature getCreature()
 	{
 		return _creature;
-	}	
+	}
 
 
 	@Override
 	public void initialize()
 	{
 		_hp = Conversions.round(getCreature().getHP());
+		_invulnerable = false;
 	}
 
 
 	@Override
 	public boolean isAlive()
 	{
-		return _hp > 0;
+		return _invulnerable || _hp > 0;
 	}
 
 
@@ -59,5 +62,12 @@ public abstract class AbstractCombattant implements ICombattant
 	public void setName(final String name)
 	{
 		_name = name;
+	}
+
+
+	@Override
+	public void setInvulnerable()
+	{
+		_invulnerable = true;
 	}
 }

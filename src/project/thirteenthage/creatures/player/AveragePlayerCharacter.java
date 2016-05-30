@@ -115,8 +115,7 @@ public class AveragePlayerCharacter extends PlayerCharacter
 		double mod = Math.max(1, (getLevel() + 1) / 3);
 
 		double damage = dice + getDamageModifier() * mod;
-		return damage * (withPowers ? 1.5 : 1.0); // multiply with 1.5 for
-													// powers
+		return damage;
 	}
 
 
