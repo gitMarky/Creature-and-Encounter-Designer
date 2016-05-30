@@ -1,151 +1,64 @@
 package project.thirteenthage.creatures.mechanics.analysis;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import project.thirteenthage.creatures.creature.CreatureSize;
-import project.thirteenthage.creatures.internal.gui.views.CreatureEncounterPanel;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
+import project.thirteenthage.creatures.player.AveragePlayerCharacter;
+import project.thirteenthage.creatures.player.PlayerCharacter;
+
 
 /**
  * Calculates the encounter difficulty.
  */
 public class EncounterAnalysis
 {
-	private final Map<ICreature, Integer> _amount = new HashMap<ICreature, Integer>();
-	private int _level = 1;
-	private int _players = 1;
+	private final Encounter _encounter;
 
-
-	public EncounterAnalysis(final Map<ICreature, CreatureEncounterPanel> creatures)
+	public EncounterAnalysis(final Encounter encounter)
 	{
-		if (creatures == null)
+		_encounter = encounter;
+	}
+	
+	
+	public void analyze()
+	{
+		final List<PlayerCharacter> players = initializePlayers();
+		
+		Map<ICreature, Integer> monsters = _encounter.getOpposition();
+
+		final List<ICombattant> players2 = new ArrayList<ICombattant>();
+		final List<ICombattant> monsters2 = new ArrayList<ICombattant>();
+		
+		for (final PlayerCharacter player : players)
 		{
-			throw new IllegalArgumentException("Parameter 'creatures' must not be null.");
+			players2.add(new CombatPlayer(player));
+		}
+		
+		for (Entry<ICreature, Integer> entry : monsters.entrySet())
+		{
+			for (int i = 0; i < entry.getValue(); ++i)
+			{
+				monsters2.add(new CombatMonster(entry.getKey()));
+			}
 		}
 
-		for (final Entry<ICreature, CreatureEncounterPanel> entry : creatures.entrySet())
-		{
-			addCreature(entry.getKey(), entry.getValue().getAmount());
-		}
+		final Combat combat = new Combat(players2, monsters2);
+		combat.resolve();
 	}
 
 
-	public void addCreature(final ICreature creature, final int amount)
+	private List<PlayerCharacter> initializePlayers()
 	{
-		if (creature == null)
+		final List<PlayerCharacter> players = new ArrayList<PlayerCharacter>();
+		
+		for (int i = 0; i < _encounter.getPlayerAmount(); ++i)
 		{
-			throw new IllegalArgumentException("Creature must not be null");
+			players.add(new AveragePlayerCharacter());
 		}
-		if (amount < 1)
-		{
-			throw new IllegalArgumentException("You have to add at least one creature, added " + amount);
-		}
-
-		_amount.put(creature, amount);
-	}
-
-
-	public void setPlayerLevel(final int level)
-	{
-		if (level < 1)
-		{
-			throw new IllegalArgumentException("Player level has to be at least 1, got " + level);
-		}
-
-		_level = level;
-	}
-
-
-	public double getEncounterDifficulty()
-	{
-		double difficulty = 0;
-
-		for (final Entry<ICreature, Integer> entry : _amount.entrySet())
-		{
-			difficulty += entry.getValue() * getCreatureDifficulty(entry.getKey());
-		}
-
-		return difficulty;
-	}
-
-
-	private double getCreatureDifficulty(final ICreature creature)
-	{
-		if (creature == null)
-		{
-			throw new IllegalArgumentException("Parameter 'creature' must not be null.");
-		}
-
-		int levelDifference = creature.getLevel() - _level;
-
-		if (_level >= 5) levelDifference -= 1; // monsters for champion battles
-		// are fair if
-		// level is one higher
-		if (_level >= 8) levelDifference -= 2; // same goes for epic battles,
-		// with 2 levels
-		// instead
-
-		return getDifficultyTable(levelDifference, creature.getSize(), creature.isMook());
-	}
-
-
-	private double getDifficultyTable(final int levelDifference, final CreatureSize size, final boolean mook)
-	{
-		if (size == null)
-		{
-			throw new IllegalArgumentException("Parameter 'size' must not be null.");
-		}
-
-		final int row = Math.min(Math.max(levelDifference + 2, -1), 7);
-
-		double difficulty = 1.0;
-		switch (row)
-		{
-			case -1:
-				difficulty = 0.5 / _level; // add a default for lower levels.
-				break;
-			case 0:
-				difficulty = 0.5;
-				break;
-			case 1:
-				difficulty = 0.7;
-				break;
-			case 2:
-				difficulty = 1.0;
-				break;
-			case 3:
-				difficulty = 1.5;
-				break;
-			case 4:
-				difficulty = 2.0;
-				break;
-			case 5:
-				difficulty = 3.0;
-				break;
-			case 6:
-				difficulty = 4.0;
-				break;
-			case 7:
-				difficulty = 6.0;
-				break;
-		}
-
-		if (size == CreatureSize.LARGE)
-		{
-			difficulty *= 2.0;
-		}
-		else if (size == CreatureSize.HUGE)
-		{
-			difficulty *= 3.0;
-		}
-
-		if (mook)
-		{
-			difficulty *= 0.2;
-		}
-
-		return difficulty;
+		
+		return players;
 	}
 }
