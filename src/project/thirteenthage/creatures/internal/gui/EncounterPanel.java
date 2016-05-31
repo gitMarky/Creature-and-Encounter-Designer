@@ -19,6 +19,7 @@ import project.thirteenthage.creatures.internal.gui.views.EncounterAnalysisView;
 import project.thirteenthage.creatures.internal.gui.views.EncounterDifficultyView;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.mechanics.analysis.Encounter;
+import project.thirteenthage.creatures.mechanics.analysis.EncounterAnalysis;
 import project.thirteenthage.creatures.mechanics.analysis.EncounterDifficulty;
 
 /**
@@ -131,6 +132,7 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		if (_creatures.isEmpty())
 		{
 			_difficultyLabel.displayDifficulty(Double.NaN);
+			_analysisLabel.displayNothing();
 		}
 		else
 		{
@@ -138,6 +140,11 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 			encounter.setPlayerLevel(_playerLevel.getAmount());
 			_difficulty = new EncounterDifficulty(encounter);
 			_difficultyLabel.displayDifficulty(_difficulty.getEncounterDifficulty());
+			
+			EncounterAnalysis analysis = new EncounterAnalysis(encounter);
+			analysis.analyze();
+			
+			_analysisLabel.displayAnalysis(analysis);
 		}
 
 		if (CreatureGui.GUI != null) CreatureGui.GUI.updateView();
