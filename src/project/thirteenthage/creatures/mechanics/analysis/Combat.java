@@ -46,9 +46,15 @@ public class Combat
 	}
 	
 	
-	public String getReport()
+	public List<ICombattant> getPlayers()
 	{
-		return null;
+		return _players;
+	}
+	
+	
+	public List<ICombattant> getMonsters()
+	{
+		return _monsters;
 	}
 
 

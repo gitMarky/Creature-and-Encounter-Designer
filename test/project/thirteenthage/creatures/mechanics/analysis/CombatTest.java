@@ -45,8 +45,24 @@ public class CombatTest
 
 		
 		System.out.println("Combat was over in round:" + combat.getLastRound());
-		System.out.println("Combat was over in round:" + player_survival.getLastRound());
-		System.out.println("Combat was over in round:" + monster_survival.getLastRound());
+		System.out.println("Players would survive rounds:" + player_survival.getLastRound());
+		System.out.println("Monsters would survive rounds:" + monster_survival.getLastRound());
+		
+		StringBuilder hpPlayers = new StringBuilder("Players are left with HP:");
+		for (final ICombattant player: combat.getPlayers())
+		{
+			hpPlayers.append("\n* " + player.getName() + ": " + player.getHP() + " HP");
+		}
+		
+
+		StringBuilder hpMonsters = new StringBuilder("Monsters are left with HP:");
+		for (final ICombattant monster: combat.getMonsters())
+		{
+			hpMonsters.append("\n* " + monster.getName() + ": " + monster.getHP() + " HP");
+		}
+		
+		System.out.println(hpPlayers.toString());
+		System.out.println(hpMonsters.toString());
 	}
 
 }

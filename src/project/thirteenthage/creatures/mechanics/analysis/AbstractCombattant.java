@@ -17,7 +17,15 @@ public abstract class AbstractCombattant implements ICombattant
 	public AbstractCombattant(ICreature creature)
 	{
 		_creature = creature;
-		_name = creature.getName() + creature.toString().substring(creature.toString().lastIndexOf("@"));
+		//String objectNumber = creature.toString().substring(creature.toString().lastIndexOf("@") + 1);
+		String objectNumber = this.toString().substring(this.toString().lastIndexOf("@") + 1);
+		
+		while(objectNumber.length() < 8)
+		{
+			objectNumber = " " + objectNumber;
+		}
+		
+		_name = creature.getName() + " " + objectNumber;
 	}
 
 
@@ -69,5 +77,12 @@ public abstract class AbstractCombattant implements ICombattant
 	public void setInvulnerable()
 	{
 		_invulnerable = true;
+	}
+	
+	
+	@Override
+	public int getHP()
+	{
+		return _hp;
 	}
 }

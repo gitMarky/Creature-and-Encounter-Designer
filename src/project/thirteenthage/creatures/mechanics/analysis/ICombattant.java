@@ -19,4 +19,6 @@ public interface ICombattant
 	void setName(final String name);
 
 	void setInvulnerable();
+
+	int getHP();
 }
