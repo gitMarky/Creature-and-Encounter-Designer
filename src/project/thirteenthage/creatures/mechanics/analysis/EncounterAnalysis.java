@@ -9,42 +9,43 @@ import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.player.AveragePlayerCharacter;
 import project.thirteenthage.creatures.player.PlayerCharacter;
 
-
 /**
  * Calculates the encounter difficulty.
  * 
- * Criteria:
- * - player side max survival
- * - player side min survival
- * - monster side max survival
- * - monster side min survival
- * - expected survival
- * - player characters / monsters hp left
+ * Criteria: - player side max survival - player side min survival - monster
+ * side max survival - monster side min survival - expected survival - player
+ * characters / monsters hp left
  */
 public class EncounterAnalysis
 {
 	private final Encounter _encounter;
+	private int _combatRoundsAverage = 0;
+	private int _combatRoundsPlayerSurvival = 0;
+	private int _combatRoundsMonsterSurvival = 0;
+	private List<String> _combatHPaveragePlayers = new ArrayList<String>();
+	private List<String> _combatHPaverageMonsters = new ArrayList<String>();
+
 
 	public EncounterAnalysis(final Encounter encounter)
 	{
 		_encounter = encounter;
 	}
-	
-	
+
+
 	public void analyze()
 	{
 		final List<PlayerCharacter> players = initializePlayers();
-		
+
 		Map<ICreature, Integer> monsters = _encounter.getOpposition();
 
 		final List<ICombattant> players2 = new ArrayList<ICombattant>();
 		final List<ICombattant> monsters2 = new ArrayList<ICombattant>();
-		
+
 		for (final PlayerCharacter player : players)
 		{
 			players2.add(new CombatPlayer(player));
 		}
-		
+
 		for (Entry<ICreature, Integer> entry : monsters.entrySet())
 		{
 			for (int i = 0; i < entry.getValue(); ++i)
@@ -60,22 +61,70 @@ public class EncounterAnalysis
 		final Combat player_survival = new Combat(players2, monsters2);
 		player_survival.setMode(AnalysisMode.PLAYER_SURVIVAL);
 		player_survival.resolve();
-	
+
 		final Combat monster_survival = new Combat(players2, monsters2);
 		monster_survival.setMode(AnalysisMode.MONSTER_SURVIVAL);
 		monster_survival.resolve();
+
+		_combatRoundsAverage = combat.getLastRound();
+		_combatRoundsPlayerSurvival = player_survival.getLastRound();
+		_combatRoundsMonsterSurvival = monster_survival.getLastRound();
+
+		_combatHPaveragePlayers = getPartyHP(combat.getPlayers());
+		_combatHPaverageMonsters = getPartyHP(combat.getMonsters());
 	}
 
 
 	private List<PlayerCharacter> initializePlayers()
 	{
 		final List<PlayerCharacter> players = new ArrayList<PlayerCharacter>();
-		
+
 		for (int i = 0; i < _encounter.getPlayerAmount(); ++i)
 		{
 			players.add(new AveragePlayerCharacter());
 		}
-		
+
 		return players;
+	}
+
+
+	public int getAverageCombatRounds()
+	{
+		return _combatRoundsAverage;
+	}
+
+
+	public int getPlayerSurvivalRounds()
+	{
+		return _combatRoundsPlayerSurvival;
+	}
+
+
+	public int getMonsterSurvivalRounds()
+	{
+		return _combatRoundsMonsterSurvival;
+	}
+
+
+	public List<String> getAverageCombatPlayerHP()
+	{
+		return _combatHPaveragePlayers;
+	}
+
+
+	public List<String> getAverageCombatMonsterHP()
+	{
+		return _combatHPaverageMonsters;
+	}
+
+
+	private List<String> getPartyHP(final List<ICombattant> party)
+	{
+		final List<String> list = new ArrayList<String>();
+		for (final ICombattant player : party)
+		{
+			list.add("* " + player.getName() + ": " + player.getHP() + " HP");
+		}
+		return list;
 	}
 }
