@@ -1,3 +1,11 @@
+- Encounter analysis handles mooks correctly
+- Encounter analysis supports several players
+
+
+--------
+
+
+
 Giant Scorpion
 Hunting Spider
 Giant Web Spider
