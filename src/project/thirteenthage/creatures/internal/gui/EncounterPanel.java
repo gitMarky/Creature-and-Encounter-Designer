@@ -15,6 +15,7 @@ import project.thirteenthage.creatures.interfaces.IView;
 import project.thirteenthage.creatures.internal.Constants;
 import project.thirteenthage.creatures.internal.gui.views.AmountChoicePanel;
 import project.thirteenthage.creatures.internal.gui.views.CreatureEncounterPanel;
+import project.thirteenthage.creatures.internal.gui.views.EncounterAnalysisView;
 import project.thirteenthage.creatures.internal.gui.views.EncounterDifficultyView;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.mechanics.analysis.Encounter;
@@ -32,6 +33,7 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 	private final JLabel _creatureListEmpty = new JLabel("No creatures were added to the encounter yet");
 	private final EncounterDifficultyView _difficultyLabel = new EncounterDifficultyView();
 	private final AmountChoicePanel _playerLevel = new AmountChoicePanel("Player level");
+	private final EncounterAnalysisView _analysisLabel = new EncounterAnalysisView();
 
 	private final JButton _clearButton = new JButton("Clear");
 
@@ -45,6 +47,8 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		_creatureListPanel.setBorder(BorderFactory.createTitledBorder("Creatures"));
 		_creatureListPanel.setLayout(new BoxLayout(_creatureListPanel, BoxLayout.Y_AXIS));
 		_creatureListPanel.setAutoscrolls(true);
+		
+		_analysisLabel.setBorder(BorderFactory.createTitledBorder("Analysis"));
 
 		clearCreatures();
 
@@ -57,9 +61,14 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		_playerLevel.setUpdateView(this);
 		_playerLevel.setBounds(Constants.MIN_PLAYER_LEVEL, Constants.MAX_PLAYER_LEVEL);
 
+		JPanel innerPanel = new JPanel();
+		innerPanel.setLayout(new BoxLayout(innerPanel, BoxLayout.X_AXIS));
+
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.add(_buttonPanel);
-		this.add(_creatureListPanel);
+		innerPanel.add(_creatureListPanel);
+		innerPanel.add(_analysisLabel);
+		this.add(innerPanel);
 		this.setBorder(BorderFactory.createTitledBorder("Encounter"));
 	}
 
