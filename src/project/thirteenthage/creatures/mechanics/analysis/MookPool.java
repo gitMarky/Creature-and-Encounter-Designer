@@ -40,14 +40,27 @@ public class MookPool
 	
 	public void takeDamage(final int damage)
 	{
+		ICombattant target = null;
 		for (final ICombattant mook : _mooks)
 		{
 			if (mook.isAlive())
 			{
-				mook.takeDamage(damage);
-				ApplicationLogger.getLogger().info("Redirecting " + damage + " damage to other mook " + mook.getHP() + "HP left");
-				break;
+				if (target == null || mook.getHP() < target.getHP())
+				{
+					target = mook;
+				}
 			}
+			//ApplicationLogger.getLogger().info("* Mook pool cannot redirect to " + mook.toString());
+		}
+		
+		if (target != null)
+		{
+			target.takeDamage(damage);
+			ApplicationLogger.getLogger().info("Redirecting " + damage + " damage to other mook " + target.getHP() + " HP left");
+		}
+		else
+		{
+			ApplicationLogger.getLogger().info("Mook pool " + this.toString() + " was destroyed");
 		}
 	}
 }

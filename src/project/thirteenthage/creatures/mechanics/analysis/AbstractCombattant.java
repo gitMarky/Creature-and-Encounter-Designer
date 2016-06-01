@@ -50,7 +50,7 @@ public abstract class AbstractCombattant implements ICombattant
 
 	@Override
 	public void takeDamage(final int damage)
-	{
+	{	
 		_hp -= damage;
 		
 		if (!_invulnerable && _hp < 0 && getCreature().isMook() && _mookPool != null)
