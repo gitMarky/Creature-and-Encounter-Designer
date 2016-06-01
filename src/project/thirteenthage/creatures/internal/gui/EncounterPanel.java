@@ -1,5 +1,7 @@
 package project.thirteenthage.creatures.internal.gui;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -57,11 +59,25 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 
 		// set up buttons
 		_clearButton.addActionListener(this);
-		_buttonPanel.add(_clearButton);
-		_buttonPanel.add(_difficultyLabel);
-		_buttonPanel.add(_playerLevel);
-		_buttonPanel.add(_playerAmount);
-		_buttonPanel.add(_analysisLabel);
+		
+		JPanel innerButtonPanel = new JPanel();
+		innerButtonPanel.setLayout(new BoxLayout(innerButtonPanel, BoxLayout.Y_AXIS));
+		
+		
+		innerButtonPanel.add(_clearButton);
+		innerButtonPanel.add(_difficultyLabel);
+		innerButtonPanel.add(_playerLevel);
+		innerButtonPanel.add(_playerAmount);
+		
+		JScrollPane analysisScrollBar = new JScrollPane(_analysisLabel);
+		
+		//innerButtonPanel.setPreferredSize(new Dimension((StyleConstants.CREATURE_EDIT_PANEL_WIDTH * 4 / 10) * 2, StyleConstants.CREATURE_VIEW_PANEL_HEIGHT));
+		//_analysisLabel.setPreferredSize(new Dimension((StyleConstants.CREATURE_EDIT_PANEL_WIDTH * 6 / 10) * 2, StyleConstants.CREATURE_VIEW_PANEL_HEIGHT));
+		analysisScrollBar.setPreferredSize(new Dimension(StyleConstants.CREATURE_EDIT_PANEL_WIDTH, StyleConstants.CREATURE_VIEW_PANEL_HEIGHT));
+		
+		_buttonPanel.setLayout(new BoxLayout(_buttonPanel, BoxLayout.X_AXIS));
+		_buttonPanel.add(innerButtonPanel);
+		_buttonPanel.add(analysisScrollBar);
 
 		_playerLevel.setUpdateView(this);
 		_playerLevel.setBounds(Constants.MIN_PLAYER_LEVEL, Constants.MAX_PLAYER_LEVEL);
@@ -69,16 +85,10 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		_playerAmount.setUpdateView(this);
 		_playerAmount.setBounds(Constants.MIN_PLAYER_AMOUNT, Constants.MAX_PLAYER_AMOUNT);
 
-		//JPanel innerPanel = new JPanel();
-		//innerPanel.setLayout(new BoxLayout(innerPanel, BoxLayout.X_AXIS));
-
 		JScrollPane creatureScrollBar = new JScrollPane(_creatureListPanel);
 		
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.add(_buttonPanel);
-//		innerPanel.add(_creatureListPanel);
-//		innerPanel.add(_analysisLabel);
-//		this.add(innerPanel);
 		this.add(creatureScrollBar);
 		this.setBorder(BorderFactory.createTitledBorder("Encounter"));
 	}
