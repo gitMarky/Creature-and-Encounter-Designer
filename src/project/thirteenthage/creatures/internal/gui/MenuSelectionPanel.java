@@ -18,7 +18,7 @@ import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
 class MenuSelectionPanel extends JPanel implements IView
 {
 	private final JComboBox<MenuSelectionItem> _creatureList;
-	
+
 	private final LevelAdjustmentChoicePanel _levelAdjust = new LevelAdjustmentChoicePanel();
 
 

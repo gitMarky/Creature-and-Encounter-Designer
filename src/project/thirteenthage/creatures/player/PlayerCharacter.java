@@ -18,24 +18,28 @@ public abstract class PlayerCharacter implements ILeveledItem, ICreature
 	}
 
 
+	@Override
 	public int getAC()
 	{
 		return baseAC() + getACmodifier() + getLevel();
 	}
 
 
+	@Override
 	public int getPD()
 	{
 		return basePD() + getPDmodifier() + getLevel();
 	}
 
 
+	@Override
 	public int getMD()
 	{
 		return baseMD() + getMDmodifier() + getLevel();
 	}
 
 
+	@Override
 	public double getHP()
 	{
 		return (baseHP() + getConModifier()) * getHPlevelFactor();
@@ -49,7 +53,7 @@ public abstract class PlayerCharacter implements ILeveledItem, ICreature
 	}
 
 
-	public void setLevel(int level)
+	public void setLevel(final int level)
 	{
 		_level = Math.min(Math.max(1, level), 10);
 	}
@@ -129,14 +133,14 @@ public abstract class PlayerCharacter implements ILeveledItem, ICreature
 
 
 	@Override
-	public void setNastierSpecials(List<ISpecial> nastierSpecials)
+	public void setNastierSpecials(final List<ISpecial> nastierSpecials)
 	{
 		// TODO Auto-generated method stub
 	}
 
 
 	@Override
-	public void setSpecials(List<ISpecial> specials)
+	public void setSpecials(final List<ISpecial> specials)
 	{
 		// TODO Auto-generated method stub
 	}

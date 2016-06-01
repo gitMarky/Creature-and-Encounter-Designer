@@ -51,27 +51,26 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		_creatureListPanel.setBorder(BorderFactory.createTitledBorder("Creatures"));
 		_creatureListPanel.setLayout(new BoxLayout(_creatureListPanel, BoxLayout.Y_AXIS));
 		_creatureListPanel.setAutoscrolls(true);
-		
+
 		_analysisLabel.setBorder(BorderFactory.createTitledBorder("Analysis"));
 
 		clearCreatures();
 
 		// set up buttons
 		_clearButton.addActionListener(this);
-		
-		JPanel innerButtonPanel = new JPanel();
+
+		final JPanel innerButtonPanel = new JPanel();
 		innerButtonPanel.setLayout(new BoxLayout(innerButtonPanel, BoxLayout.Y_AXIS));
-		
-		
+
 		innerButtonPanel.add(_clearButton);
 		innerButtonPanel.add(_difficultyLabel);
 		innerButtonPanel.add(_playerLevel);
 		innerButtonPanel.add(_playerAmount);
-		
-		JScrollPane analysisScrollBar = new JScrollPane(_analysisLabel);
-		
+
+		final JScrollPane analysisScrollBar = new JScrollPane(_analysisLabel);
+
 		analysisScrollBar.setPreferredSize(new Dimension(StyleConstants.CREATURE_EDIT_PANEL_WIDTH, StyleConstants.CREATURE_VIEW_PANEL_HEIGHT));
-		
+
 		_buttonPanel.setLayout(new BoxLayout(_buttonPanel, BoxLayout.X_AXIS));
 		_buttonPanel.add(innerButtonPanel);
 		_buttonPanel.add(analysisScrollBar);
@@ -82,8 +81,8 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		_playerAmount.setUpdateView(this);
 		_playerAmount.setBounds(Constants.MIN_PLAYER_AMOUNT, Constants.MAX_PLAYER_AMOUNT);
 
-		JScrollPane creatureScrollBar = new JScrollPane(_creatureListPanel);
-		
+		final JScrollPane creatureScrollBar = new JScrollPane(_creatureListPanel);
+
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.add(_buttonPanel);
 		this.add(creatureScrollBar);
@@ -146,7 +145,6 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 			panel.updateView();
 		}
 
-		
 		if (_creatures.isEmpty())
 		{
 			_difficultyLabel.displayDifficulty(Double.NaN);
@@ -154,15 +152,15 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		}
 		else
 		{
-			Encounter encounter = new Encounter(_creatures);
+			final Encounter encounter = new Encounter(_creatures);
 			encounter.setPlayerLevel(_playerLevel.getAmount());
 			encounter.setPlayerAmount(_playerAmount.getAmount());
 			_difficulty = new EncounterDifficulty(encounter);
 			_difficultyLabel.displayDifficulty(_difficulty.getEncounterDifficulty());
-			
-			EncounterAnalysis analysis = new EncounterAnalysis(encounter);
+
+			final EncounterAnalysis analysis = new EncounterAnalysis(encounter);
 			analysis.analyze();
-			
+
 			_analysisLabel.displayAnalysis(analysis);
 		}
 

@@ -6,18 +6,19 @@ import project.thirteenthage.creatures.player.comparison.CreatureAttack;
 
 class CombatMonster extends AbstractCombattant
 {
-	public CombatMonster(ICreature creature)
+	public CombatMonster(final ICreature creature)
 	{
 		super(creature);
 	}
 
+
 	@Override
 	public int getDamage(final ICreature target, final int escalationDie, final AnalysisMode mode)
 	{
-		int attackBonus = getCreature().getAttacks().get(0).getAttackBonus();
-		int damage = Conversions.round(getCreature().getAttacks().get(0).getDamageFactor());
-		CreatureAttack attack = new CreatureAttack(attackBonus, damage);
-		
+		final int attackBonus = getCreature().getAttacks().get(0).getAttackBonus();
+		final int damage = Conversions.round(getCreature().getAttacks().get(0).getDamageFactor());
+		final CreatureAttack attack = new CreatureAttack(attackBonus, damage);
+
 		return Conversions.round(attack.expectedDamage(target.getAC()));
 	}
 }

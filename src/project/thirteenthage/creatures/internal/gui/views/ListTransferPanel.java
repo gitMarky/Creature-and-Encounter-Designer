@@ -55,7 +55,7 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 		}
 
 		final JPanel listContainerPanel = new JPanel();
-		
+
 		_listA = listA;
 		_listB = listB;
 

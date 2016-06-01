@@ -13,11 +13,11 @@ public class Combat
 	private final List<ICombattant> _monsters;
 	private boolean _isResolved = false;
 	private int _round = 0;
-	
+
 	private AnalysisMode _mode = AnalysisMode.AVERAGE;
 
 
-	public Combat(List<ICombattant> players, List<ICombattant> monsters)
+	public Combat(final List<ICombattant> players, final List<ICombattant> monsters)
 	{
 		_players = players;
 		_monsters = monsters;
@@ -32,26 +32,26 @@ public class Combat
 		initializeCombattants(_monsters, _mode == AnalysisMode.PLAYER_SURVIVAL);
 
 		_round = 0;
-		while(!_isResolved)
+		while (!_isResolved)
 		{
 			_round += 1;
 			resolveRound(_round);
 		}
 	}
-	
-	
+
+
 	public int getLastRound()
 	{
 		return _round;
 	}
-	
-	
+
+
 	public List<ICombattant> getPlayers()
 	{
 		return _players;
 	}
-	
-	
+
+
 	public List<ICombattant> getMonsters()
 	{
 		return _monsters;
@@ -73,8 +73,9 @@ public class Combat
 
 	private void resolveRound(final int round)
 	{
-		info(">> Starting combat round " + round);;
-		
+		info(">> Starting combat round " + round);
+		;
+
 		// give the players a little edge, to account for recoveries, special
 		// items
 		// and other stuff that is not accounted for in the average player
@@ -84,39 +85,39 @@ public class Combat
 		{
 			resolveAttack(_players.get(player), _monsters, player, escalationDie(round));
 		}
-		
+
 		// let the monsters attack
 
 		for (int monster = 0; monster < _monsters.size(); ++monster)
 		{
 			resolveAttack(_monsters.get(monster), _players, monster, escalationDie(round));
 		}
-		
+
 		_isResolved = isPartyEliminated(_players) || isPartyEliminated(_monsters);
 	}
 
 
-	private void resolveAttack(ICombattant attacker, List<ICombattant> targets, int index, final int escalationDie)
+	private void resolveAttack(final ICombattant attacker, final List<ICombattant> targets, final int index, final int escalationDie)
 	{
 		// the dead do not attack
 		if (!attacker.isAlive()) return;
-		
+
 		ICombattant target = null;
 		for (int i = 0; i < targets.size(); ++i)
 		{
-			ICombattant candidate = targets.get((index + i) % targets.size());
-			
+			final ICombattant candidate = targets.get((index + i) % targets.size());
+
 			if (candidate.isAlive())
 			{
 				target = candidate;
 				break;
 			}
 		}
-		
+
 		// do nothing if there is no target
 		if (target == null) return;
-		
-		int damage = attacker.getDamage(target.getCreature(), escalationDie, _mode);
+
+		final int damage = attacker.getDamage(target.getCreature(), escalationDie, _mode);
 		target.takeDamage(damage);
 		info(attacker.getName() + " hits " + target.getName() + " for " + damage + " damage -> " + target.getHP() + " HP left.");
 	}
@@ -124,25 +125,25 @@ public class Combat
 
 	private void info(final String message)
 	{
-		if (_mode == AnalysisMode.AVERAGE) ApplicationLogger.getLogger().info(message);		
+		if (_mode == AnalysisMode.AVERAGE) ApplicationLogger.getLogger().info(message);
 	}
 
 
-	private boolean isPartyEliminated(List<ICombattant> party)
+	private boolean isPartyEliminated(final List<ICombattant> party)
 	{
 		for (final ICombattant member : party)
 		{
 			if (member.isAlive()) return false;
 		}
-		
+
 		return true;
 	}
 
 
-	private int escalationDie(int round)
+	private int escalationDie(final int round)
 	{
 		return Math.min(Math.max(round, 0), 6);
-	}	
+	}
 
 
 	private void assertNotResolved()
@@ -151,7 +152,7 @@ public class Combat
 	}
 
 
-	public void setMode(AnalysisMode mode)
+	public void setMode(final AnalysisMode mode)
 	{
 		_mode = mode;
 	}

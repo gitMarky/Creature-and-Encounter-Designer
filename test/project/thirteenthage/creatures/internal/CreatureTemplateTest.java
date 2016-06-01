@@ -62,7 +62,7 @@ public class CreatureTemplateTest
 		System.out.println(xml.getAbsolutePath());
 
 		final CreatureTemplate template = new CreatureTemplate(xml);
-		ICreature rat = template.toCreature();
+		final ICreature rat = template.toCreature();
 
 		assertEquals("Dire Rat", rat.getName());
 		// assertEquals("Normal", rat.getSize());
@@ -76,14 +76,14 @@ public class CreatureTemplateTest
 
 		assertEquals(1, rat.getAttacks().size());
 		testAttack(rat.getAttacks().get(0), "Infected bite", 5, "AC", 4.0, "ongoing damage");
-		
-		ICreature rat2 = template.toCreature();
-		
+
+		final ICreature rat2 = template.toCreature();
+
 		assertTrue(rat2.equals(rat));
 	}
 
 
-	private void testAttack(IAttack attack, String name, int bonus, String defense, double damage, String description)
+	private void testAttack(final IAttack attack, final String name, final int bonus, final String defense, final double damage, final String description)
 	{
 		assertEquals(name, attack.getName());
 		assertEquals(bonus, attack.getAttackBonus());

@@ -1,6 +1,5 @@
 package project.thirteenthage.creatures.mechanics;
 
-
 /**
  * <p>
  * Adds a modifier to the level of a creature, based on how much it deviates
@@ -19,6 +18,7 @@ public final class LevelAdjustmentOriginal extends LevelAdjustmentBase
 	}
 
 
+	@Override
 	public double valueOfAttack(final int attack)
 	{
 		// a boost of +6 is worth one level
@@ -27,6 +27,7 @@ public final class LevelAdjustmentOriginal extends LevelAdjustmentBase
 	}
 
 
+	@Override
 	public double valueOfDefense(final int defense)
 	{
 		// a boost of +6 is worth one level
@@ -38,6 +39,7 @@ public final class LevelAdjustmentOriginal extends LevelAdjustmentBase
 	}
 
 
+	@Override
 	public double valueOfHP(final double hp)
 	{
 		double value = hp - 1.0; // offset first
@@ -45,8 +47,9 @@ public final class LevelAdjustmentOriginal extends LevelAdjustmentBase
 		value /= 6.0; // 6 x0.15 = 0.9, is about the same as twice the hp
 		return value;
 	}
-	
-	
+
+
+	@Override
 	public double valueOfDamage(final double damage)
 	{
 		return 0.0; // this is not possible in the original adjustment anyway

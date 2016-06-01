@@ -18,7 +18,7 @@ public class EncounterAnalysisView extends JLabel
 
 	public void displayAnalysis(final EncounterAnalysis analysis)
 	{
-		StringBuilder text = new StringBuilder();
+		final StringBuilder text = new StringBuilder();
 
 		text.append(Html.BEGIN);
 
@@ -35,16 +35,15 @@ public class EncounterAnalysisView extends JLabel
 		appendHP(text, analysis.getAverageCombatMonsterHP());
 
 		text.append(Html.END);
-		
+
 		setText(text.toString());
 	}
-	
-	
+
+
 	public void displayNothing()
 	{
 		setText("");
 	}
-	
 
 
 	private void appendHP(final StringBuilder text, final List<String> results)

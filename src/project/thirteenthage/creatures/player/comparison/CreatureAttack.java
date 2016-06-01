@@ -7,7 +7,7 @@ public class CreatureAttack extends AbstractEntityAttack
 		super(attackBonus, strikeDamage);
 	}
 
-	
+
 	@Override
 	protected double getMissDamage()
 	{

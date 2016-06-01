@@ -26,7 +26,8 @@ public class EncounterAnalysis
 	private List<String> _combatHPaveragePlayers = new ArrayList<String>();
 	private List<String> _combatHPaverageMonsters = new ArrayList<String>();
 
-	private Map<String, MookPool> _mookPool = new HashMap<String, MookPool>();
+	private final Map<String, MookPool> _mookPool = new HashMap<String, MookPool>();
+
 
 	public EncounterAnalysis(final Encounter encounter)
 	{
@@ -38,7 +39,7 @@ public class EncounterAnalysis
 	{
 		final List<PlayerCharacter> players = initializePlayers();
 
-		Map<ICreature, Integer> monsters = _encounter.getOpposition();
+		final Map<ICreature, Integer> monsters = _encounter.getOpposition();
 
 		final List<ICombattant> players2 = new ArrayList<ICombattant>();
 		final List<ICombattant> monsters2 = new ArrayList<ICombattant>();
@@ -48,26 +49,26 @@ public class EncounterAnalysis
 			players2.add(new CombatPlayer(player));
 		}
 
-		for (Entry<ICreature, Integer> entry : monsters.entrySet())
+		for (final Entry<ICreature, Integer> entry : monsters.entrySet())
 		{
 			for (int i = 0; i < entry.getValue(); ++i)
 			{
-				ICreature creature = entry.getKey();
-				
-				CombatMonster monster = new CombatMonster(creature);
+				final ICreature creature = entry.getKey();
+
+				final CombatMonster monster = new CombatMonster(creature);
 				monsters2.add(monster);
 
 				if (creature.isMook())
 				{
-					String id = creature.getTemplate().getName();
+					final String id = creature.getTemplate().getName();
 					MookPool pool = _mookPool.get(id);
-					
+
 					if (pool == null || !pool.canAddMook())
 					{
 						pool = new MookPool();
 						_mookPool.put(id, pool);
 					}
-					
+
 					pool.addMook(monster);
 				}
 			}
@@ -100,7 +101,7 @@ public class EncounterAnalysis
 
 		for (int i = 0; i < _encounter.getPlayerAmount(); ++i)
 		{
-			AveragePlayerCharacter player = new AveragePlayerCharacter();
+			final AveragePlayerCharacter player = new AveragePlayerCharacter();
 			player.setLevel(_encounter.getPlayerLevel());
 			players.add(player);
 		}

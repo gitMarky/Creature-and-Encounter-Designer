@@ -10,6 +10,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 import project.thirteenthage.creatures.interfaces.IView;
 import project.thirteenthage.creatures.internal.Html;
@@ -41,11 +42,10 @@ public class CreatureViewPanel extends JPanel implements IView
 	public CreatureViewPanel(final ICreature creature)
 	{
 		super();
-		
-		int preferredHeight = StyleConstants.CREATURE_VIEW_PANEL_HEIGHT;
-		int preferredWidth = StyleConstants.CREATURE_VIEW_PANEL_WIDTH;
 
-		
+		final int preferredHeight = StyleConstants.CREATURE_VIEW_PANEL_HEIGHT;
+		final int preferredWidth = StyleConstants.CREATURE_VIEW_PANEL_WIDTH;
+
 		if (creature == null)
 		{
 			throw new IllegalArgumentException("Parameter 'creature' must not be null.");
@@ -58,19 +58,18 @@ public class CreatureViewPanel extends JPanel implements IView
 		final JPanel blockPanel = new JPanel();
 		blockPanel.setLayout(new BoxLayout(blockPanel, BoxLayout.X_AXIS));
 
-
 		_infoPanel = new CreatureInfoPanel();
 		_attackPanel = new CreatureAttackPanel();
 		_statsPanel = new CreatureStatsPanel();
 		_nastierLabel.setBorder(StyleConstants.DEFAULT_EMPTY_BORDER);
-		
+
 		_infoPanel.setPreferredSize(new Dimension(preferredWidth * 12 / 100, preferredHeight));
 		_statsPanel.setPreferredSize(new Dimension(preferredWidth * 12 / 100, preferredHeight));
 		_attackPanel.setPreferredSize(new Dimension(preferredWidth * 70 / 100, preferredHeight));
 
 		final JScrollPane attackScrollbar = new JScrollPane(_attackPanel);
-		attackScrollbar.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		attackScrollbar.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		attackScrollbar.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		attackScrollbar.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		attackScrollbar.setPreferredSize(new Dimension(preferredWidth * 86 / 100, preferredHeight));
 
 		blockPanel.add(_infoPanel);

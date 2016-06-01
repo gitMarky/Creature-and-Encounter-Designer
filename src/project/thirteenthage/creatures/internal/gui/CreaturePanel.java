@@ -72,7 +72,7 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 		// creature view
 
 		_innerPanel.setLayout(new BoxLayout(_innerPanel, BoxLayout.X_AXIS));
-		//_innerPanel.add(_editPanel);
+		// _innerPanel.add(_editPanel);
 		_editScrollbar = new JScrollPane(_editPanel);
 		_editScrollbar.setPreferredSize(new Dimension(StyleConstants.CREATURE_EDIT_PANEL_WIDTH, StyleConstants.CREATURE_VIEW_PANEL_HEIGHT));
 		_innerPanel.add(_editScrollbar);
@@ -222,7 +222,6 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 			_saveButton.setEnabled(false);
 		}
 
-		
 		if (_panel != null) _panel.updateView();
 		if (CreatureGui.GUI != null) CreatureGui.GUI.updateView();
 	}
@@ -239,8 +238,8 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 			return !_isInEditMode && !CreatureLoader.getInstance().isCreatureLoaded(_selectedCreature);
 		}
 	}
-	
-	
+
+
 	public CreatureEditPanel getEditPanel()
 	{
 		return _editPanel;

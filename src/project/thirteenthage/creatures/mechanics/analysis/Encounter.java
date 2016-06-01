@@ -16,6 +16,7 @@ public class Encounter
 	private int _level = 1;
 	private int _players = 1;
 
+
 	public Encounter(final Map<ICreature, CreatureEncounterPanel> creatures)
 	{
 		if (creatures == null)
@@ -54,8 +55,8 @@ public class Encounter
 
 		_level = level;
 	}
-	
-	
+
+
 	public int getPlayerLevel()
 	{
 		return _level;
@@ -71,14 +72,14 @@ public class Encounter
 
 		_players = amount;
 	}
-	
-	
+
+
 	public int getPlayerAmount()
 	{
 		return _players;
 	}
-	
-	
+
+
 	public Map<ICreature, Integer> getOpposition()
 	{
 		return _amount;

@@ -15,6 +15,7 @@ import project.thirteenthage.creatures.internal.interfaces.ILevelAdjustment;
  */
 public abstract class LevelAdjustmentBase implements ILevelAdjustment
 {
+	@Override
 	public double getLevelAdjustmentFine(final int attack, final int ac, final int pd, final int md, final double hp, final double damage)
 	{
 		double adjustment = 0.0;
@@ -30,6 +31,7 @@ public abstract class LevelAdjustmentBase implements ILevelAdjustment
 	}
 
 
+	@Override
 	public int getLevelAdjustment(final int attack, final int ac, final int pd, final int md, final double hp, final double damage)
 	{
 		return Conversions.round(getLevelAdjustmentFine(attack, ac, pd, md, hp, damage));

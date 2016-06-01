@@ -110,11 +110,11 @@ public class AveragePlayerCharacter extends PlayerCharacter
 	{
 		// assume an average of D8 damage, with +3 damage
 
-		double base = 4.5;
-		double dice = base * getLevel();
-		double mod = Math.max(1, (getLevel() + 1) / 3);
+		final double base = 4.5;
+		final double dice = base * getLevel();
+		final double mod = Math.max(1, (getLevel() + 1) / 3);
 
-		double damage = dice + getDamageModifier() * mod;
+		final double damage = dice + getDamageModifier() * mod;
 		return damage;
 	}
 

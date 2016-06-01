@@ -11,10 +11,10 @@ public class AttackTemplateTest
 	@Test
 	public void testInfectedBite()
 	{
-		double exact = 1e-8;
+		final double exact = 1e-8;
 		final File xml = new File("resources/attacks/attack_infected_bite.xml");
 		System.out.println(xml.getAbsolutePath());
-		
+
 		final AttackTemplate attack = new AttackTemplate(xml);
 		assertEquals("Infected bite", attack.getName());
 		assertEquals(-1, attack.getAttackBonus());

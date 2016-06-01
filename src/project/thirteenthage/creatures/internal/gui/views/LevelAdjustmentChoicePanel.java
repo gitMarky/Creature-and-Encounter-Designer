@@ -57,7 +57,7 @@ public class LevelAdjustmentChoicePanel extends ChoicePanel implements ActionLis
 		}
 
 		updateView();
-		
+
 		CreatureGui.GUI.getCreaturePanel().getEditPanel().updateView();
 	}
 }

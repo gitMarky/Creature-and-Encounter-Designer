@@ -90,8 +90,6 @@ public interface ICreatureTemplate extends INamedItem, ILeveledItem
 	 * @return the modifier.
 	 */
 	double getModifierHP();
-	
-	
 
 
 	/**

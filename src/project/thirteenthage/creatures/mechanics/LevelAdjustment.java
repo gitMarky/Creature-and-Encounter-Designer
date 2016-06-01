@@ -37,12 +37,12 @@ public final class LevelAdjustment
 	{
 		return getInstance().getLevelAdjustment(attack, ac, pd, md, hp, damage);
 	}
-	
-	
+
+
 	public static void setUseOriginalCalculation(final boolean use)
 	{
 		_calculateOriginalValue = use;
-		
+
 		if (CreatureGui.GUI != null)
 		{
 			CreatureGui.GUI.getCreaturePanel().updateView();
@@ -55,8 +55,8 @@ public final class LevelAdjustment
 	{
 		return _calculateOriginalValue;
 	}
-	
-	
+
+
 	private static ILevelAdjustment getInstance()
 	{
 		if (useOriginalCalculation())

@@ -12,21 +12,24 @@ public abstract class AbstractCombattant implements ICombattant
 	private MookPool _mookPool = null;
 
 
-	public AbstractCombattant(ICreature creature)
+	public AbstractCombattant(final ICreature creature)
 	{
 		_creature = creature;
-		//String objectNumber = creature.toString().substring(creature.toString().lastIndexOf("@") + 1);
+		// String objectNumber =
+		// creature.toString().substring(creature.toString().lastIndexOf("@") +
+		// 1);
 		String objectNumber = this.toString().substring(this.toString().lastIndexOf("@") + 1);
-		
-		while(objectNumber.length() < 8)
+
+		while (objectNumber.length() < 8)
 		{
 			objectNumber = " " + objectNumber;
 		}
-		
+
 		_name = creature.getName() + " " + objectNumber;
 	}
 
 
+	@Override
 	public ICreature getCreature()
 	{
 		return _creature;
@@ -50,9 +53,9 @@ public abstract class AbstractCombattant implements ICombattant
 
 	@Override
 	public void takeDamage(final int damage)
-	{	
+	{
 		_hp -= damage;
-		
+
 		if (!_invulnerable && _hp < 0 && getCreature().isMook() && _mookPool != null)
 		{
 			_mookPool.takeDamage(-_hp);
@@ -79,15 +82,15 @@ public abstract class AbstractCombattant implements ICombattant
 	{
 		_invulnerable = true;
 	}
-	
-	
+
+
 	@Override
 	public void setMookPool(final MookPool pool)
 	{
 		_mookPool = pool;
 	}
-	
-	
+
+
 	@Override
 	public int getHP()
 	{
