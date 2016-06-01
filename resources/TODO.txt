@@ -1,9 +1,3 @@
-- Encounter analysis handles mooks correctly
-
---------
-
-
-
 Giant Scorpion
 Hunting Spider
 Giant Web Spider

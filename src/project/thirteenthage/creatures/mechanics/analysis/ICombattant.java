@@ -21,4 +21,6 @@ public interface ICombattant
 	void setInvulnerable();
 
 	int getHP();
+
+	void setMookPool(MookPool pool);
 }

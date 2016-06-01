@@ -1,6 +1,7 @@
 package project.thirteenthage.creatures.mechanics.analysis;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -25,6 +26,7 @@ public class EncounterAnalysis
 	private List<String> _combatHPaveragePlayers = new ArrayList<String>();
 	private List<String> _combatHPaverageMonsters = new ArrayList<String>();
 
+	private Map<String, MookPool> _mookPool = new HashMap<String, MookPool>();
 
 	public EncounterAnalysis(final Encounter encounter)
 	{
@@ -50,7 +52,24 @@ public class EncounterAnalysis
 		{
 			for (int i = 0; i < entry.getValue(); ++i)
 			{
-				monsters2.add(new CombatMonster(entry.getKey()));
+				ICreature creature = entry.getKey();
+				
+				CombatMonster monster = new CombatMonster(creature);
+				monsters2.add(monster);
+
+				if (creature.isMook())
+				{
+					String id = creature.getTemplate().getName();
+					MookPool pool = _mookPool.get(id);
+					
+					if (pool == null || !pool.canAddMook())
+					{
+						pool = new MookPool();
+						_mookPool.put(id, pool);
+					}
+					
+					pool.addMook(monster);
+				}
 			}
 		}
 

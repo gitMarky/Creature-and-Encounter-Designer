@@ -37,4 +37,6 @@ public class Constants
 	public static final int MIN_INITIATIVE = -1;
 
 	public static final int MAX_INITIATIVE = +9;
+
+	public static final int MAX_MOOK_POOL_SIZE = 5;
 }
