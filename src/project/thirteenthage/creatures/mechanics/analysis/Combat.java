@@ -73,7 +73,7 @@ public class Combat
 
 	private void resolveRound(final int round)
 	{
-		ApplicationLogger.getLogger().info(">> Starting combat round " + round);;
+		info(">> Starting combat round " + round);;
 		
 		// give the players a little edge, to account for recoveries, special
 		// items
@@ -117,8 +117,14 @@ public class Combat
 		if (target == null) return;
 		
 		int damage = attacker.getDamage(target.getCreature(), escalationDie, _mode);
-		ApplicationLogger.getLogger().info(attacker.getName() + " hits " + target.getName() + " for " + damage + " damage");
 		target.takeDamage(damage);
+		info(attacker.getName() + " hits " + target.getName() + " for " + damage + " damage -> " + target.getHP() + " HP left.");
+	}
+
+
+	private void info(final String message)
+	{
+		if (_mode == AnalysisMode.AVERAGE) ApplicationLogger.getLogger().info(message);		
 	}
 
 

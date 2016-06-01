@@ -34,6 +34,7 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 	private final JLabel _creatureListEmpty = new JLabel("No creatures were added to the encounter yet");
 	private final EncounterDifficultyView _difficultyLabel = new EncounterDifficultyView();
 	private final AmountChoicePanel _playerLevel = new AmountChoicePanel("Player level");
+	private final AmountChoicePanel _playerAmount = new AmountChoicePanel("Player amount");
 	private final EncounterAnalysisView _analysisLabel = new EncounterAnalysisView();
 
 	private final JButton _clearButton = new JButton("Clear");
@@ -58,9 +59,13 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		_buttonPanel.add(_clearButton);
 		_buttonPanel.add(_difficultyLabel);
 		_buttonPanel.add(_playerLevel);
+		_buttonPanel.add(_playerAmount);
 
 		_playerLevel.setUpdateView(this);
 		_playerLevel.setBounds(Constants.MIN_PLAYER_LEVEL, Constants.MAX_PLAYER_LEVEL);
+
+		_playerAmount.setUpdateView(this);
+		_playerAmount.setBounds(Constants.MIN_PLAYER_AMOUNT, Constants.MAX_PLAYER_AMOUNT);
 
 		JPanel innerPanel = new JPanel();
 		innerPanel.setLayout(new BoxLayout(innerPanel, BoxLayout.X_AXIS));
@@ -128,6 +133,7 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		{
 			panel.updateView();
 		}
+
 		
 		if (_creatures.isEmpty())
 		{
@@ -138,6 +144,7 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		{
 			Encounter encounter = new Encounter(_creatures);
 			encounter.setPlayerLevel(_playerLevel.getAmount());
+			encounter.setPlayerAmount(_playerAmount.getAmount());
 			_difficulty = new EncounterDifficulty(encounter);
 			_difficultyLabel.displayDifficulty(_difficulty.getEncounterDifficulty());
 			

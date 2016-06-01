@@ -58,6 +58,10 @@ public class EncounterAnalysis
 		combat.setMode(AnalysisMode.AVERAGE);
 		combat.resolve();
 
+		_combatRoundsAverage = combat.getLastRound();
+		_combatHPaveragePlayers = getPartyHP(combat.getPlayers());
+		_combatHPaverageMonsters = getPartyHP(combat.getMonsters());
+
 		final Combat player_survival = new Combat(players2, monsters2);
 		player_survival.setMode(AnalysisMode.PLAYER_SURVIVAL);
 		player_survival.resolve();
@@ -66,12 +70,8 @@ public class EncounterAnalysis
 		monster_survival.setMode(AnalysisMode.MONSTER_SURVIVAL);
 		monster_survival.resolve();
 
-		_combatRoundsAverage = combat.getLastRound();
 		_combatRoundsPlayerSurvival = player_survival.getLastRound();
 		_combatRoundsMonsterSurvival = monster_survival.getLastRound();
-
-		_combatHPaveragePlayers = getPartyHP(combat.getPlayers());
-		_combatHPaverageMonsters = getPartyHP(combat.getMonsters());
 	}
 
 
@@ -81,7 +81,9 @@ public class EncounterAnalysis
 
 		for (int i = 0; i < _encounter.getPlayerAmount(); ++i)
 		{
-			players.add(new AveragePlayerCharacter());
+			AveragePlayerCharacter player = new AveragePlayerCharacter();
+			player.setLevel(_encounter.getPlayerLevel());
+			players.add(player);
 		}
 
 		return players;

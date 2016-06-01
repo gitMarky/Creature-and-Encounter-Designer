@@ -1,8 +1,5 @@
 package project.thirteenthage.creatures.mechanics.analysis;
 
-import java.util.logging.Level;
-
-import project.thirteenthage.creatures.internal.ApplicationLogger;
 import project.thirteenthage.creatures.internal.conversions.Conversions;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 
@@ -54,8 +51,6 @@ public abstract class AbstractCombattant implements ICombattant
 	public void takeDamage(final int damage)
 	{
 		_hp -= damage;
-		ApplicationLogger.getLogger().setLevel(Level.ALL);
-		ApplicationLogger.getLogger().fine(this.getName() + " takes " + damage + " damage, has " + _hp + " HP left.");
 	}
 
 
