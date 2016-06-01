@@ -1,6 +1,5 @@
 package project.thirteenthage.creatures.internal.gui;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -71,8 +70,6 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		
 		JScrollPane analysisScrollBar = new JScrollPane(_analysisLabel);
 		
-		//innerButtonPanel.setPreferredSize(new Dimension((StyleConstants.CREATURE_EDIT_PANEL_WIDTH * 4 / 10) * 2, StyleConstants.CREATURE_VIEW_PANEL_HEIGHT));
-		//_analysisLabel.setPreferredSize(new Dimension((StyleConstants.CREATURE_EDIT_PANEL_WIDTH * 6 / 10) * 2, StyleConstants.CREATURE_VIEW_PANEL_HEIGHT));
 		analysisScrollBar.setPreferredSize(new Dimension(StyleConstants.CREATURE_EDIT_PANEL_WIDTH, StyleConstants.CREATURE_VIEW_PANEL_HEIGHT));
 		
 		_buttonPanel.setLayout(new BoxLayout(_buttonPanel, BoxLayout.X_AXIS));

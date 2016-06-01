@@ -1,6 +1,7 @@
 package project.thirteenthage.creatures.internal.gui.views;
 
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +12,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 import javax.swing.event.ListSelectionListener;
 
@@ -365,6 +367,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 			throw new IllegalArgumentException("Parameter 'listTransfer' must not be null.");
 		}
 
+		listTransfer.setLayout(new BoxLayout(listTransfer, BoxLayout.X_AXIS));
 		listTransfer.setUpdateView(this);
 		listTransfer.setLeftListLocked(true);
 		listTransfer.setLeftListUnique(true);
@@ -442,7 +445,11 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		}
 
 		innerPanel.setBorder(BorderFactory.createTitledBorder("Description"));
-		_listFrame.add(innerPanel);
+		
+		JScrollPane scrollBar = new JScrollPane(innerPanel);
+		scrollBar.setPreferredSize(new Dimension(500, 200));
+		
+		_listFrame.add(scrollBar);
 		listTransfer.getLeftList().addListSelectionListener(listener);
 		listTransfer.getRightList().addListSelectionListener(listener);
 	}

@@ -1,6 +1,6 @@
 package project.thirteenthage.creatures.internal.gui.views;
 
-import java.awt.GridLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -54,11 +54,11 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 			throw new IllegalArgumentException("Parameter 'listB' must not be null.");
 		}
 
+		final JPanel listContainerPanel = new JPanel();
+		
 		_listA = listA;
 		_listB = listB;
 
-		final JPanel listApanel = new JPanel();
-		final JPanel listBpanel = new JPanel();
 		final JPanel buttonPanel = new JPanel();
 
 		_listDisplayA = new JList<T>(_listModelA);
@@ -69,21 +69,17 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 		final JScrollPane listAscroller = new JScrollPane(_listDisplayA);
 		listAscroller.setWheelScrollingEnabled(false);
 		listAscroller.setEnabled(true);
-		listApanel.add(listAscroller);
 		listAscroller.setVisible(true);
 
 		final JScrollPane listBscroller = new JScrollPane(_listDisplayB);
 		listBscroller.setWheelScrollingEnabled(false);
 		listBscroller.setEnabled(true);
-		listBpanel.add(listBscroller);
 
 		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
 
 		_transferToListBbutton.addActionListener(this);
 		_transferToListAbutton.addActionListener(this);
 
-		listApanel.add(_listDisplayA);
-		listBpanel.add(_listDisplayB);
 		_listDisplayA.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		_listDisplayB.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		_listDisplayA.addListSelectionListener(this);
@@ -95,11 +91,16 @@ public class ListTransferPanel<T> extends ChoicePanel implements ActionListener,
 
 		updateListsModels();
 
-		this.setLayout(new GridLayout(1, 3));
-		this.add(listApanel);
-		this.add(buttonPanel);
-		this.add(listBpanel);
+		listContainerPanel.setLayout(new BoxLayout(listContainerPanel, BoxLayout.X_AXIS));
+		listContainerPanel.add(listAscroller);
+		listContainerPanel.add(buttonPanel);
+		listContainerPanel.add(listBscroller);
+		listContainerPanel.setPreferredSize(new Dimension(700, 200));
+		listAscroller.setPreferredSize(new Dimension(300, 200));
+		listBscroller.setPreferredSize(new Dimension(300, 200));
+		buttonPanel.setPreferredSize(new Dimension(100, 200));
 
+		this.add(listContainerPanel);
 	}
 
 
