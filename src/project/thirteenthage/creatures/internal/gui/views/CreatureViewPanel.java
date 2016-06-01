@@ -1,6 +1,7 @@
 package project.thirteenthage.creatures.internal.gui.views;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import project.thirteenthage.creatures.interfaces.IView;
 import project.thirteenthage.creatures.internal.Html;
@@ -39,6 +41,11 @@ public class CreatureViewPanel extends JPanel implements IView
 	public CreatureViewPanel(final ICreature creature)
 	{
 		super();
+		
+		int preferredHeight = 200;
+		int preferredWidth = 700;
+
+		
 		if (creature == null)
 		{
 			throw new IllegalArgumentException("Parameter 'creature' must not be null.");
@@ -51,13 +58,23 @@ public class CreatureViewPanel extends JPanel implements IView
 		final JPanel blockPanel = new JPanel();
 		blockPanel.setLayout(new BoxLayout(blockPanel, BoxLayout.X_AXIS));
 
+
 		_infoPanel = new CreatureInfoPanel();
 		_attackPanel = new CreatureAttackPanel();
 		_statsPanel = new CreatureStatsPanel();
 		_nastierLabel.setBorder(StyleConstants.DEFAULT_EMPTY_BORDER);
+		
+		_infoPanel.setPreferredSize(new Dimension(preferredWidth * 12 / 100, preferredHeight));
+		_statsPanel.setPreferredSize(new Dimension(preferredWidth * 12 / 100, preferredHeight));
+		_attackPanel.setPreferredSize(new Dimension(preferredWidth * 70 / 100, preferredHeight));
+
+		final JScrollPane attackScrollbar = new JScrollPane(_attackPanel);
+		attackScrollbar.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		attackScrollbar.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		attackScrollbar.setPreferredSize(new Dimension(preferredWidth * 86 / 100, preferredHeight));
 
 		blockPanel.add(_infoPanel);
-		blockPanel.add(_attackPanel);
+		blockPanel.add(attackScrollbar);
 		blockPanel.add(_statsPanel);
 
 		final JLabel nameLabel = new JLabel(_creature.getName());
@@ -70,6 +87,7 @@ public class CreatureViewPanel extends JPanel implements IView
 
 		this.setBorder(StyleConstants.DEFAULT_EMPTY_BORDER);
 		this.setBackground(StyleConstants.BACKGROUND_DARK);
+		this.setPreferredSize(new Dimension(preferredWidth, preferredHeight));
 
 		updateView();
 	}
