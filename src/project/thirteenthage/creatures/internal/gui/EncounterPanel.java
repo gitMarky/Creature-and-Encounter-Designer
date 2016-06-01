@@ -10,6 +10,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import project.thirteenthage.creatures.interfaces.IView;
 import project.thirteenthage.creatures.internal.Constants;
@@ -60,6 +61,7 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		_buttonPanel.add(_difficultyLabel);
 		_buttonPanel.add(_playerLevel);
 		_buttonPanel.add(_playerAmount);
+		_buttonPanel.add(_analysisLabel);
 
 		_playerLevel.setUpdateView(this);
 		_playerLevel.setBounds(Constants.MIN_PLAYER_LEVEL, Constants.MAX_PLAYER_LEVEL);
@@ -67,14 +69,17 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		_playerAmount.setUpdateView(this);
 		_playerAmount.setBounds(Constants.MIN_PLAYER_AMOUNT, Constants.MAX_PLAYER_AMOUNT);
 
-		JPanel innerPanel = new JPanel();
-		innerPanel.setLayout(new BoxLayout(innerPanel, BoxLayout.X_AXIS));
+		//JPanel innerPanel = new JPanel();
+		//innerPanel.setLayout(new BoxLayout(innerPanel, BoxLayout.X_AXIS));
 
+		JScrollPane creatureScrollBar = new JScrollPane(_creatureListPanel);
+		
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.add(_buttonPanel);
-		innerPanel.add(_creatureListPanel);
-		innerPanel.add(_analysisLabel);
-		this.add(innerPanel);
+//		innerPanel.add(_creatureListPanel);
+//		innerPanel.add(_analysisLabel);
+//		this.add(innerPanel);
+		this.add(creatureScrollBar);
 		this.setBorder(BorderFactory.createTitledBorder("Encounter"));
 	}
 

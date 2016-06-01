@@ -74,7 +74,7 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 		_innerPanel.setLayout(new BoxLayout(_innerPanel, BoxLayout.X_AXIS));
 		//_innerPanel.add(_editPanel);
 		_editScrollbar = new JScrollPane(_editPanel);
-		_editScrollbar.setPreferredSize(new Dimension(300, 200));
+		_editScrollbar.setPreferredSize(new Dimension(StyleConstants.CREATURE_EDIT_PANEL_WIDTH, StyleConstants.CREATURE_VIEW_PANEL_HEIGHT));
 		_innerPanel.add(_editScrollbar);
 
 		stopEditing();

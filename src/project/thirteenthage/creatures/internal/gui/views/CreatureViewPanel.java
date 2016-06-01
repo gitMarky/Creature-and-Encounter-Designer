@@ -42,8 +42,8 @@ public class CreatureViewPanel extends JPanel implements IView
 	{
 		super();
 		
-		int preferredHeight = 200;
-		int preferredWidth = 700;
+		int preferredHeight = StyleConstants.CREATURE_VIEW_PANEL_HEIGHT;
+		int preferredWidth = StyleConstants.CREATURE_VIEW_PANEL_WIDTH;
 
 		
 		if (creature == null)
