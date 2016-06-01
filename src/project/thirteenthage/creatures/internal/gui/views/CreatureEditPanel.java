@@ -66,7 +66,6 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 	{
 		super();
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		this.add(new JLabel("TODO"));
 		// layout similar to the creature display:
 		// left column
 		addSetter(_nameSetter);

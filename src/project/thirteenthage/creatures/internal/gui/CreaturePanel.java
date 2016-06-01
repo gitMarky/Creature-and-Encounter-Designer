@@ -1,5 +1,6 @@
 package project.thirteenthage.creatures.internal.gui;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -71,8 +72,9 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 		// creature view
 
 		_innerPanel.setLayout(new BoxLayout(_innerPanel, BoxLayout.X_AXIS));
-		_innerPanel.add(_editPanel);
+		//_innerPanel.add(_editPanel);
 		_editScrollbar = new JScrollPane(_editPanel);
+		_editScrollbar.setPreferredSize(new Dimension(300, 200));
 		_innerPanel.add(_editScrollbar);
 
 		stopEditing();
