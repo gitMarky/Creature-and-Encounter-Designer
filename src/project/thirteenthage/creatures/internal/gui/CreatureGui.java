@@ -28,7 +28,8 @@ public class CreatureGui implements IView
 	private final MenuSelectionPanel _menuSelectionPanel;
 	private final CreaturePanel _creaturePanel;
 	private final EncounterPanel _encounterPanel;
-	private final JFileChooser _fileChooser = new JFileChooser();
+	private final JFileChooser _fileChooserXml = new JFileChooser();
+	private final JFileChooser _fileChooserHtml = new JFileChooser();
 
 
 	public static void main(final String[] args)
@@ -57,7 +58,7 @@ public class CreatureGui implements IView
 		panel.add(_creaturePanel);
 		panel.add(_encounterPanel);
 
-		final FileFilter fileFilter = new javax.swing.filechooser.FileFilter()
+		final FileFilter fileFilterXml = new javax.swing.filechooser.FileFilter()
 		{
 			@Override
 			public boolean accept(final File file)
@@ -78,8 +79,32 @@ public class CreatureGui implements IView
 			}
 		};
 
-		_fileChooser.setCurrentDirectory(Constants.RESOURCES);
-		_fileChooser.setFileFilter(fileFilter);
+		_fileChooserXml.setCurrentDirectory(Constants.RESOURCES);
+		_fileChooserXml.setFileFilter(fileFilterXml);
+
+		final FileFilter fileFilterHtml = new javax.swing.filechooser.FileFilter()
+		{
+			@Override
+			public boolean accept(final File file)
+			{
+				if (file == null)
+				{
+					throw new IllegalArgumentException("Parameter 'file' must not be null.");
+				}
+				
+				return file.isDirectory() || file.getName().toLowerCase().endsWith(LoaderHelper.EXTENSION_HTML);
+			}
+
+
+			@Override
+			public String getDescription()
+			{
+				return "html files";
+			}
+		};
+		
+		_fileChooserHtml.setCurrentDirectory(Constants.RESOURCES);
+		_fileChooserHtml.setFileFilter(fileFilterHtml);
 
 		frame.add(panel);
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -127,10 +152,19 @@ public class CreatureGui implements IView
 
 
 	/**
-	 * Getter for a file chooser.
+	 * Getter for a xml file chooser.
 	 */
 	public JFileChooser getFileChooser()
 	{
-		return _fileChooser;
+		return _fileChooserXml;
+	}
+
+
+	/**
+	 * Getter for a html file chooser.
+	 */
+	public JFileChooser getHtmlFileChooser()
+	{
+		return _fileChooserHtml;
 	}
 }

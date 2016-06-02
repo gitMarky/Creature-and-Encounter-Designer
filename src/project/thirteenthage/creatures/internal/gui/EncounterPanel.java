@@ -51,6 +51,7 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 	private final JButton _clearButton = new JButton("Clear");
 	private final JButton _saveButton = new JButton("Save as");
 	private final JButton _loadButton = new JButton("Load");
+	private final JButton _exportButton = new JButton("Export to html");
 
 	private final Map<ICreature, CreatureEncounterPanel> _creatures = new HashMap<ICreature, CreatureEncounterPanel>();
 	private EncounterDifficulty _difficulty = null;
@@ -76,12 +77,14 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		innerButtonPanel.add(_clearButton);
 		innerButtonPanel.add(_loadButton);
 		innerButtonPanel.add(_saveButton);
+		innerButtonPanel.add(_exportButton);
 		innerButtonPanel.add(_difficultyLabel);
 		innerButtonPanel.add(_playerLevel);
 		innerButtonPanel.add(_playerAmount);
 
 		_loadButton.addActionListener(this);
 		_saveButton.addActionListener(this);
+		_exportButton.addActionListener(this);
 
 		final JScrollPane analysisScrollBar = new JScrollPane(_analysisLabel);
 
@@ -214,6 +217,17 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 				saveEncounter(file);
 			}
 		}
+
+		if (event.getSource() == _exportButton)
+		{
+			final int choice = CreatureGui.GUI.getHtmlFileChooser().showSaveDialog(this);
+
+			if (choice == JFileChooser.APPROVE_OPTION)
+			{
+				final File file = CreatureGui.GUI.getHtmlFileChooser().getSelectedFile();
+				exportEncounter(file);
+			}
+		}
 	}
 
 	
@@ -299,6 +313,15 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 			{
 				e.printStackTrace();
 			}
+		}
+	}
+	
+	
+	private void exportEncounter(final File targetFile)
+	{
+		if (targetFile == null)
+		{
+			throw new IllegalArgumentException("Parameter 'targetFile' must not be null.");
 		}
 	}
 }

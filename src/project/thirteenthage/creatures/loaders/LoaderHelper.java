@@ -5,6 +5,7 @@ import project.thirteenthage.creatures.internal.BasicXmlFile;
 public final class LoaderHelper
 {
 	public static final String EXTENSION_XML = ".xml";
+	public static final String EXTENSION_HTML = ".html";
 
 
 	private LoaderHelper()
