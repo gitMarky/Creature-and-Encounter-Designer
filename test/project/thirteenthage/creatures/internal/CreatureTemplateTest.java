@@ -23,7 +23,7 @@ public class CreatureTemplateTest
 		final File xml = new File("resources/creatures/creature_dire_rat.xml");
 		System.out.println(xml.getAbsolutePath());
 
-		final CreatureTemplate rat = new CreatureTemplate(xml);
+		final CreatureTemplate rat = new CreatureTemplate(xml, "creature_dire_rat");
 
 		assertEquals("Dire Rat", rat.getName());
 		assertEquals(CreatureSize.NORMAL, rat.getSize());
@@ -61,7 +61,7 @@ public class CreatureTemplateTest
 		final File xml = new File("resources/creatures/creature_dire_rat.xml");
 		System.out.println(xml.getAbsolutePath());
 
-		final CreatureTemplate template = new CreatureTemplate(xml);
+		final CreatureTemplate template = new CreatureTemplate(xml, "creature_dire_rat");
 		final ICreature rat = template.toCreature();
 
 		assertEquals("Dire Rat", rat.getName());

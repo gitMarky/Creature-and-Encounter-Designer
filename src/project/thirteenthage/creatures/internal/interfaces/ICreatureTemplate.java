@@ -9,7 +9,7 @@ import project.thirteenthage.creatures.creature.CreatureSize;
 /**
  * Interface for a creature.
  */
-public interface ICreatureTemplate extends INamedItem, ILeveledItem
+public interface ICreatureTemplate extends INamedItem, ILeveledItem, IIdentifiableItem
 {
 	/**
 	 * Gets a list of labels. This list has no impact on the stats, it is rather

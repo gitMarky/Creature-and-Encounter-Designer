@@ -12,6 +12,12 @@ import project.thirteenthage.creatures.internal.interfaces.ICreature;
  */
 public class Encounter
 {
+	public static final String ROOT_ELEMENT = "encounter";
+	public static final String ELEMENT_CREATURE = "creature";
+	public static final String ATTRIBUTE_ID = "id";
+	public static final String ATTRIBUTE_AMOUNT = "amount";
+	
+	
 	private final Map<ICreature, Integer> _amount = new HashMap<ICreature, Integer>();
 	private int _level = 1;
 	private int _players = 1;

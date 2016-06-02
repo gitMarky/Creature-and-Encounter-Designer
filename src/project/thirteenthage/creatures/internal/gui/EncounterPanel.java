@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -15,7 +16,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import org.jdom2.Document;
+import org.jdom2.Element;
+
 import project.thirteenthage.creatures.interfaces.IView;
+import project.thirteenthage.creatures.internal.ApplicationLogger;
+import project.thirteenthage.creatures.internal.BasicXmlFile;
 import project.thirteenthage.creatures.internal.Constants;
 import project.thirteenthage.creatures.internal.gui.views.AmountChoicePanel;
 import project.thirteenthage.creatures.internal.gui.views.CreatureEncounterPanel;
@@ -196,8 +202,58 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 	}
 
 
-	private void saveEncounter(final File file)
+	private void saveEncounter(final File targetFile)
 	{
-		throw new IllegalStateException("Not implemented");
+		
+		if (targetFile == null)
+		{
+			throw new IllegalArgumentException("Parameter 'targetFile' must not be null.");
+		}
+
+		final Element rootElement = new Element(Encounter.ROOT_ELEMENT);
+
+		for (final Entry<ICreature, CreatureEncounterPanel> entry : _creatures.entrySet())
+		{	
+			String id = entry.getKey().getTemplate().getId();			
+			int amount = entry.getValue().getAmount();
+			
+			if (id == null)
+			{
+				throw new IllegalArgumentException();
+			}
+			else
+			{				
+				final Element creatureElement = new Element(Encounter.ELEMENT_CREATURE);
+				creatureElement.setAttribute(Encounter.ATTRIBUTE_ID, id);
+				creatureElement.setAttribute(Encounter.ATTRIBUTE_AMOUNT, Integer.toString(amount));
+				rootElement.addContent(creatureElement);
+			}
+		}
+		
+		final Document document = new Document(rootElement);
+
+		final BasicXmlFile template = new BasicXmlFile(document, targetFile);
+		template.saveToFile();
+
+		ApplicationLogger.getLogger().info("Saving new creature to: " + targetFile.getAbsolutePath());
+
+		long oldLength = -1;
+		long newLength = targetFile.length();
+		for (int i = 0; oldLength != newLength && i < 60; ++i)
+		{
+			oldLength = newLength;
+			newLength = targetFile.length();
+
+			ApplicationLogger.getLogger().info("... still writing the file");
+
+			try
+			{
+				Thread.sleep(1000);
+			}
+			catch (final InterruptedException e)
+			{
+				e.printStackTrace();
+			}
+		}
 	}
 }

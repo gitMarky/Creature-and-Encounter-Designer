@@ -25,7 +25,8 @@ public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 	private final List<IAttack> _attacks = new ArrayList<IAttack>();
 	private final List<ISpecial> _specials = new ArrayList<ISpecial>();
 	private final List<ISpecial> _nastier = new ArrayList<ISpecial>();
-
+	private String _id = null;
+	
 
 	@Override
 	public String getName()
@@ -130,6 +131,13 @@ public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 	{
 		return _nastier;
 	}
+	
+	
+	@Override
+	public String getId()
+	{
+		return _id;
+	}
 
 
 	public void setName(final String name)
@@ -210,6 +218,12 @@ public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 		}
 
 		_betterDefense = defense;
+	}
+	
+	
+	public void setId(final String id)
+	{
+		_id = id;
 	}
 
 

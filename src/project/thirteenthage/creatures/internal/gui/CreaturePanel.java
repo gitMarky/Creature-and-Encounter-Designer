@@ -137,7 +137,6 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 				final File file = CreatureGui.GUI.getFileChooser().getSelectedFile();
 				saveCreature(file);
 			}
-
 		}
 	}
 

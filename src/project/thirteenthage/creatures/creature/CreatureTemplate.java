@@ -43,13 +43,13 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 	private final BasicXmlFile _template;
 
 
-	public CreatureTemplate(final File file)
+	public CreatureTemplate(final File file, final String id)
 	{
-		this(new BasicXmlFile(file));
+		this(new BasicXmlFile(file), id);
 	}
 
 
-	public CreatureTemplate(final BasicXmlFile file)
+	public CreatureTemplate(final BasicXmlFile file, final String id)
 	{
 		if (file == null)
 		{
@@ -59,6 +59,7 @@ public class CreatureTemplate extends AbstractCreatureTemplate
 		_template = file;
 
 		parse();
+		setId(id);
 	}
 
 
