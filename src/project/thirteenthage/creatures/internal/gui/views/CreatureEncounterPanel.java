@@ -79,6 +79,12 @@ public class CreatureEncounterPanel extends JPanel implements IView, ActionListe
 	{
 		return _amountChoicePanel.getAmount();
 	}
+	
+	
+	public void setAmount(int amount)
+	{
+		_amountChoicePanel.setAmount(amount);
+	}
 
 
 	@Override

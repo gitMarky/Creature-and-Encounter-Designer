@@ -28,6 +28,7 @@ import project.thirteenthage.creatures.internal.gui.views.CreatureEncounterPanel
 import project.thirteenthage.creatures.internal.gui.views.EncounterAnalysisView;
 import project.thirteenthage.creatures.internal.gui.views.EncounterDifficultyView;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
+import project.thirteenthage.creatures.loaders.CreatureLoader;
 import project.thirteenthage.creatures.mechanics.analysis.Encounter;
 import project.thirteenthage.creatures.mechanics.analysis.EncounterAnalysis;
 import project.thirteenthage.creatures.mechanics.analysis.EncounterDifficulty;
@@ -49,6 +50,7 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 
 	private final JButton _clearButton = new JButton("Clear");
 	private final JButton _saveButton = new JButton("Save as");
+	private final JButton _loadButton = new JButton("Load");
 
 	private final Map<ICreature, CreatureEncounterPanel> _creatures = new HashMap<ICreature, CreatureEncounterPanel>();
 	private EncounterDifficulty _difficulty = null;
@@ -72,11 +74,13 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		innerButtonPanel.setLayout(new BoxLayout(innerButtonPanel, BoxLayout.Y_AXIS));
 
 		innerButtonPanel.add(_clearButton);
+		innerButtonPanel.add(_loadButton);
 		innerButtonPanel.add(_saveButton);
 		innerButtonPanel.add(_difficultyLabel);
 		innerButtonPanel.add(_playerLevel);
 		innerButtonPanel.add(_playerAmount);
 
+		_loadButton.addActionListener(this);
 		_saveButton.addActionListener(this);
 
 		final JScrollPane analysisScrollBar = new JScrollPane(_analysisLabel);
@@ -189,6 +193,17 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 			updateView();
 		}
 		
+		if (event.getSource() == _loadButton)
+		{
+			final int choice = CreatureGui.GUI.getFileChooser().showOpenDialog(this);
+
+			if (choice == JFileChooser.APPROVE_OPTION)
+			{
+				final File file = CreatureGui.GUI.getFileChooser().getSelectedFile();
+				loadEncounter(file);
+			}
+		}
+
 		if (event.getSource() == _saveButton)
 		{
 			final int choice = CreatureGui.GUI.getFileChooser().showSaveDialog(this);
@@ -201,7 +216,37 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		}
 	}
 
+	
+	private void loadEncounter(final File targetFile)
+	{
+		if (targetFile == null)
+		{
+			throw new IllegalArgumentException("Parameter 'targetFile' must not be null.");
+		}
+		
+		BasicXmlFile encounter = new BasicXmlFile(targetFile);
+		
+		if (Encounter.ROOT_ELEMENT.equals(encounter.getRoot().getName()))
+		{
+			for (final Element creature : encounter.getRoot().getChildren(Encounter.ELEMENT_CREATURE))
+			{
+				final String id = creature.getAttributeValue(Encounter.ATTRIBUTE_ID);
+				final int amount = Integer.parseInt(creature.getAttributeValue(Encounter.ATTRIBUTE_AMOUNT));
+				ICreature instance = CreatureLoader.getInstance().getCreatures().get(id);
+				
+				if (instance != null)
+				{
+					addCreature(instance);
+					
+					_creatures.get(instance).setAmount(amount);
+				}
+			}
+		}
+		
+		updateView();
+	}
 
+	
 	private void saveEncounter(final File targetFile)
 	{
 		
