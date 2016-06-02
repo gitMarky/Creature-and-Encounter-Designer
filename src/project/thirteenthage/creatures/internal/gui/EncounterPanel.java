@@ -3,12 +3,14 @@ package project.thirteenthage.creatures.internal.gui;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -40,6 +42,7 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 	private final EncounterAnalysisView _analysisLabel = new EncounterAnalysisView();
 
 	private final JButton _clearButton = new JButton("Clear");
+	private final JButton _saveButton = new JButton("Save as");
 
 	private final Map<ICreature, CreatureEncounterPanel> _creatures = new HashMap<ICreature, CreatureEncounterPanel>();
 	private EncounterDifficulty _difficulty = null;
@@ -63,9 +66,12 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		innerButtonPanel.setLayout(new BoxLayout(innerButtonPanel, BoxLayout.Y_AXIS));
 
 		innerButtonPanel.add(_clearButton);
+		innerButtonPanel.add(_saveButton);
 		innerButtonPanel.add(_difficultyLabel);
 		innerButtonPanel.add(_playerLevel);
 		innerButtonPanel.add(_playerAmount);
+
+		_saveButton.addActionListener(this);
 
 		final JScrollPane analysisScrollBar = new JScrollPane(_analysisLabel);
 
@@ -176,5 +182,22 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 			clearCreatures();
 			updateView();
 		}
+		
+		if (event.getSource() == _saveButton)
+		{
+			final int choice = CreatureGui.GUI.getFileChooser().showSaveDialog(this);
+
+			if (choice == JFileChooser.APPROVE_OPTION)
+			{
+				final File file = CreatureGui.GUI.getFileChooser().getSelectedFile();
+				saveEncounter(file);
+			}
+		}
+	}
+
+
+	private void saveEncounter(final File file)
+	{
+		throw new IllegalStateException("Not implemented");
 	}
 }
