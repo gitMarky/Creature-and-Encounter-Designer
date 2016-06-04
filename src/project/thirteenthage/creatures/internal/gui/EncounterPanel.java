@@ -325,7 +325,6 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 			throw new IllegalArgumentException("Parameter 'targetFile' must not be null.");
 		}
 		
-		
 		new HtmlExporter(_creatures, targetFile).saveToFile();
 	}
 }

@@ -54,12 +54,14 @@ public class EditableCreatureTemplate extends AbstractCreatureTemplate
 
 
 	@Override
-	public File saveToFile(final File targetFile)
+	public File saveToFile(final File file)
 	{
-		if (targetFile == null)
+		if (file == null)
 		{
-			throw new IllegalArgumentException("Parameter 'targetFile' must not be null.");
+			throw new IllegalArgumentException("Parameter 'file' must not be null.");
 		}
+		
+		final File targetFile = LoaderHelper.forceExtension(file, LoaderHelper.EXTENSION_XML);
 
 		final Element nameElement = new Element(CreatureTemplate.ELEMENT_NAME);
 		nameElement.setText(getName());

@@ -1,5 +1,7 @@
 package project.thirteenthage.creatures.loaders;
 
+import java.io.File;
+
 import project.thirteenthage.creatures.internal.BasicXmlFile;
 
 public final class LoaderHelper
@@ -11,6 +13,17 @@ public final class LoaderHelper
 	private LoaderHelper()
 	{
 
+	}
+	
+	
+	public static File forceExtension(final File file, final String extension)
+	{
+		File targetFile = file;
+		if (!targetFile.getName().endsWith(extension))
+		{
+			targetFile = new File(targetFile.getAbsolutePath() + extension);
+		}
+		return targetFile;
 	}
 
 

@@ -14,6 +14,7 @@ import project.thirteenthage.creatures.internal.gui.views.CreatureEncounterPanel
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.internal.interfaces.ISpecial;
+import project.thirteenthage.creatures.loaders.LoaderHelper;
 
 
 /**
@@ -29,6 +30,8 @@ public class HtmlExporter
 	
 	public HtmlExporter(Map<ICreature, CreatureEncounterPanel> creatures, File targetFile)
 	{
+		targetFile = LoaderHelper.forceExtension(targetFile, LoaderHelper.EXTENSION_HTML);
+		
 		_targetFile = targetFile;
 		convertAndParse(creatures);
 	}
