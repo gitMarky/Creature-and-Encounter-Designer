@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project CreatureDataBase with libraries in sub-folder">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_run_jar">
+        <jar destfile="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner.jar">
+            <manifest>
+                <attribute name="Main-Class" value="project.thirteenthage.creatures.internal.gui.CreatureGui"/>
+                <attribute name="Class-Path" value=". CreatureDesigner_lib/jdom-2.0.5.jar CreatureDesigner_lib/junit.jar CreatureDesigner_lib/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+            </manifest>
+            <fileset dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/bin"/>
+        </jar>
+        <delete dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner_lib"/>
+        <mkdir dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner_lib"/>
+        <copy file="C:/Editing/javalibs/jdom2/jdom-2.0.5.jar" todir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner_lib"/>
+        <copy file="C:/EclipseWorkspace/eclipse/plugins/org.junit_4.11.0.v201303080030/junit.jar" todir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner_lib"/>
+        <copy file="C:/EclipseWorkspace/eclipse/plugins/org.hamcrest.core_1.3.0.v201303031735.jar" todir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner_lib"/>
+    </target>
+</project>
