@@ -21,7 +21,6 @@ import project.thirteenthage.creatures.internal.interfaces.ISpecial;
  */
 public class HtmlExporter
 {
-
 	private static final String TAB = "    ";
 	
 	private final StringBuilder content = new StringBuilder();
@@ -78,7 +77,7 @@ public class HtmlExporter
 		content.append(tab(tabDepth) + Html.BEGIN_DIV);
 		content.append(tab(tabDepth) + "<table style=\"" + styleBorder() + "\" " + visibleBorder() + " cellpadding=\"7\" cellspacing=\"0\">" + Constants.NEWLINE);
 		content.append(tab(tabDepth) + "<thead>" + Constants.NEWLINE);
-		content.append(tab(tabDepth + 1) + "<tr>" + Constants.NEWLINE);
+		content.append(tab(tabDepth + 1) + Html.BEGIN_TR + Constants.NEWLINE);
 		content.append(tab(tabDepth + 2) + "<td style=\"" + styleSidebar() + ";" + styleBackgroundLight() + "\">" + Constants.NEWLINE);
 
 		parseCreatureInfo(creature, tabDepth + 3);
@@ -94,7 +93,7 @@ public class HtmlExporter
 		parseCreatureStats(creature, tabDepth + 3);
 		
 		content.append(tab(tabDepth + 2) + "</td>" + Constants.NEWLINE);
-		content.append(tab(tabDepth + 1) + "</tr>" + Constants.NEWLINE);
+		content.append(tab(tabDepth + 1) + Html.END_TR + Constants.NEWLINE);
 		content.append(tab(tabDepth) + "</thead>" + Constants.NEWLINE);
 		content.append(tab(tabDepth) + Html.END_TABLE + Constants.NEWLINE);
 		
@@ -146,7 +145,7 @@ public class HtmlExporter
 	
 	private void parseCreatureStats(ICreature creature, int tabDepth)
 	{
-		content.append(tab(tabDepth) + "<table" + Constants.NEWLINE);
+		content.append(tab(tabDepth) + Html.BEGIN_TABLE + Constants.NEWLINE);
 		content.append(tab(tabDepth + 1) + Html.tableRow("AC", "" + creature.getAC()) + Constants.NEWLINE);
 		content.append(tab(tabDepth + 1) + Html.tableRow("PD", "" + creature.getPD()) + Constants.NEWLINE);
 		content.append(tab(tabDepth + 1) + Html.tableRow("MD", "" + creature.getMD()) + Constants.NEWLINE);
@@ -160,7 +159,7 @@ public class HtmlExporter
 		final String cell = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
 		final int hp = Conversions.round(creature.getHP());
 
-		String endTable = tab(tabDepth) + "</td></tr>" + Constants.NEWLINE
+		String endTable = tab(tabDepth) + "</td>" + Html.END_TR + Constants.NEWLINE
 				        + tab(tabDepth) + Html.END_TABLE + Constants.NEWLINE;
 		for (int i = 1; i <= amount; ++i)
 		{
@@ -182,7 +181,7 @@ public class HtmlExporter
 				if (i > 1) content.append(endTable);
 				
 				content.append(tab(tabDepth) + "<table style=\"" + styleBorder(rgb(StyleConstants.BACKGROUND_LIGHT), 3) + "\" " + visibleBorder() + "\">" + Constants.NEWLINE);
-				content.append(tab(tabDepth) + "<tr><td>" + Constants.NEWLINE);
+				content.append(tab(tabDepth) + Html.BEGIN_TR + "<td>" + Constants.NEWLINE);
 			}
 			
 			printDamageTrack(creature, tabDepth + (creature.isMook() ? 1 : 0), cell, hp, i);
@@ -195,7 +194,7 @@ public class HtmlExporter
 	private void printDamageTrack(ICreature creature, int tabDepth, final String cell, final int hp, int i)
 	{
 		content.append(tab(tabDepth) + "<table style=\"" + styleBorder() + "\" " + visibleBorder() + "\">" + Constants.NEWLINE);
-		content.append(tab(tabDepth + 1) + "<tr><th rowspan=\"3\">" + creature.getName() + " #" + i + "</th><td colspan=\"10\">HP: " + hp + "</td></tr>" + Constants.NEWLINE);
+		content.append(tab(tabDepth + 1) + Html.BEGIN_TR + "<th rowspan=\"3\">" + creature.getName() + " #" + i + "</th><td colspan=\"10\">HP: " + hp + "</td>" + Html.END_TR + Constants.NEWLINE);
 
 		String ongoingDamage = "Ongoing damage";
 		String confused = "Confused";

@@ -26,20 +26,15 @@ public class Html
 	public static final String BEGIN_TABLE = "<table>";
 	public static final String END_TABLE = "</table>";
 
+	public static final String BEGIN_TR = "<tr>";
+	public static final String END_TR = "</tr>";
+
 	
 	public static String LINE_BREAK = "<br>";
 
 	public static String tableRow(final String... entries)
 	{
-		final StringBuilder description = new StringBuilder();
-		
-		description.append("<tr>");
-		
-		description.append(tableColumns(entries));
-		
-		description.append("</tr>");
-		
-		return description.toString();
+		return BEGIN_TR + tableColumns(entries) + END_TR;
 	}
 
 	
