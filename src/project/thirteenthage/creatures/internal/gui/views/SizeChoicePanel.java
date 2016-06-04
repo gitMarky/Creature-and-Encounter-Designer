@@ -12,6 +12,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
 
 import project.thirteenthage.creatures.creature.CreatureSize;
+import project.thirteenthage.creatures.internal.ApplicationLogger;
 
 /**
  * Lets you choose the better of two defenses.
@@ -53,6 +54,7 @@ public class SizeChoicePanel extends ChoicePanel implements ActionListener
 		final CreatureSize creatureSize = _map.get(event.getSource());
 		if (creatureSize != null)
 		{
+			ApplicationLogger.getLogger().info("Pressed button: Creature size");
 			_choice = creatureSize;
 		}
 

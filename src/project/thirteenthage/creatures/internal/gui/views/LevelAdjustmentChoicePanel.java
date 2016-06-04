@@ -8,6 +8,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
 
+import project.thirteenthage.creatures.internal.ApplicationLogger;
 import project.thirteenthage.creatures.internal.gui.CreatureGui;
 import project.thirteenthage.creatures.mechanics.LevelAdjustment;
 
@@ -48,11 +49,13 @@ public class LevelAdjustmentChoicePanel extends ChoicePanel implements ActionLis
 	{
 		if (event.getSource() == _originalButton)
 		{
+			ApplicationLogger.getLogger().info("Pressed button: Select original difficulty calculation");
 			LevelAdjustment.setUseOriginalCalculation(true);
 		}
 
 		if (event.getSource() == _alternateButton)
 		{
+			ApplicationLogger.getLogger().info("Pressed button: Select alternative difficulty calculation");
 			LevelAdjustment.setUseOriginalCalculation(false);
 		}
 

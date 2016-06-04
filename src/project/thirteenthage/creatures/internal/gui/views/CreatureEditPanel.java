@@ -283,21 +283,25 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 	{
 		if (action.getSource() == _labelsButton)
 		{
+			ApplicationLogger.getLogger().info("Pressed button: labels");
 			showLabelsSelection();
 		}
 
 		if (action.getSource() == _attacksButton)
 		{
+			ApplicationLogger.getLogger().info("Pressed button: atacks");
 			showAttacksSelection();
 		}
 
 		if (action.getSource() == _specialsButton)
 		{
+			ApplicationLogger.getLogger().info("Pressed button: specials");
 			showSpecialsSelection();
 		}
 
 		if (action.getSource() == _nastierButton)
 		{
+			ApplicationLogger.getLogger().info("Pressed button: nastier specials");
 			showNastierSpecialsSelection();
 		}
 	}
@@ -379,6 +383,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 			@Override
 			public void actionPerformed(final ActionEvent action)
 			{
+				ApplicationLogger.getLogger().info("Pressed button: Confirm");
 				confirmListSelection();
 			}
 		});

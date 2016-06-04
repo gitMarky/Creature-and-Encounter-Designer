@@ -94,6 +94,7 @@ public class CreatureEncounterPanel extends JPanel implements IView, ActionListe
 	{
 		if (event.getSource() == _removeButton)
 		{
+			ApplicationLogger.getLogger().info("Pressed button: Remove from encounter");
 			CreatureGui.GUI.getEncounterPanel().removeCreature(_creature);
 		}
 	}

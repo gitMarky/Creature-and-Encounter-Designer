@@ -195,12 +195,14 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 	{
 		if (event.getSource() == _clearButton)
 		{
+			ApplicationLogger.getLogger().info("Pressed button: Clear encounter");
 			clearCreatures();
 			updateView();
 		}
 		
 		if (event.getSource() == _loadButton)
 		{
+			ApplicationLogger.getLogger().info("Pressed button: Load encounter");
 			final int choice = CreatureGui.GUI.getFileChooser().showOpenDialog(this);
 
 			if (choice == JFileChooser.APPROVE_OPTION)
@@ -212,6 +214,7 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 
 		if (event.getSource() == _saveButton)
 		{
+			ApplicationLogger.getLogger().info("Pressed button: Save encounter");
 			final int choice = CreatureGui.GUI.getFileChooser().showSaveDialog(this);
 
 			if (choice == JFileChooser.APPROVE_OPTION)
@@ -223,6 +226,7 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 
 		if (event.getSource() == _exportButton)
 		{
+			ApplicationLogger.getLogger().info("Pressed button: Export encounter");
 			final int choice = CreatureGui.GUI.getHtmlFileChooser().showSaveDialog(this);
 
 			if (choice == JFileChooser.APPROVE_OPTION)

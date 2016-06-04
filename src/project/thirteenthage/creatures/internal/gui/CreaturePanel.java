@@ -114,22 +114,27 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 	{
 		if (event.getSource() == _addButton)
 		{
+			ApplicationLogger.getLogger().info("Pressed button: Add to encounter");
 			transferCreatureToEncounter(_selectedCreature);
 		}
 		if (event.getSource() == _editButton)
 		{
+			ApplicationLogger.getLogger().info("Pressed button: Edit creature");
 			startEditing();
 		}
 		if (event.getSource() == _cancelButton)
 		{
+			ApplicationLogger.getLogger().info("Pressed button: Cancel editing creature");
 			cancelEditing();
 		}
 		if (event.getSource() == _applyButton)
 		{
+			ApplicationLogger.getLogger().info("Pressed button: Apply editing creature");
 			applyEditing();
 		}
 		if (event.getSource() == _saveButton)
 		{
+			ApplicationLogger.getLogger().info("Pressed button: Save creature to xml file");
 			final int choice = CreatureGui.GUI.getFileChooser().showSaveDialog(this);
 
 			if (choice == JFileChooser.APPROVE_OPTION)

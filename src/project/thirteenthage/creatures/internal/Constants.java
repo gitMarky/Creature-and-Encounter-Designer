@@ -39,4 +39,6 @@ public class Constants
 	public static final int MAX_INITIATIVE = +9;
 
 	public static final int MAX_MOOK_POOL_SIZE = 5;
+	
+	public static final String HLINE = "==========================================================";
 }

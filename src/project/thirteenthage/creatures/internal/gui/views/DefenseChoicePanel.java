@@ -9,6 +9,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
 
 import project.thirteenthage.creatures.creature.BetterDefense;
+import project.thirteenthage.creatures.internal.ApplicationLogger;
 
 /**
  * Lets you choose the better of two defenses.
@@ -49,11 +50,13 @@ public class DefenseChoicePanel extends ChoicePanel implements ActionListener
 	{
 		if (event.getSource() == _pdButton)
 		{
+			ApplicationLogger.getLogger().info("Pressed button: Better defense is PD");
 			_better = BetterDefense.PD;
 		}
 
 		if (event.getSource() == _mdButton)
 		{
+			ApplicationLogger.getLogger().info("Pressed button: Better defense is MD");
 			_better = BetterDefense.MD;
 		}
 

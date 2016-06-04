@@ -35,8 +35,21 @@ public class CreatureGui implements IView
 
 	public static void main(final String[] args)
 	{
+		ApplicationLogger.getLogger().info(Constants.HLINE);
+		ApplicationLogger.getLogger().info("Initializing");
+		ApplicationLogger.getLogger().info(Constants.HLINE);
+		
 		GUI = new CreatureGui();
+		
+		ApplicationLogger.getLogger().info(Constants.HLINE);
+		ApplicationLogger.getLogger().info("Setup");
+		ApplicationLogger.getLogger().info(Constants.HLINE);
+
 		GUI.getMenuSelectionPanel().onCreatureSelected();
+		
+		ApplicationLogger.getLogger().info(Constants.HLINE);
+		ApplicationLogger.getLogger().info("Preparation phase is over, from here on the user takes over.");
+		ApplicationLogger.getLogger().info(Constants.HLINE);
 	}
 
 
