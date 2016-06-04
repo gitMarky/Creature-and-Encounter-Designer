@@ -1,5 +1,6 @@
 package project.thirteenthage.creatures.internal;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -19,6 +20,8 @@ import project.thirteenthage.creatures.internal.interfaces.ISpecial;
  */
 public class HtmlExporter
 {
+	private static final String BACKGROUND_DARK = rgb(0,51,153);
+
 	private static final String TAB = "    ";
 	
 	private final StringBuilder content = new StringBuilder();
@@ -170,7 +173,7 @@ public class HtmlExporter
 					ApplicationLogger.getLogger().info("Exported mook pool");
 					if (i > 1) content.append(endTable);
 
-					content.append(tab(tabDepth) + "<table style=\"" + styleBorder() + "\" " + visibleBorder() + "\">" + Constants.NEWLINE);
+					content.append(tab(tabDepth) + "<table style=\"" + styleBorder(BACKGROUND_DARK, 10) + "\" " + visibleBorder() + "\">" + Constants.NEWLINE);
 					content.append(tab(tabDepth) + "<tr><td>" + Constants.NEWLINE);
 				}
 			}
@@ -202,16 +205,25 @@ public class HtmlExporter
 		content.append(tab(tabDepth) + "</table>" + Constants.NEWLINE);
 	}
 
-
 	private String visibleBorder()
 	{
-		return "border=\"1\" bordercolor=\"#888888\"";
+		return visibleBorder(1);
+	}
+
+	private String visibleBorder(int width)
+	{
+		return "border=\"" + width + "\" bordercolor=\"#888888\"";
 	}
 
 
 	private String styleBorder()
 	{
-		return "border-color:rgb(136,136,136);border-width:1px;border-collapse:collapse;width:100%";
+		return styleBorder(rgb(136, 136, 136), 1);
+	}
+	
+	private String styleBorder(final String rgb, int width)
+	{
+		return "border-color:" + rgb + ";border-width:" + width + "px;border-collapse:collapse;width:100%";
 	}
 
 	
@@ -223,7 +235,7 @@ public class HtmlExporter
 
 	private String styleBackgrounDark()
 	{
-		return "background-color:rgb(0,51,153)";
+		return "background-color:" + BACKGROUND_DARK;
 	}
 
 
@@ -236,6 +248,18 @@ public class HtmlExporter
 	private String styleBackgroundLight()
 	{
 		return "background-color:rgb(100,150,255)";
+	}
+	
+	
+	private static String rgb(final Color color)
+	{
+		return rgb(color.getRed(), color.getGreen(), color.getBlue());
+	}
+	
+	
+	private static String rgb(final int r, final int g, final int b)
+	{
+		return "rgb(" + r + ", " + g + ", " + b + ")";
 	}
 
 	

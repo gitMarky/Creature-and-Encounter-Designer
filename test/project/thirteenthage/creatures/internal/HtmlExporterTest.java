@@ -26,7 +26,7 @@ public class HtmlExporterTest
 		final ICreature rat = CreatureLoader.getInstance().getCreatures().get("creature_dire_rat");
 		
 		creatures.put(thug, 2);
-		creatures.put(rat, 5);
+		creatures.put(rat, 7);
 		
 		HtmlExporter exporter = new HtmlExporter(targetFile, creatures);
 		
