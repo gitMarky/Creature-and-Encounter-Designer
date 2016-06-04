@@ -181,7 +181,7 @@ public class HtmlExporter
 			{
 				if (i > 1) content.append(endTable);
 				
-				content.append(tab(tabDepth) + "<table style=\"" + styleBorder(BACKGROUND_DARK, 10) + "\" " + visibleBorder() + "\">" + Constants.NEWLINE);
+				content.append(tab(tabDepth) + "<table style=\"" + styleBorder(BACKGROUND_DARK, 3) + "\" " + visibleBorder() + "\">" + Constants.NEWLINE);
 				content.append(tab(tabDepth) + "<tr><td>" + Constants.NEWLINE);
 			}
 			

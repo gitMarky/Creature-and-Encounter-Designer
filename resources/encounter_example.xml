@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<encounter>
+  <creature id="creature_human_thug" amount="3" />
+  <creature id="creature_dire_rat" amount="7" />
+</encounter>
