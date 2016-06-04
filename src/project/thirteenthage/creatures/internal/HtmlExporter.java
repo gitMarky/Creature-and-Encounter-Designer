@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import project.thirteenthage.creatures.internal.conversions.Conversions;
+import project.thirteenthage.creatures.internal.gui.StyleConstants;
 import project.thirteenthage.creatures.internal.gui.views.CreatureEncounterPanel;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
@@ -20,8 +21,6 @@ import project.thirteenthage.creatures.internal.interfaces.ISpecial;
  */
 public class HtmlExporter
 {
-	private static final String BACKGROUND_DARK = rgb(0,51,153);
-
 	private static final String TAB = "    ";
 	
 	private final StringBuilder content = new StringBuilder();
@@ -74,7 +73,7 @@ public class HtmlExporter
 	
 	private void parseCreature(ICreature creature, int amount, int tabDepth)
 	{	
-		content.append(tab(tabDepth) + "<h4 style=\"" + styleBackgrounDark() + ";" + styleFontWhite() + ";margin-top:30px;margin-bottom:3px;padding:5px\">" + creature.getName() + "</h4>" + Constants.NEWLINE);
+		content.append(tab(tabDepth) + "<h4 style=\"" + styleBackgrounDark() + ";" + styleFontColor(new Color(255, 255, 255)) + ";margin-top:30px;margin-bottom:3px;padding:5px\">" + creature.getName() + "</h4>" + Constants.NEWLINE);
 		content.append(tab(tabDepth) + Html.BEGIN_DIV);
 		content.append(tab(tabDepth) + "<table style=\"" + styleBorder() + "\" " + visibleBorder() + " cellpadding=\"7\" cellspacing=\"0\">" + Constants.NEWLINE);
 		content.append(tab(tabDepth) + "<thead>" + Constants.NEWLINE);
@@ -105,7 +104,7 @@ public class HtmlExporter
 	
 	private void parseCreatureInfo(ICreature creature, int tabDepth)
 	{
-		content.append(tab(tabDepth) + "<table style=\"" + styleFontWhite() + "\">" + Constants.NEWLINE);
+		content.append(tab(tabDepth) + "<table>" + Constants.NEWLINE);
 		content.append(tab(tabDepth + 1) + Html.tableRow(creature.getSize().toGuiText()) + Constants.NEWLINE);
 		content.append(tab(tabDepth + 1) + Html.tableRow(LevelHelper.getLevelText(creature.getLevel())) + Constants.NEWLINE);
 		
@@ -146,7 +145,7 @@ public class HtmlExporter
 	
 	private void parseCreatureStats(ICreature creature, int tabDepth)
 	{
-		content.append(tab(tabDepth) + "<table style=\"" + styleFontWhite() + "\">" + Constants.NEWLINE);
+		content.append(tab(tabDepth) + "<table" + Constants.NEWLINE);
 		content.append(tab(tabDepth + 1) + Html.tableRow("AC", "" + creature.getAC()) + Constants.NEWLINE);
 		content.append(tab(tabDepth + 1) + Html.tableRow("PD", "" + creature.getPD()) + Constants.NEWLINE);
 		content.append(tab(tabDepth + 1) + Html.tableRow("MD", "" + creature.getMD()) + Constants.NEWLINE);
@@ -181,7 +180,7 @@ public class HtmlExporter
 			{
 				if (i > 1) content.append(endTable);
 				
-				content.append(tab(tabDepth) + "<table style=\"" + styleBorder(BACKGROUND_DARK, 3) + "\" " + visibleBorder() + "\">" + Constants.NEWLINE);
+				content.append(tab(tabDepth) + "<table style=\"" + styleBorder(rgb(StyleConstants.BACKGROUND_LIGHT), 3) + "\" " + visibleBorder() + "\">" + Constants.NEWLINE);
 				content.append(tab(tabDepth) + "<tr><td>" + Constants.NEWLINE);
 			}
 			
@@ -234,15 +233,16 @@ public class HtmlExporter
 	}
 
 	
-	private String styleFontWhite()
+	
+	private String styleFontColor(final Color color)
 	{
-		return "color:rgb(255,255,255)";
+		return "color:" + rgb(color);
 	}
 
 
 	private String styleBackgrounDark()
 	{
-		return "background-color:" + BACKGROUND_DARK;
+		return styleBackgroundColor(StyleConstants.BACKGROUND_DARK);
 	}
 
 
@@ -254,7 +254,12 @@ public class HtmlExporter
 
 	private String styleBackgroundLight()
 	{
-		return "background-color:rgb(100,150,255)";
+		return styleBackgroundColor(StyleConstants.BACKGROUND_LIGHT);
+	}
+	
+	private String styleBackgroundColor(final Color color)
+	{
+		return "background-color:" + rgb(color);
 	}
 	
 	
