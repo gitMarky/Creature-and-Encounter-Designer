@@ -159,9 +159,8 @@ public class HtmlExporter
 		for (int i = 1; i <= amount; ++i)
 		{
 			content.append(tab(tabDepth) + "<table style=\"" + styleBorder() + "\" " + visibleBorder() + "\">" + Constants.NEWLINE);
-			content.append(tab(tabDepth + 1) + "<tr><th rowspan=\"3\">" + creature.getName() + " #" + i + "</th>" + Html.tableColumns("HP: " + hp, cell, cell, cell, cell, cell, cell, cell, cell, cell) + "</tr>" + Constants.NEWLINE);
+			content.append(tab(tabDepth + 1) + "<tr><th rowspan=\"3\">" + creature.getName() + " #" + i + "</th><td colspan=\"10\">HP: " + hp + "</td></tr>" + Constants.NEWLINE);
 
-			
 			String ongoingDamage = "Ongoing damage";
 			String confused = "Confused";
 			String dazed = "Dazed";
