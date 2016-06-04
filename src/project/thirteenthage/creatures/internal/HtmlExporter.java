@@ -156,28 +156,51 @@ public class HtmlExporter
 	{
 		final String cell = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
 		final int hp = Conversions.round(creature.getHP());
+
+		String endTable = tab(tabDepth) + "</td></tr>" + Constants.NEWLINE
+				        + tab(tabDepth) + "</table>" + Constants.NEWLINE;
 		for (int i = 1; i <= amount; ++i)
 		{
-			content.append(tab(tabDepth) + "<table style=\"" + styleBorder() + "\" " + visibleBorder() + "\">" + Constants.NEWLINE);
-			content.append(tab(tabDepth + 1) + "<tr><th rowspan=\"3\">" + creature.getName() + " #" + i + "</th><td colspan=\"10\">HP: " + hp + "</td></tr>" + Constants.NEWLINE);
+			if (creature.isMook())
+			{
+				int number = (i-1) % Constants.MAX_MOOK_POOL_SIZE;
+				
+				if (number == 0)
+				{
+					ApplicationLogger.getLogger().info("Exported mook pool");
+					if (i > 1) content.append(endTable);
 
-			String ongoingDamage = "Ongoing damage";
-			String confused = "Confused";
-			String dazed = "Dazed";
-			String fear = "Fear";
-			String hampered = "Hampered";
-			String helpless = "Helpless";
-			String stuck = "Stuck";
-			String stunned = "Stunned";
-			String vulnerable = "Vulnerable";
-			String weakened = "Weakened";
-			content.append(tab(tabDepth + 1) + Html.tableRow(ongoingDamage, cell, confused, cell, dazed, cell, fear, cell, hampered, cell) + Constants.NEWLINE);
-			content.append(tab(tabDepth + 1) + Html.tableRow(helpless, cell, stuck, cell, stunned, cell, vulnerable, cell, weakened, cell) + Constants.NEWLINE);
-			content.append(tab(tabDepth) + "</table>" + Constants.NEWLINE);			
+					content.append(tab(tabDepth) + "<table style=\"" + styleBorder() + "\" " + visibleBorder() + "\">" + Constants.NEWLINE);
+					content.append(tab(tabDepth) + "<tr><td>" + Constants.NEWLINE);
+				}
+			}
+			
+			printDamageTrack(creature, tabDepth + (creature.isMook() ? 1 : 0), cell, hp, i);
 		}
+		
+		if (creature.isMook()) content.append(endTable);
 	}
 
 
+	private void printDamageTrack(ICreature creature, int tabDepth, final String cell, final int hp, int i)
+	{
+		content.append(tab(tabDepth) + "<table style=\"" + styleBorder() + "\" " + visibleBorder() + "\">" + Constants.NEWLINE);
+		content.append(tab(tabDepth + 1) + "<tr><th rowspan=\"3\">" + creature.getName() + " #" + i + "</th><td colspan=\"10\">HP: " + hp + "</td></tr>" + Constants.NEWLINE);
+
+		String ongoingDamage = "Ongoing damage";
+		String confused = "Confused";
+		String dazed = "Dazed";
+		String fear = "Fear";
+		String hampered = "Hampered";
+		String helpless = "Helpless";
+		String stuck = "Stuck";
+		String stunned = "Stunned";
+		String vulnerable = "Vulnerable";
+		String weakened = "Weakened";
+		content.append(tab(tabDepth + 1) + Html.tableRow(ongoingDamage, cell, confused, cell, dazed, cell, fear, cell, hampered, cell) + Constants.NEWLINE);
+		content.append(tab(tabDepth + 1) + Html.tableRow(helpless, cell, stuck, cell, stunned, cell, vulnerable, cell, weakened, cell) + Constants.NEWLINE);
+		content.append(tab(tabDepth) + "</table>" + Constants.NEWLINE);
+	}
 
 
 	private String visibleBorder()
