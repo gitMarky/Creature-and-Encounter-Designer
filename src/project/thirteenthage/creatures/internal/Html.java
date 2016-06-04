@@ -16,6 +16,12 @@ public class Html
 
 	public static final String BEGIN_PARAGRAPH = "<p>";
 	public static final String END_PARAGRAPH = "</p>";
+	
+	public static final String BEGIN_BODY = "<body>";
+	public static final String END_BODY = "</body>";
+	
+	public static final String BEGIN_DIV = "<div>";
+	public static final String END_DIV = "</div>";
 
 	public static String LINE_BREAK = "<br>";
 }

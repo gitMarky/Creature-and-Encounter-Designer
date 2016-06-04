@@ -23,6 +23,7 @@ import project.thirteenthage.creatures.interfaces.IView;
 import project.thirteenthage.creatures.internal.ApplicationLogger;
 import project.thirteenthage.creatures.internal.BasicXmlFile;
 import project.thirteenthage.creatures.internal.Constants;
+import project.thirteenthage.creatures.internal.HtmlExporter;
 import project.thirteenthage.creatures.internal.gui.views.AmountChoicePanel;
 import project.thirteenthage.creatures.internal.gui.views.CreatureEncounterPanel;
 import project.thirteenthage.creatures.internal.gui.views.EncounterAnalysisView;
@@ -323,5 +324,8 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		{
 			throw new IllegalArgumentException("Parameter 'targetFile' must not be null.");
 		}
+		
+		
+		new HtmlExporter(_creatures, targetFile).saveToFile();
 	}
 }
