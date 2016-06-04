@@ -30,6 +30,7 @@ import project.thirteenthage.creatures.internal.gui.views.EncounterAnalysisView;
 import project.thirteenthage.creatures.internal.gui.views.EncounterDifficultyView;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.loaders.CreatureLoader;
+import project.thirteenthage.creatures.loaders.LoaderHelper;
 import project.thirteenthage.creatures.mechanics.analysis.Encounter;
 import project.thirteenthage.creatures.mechanics.analysis.EncounterAnalysis;
 import project.thirteenthage.creatures.mechanics.analysis.EncounterDifficulty;
@@ -268,13 +269,14 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 	}
 
 	
-	private void saveEncounter(final File targetFile)
+	private void saveEncounter(final File file)
 	{
-		
-		if (targetFile == null)
+		if (file == null)
 		{
-			throw new IllegalArgumentException("Parameter 'targetFile' must not be null.");
+			throw new IllegalArgumentException("Parameter 'file' must not be null.");
 		}
+		
+		final File targetFile = LoaderHelper.forceExtension(file, LoaderHelper.EXTENSION_XML);
 
 		final Element rootElement = new Element(Encounter.ROOT_ELEMENT);
 
@@ -301,7 +303,7 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		final BasicXmlFile template = new BasicXmlFile(document, targetFile);
 		template.saveToFile();
 
-		ApplicationLogger.getLogger().info("Saving new creature to: " + targetFile.getAbsolutePath());
+		ApplicationLogger.getLogger().info("Saving new encounter to: " + targetFile.getAbsolutePath());
 
 		long oldLength = -1;
 		long newLength = targetFile.length();
