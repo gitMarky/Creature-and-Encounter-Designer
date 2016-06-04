@@ -1,6 +1,3 @@
-Cannot save encounter with unsaved creatures
-
-
 Giant Scorpion
 Hunting Spider
 Giant Web Spider

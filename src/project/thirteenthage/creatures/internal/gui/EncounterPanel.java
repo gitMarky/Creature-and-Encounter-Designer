@@ -42,6 +42,11 @@ import project.thirteenthage.creatures.mechanics.analysis.EncounterDifficulty;
 @SuppressWarnings("serial")
 public class EncounterPanel extends JPanel implements IView, ActionListener
 {
+	private static final String TOOLTIP_SAVEBUTTON_OK = "Saves the encounter as an .xml file, so that it can be loaded again later.";
+	private static final String TOOLTIP_SAVEBUTTON_DISABLED = "Saving is disabled, because the encounter has no creatures";
+	private static final String TOOLTIP_SAVEBUTTON_UNSAVED = "Saving is disabled, because the encounter has creatures that were not saved to a template yet. In case that you save the template you will still have to build the encounter again.";
+	
+	
 	private final JPanel _buttonPanel = new JPanel();
 	private final JPanel _creatureListPanel = new JPanel();
 	private final JLabel _creatureListEmpty = new JLabel("No creatures were added to the encounter yet");
@@ -175,6 +180,8 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 			_clearButton.setEnabled(false);
 			_saveButton.setEnabled(false);
 			_exportButton.setEnabled(false);
+			
+			_saveButton.setToolTipText(TOOLTIP_SAVEBUTTON_DISABLED);
 		}
 		else
 		{
@@ -188,10 +195,24 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 			analysis.analyze();
 
 			_analysisLabel.displayAnalysis(analysis);
-		
+
+			boolean canSave = true;
+			for (final ICreature creature : _creatures.keySet())
+			{
+				String id = creature.getTemplate().getId();
+				ApplicationLogger.getLogger().info("ID of creature in encounter: " + id);
+				if (id == null)
+				{
+					canSave = false;
+					ApplicationLogger.getLogger().info("At least one creature is not saved yet, prevent saving encounter");
+				}
+			}
+
 			_clearButton.setEnabled(true);
-			_saveButton.setEnabled(true);
+			_saveButton.setEnabled(canSave);
 			_exportButton.setEnabled(true);
+			
+			_saveButton.setToolTipText(canSave ? TOOLTIP_SAVEBUTTON_OK: TOOLTIP_SAVEBUTTON_UNSAVED);
 		}
 
 		if (CreatureGui.GUI != null) CreatureGui.GUI.updateView();
