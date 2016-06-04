@@ -23,6 +23,10 @@ public class Html
 	public static final String BEGIN_DIV = "<div>";
 	public static final String END_DIV = "</div>";
 
+	public static final String BEGIN_TABLE = "<table>";
+	public static final String END_TABLE = "</table>";
+
+	
 	public static String LINE_BREAK = "<br>";
 
 	public static String tableRow(final String... entries)

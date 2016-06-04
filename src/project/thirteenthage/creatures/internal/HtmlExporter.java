@@ -21,6 +21,7 @@ import project.thirteenthage.creatures.internal.interfaces.ISpecial;
  */
 public class HtmlExporter
 {
+
 	private static final String TAB = "    ";
 	
 	private final StringBuilder content = new StringBuilder();
@@ -95,7 +96,7 @@ public class HtmlExporter
 		content.append(tab(tabDepth + 2) + "</td>" + Constants.NEWLINE);
 		content.append(tab(tabDepth + 1) + "</tr>" + Constants.NEWLINE);
 		content.append(tab(tabDepth) + "</thead>" + Constants.NEWLINE);
-		content.append(tab(tabDepth) + "</table>" + Constants.NEWLINE);
+		content.append(tab(tabDepth) + Html.END_TABLE + Constants.NEWLINE);
 		
 		printDamageTracks(creature, amount, tabDepth);
 		
@@ -104,7 +105,7 @@ public class HtmlExporter
 	
 	private void parseCreatureInfo(ICreature creature, int tabDepth)
 	{
-		content.append(tab(tabDepth) + "<table>" + Constants.NEWLINE);
+		content.append(tab(tabDepth) + Html.BEGIN_TABLE + Constants.NEWLINE);
 		content.append(tab(tabDepth + 1) + Html.tableRow(creature.getSize().toGuiText()) + Constants.NEWLINE);
 		content.append(tab(tabDepth + 1) + Html.tableRow(LevelHelper.getLevelText(creature.getLevel())) + Constants.NEWLINE);
 		
@@ -113,7 +114,7 @@ public class HtmlExporter
 			content.append(tab(tabDepth + 1) + Html.tableRow(label) + Constants.NEWLINE);			
 		}
 		
-		content.append(tab(tabDepth) + "</table>" + Constants.NEWLINE);
+		content.append(tab(tabDepth) + Html.END_TABLE + Constants.NEWLINE);
 	}
 
 
@@ -150,7 +151,7 @@ public class HtmlExporter
 		content.append(tab(tabDepth + 1) + Html.tableRow("PD", "" + creature.getPD()) + Constants.NEWLINE);
 		content.append(tab(tabDepth + 1) + Html.tableRow("MD", "" + creature.getMD()) + Constants.NEWLINE);
 		content.append(tab(tabDepth + 1) + Html.tableRow("HP", "" + Conversions.round(creature.getHP())) + Constants.NEWLINE);
-		content.append(tab(tabDepth) + "</table>" + Constants.NEWLINE);
+		content.append(tab(tabDepth) + Html.END_TABLE + Constants.NEWLINE);
 	}
 	
 
@@ -160,7 +161,7 @@ public class HtmlExporter
 		final int hp = Conversions.round(creature.getHP());
 
 		String endTable = tab(tabDepth) + "</td></tr>" + Constants.NEWLINE
-				        + tab(tabDepth) + "</table>" + Constants.NEWLINE;
+				        + tab(tabDepth) + Html.END_TABLE + Constants.NEWLINE;
 		for (int i = 1; i <= amount; ++i)
 		{
 			boolean createNewTable = false;
@@ -208,7 +209,7 @@ public class HtmlExporter
 		String weakened = "Weakened";
 		content.append(tab(tabDepth + 1) + Html.tableRow(ongoingDamage, cell, confused, cell, dazed, cell, fear, cell, hampered, cell) + Constants.NEWLINE);
 		content.append(tab(tabDepth + 1) + Html.tableRow(helpless, cell, stuck, cell, stunned, cell, vulnerable, cell, weakened, cell) + Constants.NEWLINE);
-		content.append(tab(tabDepth) + "</table>" + Constants.NEWLINE);
+		content.append(tab(tabDepth) + Html.END_TABLE + Constants.NEWLINE);
 	}
 
 	private String visibleBorder()
