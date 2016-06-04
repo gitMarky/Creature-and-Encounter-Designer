@@ -82,17 +82,17 @@ public class HtmlExporter
 
 		parseCreatureInfo(creature, tabDepth + 3);
 		
-		content.append(tab(tabDepth + 2) + "</td>" + Constants.NEWLINE);
-		content.append(tab(tabDepth + 2) + "<td>" + Constants.NEWLINE);
+		content.append(tab(tabDepth + 2) + Html.END_TD + Constants.NEWLINE);
+		content.append(tab(tabDepth + 2) + Html.BEGIN_TD + Constants.NEWLINE);
 		
 		parseCreatureAttacks(creature, tabDepth + 3);
 		
-		content.append(tab(tabDepth + 2) + "</td>" + Constants.NEWLINE);
+		content.append(tab(tabDepth + 2) + Html.END_TD + Constants.NEWLINE);
 		content.append(tab(tabDepth + 2) + "<td style=\"" + styleSidebar() + ";" + styleBackgroundLight() + "\">" + Constants.NEWLINE);
 
 		parseCreatureStats(creature, tabDepth + 3);
 		
-		content.append(tab(tabDepth + 2) + "</td>" + Constants.NEWLINE);
+		content.append(tab(tabDepth + 2) + Html.END_TD + Constants.NEWLINE);
 		content.append(tab(tabDepth + 1) + Html.END_TR + Constants.NEWLINE);
 		content.append(tab(tabDepth) + "</thead>" + Constants.NEWLINE);
 		content.append(tab(tabDepth) + Html.END_TABLE + Constants.NEWLINE);
@@ -159,7 +159,7 @@ public class HtmlExporter
 		final String cell = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
 		final int hp = Conversions.round(creature.getHP());
 
-		String endTable = tab(tabDepth) + "</td>" + Html.END_TR + Constants.NEWLINE
+		String endTable = tab(tabDepth) + Html.END_TD + Html.END_TR + Constants.NEWLINE
 				        + tab(tabDepth) + Html.END_TABLE + Constants.NEWLINE;
 		for (int i = 1; i <= amount; ++i)
 		{
@@ -181,7 +181,7 @@ public class HtmlExporter
 				if (i > 1) content.append(endTable);
 				
 				content.append(tab(tabDepth) + "<table style=\"" + styleBorder(rgb(StyleConstants.BACKGROUND_LIGHT), 3) + "\" " + visibleBorder() + "\">" + Constants.NEWLINE);
-				content.append(tab(tabDepth) + Html.BEGIN_TR + "<td>" + Constants.NEWLINE);
+				content.append(tab(tabDepth) + Html.BEGIN_TR + Html.BEGIN_TD + Constants.NEWLINE);
 			}
 			
 			printDamageTrack(creature, tabDepth + (creature.isMook() ? 1 : 0), cell, hp, i);
@@ -194,7 +194,7 @@ public class HtmlExporter
 	private void printDamageTrack(ICreature creature, int tabDepth, final String cell, final int hp, int i)
 	{
 		content.append(tab(tabDepth) + "<table style=\"" + styleBorder() + "\" " + visibleBorder() + "\">" + Constants.NEWLINE);
-		content.append(tab(tabDepth + 1) + Html.BEGIN_TR + "<th rowspan=\"3\">" + creature.getName() + " #" + i + "</th><td colspan=\"10\">HP: " + hp + "</td>" + Html.END_TR + Constants.NEWLINE);
+		content.append(tab(tabDepth + 1) + Html.BEGIN_TR + "<th rowspan=\"3\">" + creature.getName() + " #" + i + "</th><td colspan=\"10\">HP: " + hp + Html.END_TD + Html.END_TR + Constants.NEWLINE);
 
 		String ongoingDamage = "Ongoing damage";
 		String confused = "Confused";

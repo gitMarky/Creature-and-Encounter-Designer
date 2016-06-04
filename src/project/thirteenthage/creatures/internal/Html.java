@@ -1,5 +1,6 @@
 package project.thirteenthage.creatures.internal;
 
+
 public class Html
 {
 	public static String BEGIN = "<html>";
@@ -29,6 +30,9 @@ public class Html
 	public static final String BEGIN_TR = "<tr>";
 	public static final String END_TR = "</tr>";
 
+	public static final String BEGIN_TD = "<td>";
+	public static final String END_TD = "</td>";
+
 	
 	public static String LINE_BREAK = "<br>";
 
@@ -44,7 +48,7 @@ public class Html
 
 		for (final String entry : entries)
 		{
-			description.append("<td>" + entry + "</td>");
+			description.append(BEGIN_TD + entry + END_TD);
 		}
 		
 		return description.toString();
