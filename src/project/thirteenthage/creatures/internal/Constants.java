@@ -6,6 +6,8 @@ public class Constants
 {
 	public static File RESOURCES = new File("resources");
 
+	public static File RESOURCES_CUSTOM = new File("resources/custom");
+
 	public static String NEWLINE = "\n";
 
 	public static final int MIN_LEVEL = 0;

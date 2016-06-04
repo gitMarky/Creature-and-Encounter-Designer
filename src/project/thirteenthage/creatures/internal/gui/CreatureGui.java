@@ -125,7 +125,7 @@ public class CreatureGui implements IView
 			}
 		};
 
-		_fileChooserXml.setCurrentDirectory(Constants.RESOURCES);
+		_fileChooserXml.setCurrentDirectory(Constants.RESOURCES_CUSTOM);
 		_fileChooserXml.setFileFilter(fileFilterXml);
 
 		final FileFilter fileFilterHtml = new javax.swing.filechooser.FileFilter()
@@ -149,7 +149,7 @@ public class CreatureGui implements IView
 			}
 		};
 		
-		_fileChooserHtml.setCurrentDirectory(Constants.RESOURCES);
+		_fileChooserHtml.setCurrentDirectory(Constants.RESOURCES_CUSTOM);
 		_fileChooserHtml.setFileFilter(fileFilterHtml);
 
 		frame.add(panel);
