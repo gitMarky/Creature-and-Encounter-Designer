@@ -91,13 +91,6 @@ public class AttackTemplate implements IAttack
 	@Override
 	public String toGuiText()
 	{
-		throw new IllegalStateException("Not implemented");
-	}
-
-
-	@Override
-	public String toHtmlText()
-	{
 		return HtmlDescriptions.getAttackDescription(this, "creature", 100, true);
 	}
 

@@ -43,7 +43,7 @@ public class Special implements ISpecial
 
 
 	@Override
-	public String toHtmlText()
+	public String toGuiText()
 	{
 		return HtmlDescriptions.getSpecialDescription(this, _creatureName);
 	}

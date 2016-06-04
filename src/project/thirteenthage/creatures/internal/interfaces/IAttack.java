@@ -4,7 +4,7 @@ import java.util.List;
 
 import project.thirteenthage.creatures.interfaces.ITrigger;
 
-public interface IAttack extends INamedItem, IDisplayableInGui, IDisplayableInHtml
+public interface IAttack extends INamedItem, IDisplayableInGui
 {
 	/**
 	 * Gets the attack bonus that modifies the attack.

@@ -97,13 +97,6 @@ public class Attack implements IAttack
 	@Override
 	public String toGuiText()
 	{
-		return getName() + " +" + getAttackBonus() + " vs. " + getDefense() + " - " + (int) getDamageFactor() + " " + getDescription();
-	}
-
-
-	@Override
-	public String toHtmlText()
-	{
 		if (_creature == null)
 		{
 			return HtmlDescriptions.getAttackDescription(this, Constants.TEMPLATE_CREATURE_NAME, Constants.TEMPLATE_CREATURE_DAMAGE, true);

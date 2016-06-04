@@ -9,7 +9,7 @@ import project.thirteenthage.creatures.internal.interfaces.IAttack;
 @SuppressWarnings("serial")
 public class AttackViewLabel extends JLabel
 {
-	AttackViewLabel(final IAttack attack)
+	public AttackViewLabel(final IAttack attack)
 	{
 		super();
 		setBorder(StyleConstants.DEFAULT_EMPTY_BORDER);
@@ -25,7 +25,7 @@ public class AttackViewLabel extends JLabel
 		}
 
 		final StringBuilder guiText = new StringBuilder(Html.BEGIN);
-		guiText.append(attack.toHtmlText());
+		guiText.append(attack.toGuiText());
 		guiText.append(Html.END);
 		setText(guiText.toString());
 	}

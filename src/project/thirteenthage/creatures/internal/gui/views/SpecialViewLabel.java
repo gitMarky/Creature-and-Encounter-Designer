@@ -25,7 +25,7 @@ public class SpecialViewLabel extends JLabel
 		}
 
 		final StringBuilder guiText = new StringBuilder(Html.BEGIN);
-		guiText.append(special.toHtmlText());
+		guiText.append(special.toGuiText());
 		guiText.append(Html.END);
 		setText(guiText.toString());
 	}

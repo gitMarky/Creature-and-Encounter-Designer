@@ -1,6 +1,6 @@
 package project.thirteenthage.creatures.internal.interfaces;
 
-public interface ISpecial extends INamedItem, IDisplayableInHtml
+public interface ISpecial extends INamedItem, IDisplayableInGui
 {
 	String getDescription();
 }

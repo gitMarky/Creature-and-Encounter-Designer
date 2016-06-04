@@ -46,7 +46,7 @@ public class SpecialTemplate implements ISpecial
 
 
 	@Override
-	public String toHtmlText()
+	public String toGuiText()
 	{
 		return HtmlDescriptions.getSpecialDescription(this, Constants.TEMPLATE_CREATURE_OF_TYPE);
 	}

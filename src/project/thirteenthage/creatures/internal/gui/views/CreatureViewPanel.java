@@ -14,6 +14,7 @@ import javax.swing.ScrollPaneConstants;
 
 import project.thirteenthage.creatures.interfaces.IView;
 import project.thirteenthage.creatures.internal.Html;
+import project.thirteenthage.creatures.internal.LevelHelper;
 import project.thirteenthage.creatures.internal.conversions.Conversions;
 import project.thirteenthage.creatures.internal.gui.StyleConstants;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
@@ -130,7 +131,7 @@ public class CreatureViewPanel extends JPanel implements IView
 		{
 			// update the components
 			_size.setText(_creature.getSize().toGuiText());
-			_level.setText(getLevelText(_creature.getLevel()));
+			_level.setText(LevelHelper.getLevelText(_creature.getLevel()));
 
 			for (final JLabel label : _labels)
 			{
@@ -151,30 +152,6 @@ public class CreatureViewPanel extends JPanel implements IView
 			for (final JLabel label : _labels)
 			{
 				this.add(label);
-			}
-		}
-
-
-		private String getLevelText(final int level)
-		{
-			return ith(level) + " level";
-		}
-
-
-		private String ith(final int level)
-		{
-			if (level == 11 || level == 12 || level == 13) return level + "th";
-
-			switch (level % 10)
-			{
-				case 1:
-					return level + "st";
-				case 2:
-					return level + "nd";
-				case 3:
-					return level + "rd";
-				default:
-					return level + "th";
 			}
 		}
 	}
