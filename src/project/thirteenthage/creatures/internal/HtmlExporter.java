@@ -76,7 +76,6 @@ public class HtmlExporter
 		content.append(tab(tabDepth) + "<h4 style=\"" + styleBackgrounDark() + ";" + styleFontColor(new Color(255, 255, 255)) + ";margin-top:30px;margin-bottom:3px;padding:5px\">" + creature.getName() + "</h4>" + Constants.NEWLINE);
 		content.append(tab(tabDepth) + Html.BEGIN_DIV);
 		content.append(tab(tabDepth) + "<table style=\"" + styleBorder() + "\" " + visibleBorder() + " cellpadding=\"7\" cellspacing=\"0\">" + Constants.NEWLINE);
-		content.append(tab(tabDepth) + "<thead>" + Constants.NEWLINE);
 		content.append(tab(tabDepth + 1) + Html.BEGIN_TR + Constants.NEWLINE);
 		content.append(tab(tabDepth + 2) + "<td style=\"" + styleSidebar() + ";" + styleBackgroundLight() + "\">" + Constants.NEWLINE);
 
@@ -94,7 +93,6 @@ public class HtmlExporter
 		
 		content.append(tab(tabDepth + 2) + Html.END_TD + Constants.NEWLINE);
 		content.append(tab(tabDepth + 1) + Html.END_TR + Constants.NEWLINE);
-		content.append(tab(tabDepth) + "</thead>" + Constants.NEWLINE);
 		content.append(tab(tabDepth) + Html.END_TABLE + Constants.NEWLINE);
 		
 		printDamageTracks(creature, amount, tabDepth);
