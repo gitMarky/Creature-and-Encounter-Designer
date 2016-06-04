@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import project.thirteenthage.creatures.internal.gui.views.CreatureEncounterPanel;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.loaders.CreatureLoader;
 import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
@@ -23,9 +22,11 @@ public class HtmlExporterTest
 		
 		Map<ICreature, Integer> creatures = new HashMap<ICreature, Integer>();
 
-		final ICreature enemy = CreatureLoader.getInstance().getCreatures().get("creature_human_thug");
+		final ICreature thug = CreatureLoader.getInstance().getCreatures().get("creature_human_thug");
+		final ICreature rat = CreatureLoader.getInstance().getCreatures().get("creature_dire_rat");
 		
-		creatures.put(enemy, 2);
+		creatures.put(thug, 2);
+		creatures.put(rat, 5);
 		
 		HtmlExporter exporter = new HtmlExporter(targetFile, creatures);
 		

@@ -31,12 +31,22 @@ public class Html
 		
 		description.append("<tr>");
 		
-		for (final String entry : entries)
-				{
-					description.append("<td>" + entry + "</td>");
-				}
+		description.append(tableColumns(entries));
 		
 		description.append("</tr>");
+		
+		return description.toString();
+	}
+
+	
+	public static String tableColumns(final String... entries)
+	{
+		final StringBuilder description = new StringBuilder();
+
+		for (final String entry : entries)
+		{
+			description.append("<td>" + entry + "</td>");
+		}
 		
 		return description.toString();
 	}

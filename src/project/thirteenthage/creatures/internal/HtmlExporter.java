@@ -70,10 +70,10 @@ public class HtmlExporter
 	}
 	
 	private void parseCreature(ICreature creature, int amount, int tabDepth)
-	{
+	{	
 		content.append(tab(tabDepth) + "<h4 style=\"" + styleBackgrounDark() + ";" + styleFontWhite() + ";margin-top:30px;margin-bottom:3px;padding:5px\">" + creature.getName() + "</h4>" + Constants.NEWLINE);
 		content.append(tab(tabDepth) + Html.BEGIN_DIV);
-		content.append(tab(tabDepth) + "<table style=\"" + "border-color:rgb(136,136,136);border-width:1px;border-collapse:collapse;width:100%" + "\" border=\"1\" bordercolor=\"#888888\" cellpadding=\"7\" cellspacing=\"0\">" + Constants.NEWLINE);
+		content.append(tab(tabDepth) + "<table style=\"" + styleBorder() + "\" " + visibleBorder() + " cellpadding=\"7\" cellspacing=\"0\">" + Constants.NEWLINE);
 		content.append(tab(tabDepth) + "<thead>" + Constants.NEWLINE);
 		content.append(tab(tabDepth + 1) + "<tr>" + Constants.NEWLINE);
 		content.append(tab(tabDepth + 2) + "<td style=\"" + styleSidebar() + ";" + styleBackgroundLight() + "\">" + Constants.NEWLINE);
@@ -95,29 +95,10 @@ public class HtmlExporter
 		content.append(tab(tabDepth) + "</thead>" + Constants.NEWLINE);
 		content.append(tab(tabDepth) + "</table>" + Constants.NEWLINE);
 		
-		printDamageTracks(amount, tabDepth);
+		printDamageTracks(creature, amount, tabDepth);
 		
 		content.append(tab(tabDepth) + Html.END_DIV);
 	}
-
-
-	private String styleBackgrounDark()
-	{
-		return "background-color:rgb(0,51,153)";
-	}
-
-
-	private String styleSidebar()
-	{
-		return "text-align:center;width:10%";
-	}
-
-
-	private String styleBackgroundLight()
-	{
-		return "background-color:rgb(100,150,255)";
-	}
-
 	
 	private void parseCreatureInfo(ICreature creature, int tabDepth)
 	{
@@ -169,17 +150,70 @@ public class HtmlExporter
 		content.append(tab(tabDepth + 1) + Html.tableRow("HP", "" + Conversions.round(creature.getHP())) + Constants.NEWLINE);
 		content.append(tab(tabDepth) + "</table>" + Constants.NEWLINE);
 	}
+	
+
+	private void printDamageTracks(ICreature creature, int amount, int tabDepth)
+	{
+		final String cell = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+		final int hp = Conversions.round(creature.getHP());
+		for (int i = 1; i <= amount; ++i)
+		{
+			content.append(tab(tabDepth) + "<table style=\"" + styleBorder() + "\" " + visibleBorder() + "\">" + Constants.NEWLINE);
+			content.append(tab(tabDepth + 1) + "<tr><th rowspan=\"3\">" + creature.getName() + " #" + i + "</th>" + Html.tableColumns("HP: " + hp, cell, cell, cell, cell, cell, cell, cell, cell, cell) + "</tr>" + Constants.NEWLINE);
+
+			
+			String ongoingDamage = "Ongoing damage";
+			String confused = "Confused";
+			String dazed = "Dazed";
+			String fear = "Fear";
+			String hampered = "Hampered";
+			String helpless = "Helpless";
+			String stuck = "Stuck";
+			String stunned = "Stunned";
+			String vulnerable = "Vulnerable";
+			String weakened = "Weakened";
+			content.append(tab(tabDepth + 1) + Html.tableRow(ongoingDamage, cell, confused, cell, dazed, cell, fear, cell, hampered, cell) + Constants.NEWLINE);
+			content.append(tab(tabDepth + 1) + Html.tableRow(helpless, cell, stuck, cell, stunned, cell, vulnerable, cell, weakened, cell) + Constants.NEWLINE);
+			content.append(tab(tabDepth) + "</table>" + Constants.NEWLINE);			
+		}
+	}
 
 
+
+
+	private String visibleBorder()
+	{
+		return "border=\"1\" bordercolor=\"#888888\"";
+	}
+
+
+	private String styleBorder()
+	{
+		return "border-color:rgb(136,136,136);border-width:1px;border-collapse:collapse;width:100%";
+	}
+
+	
 	private String styleFontWhite()
 	{
 		return "color:rgb(255,255,255)";
 	}
 
 
-	private void printDamageTracks(int amount, int tabDepth)
+	private String styleBackgrounDark()
 	{
-		// TODO Auto-generated method stub	
+		return "background-color:rgb(0,51,153)";
+	}
+
+
+	private String styleSidebar()
+	{
+		return "text-align:center;width:10%";
+	}
+
+
+	private String styleBackgroundLight()
+	{
+		return "background-color:rgb(100,150,255)";
 	}
 
 	
