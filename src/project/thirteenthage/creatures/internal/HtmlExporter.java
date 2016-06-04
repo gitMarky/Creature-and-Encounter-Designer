@@ -164,24 +164,31 @@ public class HtmlExporter
 				        + tab(tabDepth) + "</table>" + Constants.NEWLINE;
 		for (int i = 1; i <= amount; ++i)
 		{
+			boolean createNewTable = false;
 			if (creature.isMook())
 			{
 				int number = (i-1) % Constants.MAX_MOOK_POOL_SIZE;
 				
-				if (number == 0)
-				{
-					ApplicationLogger.getLogger().info("Exported mook pool");
-					if (i > 1) content.append(endTable);
-
-					content.append(tab(tabDepth) + "<table style=\"" + styleBorder(BACKGROUND_DARK, 10) + "\" " + visibleBorder() + "\">" + Constants.NEWLINE);
-					content.append(tab(tabDepth) + "<tr><td>" + Constants.NEWLINE);
-				}
+				if (number == 0) createNewTable = true;
+			}
+			else
+			{
+				createNewTable = true;
+			}
+			
+			
+			if (createNewTable)
+			{
+				if (i > 1) content.append(endTable);
+				
+				content.append(tab(tabDepth) + "<table style=\"" + styleBorder(BACKGROUND_DARK, 10) + "\" " + visibleBorder() + "\">" + Constants.NEWLINE);
+				content.append(tab(tabDepth) + "<tr><td>" + Constants.NEWLINE);
 			}
 			
 			printDamageTrack(creature, tabDepth + (creature.isMook() ? 1 : 0), cell, hp, i);
 		}
 		
-		if (creature.isMook()) content.append(endTable);
+		content.append(endTable);
 	}
 
 
