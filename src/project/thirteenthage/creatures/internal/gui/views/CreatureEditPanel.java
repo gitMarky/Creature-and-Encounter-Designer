@@ -18,6 +18,7 @@ import javax.swing.event.ListSelectionListener;
 
 import project.thirteenthage.creatures.creature.EditableCreatureTemplate;
 import project.thirteenthage.creatures.interfaces.IView;
+import project.thirteenthage.creatures.internal.ApplicationLogger;
 import project.thirteenthage.creatures.internal.Constants;
 import project.thirteenthage.creatures.internal.gui.CreaturePanel;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
@@ -129,6 +130,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 	@Override
 	public void updateView()
 	{
+		ApplicationLogger.getLogger().info("Update view");
 		updateCreature();
 		displayCreature();
 	}

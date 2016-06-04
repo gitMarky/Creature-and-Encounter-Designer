@@ -3,6 +3,7 @@ package project.thirteenthage.creatures.internal.gui.views;
 import javax.swing.JPanel;
 
 import project.thirteenthage.creatures.interfaces.IView;
+import project.thirteenthage.creatures.internal.ApplicationLogger;
 
 @SuppressWarnings("serial")
 public class ChoicePanel extends JPanel implements IView
@@ -15,6 +16,7 @@ public class ChoicePanel extends JPanel implements IView
 	{
 		if (_updateView != null)
 		{
+			ApplicationLogger.getLogger().info("Update view");
 			_updateView.updateView();
 		}
 	}

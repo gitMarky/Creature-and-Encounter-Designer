@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import project.thirteenthage.creatures.interfaces.IView;
+import project.thirteenthage.creatures.internal.ApplicationLogger;
 import project.thirteenthage.creatures.internal.gui.CreatureGui;
 import project.thirteenthage.creatures.internal.gui.StyleConstants;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
@@ -54,6 +55,7 @@ public class CreatureEncounterPanel extends JPanel implements IView, ActionListe
 	@Override
 	public void updateView()
 	{
+		ApplicationLogger.getLogger().info("Update view");
 		_viewPanel.updateView();
 	}
 

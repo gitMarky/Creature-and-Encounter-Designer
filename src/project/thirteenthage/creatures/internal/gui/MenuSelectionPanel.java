@@ -7,6 +7,7 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 import project.thirteenthage.creatures.interfaces.IView;
+import project.thirteenthage.creatures.internal.ApplicationLogger;
 import project.thirteenthage.creatures.internal.gui.views.LevelAdjustmentChoicePanel;
 import project.thirteenthage.creatures.loaders.CreatureLoader;
 import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
@@ -37,6 +38,7 @@ class MenuSelectionPanel extends JPanel implements IView
 	@Override
 	public void updateView()
 	{
+		ApplicationLogger.getLogger().info("Update view");
 		updateSelectionList();
 	}
 

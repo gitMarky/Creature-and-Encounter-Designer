@@ -160,6 +160,8 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 	@Override
 	public void updateView()
 	{
+		ApplicationLogger.getLogger().info("Update view");
+
 		for (final CreatureEncounterPanel panel : _creatures.values())
 		{
 			panel.updateView();

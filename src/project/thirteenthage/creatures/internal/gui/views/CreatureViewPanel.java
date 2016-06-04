@@ -13,6 +13,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
 import project.thirteenthage.creatures.interfaces.IView;
+import project.thirteenthage.creatures.internal.ApplicationLogger;
 import project.thirteenthage.creatures.internal.Html;
 import project.thirteenthage.creatures.internal.LevelHelper;
 import project.thirteenthage.creatures.internal.conversions.Conversions;
@@ -96,6 +97,7 @@ public class CreatureViewPanel extends JPanel implements IView
 	@Override
 	public void updateView()
 	{
+		ApplicationLogger.getLogger().info("Update view");
 		_infoPanel.updateView();
 		_attackPanel.updateView();
 		_statsPanel.updateView();

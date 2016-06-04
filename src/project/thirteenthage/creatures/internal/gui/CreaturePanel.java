@@ -193,6 +193,8 @@ public class CreaturePanel extends JPanel implements ActionListener, IView
 	@Override
 	public void updateView()
 	{
+		ApplicationLogger.getLogger().info("Update view");
+		
 		if (_isInEditMode)
 		{
 			_editButton.setEnabled(false);
