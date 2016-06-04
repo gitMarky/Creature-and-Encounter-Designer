@@ -3,7 +3,11 @@
     <!--this file was created by Eclipse Runnable JAR Export Wizard-->
     <!--ANT 1.7 is required                                        -->
     <target name="create_run_jar">
-        <jar destfile="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner.jar">
+    	<!-- clear directory -->
+        <delete dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/"/>
+        <mkdir dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/"/>
+    	<!-- build executable -->
+        <jar destfile="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/CreatureDesigner.jar">
             <manifest>
                 <attribute name="Main-Class" value="project.thirteenthage.creatures.internal.gui.CreatureGui"/>
                 <attribute name="Class-Path" value=". lib/jdom-2.0.5.jar lib/junit.jar lib/org.hamcrest.core_1.3.0.v201303031735.jar"/>
@@ -11,24 +15,24 @@
             <fileset dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/bin"/>
         </jar>
     	<!-- create the libraries and resources folder -->
-        <delete dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/lib"/>
-        <mkdir dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/lib"/>
-        <delete dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/resources"/>
-        <mkdir dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/resources"/>
-        <mkdir dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/resources/custom"/>
-        <mkdir dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/resources/custom/attacks"/>
-        <mkdir dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/resources/custom/creatures"/>
-        <mkdir dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/resources/custom/encounters"/>
-        <mkdir dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/resources/custom/specials"/>
+        <delete dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/lib"/>
+        <mkdir dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/lib"/>
+        <delete dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/resources"/>
+        <mkdir dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/resources"/>
+        <mkdir dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/resources/custom"/>
+        <mkdir dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/resources/custom/attacks"/>
+        <mkdir dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/resources/custom/creatures"/>
+        <mkdir dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/resources/custom/encounters"/>
+        <mkdir dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/resources/custom/specials"/>
     	<!-- copy libraries -->
-        <copy file="C:/Editing/javalibs/jdom2/jdom-2.0.5.jar" todir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/lib"/>
-        <copy file="C:/EclipseWorkspace/eclipse/plugins/org.junit_4.11.0.v201303080030/junit.jar" todir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/lib"/>
-        <copy file="C:/EclipseWorkspace/eclipse/plugins/org.hamcrest.core_1.3.0.v201303031735.jar" todir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/lib"/>
+        <copy file="C:/Editing/javalibs/jdom2/jdom-2.0.5.jar" todir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/lib"/>
+        <copy file="C:/EclipseWorkspace/eclipse/plugins/org.junit_4.11.0.v201303080030/junit.jar" todir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/lib"/>
+        <copy file="C:/EclipseWorkspace/eclipse/plugins/org.hamcrest.core_1.3.0.v201303031735.jar" todir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/lib"/>
     	<!-- copy resources -->
-        <copydir src="C:/Editing/PenAndPaper/13a/CreatureDataBase/resources/creatures/" dest="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/resources/13th_age_core/creatures"/>
-        <copydir src="C:/Editing/PenAndPaper/13a/CreatureDataBase/resources/creatures/" dest="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/resources/13th_age_core/creatures"/>
-        <copydir src="C:/Editing/PenAndPaper/13a/CreatureDataBase/resources/specials/" dest="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/resources/13th_age_core/specials"/>
-        <copydir src="C:/Editing/PenAndPaper/13a/CreatureDataBase/resources/attacks/" dest="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/resources/13th_age_core/attacks"/>
-        <copydir src="C:/Editing/PenAndPaper/13a/CreatureDataBase/resources/encounters/" dest="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/resources/custom/encounters"/>
+        <copydir src="C:/Editing/PenAndPaper/13a/CreatureDataBase/resources/creatures/" dest="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/resources/13th_age_core/creatures"/>
+        <copydir src="C:/Editing/PenAndPaper/13a/CreatureDataBase/resources/creatures/" dest="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/resources/13th_age_core/creatures"/>
+        <copydir src="C:/Editing/PenAndPaper/13a/CreatureDataBase/resources/specials/" dest="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/resources/13th_age_core/specials"/>
+        <copydir src="C:/Editing/PenAndPaper/13a/CreatureDataBase/resources/attacks/" dest="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/resources/13th_age_core/attacks"/>
+        <copydir src="C:/Editing/PenAndPaper/13a/CreatureDataBase/resources/encounters/" dest="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/resources/custom/encounters"/>
     </target>
 </project>
