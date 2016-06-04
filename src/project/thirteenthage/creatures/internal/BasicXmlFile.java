@@ -35,10 +35,12 @@ public class BasicXmlFile
 		catch (final JDOMException e)
 		{
 			_doc = new Document();
+			ApplicationLogger.getLogger().info("Created new document because of JDomException:");
+			ApplicationLogger.getLogger().throwing("", "", e);
 		}
 		catch (final IOException e)
 		{
-			throw new IllegalStateException();
+			throw new IllegalStateException(e);
 		}
 	}
 
@@ -88,6 +90,7 @@ public class BasicXmlFile
 		}
 		catch (final IOException e)
 		{
+			ApplicationLogger.getLogger().info("Saving file failed");
 			return false;
 		}
 	}
