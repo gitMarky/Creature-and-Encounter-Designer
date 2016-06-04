@@ -3,6 +3,7 @@ package project.thirteenthage.creatures.loaders;
 import java.util.Collections;
 
 import project.thirteenthage.creatures.creature.CreatureTemplate;
+import project.thirteenthage.creatures.internal.ApplicationLogger;
 import project.thirteenthage.creatures.internal.BasicXmlFile;
 import project.thirteenthage.creatures.internal.Constants;
 import project.thirteenthage.creatures.internal.exceptions.LoaderException;
@@ -59,6 +60,7 @@ public class CreatureTemplateLoader extends AbstractLoader<ICreatureTemplate>
 	{
 		if (_instance == null)
 		{
+			ApplicationLogger.getLogger().info("Setting up new loader instance");
 			_instance = new CreatureTemplateLoader();
 			_instance.load(Constants.RESOURCES);
 		}

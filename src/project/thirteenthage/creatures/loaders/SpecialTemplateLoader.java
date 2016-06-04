@@ -1,5 +1,6 @@
 package project.thirteenthage.creatures.loaders;
 
+import project.thirteenthage.creatures.internal.ApplicationLogger;
 import project.thirteenthage.creatures.internal.BasicXmlFile;
 import project.thirteenthage.creatures.internal.Constants;
 import project.thirteenthage.creatures.internal.exceptions.LoaderException;
@@ -50,6 +51,7 @@ public class SpecialTemplateLoader extends AbstractLoader<ISpecial>
 	{
 		if (_instance == null)
 		{
+			ApplicationLogger.getLogger().info("Setting up new loader instance");
 			_instance = new SpecialTemplateLoader();
 			_instance.load(Constants.RESOURCES);
 		}

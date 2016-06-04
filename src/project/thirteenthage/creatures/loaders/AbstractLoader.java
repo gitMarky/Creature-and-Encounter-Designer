@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import project.thirteenthage.creatures.internal.ApplicationLogger;
 import project.thirteenthage.creatures.internal.BasicXmlFile;
 
 public abstract class AbstractLoader<T extends Object>
@@ -18,7 +19,7 @@ public abstract class AbstractLoader<T extends Object>
 		{
 			throw new IllegalArgumentException("File was null");
 		}
-
+		
 		if (fromDirectory.isFile())
 		{
 			loadFile(fromDirectory);
@@ -52,6 +53,7 @@ public abstract class AbstractLoader<T extends Object>
 
 		if (checkEntry(template))
 		{
+			ApplicationLogger.getLogger().info("Loading files from path: " + file.getAbsolutePath());
 			addEntry(template);
 		}
 	}

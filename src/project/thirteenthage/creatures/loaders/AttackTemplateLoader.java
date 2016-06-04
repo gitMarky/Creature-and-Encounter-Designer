@@ -1,5 +1,6 @@
 package project.thirteenthage.creatures.loaders;
 
+import project.thirteenthage.creatures.internal.ApplicationLogger;
 import project.thirteenthage.creatures.internal.BasicXmlFile;
 import project.thirteenthage.creatures.internal.Constants;
 import project.thirteenthage.creatures.internal.exceptions.LoaderException;
@@ -49,6 +50,7 @@ public class AttackTemplateLoader extends AbstractLoader<IAttack>
 	{
 		if (_instance == null)
 		{
+			ApplicationLogger.getLogger().info("Setting up new loader instance");
 			_instance = new AttackTemplateLoader();
 			_instance.load(Constants.RESOURCES);
 		}
