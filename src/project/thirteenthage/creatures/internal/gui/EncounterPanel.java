@@ -76,8 +76,8 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		final JPanel innerButtonPanel = new JPanel();
 		innerButtonPanel.setLayout(new BoxLayout(innerButtonPanel, BoxLayout.Y_AXIS));
 
-		innerButtonPanel.add(_clearButton);
 		innerButtonPanel.add(_loadButton);
+		innerButtonPanel.add(_clearButton);
 		innerButtonPanel.add(_saveButton);
 		innerButtonPanel.add(_exportButton);
 		innerButtonPanel.add(_difficultyLabel);
@@ -172,6 +172,9 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 		{
 			_difficultyLabel.displayDifficulty(Double.NaN);
 			_analysisLabel.displayNothing();
+			_clearButton.setEnabled(false);
+			_saveButton.setEnabled(false);
+			_exportButton.setEnabled(false);
 		}
 		else
 		{
@@ -185,6 +188,10 @@ public class EncounterPanel extends JPanel implements IView, ActionListener
 			analysis.analyze();
 
 			_analysisLabel.displayAnalysis(analysis);
+		
+			_clearButton.setEnabled(true);
+			_saveButton.setEnabled(true);
+			_exportButton.setEnabled(true);
 		}
 
 		if (CreatureGui.GUI != null) CreatureGui.GUI.updateView();
