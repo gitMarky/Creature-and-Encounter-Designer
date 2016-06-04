@@ -18,7 +18,6 @@ public class Creature implements ICreature
 {
 	private String _name = "New creature";
 	private int _level = 1;
-	private int _levelAdjustment = 0;
 	private final List<String> _labels = new ArrayList<String>();
 	private int _attack = 0;
 	private int _ac = 0;
@@ -290,12 +289,6 @@ public class Creature implements ICreature
 		}
 
 		_template = template;
-	}
-
-
-	public void setLevelAdjustment(final int amount)
-	{
-		_levelAdjustment = amount;
 	}
 
 
