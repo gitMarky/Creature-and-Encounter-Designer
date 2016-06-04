@@ -122,21 +122,21 @@ public class HtmlExporter
 	private void parseCreatureInfo(ICreature creature, int tabDepth)
 	{
 		content.append(tab(tabDepth) + "<table style=\"" + styleFontWhite() + "\">" + Constants.NEWLINE);
-		content.append(tab(tabDepth + 1) + "<tr><td>" + creature.getSize().toGuiText() + "</td></tr>" + Constants.NEWLINE);
-		content.append(tab(tabDepth + 1) + "<tr><td>" + LevelHelper.getLevelText(creature.getLevel()) + "</td></tr>" + Constants.NEWLINE);
+		content.append(tab(tabDepth + 1) + Html.tableRow(creature.getSize().toGuiText()) + Constants.NEWLINE);
+		content.append(tab(tabDepth + 1) + Html.tableRow(LevelHelper.getLevelText(creature.getLevel())) + Constants.NEWLINE);
 		
 		for (final String label : creature.getLabels())
 		{
-			content.append(tab(tabDepth + 1) + "<tr><td>" + label + "</td></tr>" + Constants.NEWLINE);			
+			content.append(tab(tabDepth + 1) + Html.tableRow(label) + Constants.NEWLINE);			
 		}
 		
 		content.append(tab(tabDepth) + "</table>" + Constants.NEWLINE);
 	}
 
-	
+
 	private void parseCreatureAttacks(ICreature creature, int tabDepth)
 	{
-		content.append(tab(tabDepth) + "<p><b>Initiative " + String.format("%+d", creature.getInitiative()) + "</b></p>" + Constants.NEWLINE);
+		content.append(tab(tabDepth) + Html.BEGIN_PARAGRAPH + Html.BEGIN_BOLD + "Initiative " + String.format("%+d", creature.getInitiative()) + Html.END_BOLD + Html.END_PARAGRAPH + Constants.NEWLINE);
 		
 		for (final IAttack attack : creature.getAttacks())
 		{
@@ -163,10 +163,10 @@ public class HtmlExporter
 	private void parseCreatureStats(ICreature creature, int tabDepth)
 	{
 		content.append(tab(tabDepth) + "<table style=\"" + styleFontWhite() + "\">" + Constants.NEWLINE);
-		content.append(tab(tabDepth + 1) + "<tr><td>AC</td><td>" + creature.getAC() + "</td></tr>" + Constants.NEWLINE);
-		content.append(tab(tabDepth + 1) + "<tr><td>PD</td><td>" + creature.getPD() + "</td></tr>" + Constants.NEWLINE);
-		content.append(tab(tabDepth + 1) + "<tr><td>MD</td><td>" + creature.getMD() + "</td></tr>" + Constants.NEWLINE);
-		content.append(tab(tabDepth + 1) + "<tr><td>HP</td><td>" + Conversions.round(creature.getHP()) + "</td></tr>" + Constants.NEWLINE);
+		content.append(tab(tabDepth + 1) + Html.tableRow("AC", "" + creature.getAC()) + Constants.NEWLINE);
+		content.append(tab(tabDepth + 1) + Html.tableRow("PD", "" + creature.getPD()) + Constants.NEWLINE);
+		content.append(tab(tabDepth + 1) + Html.tableRow("MD", "" + creature.getMD()) + Constants.NEWLINE);
+		content.append(tab(tabDepth + 1) + Html.tableRow("HP", "" + Conversions.round(creature.getHP())) + Constants.NEWLINE);
 		content.append(tab(tabDepth) + "</table>" + Constants.NEWLINE);
 	}
 
@@ -228,5 +228,4 @@ public class HtmlExporter
 		}
 		return tabs;
 	}
-
 }

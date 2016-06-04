@@ -24,4 +24,20 @@ public class Html
 	public static final String END_DIV = "</div>";
 
 	public static String LINE_BREAK = "<br>";
+
+	public static String tableRow(final String... entries)
+	{
+		final StringBuilder description = new StringBuilder();
+		
+		description.append("<tr>");
+		
+		for (final String entry : entries)
+				{
+					description.append("<td>" + entry + "</td>");
+				}
+		
+		description.append("</tr>");
+		
+		return description.toString();
+	}
 }
