@@ -1,0 +1,4 @@
+<special>
+	<name>Scuttle</name>
+	<description>A $name can can turn its own failed disengage check into a success by taking $level[x0.5]d4 damage.</description>
+</special>

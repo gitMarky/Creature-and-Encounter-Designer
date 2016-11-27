@@ -1,0 +1,27 @@
+<creature>
+	<name>Hunting Spider</name>
+	<size>Normal</size>
+	<level>2</level>
+	<labels>
+		<label>Wrecker</label>
+		<label>Beast</label>
+	</labels>
+	<modifiers>
+		<ini>4</ini>
+		<attack>0</attack>
+		<ac>-1</ac>
+		<pd better="true">-2</pd>
+		<md>-1</md>
+		<hp>0.94</hp>
+	</modifiers>
+	<attacks>
+		<attack id="attack_spider_bite" />
+	</attacks>
+	<specials>
+		<special id="special_scuttle" />
+		<special id="special_wall_crawler" />
+	</specials>
+	<nastier>
+		<special id="" />
+	</nastier>
+</creature>
