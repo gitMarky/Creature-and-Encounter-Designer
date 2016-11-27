@@ -1,0 +1,8 @@
+<attack>
+	<name>Stinger</name>
+	<bonus>0</bonus>
+	<defense>AC</defense>
+	<damage factor="0.6" description="damage and the $damage[x0.6] ongoing poison damage" />
+	<triggers>
+	</triggers>
+</attack>

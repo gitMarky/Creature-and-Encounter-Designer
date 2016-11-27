@@ -1,0 +1,9 @@
+<attack>
+	<name>Pincer</name>
+	<bonus>0</bonus>
+	<defense>PD</defense>
+	<damage factor="0.2" description="damage and the $name gains a +2 attack bonus against the same target this turn with its other attack(s). Hitting the target twice with this attack grants a +4 attack bonus." />
+	<triggers>
+		<trigger name="Limited use" description="2 times per round, each requiring a quick action. Can attack the same target twice."/>
+	</triggers>
+</attack>

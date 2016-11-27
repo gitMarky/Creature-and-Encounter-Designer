@@ -2,7 +2,6 @@ Tooltips
 Mark unsaved creatures in encounter
 Display if battle is too dangerous (creature crit damage is 1/2 max health, or creature hit damage is 1/3 max health)
 
-Giant Scorpion
 Hunting Spider
 Giant Web Spider
 Wolf

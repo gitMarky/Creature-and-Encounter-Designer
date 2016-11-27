@@ -1,0 +1,27 @@
+<creature>
+	<name>Giant Scorpion</name>
+	<size>Normal</size>
+	<level>1</level>
+	<labels>
+		<label>Wrecker</label>
+		<label>Beast</label>
+	</labels>
+	<modifiers>
+		<ini>5</ini>
+		<attack>0</attack>
+		<ac>-1</ac>
+		<pd better="true">0</pd>
+		<md>-1</md>
+		<hp>0.80</hp>
+	</modifiers>
+	<attacks>
+		<attack id="attack_scorpion_pincer" />
+		<attack id="attack_scorpion_stinger" />
+	</attacks>
+	<specials>
+		<special id="" />
+	</specials>
+	<nastier>
+		<special id="" />
+	</nastier>
+</creature>
