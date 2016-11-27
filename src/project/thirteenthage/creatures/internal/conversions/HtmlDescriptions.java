@@ -1,7 +1,7 @@
 package project.thirteenthage.creatures.internal.conversions;
 
+import project.library.marky.html.Html;
 import project.thirteenthage.creatures.interfaces.ITrigger;
-import project.thirteenthage.creatures.internal.Html;
 import project.thirteenthage.creatures.internal.TextFormatter;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ISpecial;

@@ -2,7 +2,7 @@ package project.thirteenthage.creatures.internal.gui.views;
 
 import javax.swing.JLabel;
 
-import project.thirteenthage.creatures.internal.Html;
+import project.library.marky.html.Html;
 import project.thirteenthage.creatures.internal.gui.StyleConstants;
 import project.thirteenthage.creatures.internal.interfaces.ISpecial;
 

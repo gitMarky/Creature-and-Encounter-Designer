@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.swing.JLabel;
 
-import project.thirteenthage.creatures.internal.Html;
+import project.library.marky.html.Html;
 import project.thirteenthage.creatures.mechanics.analysis.EncounterAnalysis;
 
 @SuppressWarnings("serial")

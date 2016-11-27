@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import project.library.marky.html.Html;
 import project.library.marky.logger.ApplicationLogger;
 import project.thirteenthage.creatures.internal.conversions.Conversions;
 import project.thirteenthage.creatures.internal.gui.StyleConstants;
