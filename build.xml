@@ -10,7 +10,7 @@
         <jar destfile="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/CreatureDesigner.jar">
             <manifest>
                 <attribute name="Main-Class" value="project.thirteenthage.creatures.internal.gui.CreatureGui"/>
-                <attribute name="Class-Path" value=". lib/jdom-2.0.5.jar lib/junit.jar lib/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+                <attribute name="Class-Path" value=". lib/jdom-2.0.5.jar lib/org.hamcrest.core_1.3.0.v201303031735.jar"/>
             </manifest>
             <fileset dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/bin"/>
         </jar>
@@ -26,7 +26,6 @@
         <mkdir dir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/resources/custom/specials"/>
     	<!-- copy libraries -->
         <copy file="C:/Editing/javalibs/jdom2/jdom-2.0.5.jar" todir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/lib"/>
-        <copy file="C:/EclipseWorkspace/eclipse/plugins/org.junit_4.11.0.v201303080030/junit.jar" todir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/lib"/>
         <copy file="C:/EclipseWorkspace/eclipse/plugins/org.hamcrest.core_1.3.0.v201303031735.jar" todir="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/lib"/>
     	<!-- copy resources -->
         <copydir src="C:/Editing/PenAndPaper/13a/CreatureDataBase/resources/creatures/" dest="C:/Editing/PenAndPaper/13a/CreatureDataBase/exported/CreatureDesigner/resources/13th_age_core/creatures"/>
