@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import org.junit.Test;
 
+import project.library.marky.logger.ApplicationLogger;
+
 public class ApplicationLoggerTest
 {
 

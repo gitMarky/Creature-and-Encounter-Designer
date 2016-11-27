@@ -2,7 +2,7 @@ package project.thirteenthage.creatures.mechanics.analysis;
 
 import java.util.List;
 
-import project.thirteenthage.creatures.internal.ApplicationLogger;
+import project.library.marky.logger.ApplicationLogger;
 
 /**
  * Represents one combat encounter.

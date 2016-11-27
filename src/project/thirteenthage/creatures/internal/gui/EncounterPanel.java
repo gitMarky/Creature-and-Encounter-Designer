@@ -19,9 +19,9 @@ import javax.swing.JScrollPane;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
+import project.library.marky.logger.ApplicationLogger;
+import project.marky.library.xml.BasicXmlFile;
 import project.thirteenthage.creatures.interfaces.IView;
-import project.thirteenthage.creatures.internal.ApplicationLogger;
-import project.thirteenthage.creatures.internal.BasicXmlFile;
 import project.thirteenthage.creatures.internal.Constants;
 import project.thirteenthage.creatures.internal.HtmlExporter;
 import project.thirteenthage.creatures.internal.gui.views.AmountChoicePanel;

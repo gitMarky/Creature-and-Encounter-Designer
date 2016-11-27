@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import project.thirteenthage.creatures.internal.ApplicationLogger;
+import project.library.marky.logger.ApplicationLogger;
 
 @SuppressWarnings("hiding")
 class DisplayDescriptionListener<T, C extends Component> implements ListSelectionListener

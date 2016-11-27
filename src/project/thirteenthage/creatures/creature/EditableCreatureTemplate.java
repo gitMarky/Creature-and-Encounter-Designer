@@ -5,8 +5,8 @@ import java.io.File;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import project.thirteenthage.creatures.internal.ApplicationLogger;
-import project.thirteenthage.creatures.internal.BasicXmlFile;
+import project.library.marky.logger.ApplicationLogger;
+import project.marky.library.xml.BasicXmlFile;
 import project.thirteenthage.creatures.internal.Constants;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;

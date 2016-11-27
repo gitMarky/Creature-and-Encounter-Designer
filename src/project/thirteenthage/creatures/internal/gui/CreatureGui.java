@@ -9,8 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import javax.swing.filechooser.FileFilter;
 
+import project.library.marky.logger.ApplicationLogger;
 import project.thirteenthage.creatures.interfaces.IView;
-import project.thirteenthage.creatures.internal.ApplicationLogger;
 import project.thirteenthage.creatures.internal.Constants;
 import project.thirteenthage.creatures.loaders.AttackTemplateLoader;
 import project.thirteenthage.creatures.loaders.CreatureLoader;

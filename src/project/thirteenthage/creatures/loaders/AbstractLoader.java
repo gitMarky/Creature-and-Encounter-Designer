@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import project.thirteenthage.creatures.internal.ApplicationLogger;
-import project.thirteenthage.creatures.internal.BasicXmlFile;
+import project.library.marky.logger.ApplicationLogger;
+import project.marky.library.xml.BasicXmlFile;
 
 public abstract class AbstractLoader<T extends Object>
 {

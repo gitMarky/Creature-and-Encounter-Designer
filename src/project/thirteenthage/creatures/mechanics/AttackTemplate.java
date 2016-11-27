@@ -6,8 +6,8 @@ import java.util.List;
 
 import org.jdom2.Element;
 
+import project.marky.library.xml.BasicXmlFile;
 import project.thirteenthage.creatures.interfaces.ITrigger;
-import project.thirteenthage.creatures.internal.BasicXmlFile;
 import project.thirteenthage.creatures.internal.conversions.HtmlDescriptions;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 

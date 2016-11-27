@@ -3,7 +3,7 @@ package project.thirteenthage.creatures.mechanics.analysis;
 import java.util.ArrayList;
 import java.util.List;
 
-import project.thirteenthage.creatures.internal.ApplicationLogger;
+import project.library.marky.logger.ApplicationLogger;
 import project.thirteenthage.creatures.internal.Constants;
 
 public class MookPool

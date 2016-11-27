@@ -2,8 +2,8 @@ package project.thirteenthage.creatures.internal.gui.views;
 
 import javax.swing.JPanel;
 
+import project.library.marky.logger.ApplicationLogger;
 import project.thirteenthage.creatures.interfaces.IView;
-import project.thirteenthage.creatures.internal.ApplicationLogger;
 
 @SuppressWarnings("serial")
 public class ChoicePanel extends JPanel implements IView

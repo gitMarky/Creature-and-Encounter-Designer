@@ -11,8 +11,8 @@ import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
 
+import project.library.marky.logger.ApplicationLogger;
 import project.thirteenthage.creatures.creature.CreatureSize;
-import project.thirteenthage.creatures.internal.ApplicationLogger;
 
 /**
  * Lets you choose the better of two defenses.

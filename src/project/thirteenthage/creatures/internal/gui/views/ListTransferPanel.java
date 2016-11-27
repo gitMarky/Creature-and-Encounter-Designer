@@ -16,7 +16,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import project.thirteenthage.creatures.internal.ApplicationLogger;
+import project.library.marky.logger.ApplicationLogger;
 
 /**
  * A panel that contains two lists and two transfer buttons.

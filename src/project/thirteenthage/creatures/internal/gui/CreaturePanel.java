@@ -12,8 +12,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import project.library.marky.logger.ApplicationLogger;
 import project.thirteenthage.creatures.interfaces.IView;
-import project.thirteenthage.creatures.internal.ApplicationLogger;
 import project.thirteenthage.creatures.internal.gui.views.CreatureEditPanel;
 import project.thirteenthage.creatures.internal.gui.views.CreatureViewPanel;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;

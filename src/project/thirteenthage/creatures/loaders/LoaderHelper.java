@@ -2,7 +2,7 @@ package project.thirteenthage.creatures.loaders;
 
 import java.io.File;
 
-import project.thirteenthage.creatures.internal.BasicXmlFile;
+import project.marky.library.xml.BasicXmlFile;
 
 public final class LoaderHelper
 {

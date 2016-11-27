@@ -2,7 +2,7 @@ package project.thirteenthage.creatures.mechanics;
 
 import java.io.File;
 
-import project.thirteenthage.creatures.internal.BasicXmlFile;
+import project.marky.library.xml.BasicXmlFile;
 import project.thirteenthage.creatures.internal.Constants;
 import project.thirteenthage.creatures.internal.conversions.HtmlDescriptions;
 import project.thirteenthage.creatures.internal.interfaces.ISpecial;

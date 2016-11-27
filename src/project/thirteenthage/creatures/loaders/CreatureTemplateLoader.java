@@ -2,9 +2,9 @@ package project.thirteenthage.creatures.loaders;
 
 import java.util.Collections;
 
+import project.library.marky.logger.ApplicationLogger;
+import project.marky.library.xml.BasicXmlFile;
 import project.thirteenthage.creatures.creature.CreatureTemplate;
-import project.thirteenthage.creatures.internal.ApplicationLogger;
-import project.thirteenthage.creatures.internal.BasicXmlFile;
 import project.thirteenthage.creatures.internal.Constants;
 import project.thirteenthage.creatures.internal.exceptions.LoaderException;
 import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;

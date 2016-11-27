@@ -12,8 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
+import project.library.marky.logger.ApplicationLogger;
 import project.thirteenthage.creatures.interfaces.IView;
-import project.thirteenthage.creatures.internal.ApplicationLogger;
 import project.thirteenthage.creatures.internal.Html;
 import project.thirteenthage.creatures.internal.LevelHelper;
 import project.thirteenthage.creatures.internal.conversions.Conversions;
