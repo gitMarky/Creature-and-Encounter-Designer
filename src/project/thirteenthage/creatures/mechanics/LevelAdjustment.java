@@ -18,7 +18,7 @@ public final class LevelAdjustment
 	private static ILevelAdjustment _original = new LevelAdjustmentOriginal();
 	private static ILevelAdjustment _alternate = new LevelAdjustmentAlternate();
 
-	private static boolean _calculateOriginalValue = false;
+	static boolean _calculateOriginalValue = false;
 
 
 	private LevelAdjustment()

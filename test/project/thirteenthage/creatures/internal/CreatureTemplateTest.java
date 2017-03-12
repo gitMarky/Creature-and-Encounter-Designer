@@ -20,7 +20,7 @@ public class CreatureTemplateTest
 	public void testDireRatTemplate()
 	{
 		final double delta = DOUBLE_EXACT_1E_8;
-		final File xml = new File("resources/creatures/creature_dire_rat.xml");
+		final File xml = new File("resources/creatures/animal/creature_dire_rat.xml");
 		System.out.println(xml.getAbsolutePath());
 
 		final CreatureTemplate rat = new CreatureTemplate(xml, "creature_dire_rat");
@@ -58,7 +58,7 @@ public class CreatureTemplateTest
 	public void testDireRatCreature()
 	{
 		final double delta = DOUBLE_FUZZY_1E_3;
-		final File xml = new File("resources/creatures/creature_dire_rat.xml");
+		final File xml = new File("resources/creatures/animal/creature_dire_rat.xml");
 		System.out.println(xml.getAbsolutePath());
 
 		final CreatureTemplate template = new CreatureTemplate(xml, "creature_dire_rat");

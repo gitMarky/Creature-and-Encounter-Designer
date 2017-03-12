@@ -2,12 +2,27 @@ package project.thirteenthage.creatures.mechanics;
 
 import static org.junit.Assert.*;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static project.thirteenthage.creatures.TestConstants.*;
 
 public class LevelAdjustmentTest
 {
+	@BeforeClass
+	public static void setup()
+	{
+		LevelAdjustment._calculateOriginalValue = true;
+	}
+
+	@AfterClass
+	public static void teardown()
+	{
+		LevelAdjustment._calculateOriginalValue = false;
+	}
+
+
 	@Test
 	public void testNoChange()
 	{
