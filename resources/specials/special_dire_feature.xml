@@ -1,0 +1,11 @@
+<special>
+	<name>Dire Feature (D6)</name>
+	<description>
+	1: Armor plates - Add +2 to the $name's AC and add +1 to it's PD.
+	2: Spiky bits - Whenever an enemy hits the dire animal with a melee attack, deal damage equal to twice the animal's level to that attacker.
+	3: Carnage - The dire animal's attack that miss deal damage equal to its level. When staggered, its missed attacks deal damage equal to double its level.
+	4: Poison - The dire animal's main attack also deals ongoing poison damage: 5 at level 1-4, 10 at level 5-7, 15 at level 8+)
+	5: Dire regeneration - When the escalation die is even, this animal heals damage equal to triple its level at the start of its turn.
+	6: Fury - While staggered, the dire animal gains a +2 attack bonus and deals +4 damage, but at the end of each of its turns it takes 2d6 damage.
+	</description>
+</special>

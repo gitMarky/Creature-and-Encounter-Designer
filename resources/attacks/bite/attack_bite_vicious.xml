@@ -1,9 +1,8 @@
 <attack>
-	<name>Bite</name>
+	<name>Vicious Bite</name>
 	<bonus>0</bonus>
 	<defense>AC</defense>
 	<damage factor="0.85" description="damage" />
 	<triggers>
-		<trigger name="Natural even hit" description="The target takes $level[x0.5]d6 damage from a claw swipe."/>
 	</triggers>
 </attack>

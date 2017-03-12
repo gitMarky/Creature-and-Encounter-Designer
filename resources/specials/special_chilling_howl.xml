@@ -1,0 +1,4 @@
+<special>
+	<name>Chilling Howl</name>
+	<description>Whenever a $name's attack drops an enemy to 0 HP or below, all $names in the battle can howl as a free action. When they howl, each enemy in the battle takes a penalty to its attacks and all defenses equal to the number of living $names in the battle (max -5) until the end of the attacking $name's next turn. New howls extend the duration of the current howl rather than downgrading the howl's effect if $names have been slain in the meantime.</description>
+</special>

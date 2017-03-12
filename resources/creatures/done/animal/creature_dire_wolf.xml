@@ -13,9 +13,15 @@
     <ac>-1</ac>
     <pd better="true">0</pd>
     <md>0</md>
-    <hp>0.90</hp>
+    <hp>0.89</hp>
   </modifiers>
-  <attacks />
-  <specials />
+  <attacks>
+    <attack id="attack_bite_vicious" />
+  </attacks>
+  <specials>
+    <special id="special_pack_attack_wolf" />
+    <special id="special_chilling_howl" />
+    <special id="special_dire_feature" />
+  </specials>
   <nastier />
 </creature>

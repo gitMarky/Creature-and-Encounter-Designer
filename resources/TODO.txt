@@ -4,12 +4,6 @@ Display if battle is too dangerous (creature crit damage is 1/2 max health, or c
 
 In Work:
 
-Giant Web Spider
-Wolf
-Bear
-Dire Wolf
-Dire Bear
-
 TODO:
 
 Ankheg

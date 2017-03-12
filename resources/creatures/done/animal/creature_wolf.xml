@@ -16,8 +16,10 @@
     <hp>1.05</hp>
   </modifiers>
   <attacks>
-    <attack id="attack_bite_bear" />
+    <attack id="attack_bite_wolf" />
   </attacks>
-  <specials />
+  <specials>
+    <special id="special_pack_attack_wolf" />
+  </specials>
   <nastier />
 </creature>

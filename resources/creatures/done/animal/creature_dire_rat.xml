@@ -21,6 +21,6 @@
 		<special id="" />
 	</specials>
 	<nastier>
-		<special id="special_squealing_pack_attack" />
+		<special id="special_pack_attack_squealing" />
 	</nastier>
 </creature>
