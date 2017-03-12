@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<creature>
+  <name>Dire Wolf</name>
+  <size>Large</size>
+  <level>3</level>
+  <labels>
+    <label>Troop</label>
+    <label>Beast</label>
+  </labels>
+  <modifiers>
+    <ini>3</ini>
+    <attack>0</attack>
+    <ac>-1</ac>
+    <pd better="true">0</pd>
+    <md>0</md>
+    <hp>0.90</hp>
+  </modifiers>
+  <attacks />
+  <specials />
+  <nastier />
+</creature>

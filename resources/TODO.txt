@@ -2,11 +2,15 @@ Tooltips
 Mark unsaved creatures in encounter
 Display if battle is too dangerous (creature crit damage is 1/2 max health, or creature hit damage is 1/3 max health)
 
+In Work:
+
 Giant Web Spider
 Wolf
 Bear
 Dire Wolf
 Dire Bear
+
+TODO:
 
 Ankheg
 Bulette

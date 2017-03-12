@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<creature>
+  <name>Giant Web Spider</name>
+  <size>Large</size>
+  <level>2</level>
+  <labels>
+    <label>Beast</label>
+  </labels>
+  <modifiers>
+    <ini>2</ini>
+    <attack>0</attack>
+    <ac>-1</ac>
+    <pd better="true">0</pd>
+    <md>0</md>
+    <hp>0.95</hp>
+  </modifiers>
+  <attacks>
+    <attack id="attack_bite_spider" />
+  </attacks>
+  <specials>
+    <special id="special_wall_crawler" />
+  </specials>
+  <nastier />
+</creature>

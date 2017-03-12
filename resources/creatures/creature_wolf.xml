@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<creature>
+  <name>Wolf</name>
+  <size>Normal</size>
+  <level>1</level>
+  <labels>
+    <label>Troop</label>
+    <label>Beast</label>
+  </labels>
+  <modifiers>
+    <ini>3</ini>
+    <attack>-1</attack>
+    <ac>0</ac>
+    <pd better="true">0</pd>
+    <md>0</md>
+    <hp>1.05</hp>
+  </modifiers>
+  <attacks>
+    <attack id="attack_bite_bear" />
+  </attacks>
+  <specials />
+  <nastier />
+</creature>
