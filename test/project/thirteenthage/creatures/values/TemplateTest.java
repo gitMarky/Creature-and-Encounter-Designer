@@ -2,8 +2,6 @@ package project.thirteenthage.creatures.values;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static project.thirteenthage.creatures.TestConstants.DOUBLE_FUZZY_1E_3;
-
 import java.io.File;
 
 import project.thirteenthage.creatures.creature.CreatureSize;
@@ -74,11 +72,11 @@ public class TemplateTest
 		assertEquals(value, Conversions.round(_creature.getHP()));
 	}
 
-	protected void testAttack(final int index, final int bonus, final String defense, final double damage)
+	protected void testAttack(final int index, final int bonus, final String defense, final int damage)
 	{
 		final IAttack attack = _creature.getAttacks().get(index);
 		assertEquals(bonus, attack.getAttackBonus());
-		assertEquals(damage, attack.getDamageFactor(), DOUBLE_FUZZY_1E_3);
+		assertEquals(damage, Conversions.round(attack.getDamageFactor()));
 		assertEquals(defense, attack.getDefense());
 	}
 }
