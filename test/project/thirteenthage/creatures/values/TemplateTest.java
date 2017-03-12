@@ -8,6 +8,7 @@ import java.io.File;
 
 import project.thirteenthage.creatures.creature.CreatureSize;
 import project.thirteenthage.creatures.creature.CreatureTemplate;
+import project.thirteenthage.creatures.internal.conversions.Conversions;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 
@@ -70,13 +71,12 @@ public class TemplateTest
 
 	protected void HP(final int value)
 	{
-		assertEquals(value, _creature.getHP(), DOUBLE_FUZZY_1E_3);
+		assertEquals(value, Conversions.round(_creature.getHP()));
 	}
 
-	protected void testAttack(final int index, final String name, final int bonus, final String defense, final double damage)
+	protected void testAttack(final int index, final int bonus, final String defense, final double damage)
 	{
 		final IAttack attack = _creature.getAttacks().get(index);
-		assertEquals(name, attack.getName());
 		assertEquals(bonus, attack.getAttackBonus());
 		assertEquals(damage, attack.getDamageFactor(), DOUBLE_FUZZY_1E_3);
 		assertEquals(defense, attack.getDefense());
