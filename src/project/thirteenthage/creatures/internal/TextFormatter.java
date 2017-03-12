@@ -9,6 +9,7 @@ public class TextFormatter
 	public static final String PLACEHOLDER_START = "\\$";
 	public static final String PLACEHOLDER_NAME = "name";
 	public static final String PLACEHOLDER_DAMAGE = "damage";
+	public static final String PLACEHOLDER_LEVEL = "level";
 
 	public static final String PLACEHOLDER_SCALABLE_DOUBLE = "(\\[x[\\d*\\.*\\d*]*\\])";
 

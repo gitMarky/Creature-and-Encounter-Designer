@@ -2,7 +2,7 @@
 	<name>Bite</name>
 	<bonus>0</bonus>
 	<defense>AC</defense>
-	<damage factor="0.35" description="damage and $damage ongoing poison damage" />
+	<damage factor="0.35" description="damage and $damage[x0.35] ongoing poison damage" />
 	<triggers>
 		<trigger name="Natural even hit" description="The target also takes $leveld6 ongoing poison damage if it is dazed or stuck."/>
 	</triggers>

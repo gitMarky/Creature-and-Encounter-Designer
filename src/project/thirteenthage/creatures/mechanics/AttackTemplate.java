@@ -91,7 +91,7 @@ public class AttackTemplate implements IAttack
 	@Override
 	public String toGuiText()
 	{
-		return HtmlDescriptions.getAttackDescription(this, "creature", 100, true);
+		return HtmlDescriptions.getAttackDescription(this, "creature", 100, 1, true);
 	}
 
 

@@ -43,7 +43,7 @@ public class Trigger implements ITrigger
 		_name = trigger.getName();
 
 		_isTemplate = false;
-		_description = HtmlDescriptions.getTriggerDescription(trigger, creature.getName(), creature.getStrikeDamage(), false);
+		_description = HtmlDescriptions.getTriggerDescription(trigger, creature.getName(), creature.getStrikeDamage(), creature.getLevel(), false);
 	}
 
 
@@ -73,7 +73,7 @@ public class Trigger implements ITrigger
 	{
 		if (_isTemplate)
 		{
-			return HtmlDescriptions.getTriggerDescription(this, Constants.TEMPLATE_CREATURE_NAME, Constants.TEMPLATE_CREATURE_DAMAGE, true);
+			return HtmlDescriptions.getTriggerDescription(this, Constants.TEMPLATE_CREATURE_NAME, Constants.TEMPLATE_CREATURE_DAMAGE, 1, true);
 		}
 		else
 		{

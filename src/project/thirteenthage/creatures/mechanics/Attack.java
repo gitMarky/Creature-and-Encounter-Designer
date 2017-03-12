@@ -99,11 +99,11 @@ public class Attack implements IAttack
 	{
 		if (_creature == null)
 		{
-			return HtmlDescriptions.getAttackDescription(this, Constants.TEMPLATE_CREATURE_NAME, Constants.TEMPLATE_CREATURE_DAMAGE, true);
+			return HtmlDescriptions.getAttackDescription(this, Constants.TEMPLATE_CREATURE_NAME, Constants.TEMPLATE_CREATURE_DAMAGE, 1, true);
 		}
 		else
 		{
-			return HtmlDescriptions.getAttackDescription(this, _creature.getName(), _creature.getStrikeDamage(), false);
+			return HtmlDescriptions.getAttackDescription(this, _creature.getName(), _creature.getStrikeDamage(), _creature.getLevel(), false);
 		}
 	}
 

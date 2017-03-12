@@ -11,7 +11,7 @@ import project.thirteenthage.creatures.internal.interfaces.ISpecial;
  */
 public class HtmlDescriptions
 {
-	public static String getAttackDescription(final IAttack attack, final String creatureName, final double creatureDamage, final boolean inPercent)
+	public static String getAttackDescription(final IAttack attack, final String creatureName, final double creatureDamage, final double creatureLevel, final boolean inPercent)
 	{
 		if (attack == null)
 		{
@@ -27,6 +27,7 @@ public class HtmlDescriptions
 
 		String description = replaceName(attack.getDescription(), creatureName);
 		description = replaceDamage(description, creatureDamage, inPercent);
+		description = replaceLevel(description, creatureLevel, inPercent);
 
 		htmlText.append(Html.BEGIN_BOLD + attack.getName() + Html.END_BOLD);
 		htmlText.append(" ");
@@ -43,7 +44,7 @@ public class HtmlDescriptions
 	}
 
 
-	public static String getTriggerDescription(final ITrigger trigger, final String creatureName, final double creatureDamage, final boolean inPercent)
+	public static String getTriggerDescription(final ITrigger trigger, final String creatureName, final double creatureDamage, final double creatureLevel, final boolean inPercent)
 	{
 		if (trigger == null)
 		{
@@ -61,6 +62,7 @@ public class HtmlDescriptions
 
 		String description = replaceName(trigger.getDescription(), creatureName);
 		description = replaceDamage(description, creatureDamage, inPercent);
+		description = replaceLevel(description, creatureLevel, inPercent);
 		htmlText.append(description);
 
 		return htmlText.toString();
@@ -98,5 +100,11 @@ public class HtmlDescriptions
 	private static String replaceDamage(final String text, final double damage, final boolean inPercent)
 	{
 		return TextFormatter.parse(text, TextFormatter.PLACEHOLDER_DAMAGE, damage, inPercent);
+	}
+
+
+	private static String replaceLevel(final String text, final double level, final boolean inPercent)
+	{
+		return TextFormatter.parse(text, TextFormatter.PLACEHOLDER_LEVEL, level, inPercent);
 	}
 }
