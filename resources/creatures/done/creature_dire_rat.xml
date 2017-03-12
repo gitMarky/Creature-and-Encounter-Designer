@@ -15,7 +15,7 @@
 		<hp>0.889</hp>
 	</modifiers>
 	<attacks>
-		<attack id="attack_infected_bite" />
+		<attack id="attack_bite_infected" />
 	</attacks>
 	<specials>
 		<special id="" />

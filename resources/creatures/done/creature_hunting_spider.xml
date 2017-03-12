@@ -15,7 +15,7 @@
 		<hp>0.94</hp>
 	</modifiers>
 	<attacks>
-		<attack id="attack_spider_bite" />
+		<attack id="attack_bite_spider" />
 	</attacks>
 	<specials>
 		<special id="special_scuttle" />
