@@ -35,7 +35,7 @@ public class CreatureGui implements IView
 
 	public static void main(final String[] args)
 	{
-		Runnable mainTask = new Runnable()
+		final Runnable mainTask = new Runnable()
 		{
 			@Override
 			public void run()
@@ -43,22 +43,22 @@ public class CreatureGui implements IView
 				ApplicationLogger.getLogger().info(Constants.HLINE);
 				ApplicationLogger.getLogger().info("Initializing");
 				ApplicationLogger.getLogger().info(Constants.HLINE);
-				
+
 				GUI = new CreatureGui();
-				
+
 				ApplicationLogger.getLogger().info(Constants.HLINE);
 				ApplicationLogger.getLogger().info("Setup");
 				ApplicationLogger.getLogger().info(Constants.HLINE);
 
 				GUI.getMenuSelectionPanel().onCreatureSelected();
-				
+
 				ApplicationLogger.getLogger().info(Constants.HLINE);
 				ApplicationLogger.getLogger().info("Preparation phase is over, from here on the user takes over.");
 				ApplicationLogger.getLogger().info(Constants.HLINE);
 			}
 		};
-		
-		Runnable shutdownTask = new Runnable()
+
+		final Runnable shutdownTask = new Runnable()
 		{
 			@Override
 			public void run()
@@ -68,11 +68,11 @@ public class CreatureGui implements IView
 				ApplicationLogger.getLogger().info(Constants.HLINE);
 			}
 		};
-		
-        Thread shutdownHook = new Thread(shutdownTask);
-        Runtime.getRuntime().addShutdownHook(shutdownHook);
 
-		
+		final Thread shutdownHook = new Thread(shutdownTask);
+		Runtime.getRuntime().addShutdownHook(shutdownHook);
+
+
 		try
 		{
 			new Thread(mainTask).start();
@@ -137,7 +137,7 @@ public class CreatureGui implements IView
 				{
 					throw new IllegalArgumentException("Parameter 'file' must not be null.");
 				}
-				
+
 				return file.isDirectory() || file.getName().toLowerCase().endsWith(LoaderHelper.EXTENSION_HTML);
 			}
 
@@ -148,7 +148,7 @@ public class CreatureGui implements IView
 				return "html files";
 			}
 		};
-		
+
 		_fileChooserHtml.setCurrentDirectory(Constants.RESOURCES_CUSTOM);
 		_fileChooserHtml.setFileFilter(fileFilterHtml);
 
