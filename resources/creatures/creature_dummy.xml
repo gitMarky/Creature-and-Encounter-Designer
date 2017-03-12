@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<creature>
+  <name>Dummy</name>
+  <size>Normal</size>
+  <level>1</level>
+  <labels>
+  </labels>
+  <modifiers>
+    <ini>0</ini>
+    <attack>0</attack>
+    <ac>0</ac>
+    <pd better="true">0</pd>
+    <md>0</md>
+    <hp>1.0</hp>
+  </modifiers>
+  <attacks>
+  </attacks>
+  <specials />
+  <nastier />
+</creature>
