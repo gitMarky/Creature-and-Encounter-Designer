@@ -31,7 +31,7 @@ public class HtmlDescriptions
 
 		htmlText.append(Html.BEGIN_BOLD + attack.getName() + Html.END_BOLD);
 		htmlText.append(" ");
-		htmlText.append(String.format("%+d vs. %s", attack.getAttackBonus(), attack.getDefense()));
+		htmlText.append(String.format("%+d vs. %s%s", attack.getAttackBonus(), attack.getDefense(), attack.getInfo()));
 		htmlText.append(String.format(" - %d%s %s", damageFactor, inPercent ? "%" : "", description));
 
 		for (final ITrigger trigger : attack.getTriggers())

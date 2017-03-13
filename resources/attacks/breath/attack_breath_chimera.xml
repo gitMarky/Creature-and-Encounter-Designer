@@ -2,7 +2,7 @@
 	<name>Fiery breath</name>
 	<bonus>0</bonus>
 	<defense>PD</defense>
-	<multiple>up to 3 nearby enemies in a group</multiple>
+	<info>up to 3 nearby enemies in a group</info>
 	<damage factor="0.0" description="$level[x0.33]d10 fire damage" />
 	<triggers />
 </attack>

@@ -20,7 +20,7 @@ public class AttackTemplate implements IAttack
 	private String _damageDesc = "damage";
 	private final List<ITrigger> _triggers = new ArrayList<ITrigger>();
 	private double _levelAdjustment = 0.0;
-
+	private String _info = "";
 
 	public AttackTemplate(final File file)
 	{
@@ -40,6 +40,11 @@ public class AttackTemplate implements IAttack
 		_defense = template.getRoot().getChildText("defense");
 		_damage = Double.parseDouble(template.getRoot().getChild("damage").getAttributeValue("factor"));
 		_damageDesc = template.getRoot().getChild("damage").getAttributeValue("description");
+
+		if (!getChildText(template, "info").isEmpty())
+		{
+			_info = String.format(" (%s)", getChildText(template, "info"));
+		}
 
 		for (final Element element : template.getRoot().getChild("triggers").getChildren())
 		{
@@ -120,5 +125,24 @@ public class AttackTemplate implements IAttack
 	public double getLevelAdjustment()
 	{
 		return _levelAdjustment;
+	}
+
+
+	@Override
+	public String getInfo()
+	{
+		return _info;
+	}
+
+	private String getChildText(final BasicXmlFile template, final String name)
+	{
+		if (template.getRoot().getChild(name) != null)
+		{
+			return template.getRoot().getChildText(name);
+		}
+		else
+		{
+			return "";
+		}
 	}
 }

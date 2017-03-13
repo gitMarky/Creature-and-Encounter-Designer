@@ -1,7 +1,8 @@
 <attack>
 	<name>Web</name>
 	<bonus>0</bonus>
-	<defense>PD (up to 2 nearby enemies in a group)</defense>
+	<defense>PD</defense>
+	<info>up to 2 nearby enemies in a group</info>
 	<damage factor="0.20" description="damage and the target is dazed until the end of the $name's next turn." />
 	<triggers>
 		<trigger name="Natural 18+" description="The target is also stuck until the end of the $name's next turn."/>

@@ -2,7 +2,7 @@
 	<name>Fangs, claws, and horns</name>
 	<bonus>0</bonus>
 	<defense>AC</defense>
-	<multiple>3 attacks</multiple>
+	<info>3 attacks</info>
 	<level>0.5</level>
 	<damage factor="0.25" description="damage" />
 	<triggers>

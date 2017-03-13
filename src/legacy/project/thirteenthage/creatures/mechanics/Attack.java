@@ -16,6 +16,7 @@ public class Attack implements IAttack
 	private final double _damageBase;
 	private final ICreature _creature;
 	private final double _levelAdjustment;
+	private final String _info;
 
 	private final List<ITrigger> _triggers = new ArrayList<ITrigger>();
 
@@ -31,6 +32,7 @@ public class Attack implements IAttack
 		_attackBase = attack;
 		_damageBase = damage;
 		_creature = null;
+		_info = template.getInfo();
 
 		_triggers.addAll(template.getTriggers());
 		_levelAdjustment = template.getLevelAdjustment();
@@ -52,6 +54,7 @@ public class Attack implements IAttack
 		_attackBase = attack;
 		_damageBase = damage;
 		_creature = creature;
+		_info = template.getInfo();
 
 		for (final ITrigger source : template.getTriggers())
 		{
@@ -122,5 +125,12 @@ public class Attack implements IAttack
 	public double getLevelAdjustment()
 	{
 		return _levelAdjustment;
+	}
+
+
+	@Override
+	public String getInfo()
+	{
+		return _info;
 	}
 }

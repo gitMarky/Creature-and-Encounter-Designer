@@ -52,4 +52,12 @@ public interface IAttack extends INamedItem, IDisplayableInGui
 	 * @return the modifier.
 	 */
 	double getLevelAdjustment();
+
+
+	/**
+	 * Additional info.
+	 * 
+	 * @return the string
+	 */
+	String getInfo();
 }
