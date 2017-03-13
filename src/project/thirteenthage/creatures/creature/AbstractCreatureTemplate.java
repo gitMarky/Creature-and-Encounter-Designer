@@ -29,7 +29,7 @@ public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 	private final List<ISpecial> _specials = new ArrayList<ISpecial>();
 	private final List<ISpecial> _nastier = new ArrayList<ISpecial>();
 	private String _id = null;
-	
+
 
 	@Override
 	public String getName()
@@ -134,8 +134,8 @@ public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 	{
 		return _nastier;
 	}
-	
-	
+
+
 	@Override
 	public String getId()
 	{
@@ -222,8 +222,8 @@ public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 
 		_betterDefense = defense;
 	}
-	
-	
+
+
 	public void setId(final String id)
 	{
 		_id = id;
@@ -233,17 +233,17 @@ public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 	@Override
 	public ICreature toCreature()
 	{
-		final ICreatureBuilder builder = new CreatureBuilder();
+		final ICreatureBuilder builder = getCreatureBuilder();
 		builder.name(getName())
-		       .size(getSize())
-		       .level(getLevel())
-		       .addInitiative(getModifierInitiative())
-		       .addAttack(getModifierAttack())
-		       .addAC(getModifierAC())
-		       .addPD(getModifierPD())
-		       .addMD(getModifierMD())
-		       .scaleHP(getModifierHP())
-		       .scaleDamage(getModifierDamage());
+		.size(getSize())
+		.level(getLevel())
+		.addInitiative(getModifierInitiative())
+		.addAttack(getModifierAttack())
+		.addAC(getModifierAC())
+		.addPD(getModifierPD())
+		.addMD(getModifierMD())
+		.scaleHP(getModifierHP())
+		.scaleDamage(getModifierDamage());
 
 		if (getBetterDefense() == BetterDefense.MD) builder.betterDefenseIsMD();
 
@@ -266,4 +266,14 @@ public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 		return creature;
 	}
 
+
+	/**
+	 * Gets a creature builder.
+	 * 
+	 * @return the creature builder.
+	 */
+	protected ICreatureBuilder getCreatureBuilder()
+	{
+		return new CreatureBuilder();
+	}
 }
