@@ -1,12 +1,11 @@
 package legacy.project.thirteenthage.creatures.mechanics;
 
 import static org.junit.Assert.*;
+import static project.thirteenthage.creatures.TestConstants.*;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import static legacy.project.thirteenthage.creatures.TestConstants.*;
 
 public class LevelAdjustmentTest
 {

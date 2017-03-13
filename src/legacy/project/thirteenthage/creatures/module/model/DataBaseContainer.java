@@ -1,9 +1,9 @@
 package legacy.project.thirteenthage.creatures.module.model;
 
-import legacy.project.thirteenthage.creatures.loaders.AttackTemplateLoader;
-import legacy.project.thirteenthage.creatures.loaders.CreatureLoader;
-import legacy.project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
-import legacy.project.thirteenthage.creatures.loaders.SpecialTemplateLoader;
+import project.thirteenthage.creatures.loaders.AttackTemplateLoader;
+import project.thirteenthage.creatures.loaders.CreatureLoader;
+import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
+import project.thirteenthage.creatures.loaders.SpecialTemplateLoader;
 
 /**
  * Is responsible for loading all files.

@@ -1,15 +1,15 @@
-package legacy.project.thirteenthage.creatures;
+package project.thirteenthage.creatures;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
+import project.thirteenthage.creatures.loaders.AttackTemplateLoaderTest;
+import project.thirteenthage.creatures.loaders.CreatureTemplateLoaderTest;
 import legacy.project.thirteenthage.creatures.internal.CreatureSizeTest;
 import legacy.project.thirteenthage.creatures.internal.CreatureTemplateTest;
 import legacy.project.thirteenthage.creatures.internal.RegexMatcherTest;
 import legacy.project.thirteenthage.creatures.internal.TextFormatterTest;
-import legacy.project.thirteenthage.creatures.loaders.AttackTemplateLoaderTest;
-import legacy.project.thirteenthage.creatures.loaders.CreatureTemplateLoaderTest;
 import legacy.project.thirteenthage.creatures.mechanics.AttackTemplateTest;
 import legacy.project.thirteenthage.creatures.mechanics.LevelAdjustmentTest;
 import legacy.project.thirteenthage.creatures.module.analysis.CombatTest;

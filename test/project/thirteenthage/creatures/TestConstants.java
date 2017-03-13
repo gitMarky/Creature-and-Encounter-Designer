@@ -1,4 +1,4 @@
-package legacy.project.thirteenthage.creatures;
+package project.thirteenthage.creatures;
 
 public class TestConstants
 {

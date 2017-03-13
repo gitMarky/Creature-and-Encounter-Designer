@@ -6,12 +6,12 @@ import java.util.List;
 
 import legacy.project.thirteenthage.creatures.internal.interfaces.IAttack;
 import legacy.project.thirteenthage.creatures.internal.interfaces.ISpecial;
-import legacy.project.thirteenthage.creatures.loaders.AttackTemplateLoader;
-import legacy.project.thirteenthage.creatures.loaders.SpecialTemplateLoader;
 
 import org.jdom2.Element;
 
 import project.marky.library.xml.BasicXmlFile;
+import project.thirteenthage.creatures.loaders.AttackTemplateLoader;
+import project.thirteenthage.creatures.loaders.SpecialTemplateLoader;
 
 /**
  * Defines a creature, implementation of {@link ICreature}.

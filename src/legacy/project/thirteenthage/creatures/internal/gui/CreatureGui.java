@@ -10,9 +10,9 @@ import javax.swing.WindowConstants;
 import javax.swing.filechooser.FileFilter;
 
 import project.library.marky.logger.ApplicationLogger;
+import project.thirteenthage.creatures.loaders.LoaderHelper;
 import legacy.project.thirteenthage.creatures.interfaces.IView;
 import legacy.project.thirteenthage.creatures.internal.Constants;
-import legacy.project.thirteenthage.creatures.loaders.LoaderHelper;
 
 /**
  * This is the main application.

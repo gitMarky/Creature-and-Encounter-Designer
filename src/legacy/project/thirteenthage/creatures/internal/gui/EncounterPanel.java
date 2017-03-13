@@ -21,6 +21,8 @@ import org.jdom2.Element;
 
 import project.library.marky.logger.ApplicationLogger;
 import project.marky.library.xml.BasicXmlFile;
+import project.thirteenthage.creatures.loaders.CreatureLoader;
+import project.thirteenthage.creatures.loaders.LoaderHelper;
 import legacy.project.thirteenthage.creatures.interfaces.IView;
 import legacy.project.thirteenthage.creatures.internal.Constants;
 import legacy.project.thirteenthage.creatures.internal.HtmlExporter;
@@ -29,8 +31,6 @@ import legacy.project.thirteenthage.creatures.internal.gui.views.CreatureEncount
 import legacy.project.thirteenthage.creatures.internal.gui.views.EncounterAnalysisView;
 import legacy.project.thirteenthage.creatures.internal.gui.views.EncounterDifficultyView;
 import legacy.project.thirteenthage.creatures.internal.interfaces.ICreature;
-import legacy.project.thirteenthage.creatures.loaders.CreatureLoader;
-import legacy.project.thirteenthage.creatures.loaders.LoaderHelper;
 import legacy.project.thirteenthage.creatures.module.analysis.Encounter;
 import legacy.project.thirteenthage.creatures.module.analysis.EncounterAnalysis;
 import legacy.project.thirteenthage.creatures.module.analysis.EncounterDifficulty;

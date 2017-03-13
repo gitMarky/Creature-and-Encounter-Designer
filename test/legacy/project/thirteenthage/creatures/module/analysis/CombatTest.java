@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.junit.Test;
 
+import project.thirteenthage.creatures.loaders.CreatureLoader;
+import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
 import legacy.project.thirteenthage.creatures.internal.interfaces.ICreature;
-import legacy.project.thirteenthage.creatures.loaders.CreatureLoader;
-import legacy.project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
 import legacy.project.thirteenthage.creatures.module.analysis.AnalysisMode;
 import legacy.project.thirteenthage.creatures.module.analysis.Combat;
 import legacy.project.thirteenthage.creatures.module.analysis.CombatMonster;

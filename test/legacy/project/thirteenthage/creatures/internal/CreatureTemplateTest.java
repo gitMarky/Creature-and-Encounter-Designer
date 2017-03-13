@@ -2,8 +2,8 @@ package legacy.project.thirteenthage.creatures.internal;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static legacy.project.thirteenthage.creatures.TestConstants.DOUBLE_EXACT_1E_8;
-import static legacy.project.thirteenthage.creatures.TestConstants.DOUBLE_FUZZY_1E_3;
+import static project.thirteenthage.creatures.TestConstants.DOUBLE_EXACT_1E_8;
+import static project.thirteenthage.creatures.TestConstants.DOUBLE_FUZZY_1E_3;
 
 import java.io.File;
 

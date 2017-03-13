@@ -1,18 +1,21 @@
-package legacy.project.thirteenthage.creatures.loaders;
+package project.thirteenthage.creatures.loaders;
+
+import java.util.Collections;
 
 import project.library.marky.logger.ApplicationLogger;
 import project.marky.library.xml.BasicXmlFile;
+import legacy.project.thirteenthage.creatures.creature.CreatureTemplate;
 import legacy.project.thirteenthage.creatures.internal.Constants;
 import legacy.project.thirteenthage.creatures.internal.exceptions.LoaderException;
-import legacy.project.thirteenthage.creatures.internal.interfaces.ISpecial;
-import legacy.project.thirteenthage.creatures.mechanics.SpecialTemplate;
+import legacy.project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
+import legacy.project.thirteenthage.creatures.lists.Lists;
 
 /**
  * Loads attack templates from a folder.
  */
-public class SpecialTemplateLoader extends AbstractLoader<ISpecial>
+public class CreatureTemplateLoader extends AbstractLoader<ICreatureTemplate>
 {
-	private static SpecialTemplateLoader _instance = null;
+	private static CreatureTemplateLoader _instance = null;
 
 
 	@Override
@@ -23,7 +26,7 @@ public class SpecialTemplateLoader extends AbstractLoader<ISpecial>
 			throw new IllegalArgumentException("Parameter 'template' must not be null.");
 		}
 
-		return "special".equals(template.getRoot().getName());
+		return CreatureTemplate.ROOT_ELEMENT.equals(template.getRoot().getName());
 	}
 
 
@@ -35,8 +38,8 @@ public class SpecialTemplateLoader extends AbstractLoader<ISpecial>
 			throw new IllegalArgumentException("Parameter 'file' must not be null.");
 		}
 
-		final SpecialTemplate template = new SpecialTemplate(file);
 		final String id = LoaderHelper.getId(file);
+		final CreatureTemplate template = new CreatureTemplate(file, id);
 
 		if (getTemplates().containsKey(id))
 		{
@@ -44,15 +47,21 @@ public class SpecialTemplateLoader extends AbstractLoader<ISpecial>
 		}
 
 		getTemplates().put(id, template);
+
+		for (final String label : template.getLabels())
+		{
+			if (!Lists.labels().contains(label)) Lists.labels().add(label);
+		}
+		Collections.sort(Lists.labels());
 	}
 
 
-	public static SpecialTemplateLoader getInstance()
+	public static CreatureTemplateLoader getInstance()
 	{
 		if (_instance == null)
 		{
 			ApplicationLogger.getLogger().info("Setting up new loader instance");
-			_instance = new SpecialTemplateLoader();
+			_instance = new CreatureTemplateLoader();
 			_instance.load(Constants.RESOURCES);
 		}
 

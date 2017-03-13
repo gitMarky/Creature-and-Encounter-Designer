@@ -2,10 +2,10 @@ package legacy.project.thirteenthage.creatures.internal.gui;
 
 import javax.swing.JFrame;
 
+import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
 import legacy.project.thirteenthage.creatures.internal.gui.views.CreatureViewPanel;
 import legacy.project.thirteenthage.creatures.internal.interfaces.ICreature;
 import legacy.project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
-import legacy.project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
 
 public class Tester
 {

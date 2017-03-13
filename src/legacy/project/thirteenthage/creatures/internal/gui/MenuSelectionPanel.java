@@ -7,10 +7,10 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 import project.library.marky.logger.ApplicationLogger;
+import project.thirteenthage.creatures.loaders.CreatureLoader;
+import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
 import legacy.project.thirteenthage.creatures.interfaces.IView;
 import legacy.project.thirteenthage.creatures.internal.gui.views.LevelAdjustmentChoicePanel;
-import legacy.project.thirteenthage.creatures.loaders.CreatureLoader;
-import legacy.project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
 
 /**
  * This panel contains a combo box that lets you select the loaded creatures.

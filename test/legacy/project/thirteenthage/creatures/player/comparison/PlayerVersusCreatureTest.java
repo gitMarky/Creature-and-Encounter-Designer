@@ -5,12 +5,12 @@ import java.util.List;
 
 import org.junit.Test;
 
+import project.thirteenthage.creatures.loaders.CreatureLoader;
+import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
 import legacy.project.thirteenthage.creatures.creature.CreatureSize;
 import legacy.project.thirteenthage.creatures.creature.EditableCreatureTemplate;
 import legacy.project.thirteenthage.creatures.internal.interfaces.ICreature;
 import legacy.project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
-import legacy.project.thirteenthage.creatures.loaders.CreatureLoader;
-import legacy.project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
 import legacy.project.thirteenthage.creatures.player.AveragePlayerCharacter;
 import legacy.project.thirteenthage.creatures.player.PlayerCharacter;
 

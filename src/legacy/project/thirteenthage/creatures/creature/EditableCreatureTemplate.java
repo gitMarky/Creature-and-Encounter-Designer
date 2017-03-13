@@ -6,15 +6,15 @@ import legacy.project.thirteenthage.creatures.internal.Constants;
 import legacy.project.thirteenthage.creatures.internal.interfaces.IAttack;
 import legacy.project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
 import legacy.project.thirteenthage.creatures.internal.interfaces.ISpecial;
-import legacy.project.thirteenthage.creatures.loaders.AttackTemplateLoader;
-import legacy.project.thirteenthage.creatures.loaders.LoaderHelper;
-import legacy.project.thirteenthage.creatures.loaders.SpecialTemplateLoader;
 
 import org.jdom2.Document;
 import org.jdom2.Element;
 
 import project.library.marky.logger.ApplicationLogger;
 import project.marky.library.xml.BasicXmlFile;
+import project.thirteenthage.creatures.loaders.AttackTemplateLoader;
+import project.thirteenthage.creatures.loaders.LoaderHelper;
+import project.thirteenthage.creatures.loaders.SpecialTemplateLoader;
 
 /**
  * Defines a creature, implementation of {@link ICreature}.

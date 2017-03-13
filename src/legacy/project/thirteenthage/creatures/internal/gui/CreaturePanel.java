@@ -13,12 +13,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import project.library.marky.logger.ApplicationLogger;
+import project.thirteenthage.creatures.loaders.CreatureLoader;
+import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
 import legacy.project.thirteenthage.creatures.interfaces.IView;
 import legacy.project.thirteenthage.creatures.internal.gui.views.CreatureEditPanel;
 import legacy.project.thirteenthage.creatures.internal.gui.views.CreatureViewPanel;
 import legacy.project.thirteenthage.creatures.internal.interfaces.ICreature;
-import legacy.project.thirteenthage.creatures.loaders.CreatureLoader;
-import legacy.project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
 
 //property change stuff
 

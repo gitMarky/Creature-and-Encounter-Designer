@@ -1,4 +1,4 @@
-package legacy.project.thirteenthage.creatures.loaders;
+package project.thirteenthage.creatures.loaders;
 
 import java.io.File;
 

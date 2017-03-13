@@ -6,9 +6,9 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import project.thirteenthage.creatures.loaders.CreatureLoader;
+import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
 import legacy.project.thirteenthage.creatures.internal.interfaces.ICreature;
-import legacy.project.thirteenthage.creatures.loaders.CreatureLoader;
-import legacy.project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
 
 public class HtmlExporterTest
 {

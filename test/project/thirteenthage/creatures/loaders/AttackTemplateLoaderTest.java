@@ -1,8 +1,10 @@
-package legacy.project.thirteenthage.creatures.loaders;
+package project.thirteenthage.creatures.loaders;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import project.thirteenthage.creatures.loaders.AttackTemplateLoader;
 
 public class AttackTemplateLoaderTest
 {

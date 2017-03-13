@@ -14,9 +14,9 @@ import legacy.project.thirteenthage.creatures.internal.gui.views.CreatureEncount
 import legacy.project.thirteenthage.creatures.internal.interfaces.IAttack;
 import legacy.project.thirteenthage.creatures.internal.interfaces.ICreature;
 import legacy.project.thirteenthage.creatures.internal.interfaces.ISpecial;
-import legacy.project.thirteenthage.creatures.loaders.LoaderHelper;
 import project.library.marky.html.Html;
 import project.library.marky.logger.ApplicationLogger;
+import project.thirteenthage.creatures.loaders.LoaderHelper;
 
 
 /**
