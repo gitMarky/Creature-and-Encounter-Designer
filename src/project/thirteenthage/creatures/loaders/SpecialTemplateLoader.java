@@ -47,6 +47,12 @@ public class SpecialTemplateLoader extends AbstractLoader<ISpecial>
 	}
 
 
+	/**
+	 * Access the loader.
+	 * 
+	 * @return the loader, if it already exists. Otherwise,
+	 *         the loader is created and it loads all entries.
+	 */
 	public static SpecialTemplateLoader getInstance()
 	{
 		if (_instance == null)

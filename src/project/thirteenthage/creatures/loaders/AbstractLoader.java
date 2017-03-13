@@ -8,18 +8,34 @@ import java.util.Map.Entry;
 import project.library.marky.logger.ApplicationLogger;
 import project.marky.library.xml.BasicXmlFile;
 
+
+/**
+ * Base class for loading things from .xml templates.
+ * 
+ * @param <T> the type to load.
+ */
 public abstract class AbstractLoader<T extends Object>
 {
 	private final Map<String, T> _templates = new HashMap<String, T>();
 
 
+	/**
+	 * <p>
+	 * Loads files from the directory.
+	 * </p><p>
+	 * A file gets loaded if it has the .xml extension.
+	 * Files that start with  "template" are ignored.
+	 * </p>
+	 * 
+	 * @param fromDirectory the directory.
+	 */
 	public void load(final File fromDirectory)
 	{
 		if (fromDirectory == null)
 		{
 			throw new IllegalArgumentException("File was null");
 		}
-		
+
 		if (fromDirectory.isFile())
 		{
 			loadFile(fromDirectory);
@@ -59,12 +75,22 @@ public abstract class AbstractLoader<T extends Object>
 	}
 
 
+	/**
+	 * Gets the loaded templates.
+	 * 
+	 * @return a map of templates.
+	 */
 	public Map<String, T> getTemplates()
 	{
 		return _templates;
 	}
 
 
+	/**
+	 * Gets a specific entry.
+	 * @param id the template ID.
+	 * @return the entry, if it exists.
+	 */
 	public T get(final String id)
 	{
 		return getTemplates().get(id);

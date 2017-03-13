@@ -56,6 +56,12 @@ public class CreatureTemplateLoader extends AbstractLoader<ICreatureTemplate>
 	}
 
 
+	/**
+	 * Access the loader.
+	 * 
+	 * @return the loader, if it already exists. Otherwise,
+	 *         the loader is created and it loads all entries.
+	 */
 	public static CreatureTemplateLoader getInstance()
 	{
 		if (_instance == null)

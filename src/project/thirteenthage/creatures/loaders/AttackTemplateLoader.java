@@ -46,6 +46,12 @@ public class AttackTemplateLoader extends AbstractLoader<IAttack>
 	}
 
 
+	/**
+	 * Access the loader.
+	 * 
+	 * @return the loader, if it already exists. Otherwise,
+	 *         the loader is created and it loads all entries.
+	 */
 	public static AttackTemplateLoader getInstance()
 	{
 		if (_instance == null)
