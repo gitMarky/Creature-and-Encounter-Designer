@@ -1,4 +1,4 @@
-package project.thirteenthage.creatures.mechanics.analysis;
+package project.thirteenthage.creatures.module.analysis;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +8,11 @@ import org.junit.Test;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.loaders.CreatureLoader;
 import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
+import project.thirteenthage.creatures.module.analysis.AnalysisMode;
+import project.thirteenthage.creatures.module.analysis.Combat;
+import project.thirteenthage.creatures.module.analysis.CombatMonster;
+import project.thirteenthage.creatures.module.analysis.CombatPlayer;
+import project.thirteenthage.creatures.module.analysis.ICombattant;
 import project.thirteenthage.creatures.player.AveragePlayerCharacter;
 
 public class CombatTest

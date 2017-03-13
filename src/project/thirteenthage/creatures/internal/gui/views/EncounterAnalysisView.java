@@ -5,7 +5,7 @@ import java.util.List;
 import javax.swing.JLabel;
 
 import project.library.marky.html.Html;
-import project.thirteenthage.creatures.mechanics.analysis.EncounterAnalysis;
+import project.thirteenthage.creatures.module.analysis.EncounterAnalysis;
 
 @SuppressWarnings("serial")
 public class EncounterAnalysisView extends JLabel

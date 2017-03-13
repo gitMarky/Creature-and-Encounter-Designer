@@ -31,9 +31,9 @@ import project.thirteenthage.creatures.internal.gui.views.EncounterDifficultyVie
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.loaders.CreatureLoader;
 import project.thirteenthage.creatures.loaders.LoaderHelper;
-import project.thirteenthage.creatures.mechanics.analysis.Encounter;
-import project.thirteenthage.creatures.mechanics.analysis.EncounterAnalysis;
-import project.thirteenthage.creatures.mechanics.analysis.EncounterDifficulty;
+import project.thirteenthage.creatures.module.analysis.Encounter;
+import project.thirteenthage.creatures.module.analysis.EncounterAnalysis;
+import project.thirteenthage.creatures.module.analysis.EncounterDifficulty;
 
 /**
  * This panel should be able to contain several creatures that were selected for

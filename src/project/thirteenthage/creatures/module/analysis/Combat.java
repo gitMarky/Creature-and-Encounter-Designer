@@ -1,4 +1,4 @@
-package project.thirteenthage.creatures.mechanics.analysis;
+package project.thirteenthage.creatures.module.analysis;
 
 import java.util.List;
 

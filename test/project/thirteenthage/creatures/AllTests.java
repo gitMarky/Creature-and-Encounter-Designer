@@ -12,6 +12,7 @@ import project.thirteenthage.creatures.loaders.AttackTemplateLoaderTest;
 import project.thirteenthage.creatures.loaders.CreatureTemplateLoaderTest;
 import project.thirteenthage.creatures.mechanics.AttackTemplateTest;
 import project.thirteenthage.creatures.mechanics.LevelAdjustmentTest;
+import project.thirteenthage.creatures.module.analysis.CombatTest;
 import project.thirteenthage.creatures.values.TemplateTestAnimal;
 
 @RunWith(value = Suite.class)
@@ -23,7 +24,8 @@ import project.thirteenthage.creatures.values.TemplateTestAnimal;
 		TextFormatterTest.class,
 		RegexMatcherTest.class,
 		LevelAdjustmentTest.class,
-		TemplateTestAnimal.class})
+		TemplateTestAnimal.class,
+		CombatTest.class})
 public class AllTests
 {
 }
