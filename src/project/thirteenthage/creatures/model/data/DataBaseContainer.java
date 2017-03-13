@@ -1,4 +1,4 @@
-package legacy.project.thirteenthage.creatures.module.model;
+package project.thirteenthage.creatures.model.data;
 
 import project.thirteenthage.creatures.loaders.AttackTemplateLoader;
 import project.thirteenthage.creatures.loaders.CreatureLoader;
