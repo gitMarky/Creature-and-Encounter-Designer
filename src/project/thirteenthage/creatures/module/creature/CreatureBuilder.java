@@ -1,9 +1,11 @@
-package project.thirteenthage.creatures.creature;
+package project.thirteenthage.creatures.module.creature;
 
+import project.thirteenthage.creatures.creature.CreatureSize;
+import project.thirteenthage.creatures.interfaces.ICreatureBuilder;
 import project.thirteenthage.creatures.tables.CreatureTableRow;
 import project.thirteenthage.creatures.tables.CreatureTables;
 
-public class CreatureBuilder
+public class CreatureBuilder implements ICreatureBuilder
 {
 	private String _name = "New creature";
 	private int _level = 0;
@@ -28,7 +30,8 @@ public class CreatureBuilder
 	}
 
 
-	public CreatureBuilder name(final String name)
+	@Override
+	public ICreatureBuilder name(final String name)
 	{
 		if (name == null)
 		{
@@ -40,14 +43,16 @@ public class CreatureBuilder
 	}
 
 
-	public CreatureBuilder level(final int level)
+	@Override
+	public ICreatureBuilder level(final int level)
 	{
 		_level = level;
 		return this;
 	}
 
 
-	public CreatureBuilder size(final CreatureSize size)
+	@Override
+	public ICreatureBuilder size(final CreatureSize size)
 	{
 		if (size == null)
 		{
@@ -59,62 +64,71 @@ public class CreatureBuilder
 	}
 
 
-	public CreatureBuilder addAttack(final int amount)
+	@Override
+	public ICreatureBuilder addAttack(final int amount)
 	{
 		_modifierAttack += amount;
 		return this;
 	}
 
 
-	public CreatureBuilder addAC(final int amount)
+	@Override
+	public ICreatureBuilder addAC(final int amount)
 	{
 		_modifierAC += amount;
 		return this;
 	}
 
 
-	public CreatureBuilder addPD(final int amount)
+	@Override
+	public ICreatureBuilder addPD(final int amount)
 	{
 		_modifierPD += amount;
 		return this;
 	}
 
 
-	public CreatureBuilder addMD(final int amount)
+	@Override
+	public ICreatureBuilder addMD(final int amount)
 	{
 		_modifierMD += amount;
 		return this;
 	}
 
 
-	public CreatureBuilder addInitiative(final int amount)
+	@Override
+	public ICreatureBuilder addInitiative(final int amount)
 	{
 		_modifierInitiative += amount;
 		return this;
 	}
 
 
-	public CreatureBuilder scaleHP(final double factor)
+	@Override
+	public ICreatureBuilder scaleHP(final double factor)
 	{
 		_factorHP *= factor;
 		return this;
 	}
 
 
-	public CreatureBuilder scaleDamage(final double factor)
+	@Override
+	public ICreatureBuilder scaleDamage(final double factor)
 	{
 		_factorDamage *= factor;
 		return this;
 	}
 
 
-	public CreatureBuilder betterDefenseIsMD()
+	@Override
+	public ICreatureBuilder betterDefenseIsMD()
 	{
 		_betterDefenseIsPD = false;
 		return this;
 	}
 
 
+	@Override
 	public Creature buildCreature()
 	{
 		final Creature creature = new Creature();
@@ -150,6 +164,7 @@ public class CreatureBuilder
 	}
 
 
+	@Override
 	public Creature buildMook()
 	{
 		final Creature mook = buildCreature();
@@ -163,6 +178,7 @@ public class CreatureBuilder
 	}
 
 
+	@Override
 	public Creature build(final boolean isMook)
 	{
 		if (isMook)

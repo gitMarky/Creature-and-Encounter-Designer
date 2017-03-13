@@ -1,8 +1,9 @@
-package project.thirteenthage.creatures.creature;
+package project.thirteenthage.creatures.module.creature;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import project.thirteenthage.creatures.creature.CreatureSize;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;

@@ -3,10 +3,13 @@ package project.thirteenthage.creatures.creature;
 import java.util.ArrayList;
 import java.util.List;
 
+import project.thirteenthage.creatures.interfaces.ICreatureBuilder;
 import project.thirteenthage.creatures.internal.interfaces.IAttack;
 import project.thirteenthage.creatures.internal.interfaces.ICreature;
 import project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
 import project.thirteenthage.creatures.internal.interfaces.ISpecial;
+import project.thirteenthage.creatures.module.creature.Creature;
+import project.thirteenthage.creatures.module.creature.CreatureBuilder;
 
 public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 {
@@ -230,7 +233,7 @@ public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 	@Override
 	public ICreature toCreature()
 	{
-		final CreatureBuilder builder = new CreatureBuilder();
+		final ICreatureBuilder builder = new CreatureBuilder();
 		builder.name(getName())
 		       .size(getSize())
 		       .level(getLevel())
