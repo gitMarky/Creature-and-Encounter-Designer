@@ -2,10 +2,11 @@ package legacy.project.thirteenthage.creatures.values;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
 import java.io.File;
 
+import project.thirteenthage.creatures.model.creature.template.CreatureTemplate;
 import legacy.project.thirteenthage.creatures.creature.CreatureSize;
-import legacy.project.thirteenthage.creatures.creature.CreatureTemplate;
 import legacy.project.thirteenthage.creatures.internal.conversions.Conversions;
 import legacy.project.thirteenthage.creatures.internal.interfaces.IAttack;
 import legacy.project.thirteenthage.creatures.internal.interfaces.ICreature;

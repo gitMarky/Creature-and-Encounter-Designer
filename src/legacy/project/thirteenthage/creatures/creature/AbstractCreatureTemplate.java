@@ -3,13 +3,13 @@ package legacy.project.thirteenthage.creatures.creature;
 import java.util.ArrayList;
 import java.util.List;
 
+import project.thirteenthage.creatures.model.creature.Creature;
+import project.thirteenthage.creatures.model.creature.CreatureBuilder;
 import legacy.project.thirteenthage.creatures.interfaces.ICreatureBuilder;
 import legacy.project.thirteenthage.creatures.internal.interfaces.IAttack;
 import legacy.project.thirteenthage.creatures.internal.interfaces.ICreature;
 import legacy.project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
 import legacy.project.thirteenthage.creatures.internal.interfaces.ISpecial;
-import legacy.project.thirteenthage.creatures.module.creature.Creature;
-import legacy.project.thirteenthage.creatures.module.creature.CreatureBuilder;
 
 public abstract class AbstractCreatureTemplate implements ICreatureTemplate
 {

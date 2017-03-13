@@ -19,7 +19,7 @@ import javax.swing.event.ListSelectionListener;
 import project.library.marky.logger.ApplicationLogger;
 import project.thirteenthage.creatures.loaders.AttackTemplateLoader;
 import project.thirteenthage.creatures.loaders.SpecialTemplateLoader;
-import legacy.project.thirteenthage.creatures.creature.EditableCreatureTemplate;
+import project.thirteenthage.creatures.model.creature.template.EditableCreatureTemplate;
 import legacy.project.thirteenthage.creatures.interfaces.IView;
 import legacy.project.thirteenthage.creatures.internal.Constants;
 import legacy.project.thirteenthage.creatures.internal.gui.CreaturePanel;

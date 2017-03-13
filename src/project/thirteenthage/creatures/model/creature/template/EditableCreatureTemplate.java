@@ -1,7 +1,9 @@
-package legacy.project.thirteenthage.creatures.creature;
+package project.thirteenthage.creatures.model.creature.template;
 
 import java.io.File;
 
+import legacy.project.thirteenthage.creatures.creature.AbstractCreatureTemplate;
+import legacy.project.thirteenthage.creatures.creature.BetterDefense;
 import legacy.project.thirteenthage.creatures.internal.Constants;
 import legacy.project.thirteenthage.creatures.internal.interfaces.IAttack;
 import legacy.project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
@@ -17,7 +19,12 @@ import project.thirteenthage.creatures.loaders.LoaderHelper;
 import project.thirteenthage.creatures.loaders.SpecialTemplateLoader;
 
 /**
- * Defines a creature, implementation of {@link ICreature}.
+ * <p>
+ * Defines a creature, implementation of {@link AbstractCreatureTemplate}.
+ * </p><p>
+ * The editable template is a different type, so that actual creature
+ * templates are not editable by accident.
+ * </p>
  */
 public class EditableCreatureTemplate extends AbstractCreatureTemplate
 {

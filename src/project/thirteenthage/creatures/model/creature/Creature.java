@@ -1,4 +1,4 @@
-package legacy.project.thirteenthage.creatures.module.creature;
+package project.thirteenthage.creatures.model.creature;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,11 @@ import legacy.project.thirteenthage.creatures.mechanics.LevelAdjustment;
 import legacy.project.thirteenthage.creatures.mechanics.Special;
 
 /**
+ * <p>
  * Defines a creature, implementation of {@link ICreature}.
+ * </p><p>
+ * The creature is an individual object that comes from a {@link ICreatureTemplate}.
+ * </p>
  */
 public class Creature implements ICreature
 {
@@ -305,14 +309,14 @@ public class Creature implements ICreature
 		{
 			return 0;
 		}
-		
+
 		return LevelAdjustment
-			  .getLevelAdjustment(getTemplate().getModifierAttack(),
-				                  getTemplate().getModifierAC(),
-				                  getTemplate().getModifierPD(),
-				                  getTemplate().getModifierMD(),
-				                  getTemplate().getModifierHP(),
-				                  getTemplate().getModifierDamage());
+				.getLevelAdjustment(getTemplate().getModifierAttack(),
+						getTemplate().getModifierAC(),
+						getTemplate().getModifierPD(),
+						getTemplate().getModifierMD(),
+						getTemplate().getModifierHP(),
+						getTemplate().getModifierDamage());
 	}
 
 

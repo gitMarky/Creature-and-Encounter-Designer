@@ -4,7 +4,7 @@ import java.util.Collections;
 
 import project.library.marky.logger.ApplicationLogger;
 import project.marky.library.xml.BasicXmlFile;
-import legacy.project.thirteenthage.creatures.creature.CreatureTemplate;
+import project.thirteenthage.creatures.model.creature.template.CreatureTemplate;
 import legacy.project.thirteenthage.creatures.internal.Constants;
 import legacy.project.thirteenthage.creatures.internal.exceptions.LoaderException;
 import legacy.project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;

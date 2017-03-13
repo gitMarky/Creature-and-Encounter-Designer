@@ -9,8 +9,8 @@ import java.io.File;
 
 import org.junit.Test;
 
+import project.thirteenthage.creatures.model.creature.template.CreatureTemplate;
 import legacy.project.thirteenthage.creatures.creature.CreatureSize;
-import legacy.project.thirteenthage.creatures.creature.CreatureTemplate;
 import legacy.project.thirteenthage.creatures.internal.interfaces.IAttack;
 import legacy.project.thirteenthage.creatures.internal.interfaces.ICreature;
 

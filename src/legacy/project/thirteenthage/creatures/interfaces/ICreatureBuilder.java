@@ -1,7 +1,7 @@
 package legacy.project.thirteenthage.creatures.interfaces;
 
+import project.thirteenthage.creatures.model.creature.Creature;
 import legacy.project.thirteenthage.creatures.creature.CreatureSize;
-import legacy.project.thirteenthage.creatures.module.creature.Creature;
 
 public interface ICreatureBuilder
 {

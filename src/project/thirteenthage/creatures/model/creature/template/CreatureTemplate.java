@@ -1,9 +1,12 @@
-package legacy.project.thirteenthage.creatures.creature;
+package project.thirteenthage.creatures.model.creature.template;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import legacy.project.thirteenthage.creatures.creature.AbstractCreatureTemplate;
+import legacy.project.thirteenthage.creatures.creature.BetterDefense;
+import legacy.project.thirteenthage.creatures.creature.CreatureSize;
 import legacy.project.thirteenthage.creatures.internal.interfaces.IAttack;
 import legacy.project.thirteenthage.creatures.internal.interfaces.ISpecial;
 
@@ -14,7 +17,13 @@ import project.thirteenthage.creatures.loaders.AttackTemplateLoader;
 import project.thirteenthage.creatures.loaders.SpecialTemplateLoader;
 
 /**
- * Defines a creature, implementation of {@link ICreature}.
+ * <p>
+ * Defines a creature, implementation of {@link AbstractCreatureTemplate}.
+ * </p><p>
+ * The difference between creatures and their templates is that
+ * a creature can have track individual stats, whereas the template
+ * is a prototype for a creature stats.
+ * </p>
  */
 public class CreatureTemplate extends AbstractCreatureTemplate
 {

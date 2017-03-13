@@ -1,10 +1,14 @@
-package legacy.project.thirteenthage.creatures.module.creature;
+package project.thirteenthage.creatures.model.creature;
 
 import legacy.project.thirteenthage.creatures.creature.CreatureSize;
 import legacy.project.thirteenthage.creatures.interfaces.ICreatureBuilder;
 import legacy.project.thirteenthage.creatures.tables.CreatureTableRow;
 import legacy.project.thirteenthage.creatures.tables.CreatureTables;
 
+
+/**
+ * Defines the rules how to build a creature.
+ */
 public class CreatureBuilder implements ICreatureBuilder
 {
 	private String _name = "New creature";

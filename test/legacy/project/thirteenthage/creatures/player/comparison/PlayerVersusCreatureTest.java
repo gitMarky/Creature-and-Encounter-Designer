@@ -7,8 +7,8 @@ import org.junit.Test;
 
 import project.thirteenthage.creatures.loaders.CreatureLoader;
 import project.thirteenthage.creatures.loaders.CreatureTemplateLoader;
+import project.thirteenthage.creatures.model.creature.template.EditableCreatureTemplate;
 import legacy.project.thirteenthage.creatures.creature.CreatureSize;
-import legacy.project.thirteenthage.creatures.creature.EditableCreatureTemplate;
 import legacy.project.thirteenthage.creatures.internal.interfaces.ICreature;
 import legacy.project.thirteenthage.creatures.internal.interfaces.ICreatureTemplate;
 import legacy.project.thirteenthage.creatures.player.AveragePlayerCharacter;
