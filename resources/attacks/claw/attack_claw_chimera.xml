@@ -1,0 +1,13 @@
+<attack>
+	<name>Fangs, claws, and horns</name>
+	<bonus>0</bonus>
+	<defense>AC</defense>
+	<multiple>3 attacks</multiple>
+	<level>0.5</level>
+	<damage factor="0.25" description="damage" />
+	<triggers>
+		<trigger name="Natural 14-15" description="The target is dazed until the end of the $name's next turn from a headbutt."/>
+		<trigger name="Natural 16-17" description="The target takes $damage[x0.2] ongoing damage from raking claws."/>
+		<trigger name="Natural 18-20" description="The $name makes a fiery breath attack as a free action."/>
+	</triggers>
+</attack>

@@ -1,4 +1,4 @@
-package legacy.project.thirteenthage.creatures.values;
+package project.thirteenthage.creatures.values;
 
 import org.junit.Test;
 

@@ -1,0 +1,4 @@
+<special>
+	<name>Bestial Thresher</name>
+	<description>Whenver a creature misses the $name with a melee attack, the $name's multiple sharp bits deal $level[x0.33]d10 damage to the attack.</description>
+</special>

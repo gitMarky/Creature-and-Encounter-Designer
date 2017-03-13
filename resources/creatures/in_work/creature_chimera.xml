@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<creature>
+  <name>Chimera</name>
+  <size>Large</size>
+  <level>9</level>
+  <labels>
+    <label>Wrecker</label>
+    <label>Beast</label>
+  </labels>
+  <modifiers>
+    <ini>6</ini>
+    <attack>0</attack>
+    <ac>-1</ac>
+    <pd better="true">-3</pd>
+    <md>-3</md>
+    <hp>0.89</hp>
+  </modifiers>
+  <attacks>
+    <attack id="attack_claw_chimera" />
+    <attack id="attack_breath_chimera" />
+  </attacks>
+  <specials>
+    <special id="special_bestial_thresher" />
+  </specials>
+  <nastier>
+    <special id="special_chimera_anger" />
+  </nastier>
+</creature>
