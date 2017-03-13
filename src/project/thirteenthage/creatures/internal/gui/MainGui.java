@@ -1,5 +1,7 @@
 package project.thirteenthage.creatures.internal.gui;
 
+import project.thirteenthage.creatures.module.model.DataBaseContainer;
+
 public class MainGui extends GuiContainer
 {
 	public static void main(final String[] args)
@@ -15,6 +17,7 @@ public class MainGui extends GuiContainer
 			@Override
 			public void run()
 			{
+				DataBaseContainer.load();
 				CreatureGui.start();
 			}
 		};
