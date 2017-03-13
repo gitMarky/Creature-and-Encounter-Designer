@@ -1,5 +1,7 @@
-package project.thirteenthage.creatures.internal.gui;
+package project.thirteenthage.creatures.internal.application;
 
+import project.thirteenthage.creatures.internal.gui.CreatureGui;
+import project.thirteenthage.creatures.internal.gui.GuiContainer;
 import project.thirteenthage.creatures.module.model.DataBaseContainer;
 
 public class MainGui extends GuiContainer
