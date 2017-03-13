@@ -248,7 +248,7 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		_defenseSetter.setBetterDefense(template.getBetterDefense());
 		_sizeSetter.setCreatureSize(template.getSize());
 		_isCreatureReset = true;
-		
+
 		updateLevelAdjust();
 	}
 
@@ -258,11 +258,14 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		_damageSetter.setVisible(!LevelAdjustment.useOriginalCalculation());
 
 		_levelAdjust.display(_attackSetter.getAmount(),
-				             _acSetter.getAmount(),
-				             _pdSetter.getAmount(),
-				             _mdSetter.getAmount(),
-				             integerToPercentage(_hpSetter.getAmount()),
-				             integerToPercentage(_damageSetter.getAmount()));
+				_acSetter.getAmount(),
+				_pdSetter.getAmount(),
+				_mdSetter.getAmount(),
+				integerToPercentage(_hpSetter.getAmount()),
+				integerToPercentage(_damageSetter.getAmount()),
+				_editedCreature.getAttacks(),
+				_editedCreature.getSpecials(),
+				_editedCreature.getNastierSpecials());
 	}
 
 
@@ -452,10 +455,10 @@ public class CreatureEditPanel extends JPanel implements IView, ActionListener
 		}
 
 		innerPanel.setBorder(BorderFactory.createTitledBorder("Description"));
-		
-		JScrollPane scrollBar = new JScrollPane(innerPanel);
+
+		final JScrollPane scrollBar = new JScrollPane(innerPanel);
 		scrollBar.setPreferredSize(new Dimension(500, 200));
-		
+
 		_listFrame.add(scrollBar);
 		listTransfer.getLeftList().addListSelectionListener(listener);
 		listTransfer.getRightList().addListSelectionListener(listener);

@@ -1,7 +1,11 @@
 package legacy.project.thirteenthage.creatures.mechanics;
 
+import java.util.List;
+
 import legacy.project.thirteenthage.creatures.internal.conversions.Conversions;
+import legacy.project.thirteenthage.creatures.internal.interfaces.IAttack;
 import legacy.project.thirteenthage.creatures.internal.interfaces.ILevelAdjustment;
+import legacy.project.thirteenthage.creatures.internal.interfaces.ISpecial;
 
 /**
  * <p>
@@ -16,7 +20,7 @@ import legacy.project.thirteenthage.creatures.internal.interfaces.ILevelAdjustme
 public abstract class LevelAdjustmentBase implements ILevelAdjustment
 {
 	@Override
-	public double getLevelAdjustmentFine(final int attack, final int ac, final int pd, final int md, final double hp, final double damage)
+	public double getLevelAdjustmentFine(final int attack, final int ac, final int pd, final int md, final double hp, final double damage, final List<IAttack> attacks, final List<ISpecial> specials, final List<ISpecial> nastier)
 	{
 		double adjustment = 0.0;
 
@@ -27,14 +31,27 @@ public abstract class LevelAdjustmentBase implements ILevelAdjustment
 		adjustment += valueOfHP(hp);
 		adjustment += valueOfDamage(damage);
 
+		for (final IAttack adjust : attacks)
+		{
+			adjustment += adjust.getLevelAdjustment();
+		}
+		for (final ISpecial adjust : specials)
+		{
+			adjustment += adjust.getLevelAdjustment();
+		}
+		for (final ISpecial adjust : nastier)
+		{
+			adjustment += adjust.getLevelAdjustment();
+		}
+
 		return adjustment;
 	}
 
 
 	@Override
-	public int getLevelAdjustment(final int attack, final int ac, final int pd, final int md, final double hp, final double damage)
+	public int getLevelAdjustment(final int attack, final int ac, final int pd, final int md, final double hp, final double damage, final List<IAttack> attacks, final List<ISpecial> specials, final List<ISpecial> nastier)
 	{
-		return Conversions.round(getLevelAdjustmentFine(attack, ac, pd, md, hp, damage));
+		return Conversions.round(getLevelAdjustmentFine(attack, ac, pd, md, hp, damage, attacks, specials, nastier));
 	}
 
 }

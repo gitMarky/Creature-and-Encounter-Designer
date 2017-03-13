@@ -1,7 +1,11 @@
 package legacy.project.thirteenthage.creatures.mechanics;
 
+import java.util.List;
+
 import legacy.project.thirteenthage.creatures.internal.gui.CreatureGui;
+import legacy.project.thirteenthage.creatures.internal.interfaces.IAttack;
 import legacy.project.thirteenthage.creatures.internal.interfaces.ILevelAdjustment;
+import legacy.project.thirteenthage.creatures.internal.interfaces.ISpecial;
 
 /**
  * <p>
@@ -27,15 +31,15 @@ public final class LevelAdjustment
 	}
 
 
-	public static double getLevelAdjustmentFine(final int attack, final int ac, final int pd, final int md, final double hp, final double damage)
+	public static double getLevelAdjustmentFine(final int attack, final int ac, final int pd, final int md, final double hp, final double damage, final List<IAttack> attacks, final List<ISpecial> specials, final List<ISpecial> nastier)
 	{
-		return getInstance().getLevelAdjustmentFine(attack, ac, pd, md, hp, damage);
+		return getInstance().getLevelAdjustmentFine(attack, ac, pd, md, hp, damage, attacks, specials, nastier);
 	}
 
 
-	public static int getLevelAdjustment(final int attack, final int ac, final int pd, final int md, final double hp, final double damage)
+	public static int getLevelAdjustment(final int attack, final int ac, final int pd, final int md, final double hp, final double damage, final List<IAttack> attacks, final List<ISpecial> specials, final List<ISpecial> nastier)
 	{
-		return getInstance().getLevelAdjustment(attack, ac, pd, md, hp, damage);
+		return getInstance().getLevelAdjustment(attack, ac, pd, md, hp, damage, attacks, specials, nastier);
 	}
 
 

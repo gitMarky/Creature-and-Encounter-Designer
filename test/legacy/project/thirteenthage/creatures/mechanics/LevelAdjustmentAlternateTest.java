@@ -4,16 +4,21 @@ import static org.junit.Assert.assertEquals;
 import static project.thirteenthage.creatures.TestConstants.DOUBLE_EXACT_1E_8;
 import static project.thirteenthage.creatures.TestConstants.DOUBLE_FUZZY_1E_3;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
 
+import legacy.project.thirteenthage.creatures.internal.interfaces.IAttack;
+import legacy.project.thirteenthage.creatures.internal.interfaces.ISpecial;
 import legacy.project.thirteenthage.creatures.tables.CreatureTableRow;
 import legacy.project.thirteenthage.creatures.tables.CreatureTables;
 
 public class LevelAdjustmentAlternateTest
 {
 	private final LevelAdjustmentAlternate _object = new LevelAdjustmentAlternate();
+	private final List<IAttack> _emptyAttacks = new ArrayList<IAttack>();
+	private final List<ISpecial> _emptySpecials = new ArrayList<ISpecial>();
 
 
 	@Test
@@ -49,8 +54,8 @@ public class LevelAdjustmentAlternateTest
 			final double hpDown = base.getHP() / upgrade.getHP();
 			final double damageDown = base.getStrikeDamage() / upgrade.getStrikeDamage();
 
-			assertEquals("Upgrade of " + tableName + " creature by one level " + (i - 1) + " to " + i, 1, _object.getLevelAdjustment(1, 1, 1, 1, hpUp, damageUp));
-			assertEquals("Downgrade of " + tableName + " creature by one level " + i + " to " + (i - 1), -1, _object.getLevelAdjustment(-1, -1, -1, -1, hpDown, damageDown));
+			assertEquals("Upgrade of " + tableName + " creature by one level " + (i - 1) + " to " + i, 1, _object.getLevelAdjustment(1, 1, 1, 1, hpUp, damageUp, _emptyAttacks, _emptySpecials, _emptySpecials));
+			assertEquals("Downgrade of " + tableName + " creature by one level " + i + " to " + (i - 1), -1, _object.getLevelAdjustment(-1, -1, -1, -1, hpDown, damageDown, _emptyAttacks, _emptySpecials, _emptySpecials));
 		}
 	}
 
@@ -70,13 +75,13 @@ public class LevelAdjustmentAlternateTest
 
 			// System.out.println("Calculating fine adjustment");
 
-			final double fineUp = _object.getLevelAdjustmentFine(0, 0, 0, 0, hpUp, damageUp);
-			final double fineDown = _object.getLevelAdjustmentFine(0, 0, 0, 0, hpDown, damageDown);
+			final double fineUp = _object.getLevelAdjustmentFine(0, 0, 0, 0, hpUp, damageUp, _emptyAttacks, _emptySpecials, _emptySpecials);
+			final double fineDown = _object.getLevelAdjustmentFine(0, 0, 0, 0, hpDown, damageDown, _emptyAttacks, _emptySpecials, _emptySpecials);
 
 			// System.out.println("Calculating rough adjustment");
 
-			assertEquals("Upgrade of creature (" + nameNormal + "->" + nameLarge + ": " + i + "): " + String.format("%+.2f", fineUp), level, _object.getLevelAdjustment(0, 0, 0, 0, hpUp, damageUp));
-			assertEquals("Downgrade of creature (" + nameLarge + "->" + nameNormal + ": " + i + "): " + String.format("%+.2f", fineDown), -level, _object.getLevelAdjustment(0, 0, 0, 0, hpDown, damageDown));
+			assertEquals("Upgrade of creature (" + nameNormal + "->" + nameLarge + ": " + i + "): " + String.format("%+.2f", fineUp), level, _object.getLevelAdjustment(0, 0, 0, 0, hpUp, damageUp, _emptyAttacks, _emptySpecials, _emptySpecials));
+			assertEquals("Downgrade of creature (" + nameLarge + "->" + nameNormal + ": " + i + "): " + String.format("%+.2f", fineDown), -level, _object.getLevelAdjustment(0, 0, 0, 0, hpDown, damageDown, _emptyAttacks, _emptySpecials, _emptySpecials));
 		}
 	}
 
@@ -98,7 +103,7 @@ public class LevelAdjustmentAlternateTest
 	@Test
 	public void testNoChange()
 	{
-		final double actual = _object.getLevelAdjustmentFine(0, 0, 0, 0, 1.0, 1.0);
+		final double actual = _object.getLevelAdjustmentFine(0, 0, 0, 0, 1.0, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials);
 		assertEquals(0.0, actual, DOUBLE_EXACT_1E_8);
 	}
 
@@ -109,9 +114,9 @@ public class LevelAdjustmentAlternateTest
 	@Test
 	public void testOnlyAttack()
 	{
-		assertEquals(1, _object.getLevelAdjustment(6, 0, 0, 0, 1.0, 1.0));
+		assertEquals(1, _object.getLevelAdjustment(6, 0, 0, 0, 1.0, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials));
 
-		final double actual = _object.getLevelAdjustmentFine(6, 0, 0, 0, 1.0, 1.0);
+		final double actual = _object.getLevelAdjustmentFine(6, 0, 0, 0, 1.0, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials);
 		assertEquals(0.6, actual, DOUBLE_EXACT_1E_8);
 	}
 
@@ -122,9 +127,9 @@ public class LevelAdjustmentAlternateTest
 	@Test
 	public void testOnlyAC()
 	{
-		assertEquals(1, _object.getLevelAdjustment(0, 6, 0, 0, 1.0, 1.0));
+		assertEquals(1, _object.getLevelAdjustment(0, 6, 0, 0, 1.0, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials));
 
-		final double actual = _object.getLevelAdjustmentFine(0, 6, 0, 0, 1.0, 1.0);
+		final double actual = _object.getLevelAdjustmentFine(0, 6, 0, 0, 1.0, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials);
 		assertEquals(0.6, actual, DOUBLE_EXACT_1E_8);
 	}
 
@@ -135,10 +140,10 @@ public class LevelAdjustmentAlternateTest
 	@Test
 	public void testOnlyHP()
 	{
-		final int rough = _object.getLevelAdjustment(0, 0, 0, 0, 2.0, 1.0);
+		final int rough = _object.getLevelAdjustment(0, 0, 0, 0, 2.0, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials);
 		assertEquals(1, rough);
 
-		final double actual = _object.getLevelAdjustmentFine(0, 0, 0, 0, 2.0, 1.0);
+		final double actual = _object.getLevelAdjustmentFine(0, 0, 0, 0, 2.0, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials);
 		assertEquals(1.0, actual, DOUBLE_EXACT_1E_8);
 	}
 
@@ -149,17 +154,17 @@ public class LevelAdjustmentAlternateTest
 	@Test
 	public void testScrapper()
 	{
-		assertEquals(0, _object.getLevelAdjustment(3, 0, 0, 0, 0.7, 1.0));
-		assertEquals(0, _object.getLevelAdjustment(2, 0, 0, 0, 0.8, 1.0));
-		assertEquals(0, _object.getLevelAdjustment(1, 0, 0, 0, 0.9, 1.0));
+		assertEquals(0, _object.getLevelAdjustment(3, 0, 0, 0, 0.7, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials));
+		assertEquals(0, _object.getLevelAdjustment(2, 0, 0, 0, 0.8, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials));
+		assertEquals(0, _object.getLevelAdjustment(1, 0, 0, 0, 0.9, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials));
 
-		double actual = _object.getLevelAdjustmentFine(3, 0, 0, 0, 0.7, 1.0);
+		double actual = _object.getLevelAdjustmentFine(3, 0, 0, 0, 0.7, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials);
 		assertEquals(-0.1897, actual, DOUBLE_FUZZY_1E_3);
 
-		actual = _object.getLevelAdjustmentFine(2, 0, 0, 0, 0.8, 1.0);
+		actual = _object.getLevelAdjustmentFine(2, 0, 0, 0, 0.8, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials);
 		assertEquals(-0.0968, actual, DOUBLE_FUZZY_1E_3);
 
-		actual = _object.getLevelAdjustmentFine(1, 0, 0, 0, 0.9, 1.0);
+		actual = _object.getLevelAdjustmentFine(1, 0, 0, 0, 0.9, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials);
 		assertEquals(-0.0358, actual, DOUBLE_FUZZY_1E_3);
 	}
 
@@ -170,17 +175,17 @@ public class LevelAdjustmentAlternateTest
 	@Test
 	public void testOffensive()
 	{
-		assertEquals(0, _object.getLevelAdjustment(3, -1, -1, -1, 1.0, 1.0));
-		assertEquals(0, _object.getLevelAdjustment(2, -1, -1, 0, 1.0, 1.0));
-		assertEquals(0, _object.getLevelAdjustment(1, -1, 0, 0, 1.0, 1.0));
+		assertEquals(0, _object.getLevelAdjustment(3, -1, -1, -1, 1.0, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials));
+		assertEquals(0, _object.getLevelAdjustment(2, -1, -1, 0, 1.0, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials));
+		assertEquals(0, _object.getLevelAdjustment(1, -1, 0, 0, 1.0, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials));
 
-		double actual = _object.getLevelAdjustmentFine(3, -3, -3, -3, 1.0, 1.0);
+		double actual = _object.getLevelAdjustmentFine(3, -3, -3, -3, 1.0, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials);
 		assertEquals(-0.6, actual, DOUBLE_FUZZY_1E_3);
 
-		actual = _object.getLevelAdjustmentFine(2, -2, -2, -2, 1.0, 1.0);
+		actual = _object.getLevelAdjustmentFine(2, -2, -2, -2, 1.0, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials);
 		assertEquals(-0.3999, actual, DOUBLE_FUZZY_1E_3);
 
-		actual = _object.getLevelAdjustmentFine(1, -1, -1, -1, 1.0, 1.0);
+		actual = _object.getLevelAdjustmentFine(1, -1, -1, -1, 1.0, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials);
 		assertEquals(-0.1999, actual, DOUBLE_FUZZY_1E_3);
 	}
 
@@ -191,17 +196,17 @@ public class LevelAdjustmentAlternateTest
 	@Test
 	public void testOaf()
 	{
-		assertEquals(0, _object.getLevelAdjustment(-3, +3, 0, 0, 1.0, 1.0));
-		assertEquals(0, _object.getLevelAdjustment(-2, +2, 0, 0, 1.0, 1.0));
-		assertEquals(0, _object.getLevelAdjustment(-1, +1, 0, 0, 1.0, 1.0));
+		assertEquals(0, _object.getLevelAdjustment(-3, +3, 0, 0, 1.0, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials));
+		assertEquals(0, _object.getLevelAdjustment(-2, +2, 0, 0, 1.0, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials));
+		assertEquals(0, _object.getLevelAdjustment(-1, +1, 0, 0, 1.0, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials));
 
-		double actual = _object.getLevelAdjustmentFine(-3, +3, 0, 0, 1.0, 1.0);
+		double actual = _object.getLevelAdjustmentFine(-3, +3, 0, 0, 1.0, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials);
 		assertEquals(0.0, actual, DOUBLE_FUZZY_1E_3);
 
-		actual = _object.getLevelAdjustmentFine(-2, +2, 0, 0, 1.0, 1.0);
+		actual = _object.getLevelAdjustmentFine(-2, +2, 0, 0, 1.0, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials);
 		assertEquals(0.0, actual, DOUBLE_FUZZY_1E_3);
 
-		actual = _object.getLevelAdjustmentFine(-1, +1, 0, 0, 1.0, 1.0);
+		actual = _object.getLevelAdjustmentFine(-1, +1, 0, 0, 1.0, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials);
 		assertEquals(0.0, actual, DOUBLE_FUZZY_1E_3);
 	}
 
@@ -212,17 +217,17 @@ public class LevelAdjustmentAlternateTest
 	@Test
 	public void testDefensive()
 	{
-		assertEquals(0, _object.getLevelAdjustment(0, +3, 0, 0, 0.7, 1.0));
-		assertEquals(0, _object.getLevelAdjustment(0, +1, 0, 0, 0.9, 1.0));
-		assertEquals(0, _object.getLevelAdjustment(0, +2, 0, 0, 0.8, 1.0));
+		assertEquals(0, _object.getLevelAdjustment(0, +3, 0, 0, 0.7, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials));
+		assertEquals(0, _object.getLevelAdjustment(0, +1, 0, 0, 0.9, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials));
+		assertEquals(0, _object.getLevelAdjustment(0, +2, 0, 0, 0.8, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials));
 
-		double actual = _object.getLevelAdjustmentFine(0, +3, 0, 0, 0.7, 1.0);
+		double actual = _object.getLevelAdjustmentFine(0, +3, 0, 0, 0.7, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials);
 		assertEquals(-0.1897, actual, DOUBLE_FUZZY_1E_3);
 
-		actual = _object.getLevelAdjustmentFine(0, +2, 0, 0, 0.8, 1.0);
+		actual = _object.getLevelAdjustmentFine(0, +2, 0, 0, 0.8, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials);
 		assertEquals(-0.0968, actual, DOUBLE_FUZZY_1E_3);
 
-		actual = _object.getLevelAdjustmentFine(0, +1, 0, 0, 0.9, 1.0);
+		actual = _object.getLevelAdjustmentFine(0, +1, 0, 0, 0.9, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials);
 		assertEquals(-0.0358, actual, DOUBLE_FUZZY_1E_3);
 	}
 
@@ -233,24 +238,24 @@ public class LevelAdjustmentAlternateTest
 	@Test
 	public void testLunk()
 	{
-		int rough = _object.getLevelAdjustment(0, -3, -3, -3, 1.4, 1.0);
+		int rough = _object.getLevelAdjustment(0, -3, -3, -3, 1.4, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials);
 		assertEquals(0, rough);
 
-		rough = _object.getLevelAdjustment(0, -2, -2, -2, 1.3, 1.0);
+		rough = _object.getLevelAdjustment(0, -2, -2, -2, 1.3, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials);
 		assertEquals(0, rough);
 
-		rough = _object.getLevelAdjustment(0, -1, -1, -1, 1.15, 1.0);
+		rough = _object.getLevelAdjustment(0, -1, -1, -1, 1.15, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials);
 		assertEquals(0, rough);
 
 		// fine
 
-		double actual = _object.getLevelAdjustmentFine(0, -3, -3, -3, 1.4, 1.0);
+		double actual = _object.getLevelAdjustmentFine(0, -3, -3, -3, 1.4, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials);
 		assertEquals(-0.4400, actual, DOUBLE_FUZZY_1E_3);
 
-		actual = _object.getLevelAdjustmentFine(0, -2, -2, -2, 1.3, 1.0);
+		actual = _object.getLevelAdjustmentFine(0, -2, -2, -2, 1.3, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials);
 		assertEquals(-0.2475, actual, DOUBLE_FUZZY_1E_3);
 
-		actual = _object.getLevelAdjustmentFine(0, -1, -1, -1, 1.15, 1.0);
+		actual = _object.getLevelAdjustmentFine(0, -1, -1, -1, 1.15, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials);
 		assertEquals(-0.1181, actual, DOUBLE_FUZZY_1E_3);
 	}
 
@@ -271,8 +276,8 @@ public class LevelAdjustmentAlternateTest
 	@Test
 	public void testNormalLevelUp()
 	{
-		assertEquals(0.6968, _object.getLevelAdjustmentFine(1, 1, 1, 1, 1.25, 1.0), DOUBLE_FUZZY_1E_3);
-		assertEquals(1, _object.getLevelAdjustment(1, 1, 1, 1, 1.25, 1.0));
+		assertEquals(0.6968, _object.getLevelAdjustmentFine(1, 1, 1, 1, 1.25, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials), DOUBLE_FUZZY_1E_3);
+		assertEquals(1, _object.getLevelAdjustment(1, 1, 1, 1, 1.25, 1.0, _emptyAttacks, _emptySpecials, _emptySpecials));
 	}
 
 
@@ -285,10 +290,10 @@ public class LevelAdjustmentAlternateTest
 		final CreatureTableRow large = CreatureTables.large().get(level);
 		final CreatureTableRow leveled = CreatureTables.normal().get(levelUp);
 
-		final int adjustmentLarge = _object.getLevelAdjustment(0, 0, 0, 0, large.getHP() / base.getHP(), large.getStrikeDamage() / base.getStrikeDamage());
-		final int adjustmentLeveled = _object.getLevelAdjustment(levelUp - level, levelUp - level, levelUp - level, levelUp - level, leveled.getHP() / base.getHP(), leveled.getStrikeDamage() / base.getStrikeDamage());
+		final int adjustmentLarge = _object.getLevelAdjustment(0, 0, 0, 0, large.getHP() / base.getHP(), large.getStrikeDamage() / base.getStrikeDamage(), _emptyAttacks, _emptySpecials, _emptySpecials);
+		final int adjustmentLeveled = _object.getLevelAdjustment(levelUp - level, levelUp - level, levelUp - level, levelUp - level, leveled.getHP() / base.getHP(), leveled.getStrikeDamage() / base.getStrikeDamage(), _emptyAttacks, _emptySpecials, _emptySpecials);
 
-		final double adjustmentRelative = _object.getLevelAdjustment(levelUp - level, levelUp - level, levelUp - level, levelUp - level, leveled.getHP() / large.getHP(), leveled.getStrikeDamage() / large.getStrikeDamage());
+		final double adjustmentRelative = _object.getLevelAdjustment(levelUp - level, levelUp - level, levelUp - level, levelUp - level, leveled.getHP() / large.getHP(), leveled.getStrikeDamage() / large.getStrikeDamage(), _emptyAttacks, _emptySpecials, _emptySpecials);
 
 		assertEquals(2, adjustmentLarge);
 		assertEquals(3, adjustmentLeveled);
@@ -308,10 +313,10 @@ public class LevelAdjustmentAlternateTest
 		final CreatureTableRow huge = CreatureTables.huge().get(level);
 		final CreatureTableRow leveled = CreatureTables.normal().get(levelUp);
 
-		final int adjustmentLarge = _object.getLevelAdjustment(0, 0, 0, 0, huge.getHP() / base.getHP(), huge.getStrikeDamage() / base.getStrikeDamage());
-		final int adjustmentLeveled = _object.getLevelAdjustment(levelUp - level, levelUp - level, levelUp - level, levelUp - level, leveled.getHP() / base.getHP(), leveled.getStrikeDamage() / base.getStrikeDamage());
+		final int adjustmentLarge = _object.getLevelAdjustment(0, 0, 0, 0, huge.getHP() / base.getHP(), huge.getStrikeDamage() / base.getStrikeDamage(), _emptyAttacks, _emptySpecials, _emptySpecials);
+		final int adjustmentLeveled = _object.getLevelAdjustment(levelUp - level, levelUp - level, levelUp - level, levelUp - level, leveled.getHP() / base.getHP(), leveled.getStrikeDamage() / base.getStrikeDamage(), _emptyAttacks, _emptySpecials, _emptySpecials);
 
-		final double adjustmentRelative = _object.getLevelAdjustment(levelUp - level, levelUp - level, levelUp - level, levelUp - level, leveled.getHP() / huge.getHP(), leveled.getStrikeDamage() / huge.getStrikeDamage());
+		final double adjustmentRelative = _object.getLevelAdjustment(levelUp - level, levelUp - level, levelUp - level, levelUp - level, leveled.getHP() / huge.getHP(), leveled.getStrikeDamage() / huge.getStrikeDamage(), _emptyAttacks, _emptySpecials, _emptySpecials);
 
 		assertEquals(3, adjustmentLarge);
 		assertEquals(3, adjustmentLeveled);

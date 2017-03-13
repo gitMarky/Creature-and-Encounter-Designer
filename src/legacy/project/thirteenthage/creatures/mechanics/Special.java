@@ -9,6 +9,7 @@ public class Special implements ISpecial
 	private final String _name;
 	private final String _description;
 	private final String _creatureName;
+	private final double _levelAdjustment;
 
 
 	public Special(final ICreature creature, final ISpecial template)
@@ -25,6 +26,7 @@ public class Special implements ISpecial
 		_name = template.getName();
 		_description = template.getDescription();
 		_creatureName = creature.getName();
+		_levelAdjustment = template.getLevelAdjustment();
 	}
 
 
@@ -46,5 +48,12 @@ public class Special implements ISpecial
 	public String toGuiText()
 	{
 		return HtmlDescriptions.getSpecialDescription(this, _creatureName);
+	}
+
+
+	@Override
+	public double getLevelAdjustment()
+	{
+		return _levelAdjustment;
 	}
 }

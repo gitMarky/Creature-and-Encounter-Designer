@@ -44,4 +44,12 @@ public interface IAttack extends INamedItem, IDisplayableInGui
 	 * @return the triggers.
 	 */
 	List<ITrigger> getTriggers();
+
+
+	/**
+	 * Gets an addition to the level adjustment.
+	 * 
+	 * @return the modifier.
+	 */
+	double getLevelAdjustment();
 }

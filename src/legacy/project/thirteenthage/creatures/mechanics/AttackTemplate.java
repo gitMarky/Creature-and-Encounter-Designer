@@ -19,6 +19,7 @@ public class AttackTemplate implements IAttack
 	private final double _damage;
 	private String _damageDesc = "damage";
 	private final List<ITrigger> _triggers = new ArrayList<ITrigger>();
+	private double _levelAdjustment = 0.0;
 
 
 	public AttackTemplate(final File file)
@@ -49,6 +50,12 @@ public class AttackTemplate implements IAttack
 
 			final Trigger trigger = new Trigger(name, description);
 			_triggers.add(trigger);
+		}
+
+
+		if (template.getRoot().getChild("level") != null)
+		{
+			_levelAdjustment = Double.parseDouble(template.getRoot().getChildText("level"));
 		}
 	}
 
@@ -106,5 +113,12 @@ public class AttackTemplate implements IAttack
 	public String toString()
 	{
 		return getName();
+	}
+
+
+	@Override
+	public double getLevelAdjustment()
+	{
+		return _levelAdjustment;
 	}
 }

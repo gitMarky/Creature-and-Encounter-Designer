@@ -11,6 +11,7 @@ public class SpecialTemplate implements ISpecial
 {
 	private String _name = "Special";
 	private String _description = "Description";
+	private double _levelAdjustment = 0.0;
 
 
 	public SpecialTemplate(final File file)
@@ -28,6 +29,11 @@ public class SpecialTemplate implements ISpecial
 
 		_name = template.getRoot().getChildText("name");
 		_description = template.getRoot().getChildText("description");
+
+		if (template.getRoot().getChild("level") != null)
+		{
+			_levelAdjustment = Double.parseDouble(template.getRoot().getChildText("level"));
+		}
 	}
 
 
@@ -56,5 +62,12 @@ public class SpecialTemplate implements ISpecial
 	public String toString()
 	{
 		return getName();
+	}
+
+
+	@Override
+	public double getLevelAdjustment()
+	{
+		return _levelAdjustment;
 	}
 }
