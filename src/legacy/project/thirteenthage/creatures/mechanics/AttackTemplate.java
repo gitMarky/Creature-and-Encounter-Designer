@@ -13,14 +13,18 @@ import legacy.project.thirteenthage.creatures.internal.interfaces.IAttack;
 
 public class AttackTemplate implements IAttack
 {
-	private String _name = "Melee attack";
-	private final int _attack;
-	private final String _defense;
+	private final int _attackBonus;
+	private final int _amount;
 	private final double _damage;
-	private String _damageDesc = "damage";
-	private final List<ITrigger> _triggers = new ArrayList<ITrigger>();
 	private double _levelAdjustment = 0.0;
+
+	private String _name = "Melee attack";
+	private String _damageDesc = "damage";
+
+	private final String _defense;
 	private String _info = "";
+
+	private final List<ITrigger> _triggers = new ArrayList<ITrigger>();
 
 	public AttackTemplate(final File file)
 	{
@@ -36,15 +40,24 @@ public class AttackTemplate implements IAttack
 		}
 
 		_name = template.getRoot().getChildText("name");
-		_attack = Integer.parseInt(template.getRoot().getChildText("bonus"));
+		_attackBonus = Integer.parseInt(template.getRoot().getChildText("bonus"));
 		_defense = template.getRoot().getChildText("defense");
-		_damage = Double.parseDouble(template.getRoot().getChild("damage").getAttributeValue("factor"));
-		_damageDesc = template.getRoot().getChild("damage").getAttributeValue("description");
+		_damage = parseDamage(template); //Double.parseDouble(template.getRoot().getChild("damage").getAttributeValue("factor"));
+		_damageDesc = parseDamageDescription(template); //template.getRoot().getChild("damage").getAttributeValue("description");
 
-		if (!getChildText(template, "info").isEmpty())
+		// get attack amount
+		final String amount = getChildText(template, "amount");
+		if (amount.isEmpty())
 		{
-			_info = String.format(" (%s)", getChildText(template, "info"));
+			_amount = 1;
 		}
+		else
+		{
+			_amount = Integer.parseInt(amount);
+		}
+
+		// get info
+		_info = formatInfo(_amount, getChildText(template, "info"));
 
 		for (final Element element : template.getRoot().getChild("triggers").getChildren())
 		{
@@ -57,11 +70,100 @@ public class AttackTemplate implements IAttack
 			_triggers.add(trigger);
 		}
 
-
 		if (template.getRoot().getChild("level") != null)
 		{
 			_levelAdjustment = Double.parseDouble(template.getRoot().getChildText("level"));
 		}
+	}
+
+
+	private double parseDamage(final BasicXmlFile template)
+	{
+		double damage = Double.NaN;
+
+		damage = parseDouble(template.getRoot().getChild("damage").getAttributeValue("factor"));
+
+		if (Double.isNaN(damage))
+		{
+			damage = parseDouble(template.getRoot().getChild("damage").getChildText("factor"));
+		}
+
+		if (Double.isNaN(damage))
+		{
+			return 0;
+		}
+		else
+		{
+			return damage;
+		}
+	}
+
+
+	private double parseDouble(final String value)
+	{
+		if (value == null || value.isEmpty())
+		{
+			return Double.NaN;
+		}
+
+		try
+		{
+			return Double.parseDouble(value);
+		}
+		catch (final IllegalArgumentException e)
+		{
+			return Double.NaN;
+		}
+	}
+
+
+	private String parseDamageDescription(final BasicXmlFile template)
+	{
+		String desc = template.getRoot().getChild("damage").getAttributeValue("description");
+
+		if (desc == null)
+		{
+			desc = template.getRoot().getChild("damage").getChildText("description");
+		}
+
+		if (desc == null)
+		{
+			return "damage";
+		}
+		else
+		{
+			return desc;
+		}
+	}
+
+
+	private String formatInfo(final int amount, final String text)
+	{
+		final StringBuilder info = new StringBuilder();
+
+		final boolean hasMultipleAttacks = amount > 1;
+		final boolean hasInfo = !text.isEmpty();
+
+		if (hasMultipleAttacks || hasInfo)
+		{
+			info.append(" (");
+		}
+
+		if (hasMultipleAttacks)
+		{
+			info.append(amount).append(" attacks");
+		}
+
+		if (hasInfo)
+		{
+			info.append(text);
+		}
+
+		if (hasMultipleAttacks || hasInfo)
+		{
+			info.append(")");
+		}
+		return info.toString();
 	}
 
 
@@ -75,7 +177,7 @@ public class AttackTemplate implements IAttack
 	@Override
 	public int getAttackBonus()
 	{
-		return _attack;
+		return _attackBonus;
 	}
 
 

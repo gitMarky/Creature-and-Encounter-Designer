@@ -2,9 +2,11 @@
 	<name>Fangs, claws, and horns</name>
 	<bonus>0</bonus>
 	<defense>AC</defense>
-	<info>3 attacks</info>
+	<amount>3</amount>
 	<level>0.5</level>
-	<damage factor="0.25" description="damage" />
+	<damage>
+	 <factor>0.25</factor>
+	</damage>
 	<triggers>
 		<trigger name="Natural 14-15" description="The target is dazed until the end of the $name's next turn from a headbutt."/>
 		<trigger name="Natural 16-17" description="The target takes $damage[x0.2] ongoing damage from raking claws."/>
