@@ -90,7 +90,7 @@ public class TemplateTestAnimal extends TemplateTest
 		initiative(4);
 
 		testAttack(0, 7, "AC", 5);
-		testAttack(1, 7, "PD (up to 2 nearby enemies in a group)", 3);
+		testAttack(1, 7, "PD", 3);
 
 		AC(17);
 		PD(16);
