@@ -90,7 +90,7 @@ public class AttackTemplate implements IAttack
 
 		if (Double.isNaN(damage))
 		{
-			return 0;
+			return 1.0;
 		}
 		else
 		{
